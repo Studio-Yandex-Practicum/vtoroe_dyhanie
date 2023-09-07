@@ -12,7 +12,7 @@ authors = [
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "3.11"
+python = "^3.11"
 poetry = "1.6.1"
 python-telegram-bot = "^20.3"
 pydantic = "2.3.0"
