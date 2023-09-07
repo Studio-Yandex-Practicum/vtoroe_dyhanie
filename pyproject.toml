@@ -35,14 +35,3 @@ exclude = ["tests", ".venv", "venv"]
 per-file-ignores = [
     "__init__.py:F401",
 ]
-ignore =
-    W503,
-    F811
-exclude =
-    tests/,
-    */migrations/,
-    venv/,
-    env/
-per-file-ignores =
-    */settings.py:E501
-max-complexity = 10
