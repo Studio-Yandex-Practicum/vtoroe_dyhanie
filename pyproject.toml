@@ -3,7 +3,7 @@ requires = ["setuptools>=42", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [tool.poetry]
-name = "Втордыш"
+name = "vtoroe_dyhanie"
 version = "1.0.0"
 description = "Телеграм-бот для автоматизации HR-процессов фонда Второе Дыхание"
 authors = [
@@ -17,6 +17,7 @@ poetry = "1.6.1"
 python-telegram-bot = "^20.3"
 pydantic = "2.3.0"
 requests = "2.26.0"
+pydantic-settings = "2.0.3"
 
 [tool.poetry.extras]
 flake8 = ["3.9.2"]
