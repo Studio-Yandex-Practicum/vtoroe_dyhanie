@@ -1371,4 +1371,4 @@ python-dotenv = []
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "6dd784b0e384c14ac85ba4cb100a357da0ec9d02445e97df99a4daf3b0f915c9"
+content-hash = "8975d96385d487051944f8967e5c57486742dcf5762c28a1bc6a46af82768439"
