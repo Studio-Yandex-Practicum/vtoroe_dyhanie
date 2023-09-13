@@ -1,11 +1,10 @@
 from telegram import Update
-from telegram.ext import ConversationHandler
+from telegram.ext import ConversationHandler, ContextTypes
+
+from bot.constants.text.py import STOP_MESSAGE
 
 
-STOP_MESSAGE = "Бот остановлен."
-
-
-async def stop(update: Update, context):
+async def stop(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Команда остановки бота"""
     await update.message.reply_text(STOP_MESSAGE)
     return ConversationHandler.END
