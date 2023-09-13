@@ -28,6 +28,9 @@ pre-commit = ["3.4.0"]
 add-trailing-comma = ["3.1.0"]
 mypy = ["1.5.1"]
 
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.4.0"
+
 [tool.flake8]
 max-line-length = "79"
 paths = ["./bot", "./core", "./src"]
