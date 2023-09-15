@@ -7,7 +7,12 @@ name = "vtoroe_dyhanie"
 version = "1.0.0"
 description = "Телеграм-бот для автоматизации HR-процессов фонда Второе Дыхание"
 authors = [
-    ""
+    "Мамонов Александр",
+    "Мольков Андрей",
+    "Владимир Максимов",
+    "Насибуллин Дмитрий",
+    "Андрей Киланов",
+    "Мария Ковалева",
 ]
 license = "MIT"
 
@@ -18,6 +23,7 @@ python-telegram-bot = "^20.3"
 pydantic = "2.3.0"
 requests = "2.26.0"
 pydantic-settings = "2.0.3"
+python-dotenv = "^1.0.0"
 
 [tool.poetry.extras]
 flake8 = ["3.9.2"]
@@ -39,3 +45,14 @@ exclude = ["tests", ".venv", "venv"]
 per-file-ignores = [
     "__init__.py:F401",
 ]
+
+[tool.isort]
+default_section = "THIRDPARTY"
+sections = ["STDLIB", "FIRSTPARTY", "THIRDPARTY", "LOCALFOLDER"]
+known_local_folder = ["src", "bot", "core"]
+lines_after_imports = "2"
+skip = ["tests", ".venv", "venv"]
+line_length = "79"
+multi_line_output = "3"
+include_trailing_comma = "true"
+use_parentheses = "true".
