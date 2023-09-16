@@ -14,7 +14,7 @@ async def greeting(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 async def reg_form_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
-    """Send text and links to user with registration and forms message."""
+    """Send text and links to user with regulations and forms message."""
     await update.message.reply_text(
         REG_FORM_MESSAGE,
         parse_mode=ParseMode.MARKDOWN_V2,
