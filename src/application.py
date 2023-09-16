@@ -1,9 +1,8 @@
-from telegram.ext import Application, CommandHandler
-
+from telegram.ext import Application, CommandHandler, filters, MessageHandler
 
 from bot.conversations.command_application import help, stop
 from bot.core.settings import settings
-from bot.handlers import greeting
+from bot.handlers import greeting, reg_form_callback
 
 
 def main() -> None:
@@ -12,6 +11,12 @@ def main() -> None:
     app.add_handler(CommandHandler('start', greeting))
     app.add_handler(CommandHandler('help', help))
     app.add_handler(CommandHandler("stop", stop))
+    app.add_handler(
+        MessageHandler(
+            filters.Text(['Регламенты и формы']),
+            reg_form_callback
+        )
+    )
 
     app.run_polling()
 
