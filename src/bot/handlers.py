@@ -1,43 +1,23 @@
-from telegram import Update
-from telegram.ext import ContextTypes, ConversationHandler
-
-from bot.constants.text import (
-    START_MESSAGE,
-    FAILED_THE_TEST,
-    PASSED_THE_TEST,
-)
-from bot.core.settings import settings
-from bot.utils import (
-    STICKER_ID,
-    CHECK,
+from telegram.ext import (
+    CommandHandler,
+    ConversationHandler,
+    MessageHandler,
+    filters,
 )
 
+from bot.constants.state import CHECK
+from bot.conversations.main_application import (
+    greeting_callback,
+    done_callback,
+    check_the_secret_word_callback,
+)
 
-async def greeting_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
-) -> int:
-    """Base handler to greet the user"""
-    await update.message.reply_text(START_MESSAGE)
-    return CHECK
-
-
-async def check_the_secret_word_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
-) -> int:
-    """Function that checks the secret word for access to the application."""
-    text = update.message.text
-    if text.lower() != settings.secret_word.lower():
-        await update.message.reply_text(FAILED_THE_TEST)
-        return CHECK
-    await update.message.reply_sticker(STICKER_ID)
-    await update.message.reply_text(PASSED_THE_TEST)
-    # Впоследствии вызов функции done заменить на возвращение значения следующего шага.
-    return await done_callback(update, context)
-
-
-async def done_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
-) -> int:
-    """End the conversation."""
-    await update.message.reply_text("Возвращайтесь, буду рад пообщаться!")
-    return ConversationHandler.END
+conv_handler = ConversationHandler(
+    entry_points=[CommandHandler("start", greeting_callback)],
+    states={
+        CHECK: [
+            MessageHandler(filters.TEXT, check_the_secret_word_callback),
+        ],
+    },
+    fallbacks=[MessageHandler(filters.Regex("^Done$"), done_callback)],
+)

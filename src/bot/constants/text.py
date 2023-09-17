@@ -16,3 +16,6 @@ PASSED_THE_TEST = (
     "Верно! Выбери интересующую тебя тему из списка"
     "в меню и я помогу тебе найти нужную информацию."
 )
+STICKER_ID: str = (
+    "CAACAgIAAxkBAAIDwGUEItYpuU5DXDRigDA1M9SL-AdcAALTJAACHRAwSj-yFNWnj6hDMAQ"
+)
