@@ -15,7 +15,7 @@ async def greeting_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> int:
-    """Base handler to greet the user"""
+    """Базовая функция начинающая диалог с юзером и открывающий доступ к conv_handler."""
     await update.message.reply_text(START_MESSAGE)
     return CHECK
 
@@ -24,7 +24,7 @@ async def check_the_secret_word_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> int:
-    """Function that checks the secret word for access to the application."""
+    """Функция проверяющая доступ к боту по секретному слову."""
     text = update.message.text
     if text.lower() != settings.secret_word.lower():
         await update.message.reply_text(FAILED_THE_TEST)
@@ -39,6 +39,6 @@ async def done_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> int:
-    """End the conversation."""
+    """Функция заканчивающая работу бота. После её работы, бот будет принимать только команду /start."""
     await update.message.reply_text("Возвращайтесь, буду рад пообщаться!")
     return ConversationHandler.END
