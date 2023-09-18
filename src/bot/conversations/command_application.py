@@ -10,7 +10,8 @@ async def help(
         context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     await update.message.reply_text(HELP)
-    
+
+
 async def stop(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Команда остановки бота"""
     await update.message.reply_text(STOP_MESSAGE)
