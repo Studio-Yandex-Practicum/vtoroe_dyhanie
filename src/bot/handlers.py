@@ -1,9 +1,8 @@
 from telegram import Update
-from telegram.constants import ParseMode
-from telegram.ext import ContextTypes
+from telegram.ext import ContextTypes, filters, MessageHandler
 
 from bot.constants.info.text import GREETING
-from bot.constants.text import REG_FORM_MESSAGE
+from bot.conversations.menu_application import reg_form_callback
 
 
 async def greeting(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -11,12 +10,7 @@ async def greeting(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text(GREETING)
 
 
-async def reg_form_callback(
-        update: Update, context: ContextTypes.DEFAULT_TYPE
-) -> None:
-    """Send text and links to user with regulations and forms message."""
-    await update.message.reply_text(
-        REG_FORM_MESSAGE,
-        parse_mode=ParseMode.MARKDOWN_V2,
-        disable_web_page_preview=True
-    )
+reg_form_handler = MessageHandler(
+    filters.Text(['Регламенты и формы']),
+    reg_form_callback
+)
