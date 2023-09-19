@@ -1,19 +1,10 @@
 version: '3.8'
 
-# Для сборки
-# services:
-#   vtordish:
-#     container_name: vtordish
-#     build:
-#       context: ../
-#       dockerfile: ./infra/Dockerfile
-#     env_file:
-#       - ../.env
-
-# Для деплоя
 services:
   vtordish:
-    # При сборке образа контейнера с ботом образ был назван vtordish
-    image: <github_username>/vtordish:latest
+    container_name: vtordish
+    build:
+      context: ../
+      dockerfile: ./infra/Dockerfile
     env_file:
-      - .env
+      - ../.env
