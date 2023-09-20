@@ -8,7 +8,7 @@ from bot.conversations.command_application import (
     stop,
 )
 from bot.core.settings import settings
-from bot.handlers import greeting
+from bot.handlers import conv_handler
 
 
 def main() -> None:
@@ -18,7 +18,7 @@ def main() -> None:
     app.add_handler(conv_handler)
     app.add_handler(CommandHandler("help", help))
     app.add_handler(CommandHandler("stop", stop))
-    app.add_handler(knowledge_base_handler)
+
     app.run_polling()
 
 

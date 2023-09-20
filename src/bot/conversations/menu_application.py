@@ -5,11 +5,11 @@ from bot.constants.text import KNOWLEDGE_BASE
 
 
 async def knowledge_base(
-        update: Update, context: ContextTypes.DEFAULT_TYPE
+    update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
-    """Send message with knowledge base"""
+    """Отсылает сообщение с описанием базы знаний и ссылку на нее."""
     await update.message.reply_text(
         text=KNOWLEDGE_BASE,
         parse_mode="Markdown",
-        disable_web_page_preview=True
+        disable_web_page_preview=True,
     )
