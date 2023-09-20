@@ -1,0 +1,1 @@
+CHECK: int = 1
