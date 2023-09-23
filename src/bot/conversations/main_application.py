@@ -1,7 +1,7 @@
 from telegram import Update
 from telegram.ext import ContextTypes, ConversationHandler
 
-from bot.constants.state import CHECK
+from bot.constants.state import CHECK, MENU
 from bot.constants.text import (
     START_MESSAGE,
     FAILED_THE_TEST,
@@ -32,8 +32,7 @@ async def check_the_secret_word_callback(
         return CHECK
     await update.message.reply_sticker(STICKER_ID)
     await update.message.reply_text(PASSED_THE_TEST, reply_markup=main_menu_markup)
-    # Впоследствии вызов функции done заменить на возвращение значения следующего шага.
-    return await done_callback(update, context)
+    return MENU
 
 
 async def done_callback(
