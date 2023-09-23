@@ -1,4 +1,4 @@
-name: Vtoroe_dyhanie
+name: Vtoroe_dyhanie_develop
 
 # Workflow будет срабатывать на команду push в ветку develop
 on:
