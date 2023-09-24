@@ -191,3 +191,25 @@ DEPARTMENT_10 = (
     'Поиск, адаптация, обучение и развитие сотрудников, кадровое '
     'делопроизводство, забота о сотрудниках.'
 )
+
+DEPARTMENT_LIST = [
+    'department_01',
+    'department_02',
+    'department_03',
+    'department_04',
+    'department_05',
+    'department_06',
+    'department_07',
+    'department_08',
+    'department_09',
+    'department_10',
+]
+
+COUNCIL_QUESTION_LIST = [
+    'council_question_01',
+    'council_question_02',
+    'council_question_03',
+    'council_question_04',
+    'council_question_05',
+    'council_question_06',
+]
