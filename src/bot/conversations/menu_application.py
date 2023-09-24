@@ -18,7 +18,3 @@ async def contact_list(
     await update.message.reply_text(
         MENU_CONTACT_LIST_LOAD_CONTACT_LIST
     )
-
-
-
-
