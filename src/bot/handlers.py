@@ -10,7 +10,9 @@ from bot.constants.state import (
     ABOUT_FUND_MENU_STATE,
     CHECK,
     FUND_MISSION_STATE,
-    MENU
+    MENU,
+    PROCESSES_ANATOMY_STATE,
+    THINGS_PATH_STATE,
 )
 from bot.conversations.main_application import (
     greeting_callback,
@@ -20,7 +22,9 @@ from bot.conversations.main_application import (
 from bot.conversations.menu_application import (
     about_fund_callback,
     about_fund_menu_callback,
-    about_fund_more_info
+    about_fund_more_info,
+    processes_anatomy_more_info,
+    things_path_more_info,
 )
 
 conv_handler = ConversationHandler(
@@ -37,6 +41,12 @@ conv_handler = ConversationHandler(
         ],
         FUND_MISSION_STATE: [
             CallbackQueryHandler(about_fund_more_info)
+        ],
+        THINGS_PATH_STATE: [
+            CallbackQueryHandler(things_path_more_info)
+        ],
+        PROCESSES_ANATOMY_STATE: [
+            CallbackQueryHandler(processes_anatomy_more_info)
         ]
     },
     fallbacks=[MessageHandler(filters.Regex("^Done$"), done_callback)],
