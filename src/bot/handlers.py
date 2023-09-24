@@ -1,17 +1,21 @@
 from telegram.ext import (
+    CallbackQueryHandler,
     CommandHandler,
     ConversationHandler,
     MessageHandler,
     filters,
 )
-
-from bot.constants.state import CHECK, MENU
+from bot.constants.callback import FEEDBACK_BACK_BUTTON
+from bot.constants.state import CHECK, MENU, FEEDBACK
 from bot.conversations.main_application import (
     greeting_callback,
     done_callback,
     check_the_secret_word_callback,
 )
-from bot.conversations.menu_application import feedback_callback
+from bot.conversations.menu_application import (
+    back_to_menu_callback,
+    feedback_callback
+)
 
 
 conv_handler = ConversationHandler(
@@ -24,6 +28,12 @@ conv_handler = ConversationHandler(
             MessageHandler(
                 filters.Text('Обратная связь'),
                 feedback_callback
+            ),
+        ],
+        FEEDBACK: [
+            CallbackQueryHandler(
+                pattern=FEEDBACK_BACK_BUTTON,
+                callback=back_to_menu_callback,
             ),
         ]
     },
