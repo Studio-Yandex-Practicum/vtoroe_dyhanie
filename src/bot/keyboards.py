@@ -36,15 +36,12 @@ basic_information_markup = InlineKeyboardMarkup(basic_information_keyboard)
 
 # 2. Клавиатура для 'organization_structure'
 org_structure_keyboard = [
-    # Маша, нужно реализовать:
     [InlineKeyboardButton("Совет Фонда", callback_data="council")],
-    # Маша, нужно реализовать:
     [
         InlineKeyboardButton(
             "Попечительский совет", callback_data="guardian_council"
         )
     ],
-    # Маша, нужно реализовать:
     [InlineKeyboardButton("Отделы Фонда", callback_data="departments")],
     [InlineKeyboardButton("Назад", callback_data="basic_information_back")],
     [InlineKeyboardButton("В главное меню", callback_data="main_menu")],
@@ -69,7 +66,7 @@ social_networks_keyboard = [
 ]
 social_networks_markup = InlineKeyboardMarkup(social_networks_keyboard)
 
-# 5. Клавиатура для 'Совет фонда'
+# 5. Клавиатура для 'council'
 council_keyboard = [
     [InlineKeyboardButton(
         "За что отвечает Совет фонда?",
@@ -104,14 +101,14 @@ council_keyboard = [
 ]
 council_markup = InlineKeyboardMarkup(council_keyboard)
 
-# 6. Клавиатура для возвратов
+# 6. Клавиатура для возвратов из раздела о департаментах
 departments_final_keyboard = [
     [InlineKeyboardButton("Понятно, спасибо!", callback_data="main_menu")],
     [InlineKeyboardButton("Назад", callback_data="departments")],
 ]
 departments_final_markup = InlineKeyboardMarkup(departments_final_keyboard)
 
-# 7. Клавиатура для отеделений фонда
+# 7. Клавиатура для 'departments'
 departments_keyboard = [
     [InlineKeyboardButton(
         "Отдел благотворительных программ",
@@ -155,3 +152,10 @@ departments_keyboard = [
     )],
 ]
 departments_markup = InlineKeyboardMarkup(departments_keyboard)
+
+# 8. Клавиатура для 'guardian_council'
+guardian_council_keyboard = [
+    [InlineKeyboardButton("Понятно, спасибо!", callback_data="main_menu")],
+    [InlineKeyboardButton("Назад", callback_data="organization_structure")],
+]
+guardian_council_markup = InlineKeyboardMarkup(guardian_council_keyboard)

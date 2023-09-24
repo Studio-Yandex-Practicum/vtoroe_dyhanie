@@ -48,6 +48,7 @@ from bot.keyboards import (
     org_structure_markup,
     our_team_markup,
     social_networks_markup,
+    guardian_council_markup,
     council_markup,
     departments_final_markup,
     departments_markup,
