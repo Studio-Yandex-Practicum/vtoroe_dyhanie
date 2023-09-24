@@ -5,7 +5,7 @@ from telegram.ext import (
     MessageHandler,
     filters,
 )
-from bot.constants.callback import FEEDBACK_BACK_BUTTON
+
 from bot.constants.state import CHECK, MENU, FEEDBACK
 from bot.conversations.main_application import (
     greeting_callback,
