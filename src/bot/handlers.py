@@ -32,7 +32,6 @@ conv_handler = ConversationHandler(
         ],
         FEEDBACK: [
             CallbackQueryHandler(
-                pattern=FEEDBACK_BACK_BUTTON,
                 callback=back_to_menu_callback,
             ),
         ]

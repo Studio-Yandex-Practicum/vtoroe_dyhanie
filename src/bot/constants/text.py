@@ -30,3 +30,5 @@ FEEDBACK_MESSAGE: str = (
     'связь, если ты не хочешь сообщать ее лично, можно по '
     f'[ссылке]({FEEDBACK_LINK})\.'
 )
+
+BACK_TO_MAIN_MENU = 'В главное меню'

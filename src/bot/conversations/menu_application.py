@@ -3,17 +3,24 @@ from telegram.constants import ParseMode
 from telegram.ext import ContextTypes
 
 from bot.constants.state import FEEDBACK, MENU
-from bot.constants.text import FEEDBACK_MESSAGE
+from bot.constants.text import (
+    BACK_TO_MAIN_MENU,
+    FEEDBACK_MESSAGE
+)
+
 from bot.keyboards import back_button_markup, main_menu_markup
 
 
 async def back_to_menu_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE
 ) -> int:
     """Возвращает в главное меню"""
     query = update.callback_query
-    await query.answer()
-    await query.edit_message_text(text='jj', reply_markup=main_menu_markup)
+    await query.message.reply_text(
+        text=BACK_TO_MAIN_MENU,
+        reply_markup=main_menu_markup
+    )
     return MENU
 
 
