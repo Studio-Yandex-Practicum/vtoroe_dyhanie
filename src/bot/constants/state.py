@@ -1,2 +1,4 @@
 CHECK: int = 1
 MENU: int = 2
+ABOUT_FUND_MENU_STATE: int = 10
+FUND_MISSION_STATE: int = 101
