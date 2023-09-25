@@ -24,6 +24,7 @@ from bot.keyboards import (
 )
 from bot.core.settings import settings
 
+
 async def greeting_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
@@ -53,6 +54,7 @@ async def main_menu_actions_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> int:
+    """Функция реализующая разделение обработки команд из главного меню."""
     user_input = update.message.text
 
     if user_input == "Основная информация":
@@ -64,7 +66,6 @@ async def main_menu_actions_callback(
     # Добавить обработку других кнопок.
 
     return MAIN_MENU
-
 
 async def done_callback(
     update: Update,
