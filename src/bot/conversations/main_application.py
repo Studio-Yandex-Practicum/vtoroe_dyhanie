@@ -11,13 +11,16 @@ from bot.constants.state import (
     MAIN_MENU,
     BASIC_INFORMATION,
 )
+from bot.constants.basic_info_text import (
+    BASIC_INFORMATION_MENU,
+)
 from bot.constants.text import (
     START_MESSAGE,
     FAILED_THE_TEST,
     PASSED_THE_TEST,
     STICKER_ID,
-    BASIC_INFORMATION_MENU,
 )
+
 from bot.basic_info_keyboards import (
     basic_information_markup,
 )

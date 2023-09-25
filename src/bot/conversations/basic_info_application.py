@@ -9,11 +9,10 @@ from telegram.ext import (
 from bot.constants.state import (
     MAIN_MENU, BASIC_INFORMATION,
 )
-from bot.constants.text import (
+from bot.constants.basic_info_text import (
     FUND_NEWS,
     OUR_TEAM_MESSAGE,
     ORGANIZATION_MESSAGE,
-    BACK_TO_THE_MENU,
     COUNCIL_INTRODUCTION_MESSAGE,
     COUNCIL_QUESTION_LIST,
     COUNCIL_ANSWER_01,
@@ -28,6 +27,9 @@ from bot.constants.text import (
     DEPARTMENT_04, DEPARTMENT_05, DEPARTMENT_06,
     DEPARTMENT_07, DEPARTMENT_08, DEPARTMENT_09,
     DEPARTMENT_10,
+)
+from bot.constants.text import (
+    BACK_TO_THE_MENU,
 )
 from bot.basic_info_keyboards import (
     basic_information_markup,
