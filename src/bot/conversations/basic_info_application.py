@@ -29,8 +29,7 @@ from bot.constants.text import (
     DEPARTMENT_07, DEPARTMENT_08, DEPARTMENT_09,
     DEPARTMENT_10,
 )
-from bot.keyboards import (
-    main_menu_markup,
+from bot.basic_info_keyboards import (
     basic_information_markup,
     org_structure_markup,
     our_team_markup,
@@ -39,6 +38,9 @@ from bot.keyboards import (
     council_markup,
     departments_final_markup,
     departments_markup,
+)
+from bot.keyboards import (
+    main_menu_markup,
 )
 
 

@@ -18,10 +18,13 @@ from bot.constants.text import (
     STICKER_ID,
     BASIC_INFORMATION_MENU,
 )
-from bot.keyboards import (
-    main_menu_markup,
+from bot.basic_info_keyboards import (
     basic_information_markup,
 )
+from bot.keyboards import (
+    main_menu_markup,
+)
+
 from bot.core.settings import settings
 
 
