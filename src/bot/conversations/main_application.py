@@ -1,16 +1,25 @@
 from telegram import Update
 from telegram.ext import ContextTypes, ConversationHandler
 
-from bot.constants.state import CHECK, MENU, FAQ
+from bot.constants.state import (
+    CHECK,
+    FAQ,
+    MAIN_MENU,
+)
+from bot.constants.faq_text import (
+    BACK_TO_MENU,
+    FAQ_MESSAGE,
+)
 from bot.constants.text import (
-    START_MESSAGE,
     FAILED_THE_TEST,
     PASSED_THE_TEST,
+    START_MESSAGE,
     STICKER_ID,
-    FAQ_MESSAGE,
-    BACK_TO_MENU,
 )
-from bot.keyboards import main_menu_markup, faq_menu_markup
+from bot.keyboards import (
+    faq_menu_markup,
+    main_menu_markup,
+)
 from bot.core.settings import settings
 
 
@@ -36,25 +45,33 @@ async def check_the_secret_word_callback(
     await update.message.reply_text(
         PASSED_THE_TEST, reply_markup=main_menu_markup
     )
-    return MENU
+    return MAIN_MENU
 
 
-async def faq_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+async def main_menu_actions_callback(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
 ) -> int:
-    """Переводит диалог в раздел FAQ"""
-    await update.message.reply_text(FAQ_MESSAGE, reply_markup=faq_menu_markup)
-    return FAQ
+    """Функция реализующая разделение обработки команд из главного меню."""
+    user_input = update.message.text
+
+    if user_input == "FAQ":
+        await update.message.reply_text(
+            FAQ_MESSAGE, reply_markup=faq_menu_markup
+        )
+        return FAQ
+
+    return MAIN_MENU
 
 
 async def back_button_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> int:
-    """Переводит диалог назад в раздел MENU"""
+    """Возвращает в главное меню"""
     await update.message.reply_text(
         BACK_TO_MENU, reply_markup=main_menu_markup
     )
-    return MENU
+    return MAIN_MENU
 
 
 async def done_callback(

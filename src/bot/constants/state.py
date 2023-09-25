@@ -1,3 +1,3 @@
 CHECK: int = 1
-MENU: int = 2
-FAQ: int = 3
+MAIN_MENU: int = 2
+FAQ: int = 10
