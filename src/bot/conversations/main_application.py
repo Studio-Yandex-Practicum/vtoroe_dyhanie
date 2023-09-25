@@ -31,10 +31,17 @@ from bot.constants.text import (
     COUNCIL_ANSWER_05,
     COUNCIL_ANSWER_06,
     GARDIAN_COUNCIL_INTRODUCTION_MESSAGE,
-    DEPARTMENTS, DEPARTMENT_LIST,
-    DEPARTMENT_01, DEPARTMENT_02, DEPARTMENT_03,
-    DEPARTMENT_04, DEPARTMENT_05, DEPARTMENT_06,
-    DEPARTMENT_07, DEPARTMENT_08, DEPARTMENT_09,
+    DEPARTMENTS,
+    DEPARTMENT_LIST,
+    DEPARTMENT_01,
+    DEPARTMENT_02,
+    DEPARTMENT_03,
+    DEPARTMENT_04,
+    DEPARTMENT_05,
+    DEPARTMENT_06,
+    DEPARTMENT_07,
+    DEPARTMENT_08,
+    DEPARTMENT_09,
     DEPARTMENT_10,
 )
 from bot.keyboards import (
@@ -49,6 +56,7 @@ from bot.keyboards import (
     departments_markup,
 )
 from bot.core.settings import settings
+
 
 async def greeting_callback(
     update: Update,
@@ -79,6 +87,7 @@ async def main_menu_actions_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> int:
+    """Функция реализующая разделение обработки команд из главного меню."""
     user_input = update.message.text
 
     if user_input == "Основная информация":
@@ -93,6 +102,7 @@ async def main_menu_actions_callback(
 
 
 async def handle_organization_structure(query: CallbackQuery) -> None:
+    """Функция обработки команды 'организационная структура' из главного меню."""
     query_data = query.data
 
     if query_data == "organization_structure":
@@ -123,14 +133,14 @@ async def handle_organization_structure(query: CallbackQuery) -> None:
 
     elif query_data == "departments":
         await query.message.edit_text(
-            text=DEPARTMENTS,
-            reply_markup=departments_markup
+            text=DEPARTMENTS, reply_markup=departments_markup
         )
     elif query_data in DEPARTMENT_LIST:
         await handle_departments(query)
 
 
 async def handle_our_team(query: CallbackQuery) -> None:
+    """Обработка команды 'наша команда'."""
     query_data = query.data
 
     if query_data == "our_team":
@@ -142,22 +152,25 @@ async def handle_our_team(query: CallbackQuery) -> None:
         )
 
     elif query_data == "contact_list":
+        # Добавить информацию о контактах
         await query.message.edit_text(
             "Информация о контактах.", reply_markup=our_team_markup
         )
     elif query_data == "departmentss":
         await query.message.edit_text(
-            text=DEPARTMENTS,
-            reply_markup=departments_markup
+            text=DEPARTMENTS, reply_markup=departments_markup
         )
 
 
 async def handle_schedule(query: CallbackQuery) -> None:
+    """Обработка команды 'график работы'."""
     # Заменить на информацию о расписании работы фонда
+    # Пока что здесь заглушка
     await query.answer()
 
 
 async def handle_social_networks(query: CallbackQuery) -> None:
+    """Обработка команды 'соцсети фонда'."""
     await query.message.edit_text(
         FUND_NEWS,
         disable_web_page_preview=True,
@@ -289,12 +302,14 @@ async def handle_departments(query: CallbackQuery) -> None:
 
 
 async def handle_basic_information_back(query: CallbackQuery) -> None:
+    """Функция возвращение в изначальную клавиатуру команды 'основная информация'."""
     await query.message.edit_text(
         "Выберите действие:", reply_markup=basic_information_markup
     )
 
 
 async def handle_main_menu(query: CallbackQuery) -> int:
+    """Функция завершения работы клавиатур и вызова главного меню."""
     await query.message.edit_text("Возвращаемся в главное меню...")
     await query.message.reply_text(
         BACK_TO_THE_MENU, reply_markup=main_menu_markup
@@ -306,6 +321,7 @@ async def basic_information_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> int:
+    """Функция обработки команды клавиатуры команды 'основная информация'."""
     query = update.callback_query
     query_data = query.data
 
@@ -313,7 +329,9 @@ async def basic_information_callback(
         "organization_structure",
         "council",
         "guardian_council",
-        "departments", *COUNCIL_QUESTION_LIST, *DEPARTMENT_LIST
+        "departments",
+        *COUNCIL_QUESTION_LIST,
+        *DEPARTMENT_LIST,
     ]:
         await handle_organization_structure(query)
     elif query_data in ["our_team", "contact_list", "departmentss"]:
