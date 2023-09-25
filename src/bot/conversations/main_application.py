@@ -1,7 +1,8 @@
 from telegram import Update
 from telegram.ext import ContextTypes, ConversationHandler
 
-from bot.constants.state import CHECK, MENU
+from bot.constants.button import MENU_CONTACT_LIST
+from bot.constants.state import CHECK, MAIN_MENU, FIO
 from bot.constants.text import (
     START_MESSAGE,
     FAILED_THE_TEST,
@@ -10,7 +11,9 @@ from bot.constants.text import (
 )
 from bot.keyboards import main_menu_markup
 from bot.core.settings import settings
-
+from bot.conversations.contact_list_application import (
+    contact_list,
+)
 
 async def greeting_callback(
     update: Update,
@@ -32,9 +35,25 @@ async def check_the_secret_word_callback(
         return CHECK
     await update.message.reply_sticker(STICKER_ID)
     await update.message.reply_text(PASSED_THE_TEST, reply_markup=main_menu_markup)
-    # Впоследствии вызов функции done заменить на возвращение значения следующего шага.
-#    return await done_callback(update, context)
-    return MENU
+
+    return MAIN_MENU
+
+
+async def main_menu_actions_callback(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+) -> int:
+    """Функция реализующая разделение обработки команд из главного меню."""
+    user_input = update.message.text
+
+    if user_input == MENU_CONTACT_LIST:
+        await contact_list(update, context)
+        return FIO
+
+    # Добавить обработку других кнопок.
+
+    return MAIN_MENU
+
 async def done_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,

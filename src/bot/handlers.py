@@ -1,18 +1,20 @@
 from telegram.ext import (
+    CallbackQueryHandler,
     CommandHandler,
     ConversationHandler,
-    MessageHandler,
     filters,
+    MessageHandler,
 )
 
-from bot.constants.state import CHECK, MENU
+from bot.constants.state import CHECK, MAIN_MENU, FIO
 from bot.conversations.main_application import (
     greeting_callback,
     done_callback,
     check_the_secret_word_callback,
+    main_menu_actions_callback,
 )
-from bot.conversations.menu_application import (
-    contact_list,
+from bot.conversations.contact_list_application import (
+    find_contact_by_fio,
 )
 
 conv_handler = ConversationHandler(
@@ -21,8 +23,11 @@ conv_handler = ConversationHandler(
         CHECK: [
             MessageHandler(filters.TEXT, check_the_secret_word_callback),
         ],
-        MENU: [
-            MessageHandler(filters.Text(["Список контактов"]), contact_list),
+        MAIN_MENU: [
+            MessageHandler(filters.TEXT, main_menu_actions_callback),
+        ],
+        FIO: [
+            MessageHandler(filters.TEXT, find_contact_by_fio),
         ],
     },
     fallbacks=[MessageHandler(filters.Regex("^Done$"), done_callback)],
