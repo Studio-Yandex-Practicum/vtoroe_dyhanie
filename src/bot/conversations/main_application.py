@@ -102,7 +102,7 @@ async def main_menu_actions_callback(
 
 
 async def handle_organization_structure(query: CallbackQuery) -> None:
-    """Функция обработки команды 'организационная структура' из главного меню."""
+    """Функция обработки кнопки 'организационная структура' из команды главного меню 'основная информация'."""
     query_data = query.data
 
     if query_data == "organization_structure":
@@ -321,7 +321,7 @@ async def basic_information_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> int:
-    """Функция обработки команды клавиатуры команды 'основная информация'."""
+    """Функция обработки кнопок клавиатуры команды 'основная информация'."""
     query = update.callback_query
     query_data = query.data
 
