@@ -16,6 +16,8 @@ from bot.conversations.main_application import (
     done_callback,
     check_the_secret_word_callback,
     main_menu_actions_callback,
+)
+from bot.conversations.basic_info_application import (
     basic_information_callback,
 )
 
