@@ -9,24 +9,9 @@ from telegram.ext import (
 from bot.constants.state import (
     MAIN_MENU, BASIC_INFORMATION,
 )
-from bot.constants.basic_info_text import (
-    FUND_NEWS,
-    OUR_TEAM_MESSAGE,
-    ORGANIZATION_MESSAGE,
-    COUNCIL_INTRODUCTION_MESSAGE,
-    COUNCIL_QUESTION_LIST,
-    COUNCIL_ANSWER_01,
-    COUNCIL_ANSWER_02,
-    COUNCIL_ANSWER_03,
-    COUNCIL_ANSWER_04,
-    COUNCIL_ANSWER_05,
-    COUNCIL_ANSWER_06,
-    GARDIAN_COUNCIL_INTRODUCTION_MESSAGE,
-    DEPARTMENTS, DEPARTMENT_LIST,
-    DEPARTMENT_01, DEPARTMENT_02, DEPARTMENT_03,
-    DEPARTMENT_04, DEPARTMENT_05, DEPARTMENT_06,
-    DEPARTMENT_07, DEPARTMENT_08, DEPARTMENT_09,
-    DEPARTMENT_10,
+from bot.constants import basic_info_text
+from bot.constants.basic_info_text import(
+    COUNCIL_QUESTION_LIST, DEPARTMENT_LIST,
 )
 from bot.constants.text import (
     BACK_TO_THE_MENU,
@@ -51,7 +36,7 @@ async def handle_organization_structure(query: CallbackQuery) -> None:
 
     if query_data == "organization_structure":
         await query.message.edit_text(
-            ORGANIZATION_MESSAGE,
+            basic_info_text.ORGANIZATION_MESSAGE,
             parse_mode="HTML",
             disable_web_page_preview=True,
             reply_markup=org_structure_markup,
@@ -59,12 +44,12 @@ async def handle_organization_structure(query: CallbackQuery) -> None:
 
     elif query_data == "council":
         await query.message.edit_text(
-            COUNCIL_INTRODUCTION_MESSAGE,
+            basic_info_text.COUNCIL_INTRODUCTION_MESSAGE,
             parse_mode="HTML",
             disable_web_page_preview=True,
             reply_markup=council_markup,
         )
-    elif query_data in COUNCIL_QUESTION_LIST:
+    elif query_data in basic_info_text.COUNCIL_QUESTION_LIST:
         await handle_council(query)
 
     elif query_data == "guardian_council":
@@ -77,7 +62,7 @@ async def handle_organization_structure(query: CallbackQuery) -> None:
 
     elif query_data == "departments":
         await query.message.edit_text(
-            text=DEPARTMENTS,
+            text=basic_info_text.DEPARTMENTS,
             reply_markup=departments_markup
         )
     elif query_data in DEPARTMENT_LIST:
@@ -89,7 +74,7 @@ async def handle_our_team(query: CallbackQuery) -> None:
 
     if query_data == "our_team":
         await query.message.edit_text(
-            OUR_TEAM_MESSAGE,
+            basic_info_text.OUR_TEAM_MESSAGE,
             parse_mode="HTML",
             disable_web_page_preview=True,
             reply_markup=our_team_markup,
@@ -101,7 +86,7 @@ async def handle_our_team(query: CallbackQuery) -> None:
         )
     elif query_data == "departmentss":
         await query.message.edit_text(
-            text=DEPARTMENTS,
+            text=basic_info_text.DEPARTMENTS,
             reply_markup=departments_markup
         )
 
@@ -113,7 +98,7 @@ async def handle_schedule(query: CallbackQuery) -> None:
 
 async def handle_social_networks(query: CallbackQuery) -> None:
     await query.message.edit_text(
-        FUND_NEWS,
+        basic_info_text.FUND_NEWS,
         disable_web_page_preview=True,
         reply_markup=social_networks_markup,
     )
@@ -125,42 +110,42 @@ async def handle_council(query: CallbackQuery) -> None:
 
     if query_data == "council_question_01":
         await query.message.edit_text(
-            COUNCIL_ANSWER_01,
+            basic_info_text.COUNCIL_ANSWER_01,
             parse_mode="HTML",
             disable_web_page_preview=True,
             reply_markup=council_markup,
         )
     elif query_data == "council_question_02":
         await query.message.edit_text(
-            COUNCIL_ANSWER_02,
+            basic_info_text.COUNCIL_ANSWER_02,
             parse_mode="HTML",
             disable_web_page_preview=True,
             reply_markup=council_markup,
         )
     elif query_data == "council_question_03":
         await query.message.edit_text(
-            COUNCIL_ANSWER_03,
+            basic_info_text.COUNCIL_ANSWER_03,
             parse_mode="HTML",
             disable_web_page_preview=True,
             reply_markup=council_markup,
         )
     elif query_data == "council_question_04":
         await query.message.edit_text(
-            COUNCIL_ANSWER_04,
+            basic_info_text.COUNCIL_ANSWER_04,
             parse_mode="HTML",
             disable_web_page_preview=True,
             reply_markup=council_markup,
         )
     elif query_data == "council_question_05":
         await query.message.edit_text(
-            COUNCIL_ANSWER_05,
+            basic_info_text.COUNCIL_ANSWER_05,
             parse_mode="HTML",
             disable_web_page_preview=True,
             reply_markup=council_markup,
         )
     elif query_data == "council_question_06":
         await query.message.edit_text(
-            COUNCIL_ANSWER_06,
+            basic_info_text.COUNCIL_ANSWER_06,
             parse_mode="HTML",
             disable_web_page_preview=True,
             reply_markup=council_markup,
@@ -172,70 +157,70 @@ async def handle_departments(query: CallbackQuery) -> None:
     query_data = query.data
     if query_data == "department_01":
         await query.message.edit_text(
-            DEPARTMENT_01,
+            basic_info_text.DEPARTMENT_01,
             parse_mode="HTML",
             disable_web_page_preview=True,
             reply_markup=departments_final_markup,
         )
     elif query_data == "department_02":
         await query.message.edit_text(
-            DEPARTMENT_02,
+            basic_info_text.DEPARTMENT_02,
             parse_mode="HTML",
             disable_web_page_preview=True,
             reply_markup=departments_final_markup,
         )
     elif query_data == "department_03":
         await query.message.edit_text(
-            DEPARTMENT_03,
+            basic_info_text.DEPARTMENT_03,
             parse_mode="HTML",
             disable_web_page_preview=True,
             reply_markup=departments_final_markup,
         )
     elif query_data == "department_04":
         await query.message.edit_text(
-            DEPARTMENT_04,
+            basic_info_text.DEPARTMENT_04,
             parse_mode="HTML",
             disable_web_page_preview=True,
             reply_markup=departments_final_markup,
         )
     elif query_data == "department_05":
         await query.message.edit_text(
-            DEPARTMENT_05,
+            basic_info_text.DEPARTMENT_05,
             parse_mode="HTML",
             disable_web_page_preview=True,
             reply_markup=departments_final_markup,
         )
     elif query_data == "department_06":
         await query.message.edit_text(
-            DEPARTMENT_06,
+            basic_info_text.DEPARTMENT_06,
             parse_mode="HTML",
             disable_web_page_preview=True,
             reply_markup=departments_final_markup,
         )
     elif query_data == "department_07":
         await query.message.edit_text(
-            DEPARTMENT_07,
+            basic_info_text.DEPARTMENT_07,
             parse_mode="HTML",
             disable_web_page_preview=True,
             reply_markup=departments_final_markup,
         )
     elif query_data == "department_08":
         await query.message.edit_text(
-            DEPARTMENT_08,
+            basic_info_text.DEPARTMENT_08,
             parse_mode="HTML",
             disable_web_page_preview=True,
             reply_markup=departments_final_markup,
         )
     elif query_data == "department_09":
         await query.message.edit_text(
-            DEPARTMENT_09,
+            basic_info_text.DEPARTMENT_09,
             parse_mode="HTML",
             disable_web_page_preview=True,
             reply_markup=departments_final_markup,
         )
     elif query_data == "department_10":
         await query.message.edit_text(
-            DEPARTMENT_10,
+            basic_info_text.DEPARTMENT_10,
             parse_mode="HTML",
             disable_web_page_preview=True,
             reply_markup=departments_final_markup,
@@ -267,7 +252,8 @@ async def basic_information_callback(
         "organization_structure",
         "council",
         "guardian_council",
-        "departments", *COUNCIL_QUESTION_LIST, *DEPARTMENT_LIST
+        "departments", *COUNCIL_QUESTION_LIST,
+        *DEPARTMENT_LIST
     ]:
         await handle_organization_structure(query)
     elif query_data in ["our_team", "contact_list", "departmentss"]:
