@@ -25,6 +25,7 @@ from bot.basic_info_keyboards import (
     council_markup,
     departments_final_markup,
     departments_markup,
+    departmentss_markup,
 )
 from bot.keyboards import (
     main_menu_markup,
@@ -54,7 +55,7 @@ async def handle_organization_structure(query: CallbackQuery) -> None:
 
     elif query_data == "guardian_council":
         await query.message.edit_text(
-            GARDIAN_COUNCIL_INTRODUCTION_MESSAGE,
+            basic_info_text.GARDIAN_COUNCIL_INTRODUCTION_MESSAGE,
             parse_mode="HTML",
             disable_web_page_preview=True,
             reply_markup=guardian_council_markup,
@@ -87,13 +88,8 @@ async def handle_our_team(query: CallbackQuery) -> None:
     elif query_data == "departmentss":
         await query.message.edit_text(
             text=basic_info_text.DEPARTMENTS,
-            reply_markup=departments_markup
+            reply_markup=departmentss_markup
         )
-
-
-async def handle_schedule(query: CallbackQuery) -> None:
-    # Заменить на информацию о расписании работы фонда
-    await query.answer()
 
 
 async def handle_social_networks(query: CallbackQuery) -> None:
@@ -258,8 +254,8 @@ async def basic_information_callback(
         await handle_organization_structure(query)
     elif query_data in ["our_team", "contact_list", "departmentss"]:
         await handle_our_team(query)
-    elif query_data == "schedule":
-        await handle_schedule(query)
+#    elif query_data == "schedule":
+#        await handle_schedule(query)
     elif query_data == "social_networks":
         await handle_social_networks(query)
     elif query_data == "basic_information_back":
