@@ -1,14 +1,12 @@
 from telegram import Update
-from telegram.constants import ParseMode
 from telegram.ext import ContextTypes
 
-from bot.constants.state import FEEDBACK, MENU
+from bot.constants.state import MAIN_MENU
 from bot.constants.text import (
-    BACK_TO_MAIN_MENU,
-    FEEDBACK_MESSAGE
+    BACK_TO_MAIN_MENU
 )
 
-from bot.keyboards import back_button_markup, main_menu_markup
+from bot.keyboards import main_menu_markup
 
 
 async def back_to_menu_callback(
@@ -21,17 +19,4 @@ async def back_to_menu_callback(
         text=BACK_TO_MAIN_MENU,
         reply_markup=main_menu_markup
     )
-    return MENU
-
-
-async def feedback_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
-) -> None:
-    """Отправляет сообщение при нажатии кнопки Обратная связь."""
-    await update.message.reply_text(
-        FEEDBACK_MESSAGE,
-        parse_mode=ParseMode.MARKDOWN_V2,
-        disable_web_page_preview=True,
-        reply_markup=back_button_markup
-    )
-    return FEEDBACK
+    return MAIN_MENU
