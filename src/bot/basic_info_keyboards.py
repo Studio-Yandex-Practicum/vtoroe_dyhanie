@@ -1,4 +1,3 @@
-from telegram import ReplyKeyboardMarkup
 from telegram import (
     InlineKeyboardButton,
     InlineKeyboardMarkup,
@@ -13,7 +12,6 @@ basic_information_keyboard = [
         )
     ],
     [InlineKeyboardButton("Наша команда", callback_data="our_team")],
-#    [InlineKeyboardButton("График работы", callback_data="schedule")],
     [InlineKeyboardButton("Соцсети фонда", callback_data="social_networks")],
     [
         InlineKeyboardButton(
@@ -41,16 +39,16 @@ org_structure_markup = InlineKeyboardMarkup(org_structure_keyboard)
 our_team_keyboard = [
     # Пока ещё не реализовано и на схеме нет:
     [InlineKeyboardButton("Список контактов", callback_data="contact_list")],
-    # Пока ещё не реализовано и на схеме нет:
     [InlineKeyboardButton("Отделы Фонда", callback_data="departmentss")],
     [InlineKeyboardButton("Назад", callback_data="basic_information_back")],
+# На схеме этой книпки нет, но она мне кажется логичной
     [InlineKeyboardButton("В главное меню", callback_data="main_menu")],
 ]
 our_team_markup = InlineKeyboardMarkup(our_team_keyboard)
 
 # 4. Клавиатура для 'social_networks'
 social_networks_keyboard = [
-    [InlineKeyboardButton("Назад", callback_data="basic_information_back")],
+    [InlineKeyboardButton("Спасибо, изучу!", callback_data="basic_information_back")],
     [InlineKeyboardButton("В главное меню", callback_data="main_menu")],
 ]
 social_networks_markup = InlineKeyboardMarkup(social_networks_keyboard)
@@ -84,6 +82,7 @@ council_keyboard = [
     [InlineKeyboardButton(
         "Назад",
         callback_data="organization_structure")],
+# На схеме этого нет, но мне кажется, переход в Главное меню тут нужен
     [InlineKeyboardButton(
         "В главное меню",
         callback_data="main_menu")],
@@ -197,7 +196,6 @@ departmentss_markup = InlineKeyboardMarkup(departmentss_keyboard)
 
 # 8. Клавиатура для 'guardian_council'
 guardian_council_keyboard = [
-    [InlineKeyboardButton("Понятно, спасибо!", callback_data="main_menu")],
-    [InlineKeyboardButton("Назад", callback_data="organization_structure")],
+    [InlineKeyboardButton("Понятно, спасибо!", callback_data="organization_structure")],
 ]
 guardian_council_markup = InlineKeyboardMarkup(guardian_council_keyboard)

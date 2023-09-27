@@ -14,10 +14,10 @@ from bot.constants.state import (
 from bot.constants.basic_info_text import (
     BASIC_INFORMATION_MENU,
 )
-from bot.constants.text import text
 from bot.basic_info_keyboards import (
     basic_information_markup,
 )
+from bot.constants import main_text
 from bot.keyboards import (
     main_menu_markup,
 )
@@ -30,7 +30,7 @@ async def greeting_callback(
     context: ContextTypes.DEFAULT_TYPE,
 ) -> int:
     """Базовая функция начинающая диалог с юзером и открывающий доступ к conv_handler."""
-    await update.message.reply_text(text.START_MESSAGE)
+    await update.message.reply_text(main_text.START_MESSAGE)
     return CHECK
 
 
@@ -43,9 +43,9 @@ async def check_the_secret_word_callback(
     if text.lower() != settings.secret_word.lower():
         await update.message.reply_text(text.FAILED_THE_TEST)
         return CHECK
-    await update.message.reply_sticker(text.STICKER_ID)
+    await update.message.reply_sticker(main_text.STICKER_ID)
     await update.message.reply_text(
-        text.PASSED_THE_TEST, reply_markup=main_menu_markup
+        main_text.PASSED_THE_TEST, reply_markup=main_menu_markup
     )
     return MAIN_MENU
 
