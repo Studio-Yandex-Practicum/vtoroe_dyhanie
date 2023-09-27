@@ -255,8 +255,6 @@ async def basic_information_callback(
         await handle_organization_structure(query)
     elif query_data in ["our_team", "contact_list", "departmentss"]:
         await handle_our_team(query)
-#    elif query_data == "schedule":
-#        await handle_schedule(query)
     elif query_data == "social_networks":
         await handle_social_networks(query)
     elif query_data == "basic_information_back":
