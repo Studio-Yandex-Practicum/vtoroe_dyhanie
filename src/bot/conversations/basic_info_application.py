@@ -242,6 +242,7 @@ async def basic_information_callback(
     context: ContextTypes.DEFAULT_TYPE,
 ) -> int:
     query = update.callback_query
+    await query.answer()
     query_data = query.data
 
     if query_data in [
