@@ -33,6 +33,7 @@ from bot.keyboards import (
 
 
 async def handle_organization_structure(query: CallbackQuery) -> None:
+    """Обработка клавиатуры Организационная структура."""
     query_data = query.data
 
     if query_data == "organization_structure":
@@ -71,6 +72,7 @@ async def handle_organization_structure(query: CallbackQuery) -> None:
 
 
 async def handle_our_team(query: CallbackQuery) -> None:
+    """Обработка кнопки Наша команда."""
     query_data = query.data
 
     if query_data == "our_team":
@@ -93,6 +95,7 @@ async def handle_our_team(query: CallbackQuery) -> None:
 
 
 async def handle_social_networks(query: CallbackQuery) -> None:
+    """Обработка клавиатуры Социальные сети."""
     await query.message.edit_text(
         basic_info_text.FUND_NEWS,
         disable_web_page_preview=True,
@@ -224,12 +227,14 @@ async def handle_departments(query: CallbackQuery) -> None:
 
 
 async def handle_basic_information_back(query: CallbackQuery) -> None:
+    """Обработка кнопки Возврата в меню Основной информации."""
     await query.message.edit_text(
         "Выберите действие:", reply_markup=basic_information_markup
     )
 
 
 async def handle_main_menu(query: CallbackQuery) -> int:
+    """Обработка кнопки Возврата в главное меню."""
     await query.message.edit_text("Возвращаемся в главное меню...")
     await query.message.reply_text(
         BACK_TO_THE_MENU, reply_markup=main_menu_markup
@@ -241,6 +246,7 @@ async def basic_information_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> int:
+    """Обработка клавиатуры Основной информации."""
     query = update.callback_query
     await query.answer()
     query_data = query.data
