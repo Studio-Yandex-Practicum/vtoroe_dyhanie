@@ -11,6 +11,7 @@ async def faq_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> int:
+    """Обрабатывает команды раздела FAQ"""
     user_input = update.message.text
     if user_input == "Организационные вопросы":
         await update.message.reply_text(

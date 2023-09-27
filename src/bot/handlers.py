@@ -26,7 +26,7 @@ conv_handler = ConversationHandler(
             MessageHandler(filters.TEXT, check_the_secret_word_callback),
         ],
         MAIN_MENU: [
-            MessageHandler(filters.Text(["FAQ"]), main_menu_actions_callback),
+            MessageHandler(filters.TEXT, main_menu_actions_callback),
         ],
         FAQ: [
             MessageHandler(filters.Text(), faq_callback),
