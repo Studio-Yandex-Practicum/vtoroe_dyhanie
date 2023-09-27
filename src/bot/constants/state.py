@@ -1,2 +1,2 @@
 CHECK: int = 1
-MENU: int = 2
+MAIN_MENU: int = 2
