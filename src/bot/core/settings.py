@@ -5,6 +5,7 @@ class Settings(BaseSettings):
     telegram_token: str
     debug: bool = False
     secret_word: str = "Бруня"
+    database_url: str
 
     class Config:
         env_file = ".env"

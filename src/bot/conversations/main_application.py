@@ -10,6 +10,7 @@ from bot.constants.text import (
 )
 from bot.keyboards import main_menu_markup
 from bot.core.settings import settings
+from bot.utils import add_permission
 
 
 async def greeting_callback(
@@ -30,6 +31,7 @@ async def check_the_secret_word_callback(
     if text.lower() != settings.secret_word.lower():
         await update.message.reply_text(FAILED_THE_TEST)
         return CHECK
+    await add_permission(update.message.from_user.id)
     await update.message.reply_sticker(STICKER_ID)
     await update.message.reply_text(PASSED_THE_TEST, reply_markup=main_menu_markup)
     # Впоследствии вызов функции done заменить на возвращение значения следующего шага.
