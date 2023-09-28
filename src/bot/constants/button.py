@@ -8,4 +8,3 @@ MENU_REGLAMENTS_AND_FORMS = 'Регламенты и формы'
 MENU_FAQ = 'FAQ'
 MENU_CONTACT_LIST = 'Список контактов'
 
-NUMBER_OF_COLUMNS = 2
