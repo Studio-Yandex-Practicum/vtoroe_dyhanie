@@ -7,15 +7,11 @@ from telegram.ext import (
 )
 
 from bot.constants.state import (
-    MAIN_MENU, BASIC_INFORMATION,
+    MAIN_MENU,
+    BASIC_INFORMATION,
 )
 from bot.constants import basic_info_text
-from bot.constants.basic_info_text import(
-    COUNCIL_QUESTION_LIST, DEPARTMENT_LIST,
-)
-from bot.constants.text import (
-    BACK_TO_THE_MENU,
-)
+from bot.constants.text import BACK_TO_THE_MENU
 from bot.basic_info_keyboards import (
     basic_information_markup,
     org_structure_markup,
@@ -64,10 +60,9 @@ async def handle_organization_structure(query: CallbackQuery) -> None:
 
     elif query_data == "departments":
         await query.message.edit_text(
-            text=basic_info_text.DEPARTMENTS,
-            reply_markup=departments_markup
+            text=basic_info_text.DEPARTMENTS, reply_markup=departments_markup
         )
-    elif query_data in DEPARTMENT_LIST:
+    elif query_data in basic_info_text.DEPARTMENT_LIST:
         await handle_departments(query)
 
 
@@ -89,8 +84,7 @@ async def handle_our_team(query: CallbackQuery) -> None:
         )
     elif query_data == "departmentss":
         await query.message.edit_text(
-            text=basic_info_text.DEPARTMENTS,
-            reply_markup=departmentss_markup
+            text=basic_info_text.DEPARTMENTS, reply_markup=departmentss_markup
         )
 
 
@@ -255,8 +249,9 @@ async def basic_information_callback(
         "organization_structure",
         "council",
         "guardian_council",
-        "departments", *COUNCIL_QUESTION_LIST,
-        *DEPARTMENT_LIST
+        "departments",
+        *basic_info_text.COUNCIL_QUESTION_LIST,
+        *basic_info_text.DEPARTMENT_LIST,
     ]:
         await handle_organization_structure(query)
     elif query_data in ["our_team", "contact_list", "departmentss"]:
