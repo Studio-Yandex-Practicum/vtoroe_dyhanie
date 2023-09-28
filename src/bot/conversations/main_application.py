@@ -85,6 +85,8 @@ async def main_menu_actions_callback(
             reply_markup=back_button_markup
         )
         return FEEDBACK
+    if user_input == 'О Фонде':
+        return await about_fund_callback(update, context)
 
     # Добавить обработку других кнопок.
 

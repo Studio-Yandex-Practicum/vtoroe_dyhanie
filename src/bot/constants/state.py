@@ -1,9 +1,7 @@
 CHECK: int = 1
 MAIN_MENU: int = 2
 BASIC_INFORMATION: int = 3
-MAIN_MENU: int = 2
 
 FEEDBACK: int = 26
-MAIN_MENU: int = 2
 ABOUT_FUND_MENU_STATE: int = 60
 ABOUT_FUND_BLOCK: int = 61

@@ -15,8 +15,8 @@ async def back_to_menu_callback(
 ) -> int:
     """Возвращает в главное меню."""
     query = update.callback_query
-    await handle_back_to_main_menu(query)
-    return MAIN_MENU
+    await query.edit_message_reply_markup()
+    return await handle_back_to_main_menu(query)
 
 
 async def handle_back_to_main_menu(query: CallbackQuery) -> None:
@@ -25,3 +25,4 @@ async def handle_back_to_main_menu(query: CallbackQuery) -> None:
     await query.message.reply_text(
         BACK_TO_MAIN_MENU, reply_markup=main_menu_markup
     )
+    return MAIN_MENU

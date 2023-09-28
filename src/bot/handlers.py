@@ -23,7 +23,6 @@ from bot.conversations.main_application import (
 from bot.conversations.about_fund_application import (
     about_fund_inline_btns_handler,
     about_fund_menu_callback
-    main_menu_actions_callback,
 )
 from bot.conversations.basic_info_application import (
     basic_information_callback
