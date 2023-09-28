@@ -35,20 +35,20 @@ about_fund_markup = ReplyKeyboardMarkup(
 )
 
 
-fund_history_menu = [
+fund_mission_menu = [
     (InlineKeyboardButton(
         'Конечно! Расскажи подробнее!',
-        callback_data=ABOUT_FUND_CALLBACKS.get('more_info')
+        callback_data=ABOUT_FUND_CALLBACKS.get('more_info_mission')
     ),),
 ]
-fund_history_menu.extend(navigation_menu)
-fund_history_markup = InlineKeyboardMarkup(fund_history_menu)
+fund_mission_menu.extend(navigation_menu)
+fund_mission_markup = InlineKeyboardMarkup(fund_mission_menu)
 
 
 things_path_menu = [
     (InlineKeyboardButton(
         'Да, было бы здорово посмотреть!',
-        callback_data=ABOUT_FUND_CALLBACKS.get('more_info')
+        callback_data=ABOUT_FUND_CALLBACKS.get('more_info_path')
     ),),
 ]
 things_path_menu.extend(navigation_menu)
@@ -58,7 +58,7 @@ things_path_markup = InlineKeyboardMarkup(things_path_menu)
 processes_anatomy_menu = [
     (InlineKeyboardButton(
         'Конечно! Какие?',
-        callback_data=ABOUT_FUND_CALLBACKS.get('more_info')
+        callback_data=ABOUT_FUND_CALLBACKS.get('more_info_processes')
     ),),
 ]
 processes_anatomy_menu.extend(navigation_menu)
@@ -70,7 +70,7 @@ processes_anatomy_markup = InlineKeyboardMarkup(
 fund_projects_menu = [
     (InlineKeyboardButton(
         'Почитаю с удовольствием!',
-        callback_data=ABOUT_FUND_CALLBACKS.get('more_info')
+        callback_data=ABOUT_FUND_CALLBACKS.get('more_info_projects')
     ),),
 ]
 fund_projects_menu.extend(navigation_menu)
@@ -80,7 +80,7 @@ fund_projects_markup = InlineKeyboardMarkup(fund_projects_menu)
 annual_reports_menu = [
     (InlineKeyboardButton(
         'Обязательно прочту!',
-        callback_data=ABOUT_FUND_CALLBACKS.get('more_info')
+        callback_data=ABOUT_FUND_CALLBACKS.get('more_info_reports')
     ),),
 ]
 annual_reports_markup = InlineKeyboardMarkup(annual_reports_menu)

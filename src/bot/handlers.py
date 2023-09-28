@@ -7,14 +7,10 @@ from telegram.ext import (
 )
 
 from bot.constants.state import (
+    ABOUT_FUND_BLOCK,
     ABOUT_FUND_MENU_STATE,
-    ANNUAL_REPORTS_STATE,
     CHECK,
-    FUND_MISSION_STATE,
-    FUND_PROJECTS_STATE,
-    MAIN_MENU,
-    PROCESSES_ANATOMY_STATE,
-    THINGS_PATH_STATE
+    MAIN_MENU
 )
 from bot.conversations.main_application import (
     greeting_callback,
@@ -23,12 +19,8 @@ from bot.conversations.main_application import (
     main_menu_actions_callback,
 )
 from bot.conversations.about_fund_application import (
-    about_fund_menu_callback,
-    about_fund_more_info,
-    annual_reports_more_info,
-    fund_projects_more_info,
-    processes_anatomy_more_info,
-    things_path_more_info
+    about_fund_inline_btns_handler,
+    about_fund_menu_callback
 )
 
 conv_handler = ConversationHandler(
@@ -43,21 +35,9 @@ conv_handler = ConversationHandler(
         ABOUT_FUND_MENU_STATE: [
             MessageHandler(filters.TEXT, about_fund_menu_callback)
         ],
-        FUND_MISSION_STATE: [
-            CallbackQueryHandler(about_fund_more_info)
+        ABOUT_FUND_BLOCK: [
+            CallbackQueryHandler(about_fund_inline_btns_handler)
         ],
-        THINGS_PATH_STATE: [
-            CallbackQueryHandler(things_path_more_info)
-        ],
-        PROCESSES_ANATOMY_STATE: [
-            CallbackQueryHandler(processes_anatomy_more_info)
-        ],
-        FUND_PROJECTS_STATE: [
-           CallbackQueryHandler(fund_projects_more_info)
-        ],
-        ANNUAL_REPORTS_STATE: [
-            CallbackQueryHandler(annual_reports_more_info)
-        ]
     },
     fallbacks=[MessageHandler(filters.Regex("^Done$"), done_callback)],
 )
