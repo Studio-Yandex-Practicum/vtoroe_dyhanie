@@ -4,6 +4,5 @@ PROCESSES_LINK = (
 )
 
 ANNUAL_REPORTS_LINK = (
-    'https://miro.com/app/board/uXjVMpVIC0o=/?'
-    'moveToWidget=3458764563006832843&cot=14'
+    'https://vtoroe.ru/fond/documents/'
 )

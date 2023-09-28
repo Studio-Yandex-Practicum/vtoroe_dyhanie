@@ -1,14 +1,14 @@
 from telegram import Update
 from telegram.ext import ContextTypes, ConversationHandler
 
-from bot.constants.state import CHECK, MENU
+from bot.constants.state import CHECK, MAIN_MENU
 from bot.constants.text import (
     START_MESSAGE,
     FAILED_THE_TEST,
     PASSED_THE_TEST,
     STICKER_ID,
 )
-from bot.conversations.menu_application import about_fund_callback
+from bot.conversations.about_fund_application import about_fund_callback
 from bot.keyboards import main_menu_markup
 from bot.core.settings import settings
 
@@ -40,7 +40,7 @@ async def check_the_secret_word_callback(
         PASSED_THE_TEST,
         reply_markup=main_menu_markup
     )
-    return MENU
+    return MAIN_MENU
 
 
 async def main_menu_actions_callback(
@@ -56,7 +56,7 @@ async def main_menu_actions_callback(
         return await about_fund_callback(update, context)
 
     # Добавить обработку других кнопок.
-    return MENU
+    return MAIN_MENU
 
 
 async def done_callback(

@@ -12,11 +12,9 @@ from bot.constants.state import (
     CHECK,
     FUND_MISSION_STATE,
     FUND_PROJECTS_STATE,
-    MENU,
+    MAIN_MENU,
     PROCESSES_ANATOMY_STATE,
-    THINGS_PATH_STATE,
-    FUND_PROJECTS_STATE,
-    ANNUAL_REPORTS_STATE,
+    THINGS_PATH_STATE
 )
 from bot.conversations.main_application import (
     greeting_callback,
@@ -24,15 +22,13 @@ from bot.conversations.main_application import (
     check_the_secret_word_callback,
     main_menu_actions_callback,
 )
-from bot.conversations.menu_application import (
+from bot.conversations.about_fund_application import (
     about_fund_menu_callback,
     about_fund_more_info,
     annual_reports_more_info,
     fund_projects_more_info,
     processes_anatomy_more_info,
-    things_path_more_info,
-    fund_projects_more_info,
-    annual_reports_more_info,
+    things_path_more_info
 )
 
 conv_handler = ConversationHandler(
@@ -41,7 +37,7 @@ conv_handler = ConversationHandler(
         CHECK: [
             MessageHandler(filters.TEXT, check_the_secret_word_callback),
         ],
-        MENU: [
+        MAIN_MENU: [
             MessageHandler(filters.TEXT, main_menu_actions_callback)
         ],
         ABOUT_FUND_MENU_STATE: [
