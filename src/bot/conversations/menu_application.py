@@ -19,7 +19,7 @@ async def back_to_menu_callback(
     return await handle_back_to_main_menu(query)
 
 
-async def handle_back_to_main_menu(query: CallbackQuery) -> None:
+async def handle_back_to_main_menu(query: CallbackQuery) -> int:
     """Обработчик нажатия кнопки В главное меню"""
     await query.answer()
     await query.message.reply_text(
