@@ -1,3 +1,6 @@
+from bot.constants.links import FEEDBACK_LINK
+
+
 STOP_MESSAGE = "Работа приложения остановлена."
 HELP_MESSAGE = "Написать в поддержку"
 START_MESSAGE = (
@@ -20,3 +23,13 @@ BACK_TO_THE_MENU = "Выбери интересующую тебя тему из
 STICKER_ID: str = (
     "CAACAgIAAxkBAAIDwGUEItYpuU5DXDRigDA1M9SL-AdcAALTJAACHRAwSj-yFNWnj6hDMAQ"
 )
+FEEDBACK_MESSAGE: str = (
+    'Мы сделали анонимную форму обратной связи для сотрудников Фонда — для '
+    'тех, кто работает в бэк\-офисе, на складах в Москве и Костроме, '
+    'в мастерской и в Центре гуманитарной выдачи\.\n\n'
+    'Сообщить о проблеме, поделиться информацией или оставить иную обратную '
+    'связь, если ты не хочешь сообщать ее лично, можно по '
+    f'[ссылке]({FEEDBACK_LINK})\.'
+)
+
+BACK_TO_MAIN_MENU = 'В главное меню'

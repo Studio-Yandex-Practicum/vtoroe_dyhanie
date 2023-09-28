@@ -1,18 +1,24 @@
 from telegram import (
     Update,
 )
+from telegram.constants import ParseMode
 from telegram.ext import (
     ContextTypes,
     ConversationHandler,
 )
 
+from bot.constants.basic_info_text import (
+    BASIC_INFORMATION_MENU,
+)
 from bot.constants.state import (
     CHECK,
+    FEEDBACK,
     MAIN_MENU,
     BASIC_INFORMATION,
 )
-from bot.constants.basic_info_text import (
-    BASIC_INFORMATION_MENU,
+from bot.constants.text import (
+    FEEDBACK_MESSAGE,
+    START_MESSAGE
 )
 from bot.basic_info_keyboards import (
     basic_information_markup,
@@ -20,6 +26,7 @@ from bot.basic_info_keyboards import (
 from bot.constants import main_text
 from bot.keyboards import (
     main_menu_markup,
+    back_button_markup
 )
 
 from bot.core.settings import settings
@@ -29,8 +36,10 @@ async def greeting_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> int:
-    """Базовая функция начинающая диалог с юзером и открывающий доступ к conv_handler."""
-    await update.message.reply_text(main_text.START_MESSAGE)
+    """Базовая функция начинающая диалог с юзером
+    и открывающий доступ к conv_handler.
+    """
+    await update.message.reply_text(START_MESSAGE)
     return CHECK
 
 
@@ -62,6 +71,14 @@ async def main_menu_actions_callback(
             BASIC_INFORMATION_MENU, reply_markup=basic_information_markup
         )
         return BASIC_INFORMATION
+    if user_input == 'Обратная связь':
+        await update.message.reply_text(
+            FEEDBACK_MESSAGE,
+            parse_mode=ParseMode.MARKDOWN_V2,
+            disable_web_page_preview=True,
+            reply_markup=back_button_markup
+        )
+        return FEEDBACK
 
     # Добавить обработку других кнопок.
 
@@ -72,6 +89,8 @@ async def done_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> int:
-    """Функция заканчивающая работу бота. После её работы, бот будет принимать только команду /start."""
+    """Функция заканчивающая работу бота.
+    После её работы, бот будет принимать только команду /start.
+    """
     await update.message.reply_text("Возвращайтесь, буду рад пообщаться!")
     return ConversationHandler.END
