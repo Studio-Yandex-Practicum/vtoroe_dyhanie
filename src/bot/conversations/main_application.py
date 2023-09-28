@@ -41,7 +41,7 @@ async def check_the_secret_word_callback(
     """Функция проверяющая доступ к боту по секретному слову."""
     text = update.message.text
     if text.lower() != settings.secret_word.lower():
-        await update.message.reply_text(text.FAILED_THE_TEST)
+        await update.message.reply_text(main_text.FAILED_THE_TEST)
         return CHECK
     await update.message.reply_sticker(main_text.STICKER_ID)
     await update.message.reply_text(
