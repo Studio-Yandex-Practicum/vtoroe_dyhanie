@@ -1,4 +1,8 @@
 from telegram import ReplyKeyboardMarkup
+from telegram import (
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+)
 
 
 main_menu_keyboard = [
@@ -11,3 +15,5 @@ main_menu_keyboard = [
 main_menu_markup = ReplyKeyboardMarkup(
     main_menu_keyboard, one_time_keyboard=True, resize_keyboard=True
 )
+
+
