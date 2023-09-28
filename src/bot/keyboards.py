@@ -8,7 +8,6 @@ from bot.constants.callback import (
     ABOUT_FUND_CALLBACKS
 )
 
-
 main_menu_keyboard = [
     ["О Фонде", "Онбординг"],
     ["Основная информация", "Общие правила"],

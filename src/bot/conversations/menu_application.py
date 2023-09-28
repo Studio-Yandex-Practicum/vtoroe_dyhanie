@@ -9,12 +9,23 @@ from telegram.ext import ContextTypes
 from bot.constants.callback import (
     ABOUT_FUND_CALLBACKS
 )
+from bot.constants.state import (
+    ABOUT_FUND_MENU_STATE,
+    FUND_MISSION_STATE,
+    FUND_PROJECTS_STATE,
+    MENU,
+    PROCESSES_ANATOMY_STATE,
+    THINGS_PATH_STATE,
+    ANNUAL_REPORTS_STATE
+)
 from bot.constants.text import (
     ABOUT_FUND_HISTORY,
     BACK_TO_MENU,
     FUND_MISSION,
     PROCESS_ANATOMY,
-    THINGS_PATH, FUND_PROJECTS, ANNUAL_REPORTS
+    THINGS_PATH,
+    FUND_PROJECTS,
+    ANNUAL_REPORTS
 )
 from bot.keyboards import (
     about_fund_markup,
@@ -22,15 +33,9 @@ from bot.keyboards import (
     fund_history_markup,
     main_menu_markup,
     processes_anatomy_markup,
-    things_path_markup, fund_projects_markup, annual_reports_markup
-)
-from bot.constants.state import (
-    ABOUT_FUND_MENU_STATE,
-    FUND_MISSION_STATE,
-    FUND_PROJECTS_STATE,
-    MENU,
-    PROCESSES_ANATOMY_STATE,
-    THINGS_PATH_STATE, ANNUAL_REPORTS_STATE
+    things_path_markup,
+    fund_projects_markup,
+    annual_reports_markup
 )
 
 
@@ -233,6 +238,9 @@ async def processes_anatomy_more_info(
 
 
 async def handle_fund_projects(query: CallbackQuery) -> None:
+    """
+    Функция для перехода в "Проекты фонда" из "Анатомия процессов".
+    """
     await query.answer()
     await query.message.reply_text(FUND_PROJECTS.get('msg_1'))
     await query.message.reply_text(FUND_PROJECTS.get('msg_2'))
@@ -247,6 +255,9 @@ async def fund_projects(
         update: Update,
         context: ContextTypes.DEFAULT_TYPE
 ) -> None:
+    """
+    Функция для перехода в "Проекты фонда" из меню "О Фонде.
+    """
     await update.message.reply_text(FUND_PROJECTS.get('msg_1'))
     await update.message.reply_text(FUND_PROJECTS.get('msg_2'))
     await update.message.reply_text(FUND_PROJECTS.get('msg_3'))
@@ -260,6 +271,9 @@ async def fund_projects_more_info(
         update: Update,
         context: ContextTypes.DEFAULT_TYPE
 ) -> int:
+    """
+    Клавиатура для кнопки «Проекты фонда».
+    """
     menu_item = update.callback_query.data
     if menu_item == ABOUT_FUND_CALLBACKS.get('more_info'):
         await handle_annual_reports(update.callback_query)
@@ -276,6 +290,9 @@ async def annual_reports(
         update: Update,
         context: ContextTypes.DEFAULT_TYPE
 ) -> None:
+    """
+     Функция для перехода в "Годовые отчеты" из меню "О Фонде".
+    """
     await update.message.reply_markdown_v2(
         ANNUAL_REPORTS,
         disable_web_page_preview=True,
@@ -284,6 +301,9 @@ async def annual_reports(
 
 
 async def handle_annual_reports(query: CallbackQuery) -> None:
+    """
+    Функция для перехода в "Годовые отчеты" из "Проекты фонда".
+    """
     await query.answer()
     await query.message.reply_markdown_v2(
         ANNUAL_REPORTS,
@@ -296,5 +316,8 @@ async def annual_reports_more_info(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE
 ) -> int:
+    """
+    Колбэк для кнопки «Обязательно прочту».
+    """
     await handle_back_to_main_menu(update.callback_query)
     return MENU
