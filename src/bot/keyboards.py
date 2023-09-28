@@ -81,3 +81,24 @@ processes_anatomy_menu.extend(navigation_menu)
 processes_anatomy_markup = InlineKeyboardMarkup(
     processes_anatomy_menu
 )
+
+fund_projects_menu = [
+    (InlineKeyboardButton(
+        'Почитаю с удовольствием!',
+        callback_data=ABOUT_FUND_CALLBACKS.get('more_info')
+    ),),
+]
+fund_projects_menu.extend(navigation_menu)
+fund_projects_markup = InlineKeyboardMarkup(
+    fund_projects_menu
+)
+
+annual_reports_menu = [
+    (InlineKeyboardButton(
+        'Обязательно прочту!',
+        callback_data=ABOUT_FUND_CALLBACKS.get('more_info')
+    ),),
+]
+annual_reports_markup = InlineKeyboardMarkup(
+    annual_reports_menu
+)

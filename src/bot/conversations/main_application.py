@@ -16,7 +16,9 @@ async def greeting_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> int:
-    """Базовая функция начинающая диалог с юзером и открывающий доступ к conv_handler."""
+    """Базовая функция начинающая диалог с юзером
+    и открывающий доступ к conv_handler.
+    """
     await update.message.reply_text(START_MESSAGE)
     return CHECK
 
@@ -31,7 +33,10 @@ async def check_the_secret_word_callback(
         await update.message.reply_text(FAILED_THE_TEST)
         return CHECK
     await update.message.reply_sticker(STICKER_ID)
-    await update.message.reply_text(PASSED_THE_TEST, reply_markup=main_menu_markup)
+    await update.message.reply_text(
+        PASSED_THE_TEST,
+        reply_markup=main_menu_markup
+    )
     return MENU
 
 
@@ -39,6 +44,8 @@ async def done_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> int:
-    """Функция заканчивающая работу бота. После её работы, бот будет принимать только команду /start."""
+    """Функция заканчивающая работу бота. После её работы,
+    бот будет принимать только команду /start.
+    """
     await update.message.reply_text("Возвращайтесь, буду рад пообщаться!")
     return ConversationHandler.END

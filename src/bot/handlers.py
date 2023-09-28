@@ -8,8 +8,10 @@ from telegram.ext import (
 
 from bot.constants.state import (
     ABOUT_FUND_MENU_STATE,
+    ANNUAL_REPORTS_STATE,
     CHECK,
     FUND_MISSION_STATE,
+    FUND_PROJECTS_STATE,
     MENU,
     PROCESSES_ANATOMY_STATE,
     THINGS_PATH_STATE,
@@ -23,6 +25,8 @@ from bot.conversations.menu_application import (
     about_fund_callback,
     about_fund_menu_callback,
     about_fund_more_info,
+    annual_reports_more_info,
+    fund_projects_more_info,
     processes_anatomy_more_info,
     things_path_more_info,
 )
@@ -47,6 +51,12 @@ conv_handler = ConversationHandler(
         ],
         PROCESSES_ANATOMY_STATE: [
             CallbackQueryHandler(processes_anatomy_more_info)
+        ],
+        FUND_PROJECTS_STATE: [
+            CallbackQueryHandler(fund_projects_more_info)
+        ],
+        ANNUAL_REPORTS_STATE: [
+            CallbackQueryHandler(annual_reports_more_info)
         ]
     },
     fallbacks=[MessageHandler(filters.Regex("^Done$"), done_callback)],
