@@ -7,26 +7,32 @@ from telegram.ext import (
     ConversationHandler,
 )
 
+from bot.basic_info_keyboards import (
+    basic_information_markup,
+)
+from bot.constants import main_text, reg_forms_text
 from bot.constants.basic_info_text import (
     BASIC_INFORMATION_MENU,
 )
 from bot.constants.state import (
     CHECK,
+    FAQ,
     FEEDBACK,
     MAIN_MENU,
     BASIC_INFORMATION,
     REG_FORMS,
 )
+from bot.constants.faq_text import (
+    BACK_TO_MENU,
+    FAQ_MESSAGE,
+)
 from bot.constants.text import (
     FEEDBACK_MESSAGE,
     START_MESSAGE
 )
-from bot.basic_info_keyboards import (
-    basic_information_markup,
-)
 from bot.conversations.about_fund_application import about_fund_callback
-from bot.constants import main_text, reg_forms_text
 from bot.keyboards import (
+    faq_menu_markup,
     main_menu_markup,
     back_button_markup
 )
@@ -72,6 +78,11 @@ async def main_menu_actions_callback(
     """Функция реализующая разделение обработки команд из главного меню."""
     user_input = update.message.text
 
+    if user_input == "FAQ":
+        await update.message.reply_text(
+            FAQ_MESSAGE, reply_markup=faq_menu_markup
+        )
+        return FAQ
     if user_input == "Основная информация":
         await update.message.reply_text(
             BASIC_INFORMATION_MENU, reply_markup=basic_information_markup
@@ -98,6 +109,15 @@ async def main_menu_actions_callback(
     # Добавить обработку других кнопок.
 
     return MAIN_MENU
+
+
+async def back_button_callback(
+    update: Update, context: ContextTypes.DEFAULT_TYPE
+) -> int:
+    """Возвращает в главное меню"""
+    await update.message.reply_text(
+        BACK_TO_MENU, reply_markup=main_menu_markup
+    )
 
 
 async def done_callback(

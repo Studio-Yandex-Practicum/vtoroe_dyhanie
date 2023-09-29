@@ -19,7 +19,13 @@ from bot.basic_info_keyboards import (
     departmentss_markup,
 )
 from bot.constants import basic_info_text
-from bot.constants.state import BASIC_INFORMATION
+from bot.constants.state import (
+    MAIN_MENU,
+    BASIC_INFORMATION,
+)
+from bot.keyboards import (
+    main_menu_markup,
+)
 from bot.utils import safe_edit_text
 
 
