@@ -12,7 +12,9 @@ from bot.constants.state import (
     BASIC_INFORMATION,
     CHECK,
     FEEDBACK,
-    MAIN_MENU
+    MAIN_MENU,
+    BASIC_INFORMATION,
+    REG_FORMS,
 )
 from bot.conversations.main_application import (
     greeting_callback,
@@ -54,6 +56,9 @@ conv_handler = ConversationHandler(
         ABOUT_FUND_BLOCK: [
             CallbackQueryHandler(about_fund_inline_btns_handler)
         ],
+        REG_FORMS: [
+            CallbackQueryHandler(back_to_menu_callback),
+        ]
     },
     fallbacks=[MessageHandler(filters.Regex("^Done$"), done_callback)],
 )
