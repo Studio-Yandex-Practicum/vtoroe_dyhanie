@@ -7,6 +7,10 @@ from telegram.ext import (
     ConversationHandler,
 )
 
+from bot.basic_info_keyboards import (
+    basic_information_markup,
+)
+from bot.constants import main_text, reg_forms_text
 from bot.constants.basic_info_text import (
     BASIC_INFORMATION_MENU,
 )
@@ -16,21 +20,18 @@ from bot.constants.state import (
     MAIN_MENU,
     BASIC_INFORMATION,
     REG_FORMS,
+    KNOWLEDGE_BASE,
 )
 from bot.constants.text import (
     FEEDBACK_MESSAGE,
-    START_MESSAGE
+    START_MESSAGE, KNOWLEDGE_BASE_MESSAGE
 )
-from bot.basic_info_keyboards import (
-    basic_information_markup,
-)
-from bot.constants import main_text, reg_forms_text
+from bot.core.settings import settings
 from bot.keyboards import (
     main_menu_markup,
-    back_button_markup
+    back_button_markup,
+    main_button_markup
 )
-
-from bot.core.settings import settings
 
 
 async def greeting_callback(
@@ -88,8 +89,15 @@ async def main_menu_actions_callback(
             reply_markup=back_button_markup
         )
         return REG_FORMS
+    if user_input == 'База знаний':
+        await update.message.reply_text(
+            KNOWLEDGE_BASE_MESSAGE,
+            parse_mode=ParseMode.MARKDOWN_V2,
+            disable_web_page_preview=True,
+            reply_markup=main_button_markup
+        )
+        return KNOWLEDGE_BASE
     # Добавить обработку других кнопок.
-
     return MAIN_MENU
 
 

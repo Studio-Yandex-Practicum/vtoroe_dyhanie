@@ -11,8 +11,10 @@ from bot.constants.state import (
     FEEDBACK,
     MAIN_MENU,
     BASIC_INFORMATION,
-    REG_FORMS,
+    REG_FORMS, KNOWLEDGE_BASE,
 )
+from bot.conversations.knowledge_base_application import \
+    knowledge_base_callback
 from bot.conversations.main_application import (
     greeting_callback,
     done_callback,
@@ -45,6 +47,9 @@ conv_handler = ConversationHandler(
         ],
         REG_FORMS: [
             CallbackQueryHandler(back_to_menu_callback),
+        ],
+        KNOWLEDGE_BASE: [
+            CallbackQueryHandler(knowledge_base_callback),
         ]
     },
     fallbacks=[MessageHandler(filters.Regex("^Done$"), done_callback)],
