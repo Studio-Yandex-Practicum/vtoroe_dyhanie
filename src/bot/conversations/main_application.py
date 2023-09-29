@@ -15,6 +15,7 @@ from bot.constants.state import (
     FEEDBACK,
     MAIN_MENU,
     BASIC_INFORMATION,
+    REG_FORMS,
 )
 from bot.constants.text import (
     FEEDBACK_MESSAGE,
@@ -23,7 +24,7 @@ from bot.constants.text import (
 from bot.basic_info_keyboards import (
     basic_information_markup,
 )
-from bot.constants import main_text
+from bot.constants import main_text, reg_forms_text
 from bot.keyboards import (
     main_menu_markup,
     back_button_markup
@@ -79,7 +80,14 @@ async def main_menu_actions_callback(
             reply_markup=back_button_markup
         )
         return FEEDBACK
-
+    if user_input == 'Регламенты и формы':
+        await update.message.reply_text(
+            reg_forms_text.REG_FORM_MESSAGE,
+            parse_mode=ParseMode.MARKDOWN_V2,
+            disable_web_page_preview=True,
+            reply_markup=back_button_markup
+        )
+        return REG_FORMS
     # Добавить обработку других кнопок.
 
     return MAIN_MENU
