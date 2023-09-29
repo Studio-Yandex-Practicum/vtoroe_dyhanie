@@ -1,3 +1,6 @@
+from functools import wraps
+
+import telegram
 from telegram import (
     Update,
     CallbackQuery,
@@ -6,12 +9,6 @@ from telegram.ext import (
     ContextTypes,
 )
 
-from bot.constants.state import (
-    MAIN_MENU,
-    BASIC_INFORMATION,
-)
-from bot.constants import basic_info_text
-from bot.constants.text import BACK_TO_THE_MENU
 from bot.basic_info_keyboards import (
     basic_information_markup,
     org_structure_markup,
@@ -23,11 +20,32 @@ from bot.basic_info_keyboards import (
     departments_markup,
     departmentss_markup,
 )
+from bot.constants import basic_info_text
+from bot.constants.state import (
+    MAIN_MENU,
+    BASIC_INFORMATION,
+)
+from bot.constants.text import BACK_TO_THE_MENU
 from bot.keyboards import (
     main_menu_markup,
 )
 
 
+def safe_edit_text(func):
+    @wraps(func)
+    async def wrapper(query: CallbackQuery, *args, **kwargs):
+        try:
+            return await func(query, *args, **kwargs)
+        except telegram.error.BadRequest as e:
+            if "Message is not modified" in str(e):
+                return
+            else:
+                raise e
+
+    return wrapper
+
+
+@safe_edit_text
 async def handle_organization_structure(query: CallbackQuery) -> None:
     """Обработка клавиатуры Организационная структура."""
     query_data = query.data
@@ -66,6 +84,7 @@ async def handle_organization_structure(query: CallbackQuery) -> None:
         await handle_departments(query)
 
 
+@safe_edit_text
 async def handle_our_team(query: CallbackQuery) -> None:
     """Обработка кнопки Наша команда."""
     query_data = query.data
@@ -97,6 +116,7 @@ async def handle_social_networks(query: CallbackQuery) -> None:
     )
 
 
+@safe_edit_text
 async def handle_council(query: CallbackQuery) -> None:
     """Обработка клавиатуры совета Фонда."""
     query_data = query.data
