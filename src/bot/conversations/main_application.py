@@ -24,12 +24,12 @@ from bot.constants.text import (
 from bot.basic_info_keyboards import (
     basic_information_markup,
 )
+from bot.conversations.about_fund_application import about_fund_callback
 from bot.constants import main_text, reg_forms_text
 from bot.keyboards import (
     main_menu_markup,
     back_button_markup
 )
-
 from bot.core.settings import settings
 
 
@@ -37,6 +37,9 @@ async def greeting_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> int:
+    """Базовая функция начинающая диалог с юзером
+    и открывающий доступ к conv_handler.
+    """
     """Базовая функция начинающая диалог с юзером
     и открывающий доступ к conv_handler.
     """
@@ -48,7 +51,9 @@ async def check_the_secret_word_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> int:
-    """Функция проверяющая доступ к боту по секретному слову."""
+    """
+    Функция проверяющая доступ к боту по секретному слову.
+    """
     text = update.message.text
     if text.lower() != settings.secret_word.lower():
         await update.message.reply_text(main_text.FAILED_THE_TEST)
@@ -80,6 +85,8 @@ async def main_menu_actions_callback(
             reply_markup=back_button_markup
         )
         return FEEDBACK
+    if user_input == 'О Фонде':
+        return await about_fund_callback(update, context)
     if user_input == 'Регламенты и формы':
         await update.message.reply_text(
             reg_forms_text.REG_FORM_MESSAGE,
