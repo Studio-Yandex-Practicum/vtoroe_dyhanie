@@ -24,7 +24,8 @@ from bot.constants.state import (
 )
 from bot.constants.text import (
     FEEDBACK_MESSAGE,
-    START_MESSAGE, KNOWLEDGE_BASE_MESSAGE
+    START_MESSAGE,
+    KNOWLEDGE_BASE_MESSAGE
 )
 from bot.core.settings import settings
 from bot.keyboards import (
@@ -70,7 +71,8 @@ async def main_menu_actions_callback(
 
     if user_input == "Основная информация":
         await update.message.reply_text(
-            BASIC_INFORMATION_MENU, reply_markup=basic_information_markup
+            BASIC_INFORMATION_MENU,
+            reply_markup=basic_information_markup
         )
         return BASIC_INFORMATION
     if user_input == 'Обратная связь':

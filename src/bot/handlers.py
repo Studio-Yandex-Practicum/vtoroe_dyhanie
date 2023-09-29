@@ -11,7 +11,8 @@ from bot.constants.state import (
     FEEDBACK,
     MAIN_MENU,
     BASIC_INFORMATION,
-    REG_FORMS, KNOWLEDGE_BASE,
+    REG_FORMS,
+    KNOWLEDGE_BASE,
 )
 from bot.conversations.knowledge_base_application import \
     knowledge_base_callback
