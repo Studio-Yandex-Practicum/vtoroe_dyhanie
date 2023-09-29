@@ -48,7 +48,6 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USER }}
         key: ${{ secrets.SSH_KEY }}
-        passphrase: ${{ secrets.PASSPHRASE }}
         source: "deploy.tar"
         target: "/home/"
 
@@ -68,7 +67,6 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
-          passphrase: ${{ secrets.PASSPHRASE }}
           # Заходим в домашнюю директорию. В ней находится архив.
           # Распакуем архив. После распаковки удалим его.
           # Заходим в директорию с проектом.
