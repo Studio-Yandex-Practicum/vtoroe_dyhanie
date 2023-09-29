@@ -20,8 +20,19 @@ from bot.basic_info_keyboards import (
     departments_markup,
     departmentss_markup,
 )
+from bot.constants import basic_info_text
+from bot.constants.state import (
+    MAIN_MENU,
+    BASIC_INFORMATION,
+)
+from bot.constants.text import BACK_TO_THE_MENU
+from bot.keyboards import (
+    main_menu_markup,
+)
+from bot.utils import safe_edit_text
 
 
+@safe_edit_text
 async def handle_organization_structure(query: CallbackQuery) -> None:
     """Обработка клавиатуры Организационная структура."""
     query_data = query.data
@@ -60,6 +71,7 @@ async def handle_organization_structure(query: CallbackQuery) -> None:
         await handle_departments(query)
 
 
+@safe_edit_text
 async def handle_our_team(query: CallbackQuery) -> None:
     """Обработка кнопки Наша команда."""
     query_data = query.data
@@ -91,6 +103,7 @@ async def handle_social_networks(query: CallbackQuery) -> None:
     )
 
 
+@safe_edit_text
 async def handle_council(query: CallbackQuery) -> None:
     """Обработка клавиатуры совета Фонда."""
     query_data = query.data
