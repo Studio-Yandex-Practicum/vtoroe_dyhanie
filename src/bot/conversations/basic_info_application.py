@@ -1,6 +1,3 @@
-from functools import wraps
-
-import telegram
 from telegram import (
     Update,
     CallbackQuery,
@@ -29,20 +26,7 @@ from bot.constants.text import BACK_TO_THE_MENU
 from bot.keyboards import (
     main_menu_markup,
 )
-
-
-def safe_edit_text(func):
-    @wraps(func)
-    async def wrapper(query: CallbackQuery, *args, **kwargs):
-        try:
-            return await func(query, *args, **kwargs)
-        except telegram.error.BadRequest as e:
-            if "Message is not modified" in str(e):
-                return
-            else:
-                raise e
-
-    return wrapper
+from bot.utils import safe_edit_text
 
 
 @safe_edit_text
