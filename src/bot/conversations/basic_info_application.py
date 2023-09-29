@@ -6,8 +6,6 @@ from telegram.ext import (
     ContextTypes,
 )
 
-from bot.constants.state import (BASIC_INFORMATION)
-from bot.constants import basic_info_text
 from bot.conversations.menu_application import handle_back_to_main_menu
 from bot.basic_info_keyboards import (
     basic_information_markup,
@@ -21,14 +19,7 @@ from bot.basic_info_keyboards import (
     departmentss_markup,
 )
 from bot.constants import basic_info_text
-from bot.constants.state import (
-    MAIN_MENU,
-    BASIC_INFORMATION,
-)
-from bot.constants.text import BACK_TO_THE_MENU
-from bot.keyboards import (
-    main_menu_markup,
-)
+from bot.constants.state import BASIC_INFORMATION
 from bot.utils import safe_edit_text
 
 
