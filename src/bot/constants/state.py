@@ -1,2 +1,6 @@
 CHECK: int = 1
-MENU: int = 2
+MAIN_MENU: int = 2
+BASIC_INFORMATION: int = 3
+MAIN_MENU: int = 2
+
+FEEDBACK: int = 26
