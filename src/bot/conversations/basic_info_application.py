@@ -6,7 +6,7 @@ from telegram.ext import (
     ContextTypes,
 )
 
-from bot.constants.state import (BASIC_INFORMATION)
+from bot.constants.state import BASIC_INFORMATION
 from bot.constants import basic_info_text
 from bot.conversations.menu_application import handle_back_to_main_menu
 from bot.basic_info_keyboards import (
@@ -25,7 +25,7 @@ from bot.constants.state import (
     MAIN_MENU,
     BASIC_INFORMATION,
 )
-from bot.constants.text import BACK_TO_THE_MENU
+from bot.constants.text import BACK_TO_MENU
 from bot.keyboards import (
     main_menu_markup,
 )

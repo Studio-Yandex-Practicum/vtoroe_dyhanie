@@ -19,11 +19,9 @@ from bot.constants.state import (
 )
 from bot.conversations.about_fund_application import (
     about_fund_inline_btns_handler,
-    about_fund_menu_callback
+    about_fund_menu_callback,
 )
-from bot.conversations.basic_info_application import (
-    basic_information_callback
-)
+from bot.conversations.basic_info_application import basic_information_callback
 from bot.conversations.faq_application import faq_callback
 from bot.conversations.main_application import (
     greeting_callback,
@@ -31,6 +29,7 @@ from bot.conversations.main_application import (
     check_the_secret_word_callback,
     main_menu_actions_callback,
 )
+from bot.conversations.menu_application import back_to_menu_callback
 
 
 conv_handler = ConversationHandler(
@@ -57,7 +56,7 @@ conv_handler = ConversationHandler(
         ],
         REG_FORMS: [
             CallbackQueryHandler(back_to_menu_callback),
-        ]
+        ],
         FAQ: [
             MessageHandler(filters.Text(), faq_callback),
         ],
