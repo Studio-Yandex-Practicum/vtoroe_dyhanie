@@ -6,6 +6,9 @@ from telegram.ext import (
     ContextTypes,
 )
 
+from bot.constants.state import (BASIC_INFORMATION)
+from bot.constants import basic_info_text
+from bot.conversations.menu_application import handle_back_to_main_menu
 from bot.basic_info_keyboards import (
     basic_information_markup,
     org_structure_markup,
@@ -231,15 +234,6 @@ async def handle_basic_information_back(query: CallbackQuery) -> None:
     )
 
 
-async def handle_main_menu(query: CallbackQuery) -> int:
-    """Обработка кнопки Возврата в главное меню."""
-    await query.message.edit_text("Возвращаемся в главное меню...")
-    await query.message.reply_text(
-        BACK_TO_THE_MENU, reply_markup=main_menu_markup
-    )
-    return MAIN_MENU
-
-
 async def basic_information_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
@@ -265,5 +259,5 @@ async def basic_information_callback(
     elif query_data == "basic_information_back":
         await handle_basic_information_back(query)
     elif query_data == "main_menu":
-        return await handle_main_menu(query)
+        return await handle_back_to_main_menu(query)
     return BASIC_INFORMATION
