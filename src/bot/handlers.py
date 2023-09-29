@@ -11,6 +11,7 @@ from bot.constants.state import (
     FEEDBACK,
     MAIN_MENU,
     BASIC_INFORMATION,
+    REG_FORMS,
 )
 from bot.conversations.main_application import (
     greeting_callback,
@@ -40,6 +41,9 @@ conv_handler = ConversationHandler(
             CallbackQueryHandler(basic_information_callback),
         ],
         FEEDBACK: [
+            CallbackQueryHandler(back_to_menu_callback),
+        ],
+        REG_FORMS: [
             CallbackQueryHandler(back_to_menu_callback),
         ]
     },
