@@ -189,7 +189,8 @@ async def handle_mission_more_info(query: CallbackQuery) -> None:
     """Обработчик кнопки "Конечно! Расскажи подробнее"
     ветки "Миссия и основная цель".
     """
-    await query.edit_message_reply_markup()
+    # Спрятать inline-клавиатуру после нажатия кнопки
+    # await query.edit_message_reply_markup()
     await query.answer()
     await send_things_path_message(query.message)
 
@@ -229,7 +230,8 @@ async def handle_path_more_info(query: CallbackQuery) -> None:
     """Обработчик кнопки "Да, было бы здорово посмотреть!"
     ветки "Путь вещей".
     """
-    await query.edit_message_reply_markup()
+    # Спрятать inline-клавиатуру после нажатия кнопки
+    # await query.edit_message_reply_markup()
     await query.answer()
     await send_processes_anatomy_message(query.message)
 
@@ -261,7 +263,8 @@ async def handle_processes_anatomy_more_info(query: CallbackQuery) -> None:
     """Обработчик кнопки "Конечно! Какие?"
     ветки "Анатомия процессов".
     """
-    await query.edit_message_reply_markup()
+    # Спрятать inline-клавиатуру после нажатия кнопки
+    # await query.edit_message_reply_markup()
     await query.answer()
     await send_fund_projects_message(query.message)
 
@@ -294,7 +297,8 @@ async def handle_projects_more_info(query: CallbackQuery) -> None:
     """Обработчик кнопки "Почитаю с удовольствием!"
     ветки "Проекты Фонда".
     """
-    await query.edit_message_reply_markup()
+    # Спрятать inline-клавиатуру после нажатия кнопки
+    # await query.edit_message_reply_markup()
     await query.answer()
     await send_annual_reports_message(query.message)
 
@@ -325,7 +329,8 @@ async def handle_annual_reports_more_info(query: CallbackQuery) -> int:
     """Обработчик кнопки "Обязательно прочту!"
     ветки "Годовые отчеты".
     """
-    await query.edit_message_reply_markup()
+    # Спрятать inline-клавиатуру после нажатия кнопки
+    # await query.edit_message_reply_markup()
     await query.answer()
     await handle_back_to_main_menu(query)
     return MAIN_MENU

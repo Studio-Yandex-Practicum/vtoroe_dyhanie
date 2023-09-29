@@ -19,7 +19,7 @@ PASSED_THE_TEST = (
     "Верно! Выбери интересующую тебя тему из списка "
     "в меню и я помогу тебе найти нужную информацию."
 )
-BACK_TO_THE_MENU = "Выбери интересующую тебя тему из списка:"
+
 STICKER_ID: str = (
     "CAACAgIAAxkBAAIDwGUEItYpuU5DXDRigDA1M9SL-AdcAALTJAACHRAwSj-yFNWnj6hDMAQ"
 )
