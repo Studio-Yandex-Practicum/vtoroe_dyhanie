@@ -1,3 +1,7 @@
+URL_KNOWLEDGE_BASE = (
+    "https://docs.google.com/document/d/"
+    "13_9qPPKA9w4LKFL1FNL5rbP0joNXxJkRs5wOa1fjsYY/edit?usp=sharing"
+)
 ANNUAL_REPORTS_LINK = "https://vtoroe.ru/fond/documents/"
 FEEDBACK_LINK: str = "https://forms.gle/jmjtFJEh68HqMxe57"
 STORAGE_LINK = (

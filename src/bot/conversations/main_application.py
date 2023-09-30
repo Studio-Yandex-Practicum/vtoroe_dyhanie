@@ -6,13 +6,8 @@ from telegram.ext import (
     ContextTypes,
     ConversationHandler,
 )
+
 from bot.constants.button import MENU_CONTACT_LIST
-from bot.constants.state import (
-    CHECK,
-    MAIN_MENU,
-    BASIC_INFORMATION,
-    FIO,
-)
 from bot.basic_info_keyboards import (
     basic_information_markup,
 )
@@ -23,10 +18,12 @@ from bot.constants.basic_info_text import (
 from bot.constants.state import (
     CHECK,
     FAQ,
+    FIO,
     FEEDBACK,
     MAIN_MENU,
     BASIC_INFORMATION,
     REG_FORMS,
+    KNOWLEDGE_BASE,
 )
 from bot.constants.contact_list_text import (
     MENU_CONTACT_LIST_INPUT_FIO,
@@ -38,15 +35,17 @@ from bot.constants.faq_text import (
 )
 from bot.constants.text import (
     FEEDBACK_MESSAGE,
-    START_MESSAGE
+    START_MESSAGE,
+    KNOWLEDGE_BASE_MESSAGE
 )
+from bot.core.settings import settings
 from bot.conversations.about_fund_application import about_fund_callback
 from bot.keyboards import (
     faq_menu_markup,
     main_menu_markup,
-    back_button_markup
+    back_button_markup,
+    main_button_markup
 )
-from bot.core.settings import settings
 
 
 async def greeting_callback(
@@ -92,7 +91,8 @@ async def main_menu_actions_callback(
         return FAQ
     if user_input == "Основная информация":
         await update.message.reply_text(
-            BASIC_INFORMATION_MENU, reply_markup=basic_information_markup
+            BASIC_INFORMATION_MENU,
+            reply_markup=basic_information_markup
         )
         return BASIC_INFORMATION
     if user_input == MENU_CONTACT_LIST:
@@ -121,8 +121,15 @@ async def main_menu_actions_callback(
             reply_markup=back_button_markup
         )
         return REG_FORMS
+    if user_input == 'База знаний':
+        await update.message.reply_text(
+            KNOWLEDGE_BASE_MESSAGE,
+            parse_mode=ParseMode.MARKDOWN_V2,
+            disable_web_page_preview=True,
+            reply_markup=main_button_markup
+        )
+        return KNOWLEDGE_BASE
     # Добавить обработку других кнопок.
-
     return MAIN_MENU
 
 

@@ -17,6 +17,11 @@ from bot.constants.state import (
     BASIC_INFORMATION,
     FIO,
     REG_FORMS,
+    KNOWLEDGE_BASE,
+)
+
+from bot.conversations.knowledge_base_application import (
+    knowledge_base_callback,
 )
 from bot.conversations.about_fund_application import (
     about_fund_inline_btns_handler,
@@ -60,6 +65,9 @@ conv_handler = ConversationHandler(
         ],
         REG_FORMS: [
             CallbackQueryHandler(back_to_menu_callback),
+        ],
+        KNOWLEDGE_BASE: [
+            CallbackQueryHandler(knowledge_base_callback),
         ],
         FAQ: [
             MessageHandler(filters.Text(), faq_callback),

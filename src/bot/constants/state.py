@@ -2,9 +2,11 @@ CHECK: int = 1
 MAIN_MENU: int = 2
 BASIC_INFORMATION: int = 3
 REG_FORMS = 4
+KNOWLEDGE_BASE: int = 5
+
 FIO: int = 9
 FAQ: int = 10
+
 FEEDBACK: int = 26
 ABOUT_FUND_MENU_STATE: int = 60
 ABOUT_FUND_BLOCK: int = 61
-

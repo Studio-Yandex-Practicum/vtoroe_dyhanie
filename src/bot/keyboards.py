@@ -5,8 +5,7 @@ from telegram import (
 )
 
 from bot.constants.button import BACK_BUTTON
-from bot.constants.callback import FEEDBACK_BACK_BUTTON
-
+from bot.constants.callback import FEEDBACK_BACK_BUTTON, MAIN_MENU_BUTTON
 
 main_menu_keyboard = [
     ["О Фонде", "Онбординг"],
@@ -34,3 +33,8 @@ back_button_keyboard = [
     [InlineKeyboardButton(BACK_BUTTON, callback_data=FEEDBACK_BACK_BUTTON)]
 ]
 back_button_markup = InlineKeyboardMarkup(back_button_keyboard)
+
+main_button_keyboard = [
+    [InlineKeyboardButton(BACK_BUTTON, callback_data=MAIN_MENU_BUTTON)]
+]
+main_button_markup = InlineKeyboardMarkup(main_button_keyboard)
