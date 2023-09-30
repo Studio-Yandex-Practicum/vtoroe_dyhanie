@@ -26,3 +26,4 @@ async def handle_back_to_main_menu(query: CallbackQuery) -> int:
         BACK_TO_MAIN_MENU, reply_markup=main_menu_markup
     )
     return MAIN_MENU
+

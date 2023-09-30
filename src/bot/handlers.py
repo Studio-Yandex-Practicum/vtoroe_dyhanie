@@ -2,8 +2,8 @@ from telegram.ext import (
     CallbackQueryHandler,
     CommandHandler,
     ConversationHandler,
-    MessageHandler,
     filters,
+    MessageHandler,
 )
 
 from bot.constants.state import (
@@ -15,6 +15,7 @@ from bot.constants.state import (
     FEEDBACK,
     MAIN_MENU,
     BASIC_INFORMATION,
+    FIO,
     REG_FORMS,
 )
 from bot.conversations.about_fund_application import (
@@ -22,6 +23,9 @@ from bot.conversations.about_fund_application import (
     about_fund_menu_callback,
 )
 from bot.conversations.basic_info_application import basic_information_callback
+from bot.conversations.contact_list_application import (
+    find_contact_by_fio,
+)
 from bot.conversations.faq_application import faq_callback
 from bot.conversations.main_application import (
     greeting_callback,
@@ -59,6 +63,9 @@ conv_handler = ConversationHandler(
         ],
         FAQ: [
             MessageHandler(filters.Text(), faq_callback),
+        ],
+        FIO: [
+            MessageHandler(filters.TEXT, find_contact_by_fio),
         ],
     },
     fallbacks=[MessageHandler(filters.Regex("^Done$"), done_callback)],

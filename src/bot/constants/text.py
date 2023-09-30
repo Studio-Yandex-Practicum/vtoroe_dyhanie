@@ -23,6 +23,7 @@ PASSED_THE_TEST = (
 STICKER_ID: str = (
     "CAACAgIAAxkBAAIDwGUEItYpuU5DXDRigDA1M9SL-AdcAALTJAACHRAwSj-yFNWnj6hDMAQ"
 )
+
 FEEDBACK_MESSAGE: str = (
     'Мы сделали анонимную форму обратной связи для сотрудников Фонда — для '
     'тех, кто работает в бэк\-офисе, на складах в Москве и Костроме, '
@@ -37,3 +38,4 @@ BACK_TO_MAIN_MENU = 'В главное меню'
 
 # Для возвращения в меню раздела
 BACK_TO_MENU = 'Выбери интересующую тебя тему из списка:'
+

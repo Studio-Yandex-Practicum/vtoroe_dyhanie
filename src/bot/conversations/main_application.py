@@ -6,7 +6,13 @@ from telegram.ext import (
     ContextTypes,
     ConversationHandler,
 )
-
+from bot.constants.button import MENU_CONTACT_LIST
+from bot.constants.state import (
+    CHECK,
+    MAIN_MENU,
+    BASIC_INFORMATION,
+    FIO,
+)
 from bot.basic_info_keyboards import (
     basic_information_markup,
 )
@@ -21,6 +27,10 @@ from bot.constants.state import (
     MAIN_MENU,
     BASIC_INFORMATION,
     REG_FORMS,
+)
+from bot.constants.contact_list_text import (
+    MENU_CONTACT_LIST_INPUT_FIO,
+    MENU_CONTACT_LIST_LOAD_CONTACT_LIST,
 )
 from bot.constants.faq_text import (
     BACK_TO_MENU,
@@ -43,9 +53,6 @@ async def greeting_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> int:
-    """Базовая функция начинающая диалог с юзером
-    и открывающий доступ к conv_handler.
-    """
     """Базовая функция начинающая диалог с юзером
     и открывающий доступ к conv_handler.
     """
@@ -88,6 +95,14 @@ async def main_menu_actions_callback(
             BASIC_INFORMATION_MENU, reply_markup=basic_information_markup
         )
         return BASIC_INFORMATION
+    if user_input == MENU_CONTACT_LIST:
+        await update.message.reply_text(
+            MENU_CONTACT_LIST_INPUT_FIO
+        )
+        await update.message.reply_text(
+            MENU_CONTACT_LIST_LOAD_CONTACT_LIST
+        )
+        return FIO
     if user_input == 'Обратная связь':
         await update.message.reply_text(
             FEEDBACK_MESSAGE,
