@@ -6,12 +6,7 @@ from telegram.ext import (
     ContextTypes,
 )
 
-from bot.constants.state import (
-    MAIN_MENU,
-    BASIC_INFORMATION,
-)
-from bot.constants import basic_info_text
-from bot.constants.text import BACK_TO_THE_MENU
+from bot.conversations.menu_application import handle_back_to_main_menu
 from bot.basic_info_keyboards import (
     basic_information_markup,
     org_structure_markup,
@@ -23,11 +18,18 @@ from bot.basic_info_keyboards import (
     departments_markup,
     departmentss_markup,
 )
+from bot.constants import basic_info_text
+from bot.constants.state import (
+    MAIN_MENU,
+    BASIC_INFORMATION,
+)
 from bot.keyboards import (
     main_menu_markup,
 )
+from bot.utils import safe_edit_text
 
 
+@safe_edit_text
 async def handle_organization_structure(query: CallbackQuery) -> None:
     """Обработка клавиатуры Организационная структура."""
     query_data = query.data
@@ -66,6 +68,7 @@ async def handle_organization_structure(query: CallbackQuery) -> None:
         await handle_departments(query)
 
 
+@safe_edit_text
 async def handle_our_team(query: CallbackQuery) -> None:
     """Обработка кнопки Наша команда."""
     query_data = query.data
@@ -97,6 +100,7 @@ async def handle_social_networks(query: CallbackQuery) -> None:
     )
 
 
+@safe_edit_text
 async def handle_council(query: CallbackQuery) -> None:
     """Обработка клавиатуры совета Фонда."""
     query_data = query.data
@@ -227,15 +231,6 @@ async def handle_basic_information_back(query: CallbackQuery) -> None:
     )
 
 
-async def handle_main_menu(query: CallbackQuery) -> int:
-    """Обработка кнопки Возврата в главное меню."""
-    await query.message.edit_text("Возвращаемся в главное меню...")
-    await query.message.reply_text(
-        BACK_TO_THE_MENU, reply_markup=main_menu_markup
-    )
-    return MAIN_MENU
-
-
 async def basic_information_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
@@ -261,5 +256,5 @@ async def basic_information_callback(
     elif query_data == "basic_information_back":
         await handle_basic_information_back(query)
     elif query_data == "main_menu":
-        return await handle_main_menu(query)
+        return await handle_back_to_main_menu(query)
     return BASIC_INFORMATION
