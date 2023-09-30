@@ -7,4 +7,5 @@ MENU_FEEDBACK = 'Обратная связь'
 MENU_REGLAMENTS_AND_FORMS = 'Регламенты и формы'
 MENU_FAQ = 'FAQ'
 MENU_CONTACT_LIST = 'Список контактов'
+BACK_BUTTON = 'Назад'
 

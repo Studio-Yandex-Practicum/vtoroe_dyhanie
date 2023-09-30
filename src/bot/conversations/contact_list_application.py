@@ -1,35 +1,25 @@
 from telegram import Update
 from telegram.ext import ContextTypes, ConversationHandler
 
-from bot.constants.text import (
-    MENU_CONTACT_LIST_INPUT_FIO, MENU_CONTACT_LIST_LOAD_CONTACT_LIST,
+from bot.constants.state import (
+    MAIN_MENU,
 )
+from bot.keyboards import main_menu_markup
 
 
 async def find_contact_by_fio(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
-) -> None:
+) -> int:
     """Стартует поиск контакта по заданному тексту
     и возвращает контакт (телефон, имя...)"""
-    pass
 # тут нужно будет написать что-то, что получит на вход текст
-# update.message.text и пойдет в базу искать контакты
+# query.data из query = update.callback_query и пойдет в базу искать контакты
 # а на выходе вернет контакт
 # и пропишет результат в строчку ниже
-#    await update.message.reply_text(update.message.text)
 
-
-async def contact_list(
-    update: Update,
-    context: ContextTypes.DEFAULT_TYPE
-) -> None:
-    """Отправляет сообщения с приглашением
-    на ввод ФИО и ссылкой на базу контактов."""
-
+#    await query.answer()
     await update.message.reply_text(
-        MENU_CONTACT_LIST_INPUT_FIO
+        text='Контакты нужного человека', reply_markup=main_menu_markup
     )
-    await update.message.reply_text(
-        MENU_CONTACT_LIST_LOAD_CONTACT_LIST
-    )
+    return MAIN_MENU
