@@ -1,3 +1,13 @@
+from warnings import filterwarnings
+
+from telegram.warnings import PTBUserWarning
+
+filterwarnings(  # noqa
+    action="ignore",
+    message=r".*CallbackQueryHandler",
+    category=PTBUserWarning,  # noqa
+)  # noqa
+
 from telegram.ext import (
     Application,
     CommandHandler,
@@ -11,7 +21,7 @@ from bot.core.settings import settings
 from bot.handlers import conv_handler
 
 
-def main() -> None:
+def main() -> None:  # noqa
     """Start the bot"""
     app = Application.builder().token(settings.telegram_token).build()
 
