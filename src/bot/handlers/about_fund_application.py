@@ -27,7 +27,6 @@ from telegram.constants import ParseMode
 from telegram.ext import ContextTypes
 
 from bot.constants.about_fund_text import (
-    ABOUT_FUND_HISTORY,
     ANNUAL_REPORTS,
     FUND_MISSION,
     FUND_PROJECTS,
@@ -35,16 +34,9 @@ from bot.constants.about_fund_text import (
     THINGS_PATH
 )
 from bot.constants.callback import ABOUT_FUND_CALLBACKS
-from bot.constants.state import (
-    ABOUT_FUND_BLOCK,
-    ABOUT_FUND_MENU_STATE,
-    MAIN_MENU,
-)
 from bot.constants.text import BACK_TO_MENU
-from bot.conversations.menu_application import (
-    handle_back_to_main_menu
-)
-from bot.keyboards_about_fund import (
+
+from bot.keyboards.about_fund_keyboards import (
     about_fund_markup,
     about_fund_section,
     annual_reports_markup,
@@ -66,24 +58,9 @@ async def handle_back_to_menu(query: CallbackQuery) -> None:
     )
 
 
-async def about_fund_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
-) -> int:
-    """Отправляет сообщения и раскладку клавиатуры при
-    нажатии кнопки "О Фонде" из главного меню.
-    """
-    await update.message.reply_text(ABOUT_FUND_HISTORY.get('msg_1'))
-    await update.message.reply_text(ABOUT_FUND_HISTORY.get('msg_2'))
-    await update.message.reply_text(
-        ABOUT_FUND_HISTORY.get('msg_3'),
-        reply_markup=about_fund_markup
-    )
-    return ABOUT_FUND_MENU_STATE
-
-
 async def about_fund_menu_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
-) -> int:
+) -> None:
     """Обработчик кнопок основного меню блока "О Фонде".
     """
     menu_item = update.message.text
@@ -91,23 +68,18 @@ async def about_fund_menu_callback(
     # Миссия и основная цель
     if menu_item == about_fund_section.get('mission'):
         await about_fund_mission(update, context)
-        return ABOUT_FUND_BLOCK
     # Путь вещей
     elif menu_item == about_fund_section.get('things_path'):
         await things_path(update, context)
-        return ABOUT_FUND_BLOCK
     # Анатомия процессов
     elif menu_item == about_fund_section.get('processes_anatomy'):
         await processes_anatomy(update, context)
-        return ABOUT_FUND_BLOCK
     # Проекты Фонда
     elif menu_item == about_fund_section.get('fund_projects'):
         await fund_projects(update, context)
-        return ABOUT_FUND_BLOCK
     # Годовые отчеты
     elif menu_item == about_fund_section.get('annual_reports'):
         await annual_reports(update, context)
-        return ABOUT_FUND_BLOCK
 
 
 async def about_fund_inline_btns_handler(
@@ -136,20 +108,10 @@ async def about_fund_inline_btns_handler(
     # "Проекты Фонда"
     elif query.data == ABOUT_FUND_CALLBACKS.get('more_info_projects'):
         await handle_projects_more_info(query)
-    # Нажатие кнопки "Обязательно прочту!" блока
-    # "Годовые отчеты"
-    elif query.data == ABOUT_FUND_CALLBACKS.get('more_info_reports'):
-        await handle_annual_reports_more_info(query)
-        return MAIN_MENU
 
-    # Нажатие кнопки "В главное меню" любого блока
-    elif menu_item == ABOUT_FUND_CALLBACKS.get('back_to_main_menu'):
-        await handle_back_to_main_menu(update.callback_query)
-        return MAIN_MENU
     # Нажатие кнопки "В меню раздела" любого блока
     elif menu_item == ABOUT_FUND_CALLBACKS.get('back_to_menu'):
         await handle_back_to_menu(update.callback_query)
-        return ABOUT_FUND_MENU_STATE
 
 
 # Блок "Миссия и основная цель"
@@ -324,13 +286,3 @@ async def annual_reports(
     """
     await send_annual_reports_message(update.message)
 
-
-async def handle_annual_reports_more_info(query: CallbackQuery) -> int:
-    """Обработчик кнопки "Обязательно прочту!"
-    ветки "Годовые отчеты".
-    """
-    # Спрятать inline-клавиатуру после нажатия кнопки
-    # await query.edit_message_reply_markup()
-    await query.answer()
-    await handle_back_to_main_menu(query)
-    return MAIN_MENU

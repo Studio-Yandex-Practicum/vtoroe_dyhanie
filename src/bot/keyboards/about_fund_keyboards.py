@@ -26,7 +26,8 @@ about_fund_section = {
     'things_path': 'Путь вещей',
     'processes_anatomy': 'Анатомия процессов',
     'fund_projects': 'Проекты Фонда',
-    'annual_reports': 'Годовые отчеты'
+    'annual_reports': 'Годовые отчеты',
+    'main_menu': 'В главное меню',
 }
 about_fund_markup = ReplyKeyboardMarkup(
     [[button] for button in about_fund_section.values()],
@@ -80,7 +81,7 @@ fund_projects_markup = InlineKeyboardMarkup(fund_projects_menu)
 annual_reports_menu = [
     (InlineKeyboardButton(
         'Обязательно прочту!',
-        callback_data=ABOUT_FUND_CALLBACKS.get('more_info_reports')
+        callback_data='back_to_main_menu'
     ),),
 ]
 annual_reports_markup = InlineKeyboardMarkup(annual_reports_menu)

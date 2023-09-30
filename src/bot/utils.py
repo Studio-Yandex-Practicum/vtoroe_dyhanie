@@ -5,6 +5,7 @@ from telegram import Update
 
 from bot.core.db.base import AsyncSessionLocal
 from bot.core.db.models import UserPermission
+from bot.constants import text
 import telegram
 from telegram import CallbackQuery
 
@@ -21,7 +22,12 @@ def permission_required(func):
             current_user = result.first()
         if current_user and current_user.permission:
             return await func(update, context, *args, **kwargs)
-        await update.message.reply_text('Доступ запрещен')
+        query = update.callback_query
+        if query:
+            await query.answer()
+        await update.effective_chat.send_message(
+            text=text.PERMISSION_ERROR_MESSAGE,
+        )
         return
     return wrapped
 

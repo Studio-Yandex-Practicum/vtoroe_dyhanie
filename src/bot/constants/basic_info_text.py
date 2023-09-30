@@ -1,3 +1,5 @@
+from bot.constants.query_patterns import INFO_PREFIX
+
 BASIC_INFORMATION_MENU = (
     "В этом разделе мы собрали основную информацию о нашем Фонде.\n"
     "Выбирай нужный раздел, я расскажу про всё подробнее."
@@ -43,7 +45,7 @@ COUNCIL_ANSWER_01 = (
     "- утверждение благоприятных программ;\n"
     "- принятие решения о создании новых организаций (фондом);\n"
     "\n Более подробно прочитать о функциях Совета можно в"
-    ' <a href="https://drive.google.com/file/d/1f8RUkEOUkyfq4D6UMcPlhOraxl1Bll9z/view?pli=1">Уставе фонда.</a>.'
+    ' <a href="https://drive.google.com/file/d/1f8RUkEOUkyfq4D6UMcPlhOraxl1Bll9z/view?pli=1">Уставе фонда.</a>'
 )
 
 COUNCIL_ANSWER_02 = (
@@ -110,6 +112,7 @@ GARDIAN_COUNCIL_INTRODUCTION_MESSAGE = (
 
 DEPARTMENTS = 'Об отделах фонда.'
 
+
 DEPARTMENT_01 = (
     'Реализация мероприятий фонда социальной направленности, '
     'коммуникация с партнёрскими благотворительными организациями.'
@@ -166,24 +169,25 @@ DEPARTMENT_10 = (
     'делопроизводство, забота о сотрудниках.'
 )
 
-DEPARTMENT_LIST = [
-    'department_01',
-    'department_02',
-    'department_03',
-    'department_04',
-    'department_05',
-    'department_06',
-    'department_07',
-    'department_08',
-    'department_09',
-    'department_10',
-]
+DEPARTMENTS_MESSAGE = {
+    f'{INFO_PREFIX}department_01': DEPARTMENT_01,
+    f'{INFO_PREFIX}department_02': DEPARTMENT_02,
+    f'{INFO_PREFIX}department_03': DEPARTMENT_03,
+    f'{INFO_PREFIX}department_04': DEPARTMENT_04,
+    f'{INFO_PREFIX}department_05': DEPARTMENT_05,
+    f'{INFO_PREFIX}department_06': DEPARTMENT_06,
+    f'{INFO_PREFIX}department_07': DEPARTMENT_07,
+    f'{INFO_PREFIX}department_08': DEPARTMENT_08,
+    f'{INFO_PREFIX}department_09': DEPARTMENT_09,
+    f'{INFO_PREFIX}department_10': DEPARTMENT_10,
+}
 
-COUNCIL_QUESTION_LIST = [
-    'council_question_01',
-    'council_question_02',
-    'council_question_03',
-    'council_question_04',
-    'council_question_05',
-    'council_question_06',
-]
+
+COUNCIL_QUESTIONS = {
+    f'{INFO_PREFIX}council_question_01': COUNCIL_ANSWER_01,
+    f'{INFO_PREFIX}council_question_02': COUNCIL_ANSWER_02,
+    f'{INFO_PREFIX}council_question_03': COUNCIL_ANSWER_03,
+    f'{INFO_PREFIX}council_question_04': COUNCIL_ANSWER_04,
+    f'{INFO_PREFIX}council_question_05': COUNCIL_ANSWER_05,
+    f'{INFO_PREFIX}council_question_06': COUNCIL_ANSWER_06,
+}
