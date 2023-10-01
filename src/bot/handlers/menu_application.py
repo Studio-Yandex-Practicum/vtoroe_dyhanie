@@ -97,7 +97,7 @@ async def knowledge_base_callback(
 async def query_back_to_main_menu_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
-    """Возвращает в главное меню."""
+    """Обработка inline кнопки возврата в главное меню из всех подразделов."""
     query = update.callback_query
     await query.answer()
     await query.message.reply_text(

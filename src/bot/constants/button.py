@@ -9,13 +9,3 @@ MENU_FAQ = 'FAQ'
 MENU_CONTACT_LIST = 'Список контактов'
 BACK_BUTTON = 'Назад'
 BACK_TO_MAIN_MENU = 'В главное меню'
-FAQ = {
-    'ORG_QUESTIONS': 'Организационные вопросы',
-    'VOLUNTARISM': 'Волонтёрство',
-    'STUDIES': 'Обучение',
-    'VACATION': 'Отпуск',
-    'WORK_PROC': 'Рабочий процесс',
-    'ADMIN_QUESTIONS': 'Административные вопросы',
-    'DOCFLOW': 'Оформление документов',
-    'BUSINESS_TRIP': 'Командировки',
-}

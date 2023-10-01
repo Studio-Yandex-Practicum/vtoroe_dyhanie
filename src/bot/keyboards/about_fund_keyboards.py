@@ -5,8 +5,18 @@ from telegram import (
     InlineKeyboardMarkup,
     ReplyKeyboardMarkup
 )
+from bot.constants.query_patterns import ABOUT_PREFIX
 
-from bot.constants.callback import ABOUT_FUND_CALLBACKS
+ABOUT_FUND_CALLBACKS = {
+    'back_to_menu': f'{ABOUT_PREFIX}back_to_menu',
+    'back_to_main_menu': 'back_to_main_menu',
+    'more_info_mission': f'{ABOUT_PREFIX}more_info_mission',
+    'more_info_path': f'{ABOUT_PREFIX}more_info_path',
+    'more_info_processes': f'{ABOUT_PREFIX}more_info_processes',
+    'more_info_projects': f'{ABOUT_PREFIX}more_info_projects',
+    'more_info_reports': f'{ABOUT_PREFIX}more_info_reports'
+}
+
 
 # Общая часть для разных меню из блока О Фонде -
 # две кнопки: Назад в меню блока и Назад в главное меню
@@ -21,16 +31,16 @@ navigation_menu = [
     ),)
 ]
 
-about_fund_section = {
-    'mission': 'Миссия и основная цель',
-    'things_path': 'Путь вещей',
-    'processes_anatomy': 'Анатомия процессов',
-    'fund_projects': 'Проекты Фонда',
-    'annual_reports': 'Годовые отчеты',
-    'main_menu': 'В главное меню',
-}
+about_fund_section = [
+    'Миссия и основная цель',
+    'Путь вещей',
+    'Анатомия процессов',
+    'Проекты Фонда',
+    'Годовые отчеты',
+    'В главное меню',
+]
 about_fund_markup = ReplyKeyboardMarkup(
-    [[button] for button in about_fund_section.values()],
+    [[button] for button in about_fund_section],
     resize_keyboard=True,
     one_time_keyboard=True
 )

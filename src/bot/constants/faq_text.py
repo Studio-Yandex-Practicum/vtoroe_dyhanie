@@ -1,9 +1,15 @@
-from bot.constants.links import (
-    STORAGE_LINK,
-    STUDIES_LINK,
-    VOLUNTARISM_LINK,
+STORAGE_LINK = (
+    "https://drive.google.com/file/d/"
+    "1IQV1K7LHDy8fjI_GNlY28HEZY2ze4z9L/view?usp=drive_link"
 )
-
+STUDIES_LINK = (
+    "https://docs.google.com/document/d/"
+    "1GBHyfDv1uhmajD4ABqV2TfNcU2J9nc-ItaYB6XDY6zc/edit?usp=sharing"
+)
+VOLUNTARISM_LINK = (
+    "https://docs.google.com/document/d/"
+    "1v8ydGJP9Hg6AY00JqkUVhxbSEif5z_o5pD4J8iJhTY8/edit?usp=sharing"
+)
 
 FAQ_MESSAGE = "Выбери интересующий тебя вопрос"
 ORG_QSTS_MESSAGE = f"""
@@ -112,3 +118,15 @@ BUSINESS_TRIP_MESSAGE = f"""
 Чтобы они были начислены вовремя, необходимо оформлять командировку
 хотя бы за 3 дня до поездки.
 """
+
+
+FAQ_MESSAGES = {
+    "Организационные вопросы": ORG_QSTS_MESSAGE,
+    "Волонтёрство": VOLUNTARISM_MESSAGE,
+    "Обучение": STUDIES_MESSAGE,
+    "Отпуск": VACATION_MESSAGE,
+    "Рабочий процесс": WORK_PROC_MESSAGE,
+    "Административные вопросы": ADMIN_QSTS_MESSAGE,
+    "Оформление документов": DOCFLOW_MESSAGE,
+    "Командировки": BUSINESS_TRIP_MESSAGE,
+}

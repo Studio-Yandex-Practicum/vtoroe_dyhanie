@@ -1,10 +1,9 @@
-"""Файл с константами для блока "О Фонде"
-"""
-from bot.constants.links import (
-    ANNUAL_REPORTS_LINK,
-    PROCESSES_LINK
+"""Файл с константами для блока 'О Фонде'."""
+PROCESSES_LINK = (
+    "https://drive.google.com/file/d/"
+    "11Oh9YIbvPuy4aZNNTRAzI0Oy0kJ7U0iG/view?usp=sharing"
 )
-
+ANNUAL_REPORTS_LINK = "https://vtoroe.ru/fond/documents/"
 
 ABOUT_FUND_HISTORY = {
     'msg_1': 'Для начала немного предыстории 👀',
