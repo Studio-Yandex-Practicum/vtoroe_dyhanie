@@ -16,7 +16,7 @@ from bot.utils import permission_required
 async def organization_structure_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
-    """Обработка клавиатуры Организационная структура."""
+    """Обработка кнопки Организационная структура."""
     query = update.callback_query
     await query.answer()
     await query.message.edit_text(
@@ -31,6 +31,7 @@ async def organization_structure_callback(
 async def about_council_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
+    """Обработка кнопки Совет фонда."""
     query = update.callback_query
     await query.answer()
     await query.message.edit_text(
@@ -45,6 +46,7 @@ async def about_council_callback(
 async def guardian_council_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
+    """Обработка кнопки Попечительский совет."""
     query = update.callback_query
     await query.answer()
     await query.message.edit_text(
@@ -59,6 +61,7 @@ async def guardian_council_callback(
 async def about_departments_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
+    """Обработка кнопки Отделы Фонда."""
     query = update.callback_query
     await query.answer()
     await query.message.edit_text(
@@ -85,6 +88,7 @@ async def our_team_callback(
 async def contact_list_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
+    """Обработка кнопки список контактов."""
     query = update.callback_query
     await query.answer()
     await query.message.edit_text(

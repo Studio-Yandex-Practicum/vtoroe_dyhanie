@@ -6,11 +6,13 @@ from telegram import Update
 from bot.core.db.base import AsyncSessionLocal
 from bot.core.db.models import UserPermission
 from bot.constants import text
-import telegram
-from telegram import CallbackQuery
 
 
 def permission_required(func):
+    """
+    Декоратор для проверки доступа пользователя.
+    Применяется к любым callback функциям к которым нужно ограничить доступ.
+    """
     @wraps(func)
     async def wrapped(update: Update, context, *args, **kwargs):
         user_id = update.effective_user.id
@@ -45,24 +47,3 @@ async def add_permission(user_id):
             current_user = UserPermission(tg_user_id=user_id, permission=True)
         session.add(current_user)
         await session.commit()
-
-
-def safe_edit_text(func):
-    """
-    Декоратор для проверки сообщений на дублирующийся контент.
-    В тех случаях когда пользователь может нажать на одну и ту же кнопку
-    несколько раз, появляется исключение telegram.error.BadRequest: Message is not modified.
-    Данный декоратор создан, чтобы обрабатывать это исключение.
-    """
-
-    @wraps(func)
-    async def wrapper(query: CallbackQuery, *args, **kwargs):
-        try:
-            return await func(query, *args, **kwargs)
-        except telegram.error.BadRequest as e:
-            if "Message is not modified" in str(e):
-                return
-            else:
-                raise e
-
-    return wrapper

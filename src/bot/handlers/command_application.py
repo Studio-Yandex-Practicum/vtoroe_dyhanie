@@ -8,6 +8,7 @@ from bot.constants.text import HELP_MESSAGE, STOP_MESSAGE
 
 
 async def help(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Команда запроса помощи"""
     await update.message.reply_text(HELP_MESSAGE)
 
 
