@@ -10,8 +10,10 @@ from bot.keyboards.basic_info_keyboards import (
     departments_markup, departmentss_markup, guardian_council_markup,
     org_structure_markup, our_team_markup, social_networks_markup
 )
+from bot.utils import permission_required
 
 
+@permission_required
 async def organization_structure_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
@@ -26,6 +28,7 @@ async def organization_structure_callback(
     )
 
 
+@permission_required
 async def about_council_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
@@ -40,6 +43,7 @@ async def about_council_callback(
     )
 
 
+@permission_required
 async def guardian_council_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
@@ -54,6 +58,7 @@ async def guardian_council_callback(
     )
 
 
+@permission_required
 async def about_departments_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
@@ -65,6 +70,7 @@ async def about_departments_callback(
     )
 
 
+@permission_required
 async def our_team_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
@@ -79,6 +85,7 @@ async def our_team_callback(
     )
 
 
+@permission_required
 async def contact_list_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
@@ -90,6 +97,7 @@ async def contact_list_callback(
     )
 
 
+@permission_required
 async def org_departments_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
@@ -100,6 +108,7 @@ async def org_departments_callback(
     )
 
 
+@permission_required
 async def social_networks_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
@@ -132,6 +141,7 @@ async def handle_multipattern(
     )
 
 
+@permission_required
 async def council_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
@@ -141,6 +151,7 @@ async def council_callback(
     await handle_multipattern(update, context, text, markup)
 
 
+@permission_required
 async def departments_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
@@ -150,6 +161,7 @@ async def departments_callback(
     await handle_multipattern(update, context, text, markup)
 
 
+@permission_required
 async def basic_information_back_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
