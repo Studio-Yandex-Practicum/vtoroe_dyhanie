@@ -24,6 +24,7 @@ pydantic = "2.3.0"
 requests = "2.26.0"
 pydantic-settings = "2.0.3"
 python-dotenv = "^1.0.0"
+autopep8 = "2.0.4"
 
 [tool.poetry.extras]
 flake8 = ["3.9.2"]
