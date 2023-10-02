@@ -41,10 +41,8 @@ from bot.keyboards.about_fund_keyboards import (
     fund_mission_markup, fund_projects_markup, processes_anatomy_markup,
     things_path_markup
 )
-from bot.utils import permission_required
 
 
-@permission_required
 async def handle_back_to_menu(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
@@ -60,24 +58,15 @@ async def handle_back_to_menu(
     )
 
 
-@permission_required
 async def about_fund_menu_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     """Обработчик кнопок основного меню блока "О Фонде".
     """
     menu_item = update.message.text
-    handlers = {
-        'Миссия и основная цель': about_fund_mission,
-        'Путь вещей': things_path,
-        'Анатомия процессов': processes_anatomy,
-        'Проекты Фонда': fund_projects,
-        'Годовые отчеты': annual_reports,
-    }
-    await handlers.get(menu_item)(update, context)
+    await about_menu_handlers.get(menu_item)(update, context)
 
 
-@permission_required
 async def about_fund_inline_btns_handler(
         update: Update,
         context: ContextTypes.DEFAULT_TYPE
@@ -86,15 +75,8 @@ async def about_fund_inline_btns_handler(
     """
     query = update.callback_query
     menu_item = query.data
-    handlers = {
-        f'{ABOUT_PREFIX}more_info_mission': handle_mission_more_info,
-        f'{ABOUT_PREFIX}more_info_path': handle_path_more_info,
-        f'{ABOUT_PREFIX}more_info_processes': handle_process_anatomy_more_info,
-        f'{ABOUT_PREFIX}more_info_projects': handle_projects_more_info,
-    }
-
     await query.answer()
-    await handlers.get(menu_item)(query)
+    await about_inline_handlers.get(menu_item)(query)
 
 
 # Блок "Миссия и основная цель"
@@ -109,13 +91,7 @@ async def send_about_fund_message(message: Message) -> None:
     await message.reply_text(FUND_MISSION.get('msg_5'))
     await message.reply_text(
         FUND_MISSION.get('msg_6'),
-        entities=(
-            MessageEntity(
-                type=MessageEntity.BOLD,
-                offset=0,
-                length=len(FUND_MISSION.get('msg_6'))
-            ),
-        ),
+        parse_mode=ParseMode.MARKDOWN_V2,
         reply_markup=fund_mission_markup
     )
 
@@ -151,13 +127,7 @@ async def send_things_path_message(message: Message) -> None:
     await message.reply_text(THINGS_PATH.get('msg_4'))
     await message.reply_text(
         THINGS_PATH.get('msg_5'),
-        entities=(
-            MessageEntity(
-                type=MessageEntity.BOLD,
-                offset=0,
-                length=len(THINGS_PATH.get('msg_5'))
-            ),
-        ),
+        parse_mode=ParseMode.MARKDOWN_V2,
         reply_markup=things_path_markup
     )
 
@@ -267,6 +237,20 @@ async def annual_reports(
     """Обработчик кнопки "Годовые отчеты".
     """
     await send_annual_reports_message(update.message)
+
+about_inline_handlers = {
+    f'{ABOUT_PREFIX}more_info_mission': handle_mission_more_info,
+    f'{ABOUT_PREFIX}more_info_path': handle_path_more_info,
+    f'{ABOUT_PREFIX}more_info_processes': handle_process_anatomy_more_info,
+    f'{ABOUT_PREFIX}more_info_projects': handle_projects_more_info,
+}
+about_menu_handlers = {
+    'Миссия и основная цель': about_fund_mission,
+    'Путь вещей': things_path,
+    'Анатомия процессов': processes_anatomy,
+    'Проекты Фонда': fund_projects,
+    'Годовые отчеты': annual_reports,
+}
 
 
 def register_handlers(app: Application) -> None:

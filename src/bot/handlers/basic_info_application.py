@@ -10,7 +10,6 @@ from bot.keyboards.basic_info_keyboards import (
     departments_markup, departmentss_markup, guardian_council_markup,
     org_structure_markup, our_team_markup, social_networks_markup
 )
-from bot.utils import permission_required
 
 
 async def organization_structure_callback(
@@ -27,7 +26,6 @@ async def organization_structure_callback(
     )
 
 
-@permission_required
 async def about_council_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
@@ -42,7 +40,6 @@ async def about_council_callback(
     )
 
 
-@permission_required
 async def guardian_council_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
@@ -57,7 +54,6 @@ async def guardian_council_callback(
     )
 
 
-@permission_required
 async def about_departments_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
@@ -69,7 +65,6 @@ async def about_departments_callback(
     )
 
 
-@permission_required
 async def our_team_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
@@ -84,7 +79,6 @@ async def our_team_callback(
     )
 
 
-@permission_required
 async def contact_list_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
@@ -96,7 +90,6 @@ async def contact_list_callback(
     )
 
 
-@permission_required
 async def org_departments_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
@@ -107,7 +100,6 @@ async def org_departments_callback(
     )
 
 
-@permission_required
 async def social_networks_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
@@ -121,43 +113,43 @@ async def social_networks_callback(
     )
 
 
-@permission_required
+async def handle_multipattern(
+        update: Update,
+        context: ContextTypes.DEFAULT_TYPE,
+        text: dict,
+        markup
+) -> None:
+    query = update.callback_query
+    await query.answer()
+    new_text = text.get(query.data)
+    if query.message.text_html == new_text or query.message.text == new_text:
+        return
+    await query.message.edit_text(
+        new_text,
+        parse_mode='HTML',
+        disable_web_page_preview=True,
+        reply_markup=markup,
+    )
+
+
 async def council_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     """Обработка клавиатуры совета Фонда."""
-    query = update.callback_query
-    await query.answer()
-    new_text = basic_info_text.COUNCIL_QUESTIONS.get(query.data)
-    if query.message.text_html == new_text or query.message.text == new_text:
-        return
-    await query.message.edit_text(
-        new_text,
-        parse_mode='HTML',
-        disable_web_page_preview=True,
-        reply_markup=council_markup,
-    )
+    text = basic_info_text.COUNCIL_QUESTIONS
+    markup = council_markup
+    await handle_multipattern(update, context, text, markup)
 
 
-@permission_required
 async def departments_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     """Обработка клавиатуры отделов Фонда."""
-    query = update.callback_query
-    await query.answer()
-    new_text = basic_info_text.DEPARTMENTS_MESSAGE.get(query.data)
-    if query.message.text_html == new_text or query.message.text == new_text:
-        return
-    await query.message.edit_text(
-        new_text,
-        parse_mode='HTML',
-        disable_web_page_preview=True,
-        reply_markup=departments_final_markup,
-    )
+    text = basic_info_text.DEPARTMENTS_MESSAGE
+    markup = departments_final_markup
+    await handle_multipattern(update, context, text, markup)
 
 
-@permission_required
 async def basic_information_back_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:

@@ -8,10 +8,8 @@ from bot.constants.button import MENU_CONTACT_LIST
 from bot.constants.state import CONTACT_LIST
 from bot.handlers.main_application import done_callback
 from bot.keyboards.keyboards import main_menu_markup
-from bot.utils import permission_required
 
 
-@permission_required
 async def contact_list_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> int:

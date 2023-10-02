@@ -2,10 +2,8 @@ from telegram import Update
 from telegram.ext import Application, ContextTypes, filters, MessageHandler
 
 from bot.constants import faq_text
-from bot.utils import permission_required
 
 
-@permission_required
 async def faq_callback(
         update: Update,
         context: ContextTypes.DEFAULT_TYPE,
