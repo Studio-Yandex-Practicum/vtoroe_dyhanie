@@ -1,5 +1,4 @@
-from bot.constants.links import FEEDBACK_LINK
-
+from bot.constants.links import FEEDBACK_LINK, URL_KNOWLEDGE_BASE
 
 STOP_MESSAGE = "Работа приложения остановлена."
 HELP_MESSAGE = "Написать в поддержку"
@@ -15,6 +14,11 @@ FAILED_THE_TEST = (
     "Попробуй ввести его еще раз "
     "или обратись в HR-отдел Фонда или на почту hr@vtoroe.ru."
 )
+KNOWLEDGE_BASE_MESSAGE = (
+    "Чтобы вся важная и нужная в работе информация была в одном месте, мы"
+    f" создали [Базу знаний]({URL_KNOWLEDGE_BASE}) для сотрудников\."
+    " В ней собраны регламенты и бизнес\-процессы, по которым мы работаем"
+)
 PASSED_THE_TEST = (
     "Верно! Выбери интересующую тебя тему из списка "
     "в меню и я помогу тебе найти нужную информацию."
@@ -23,6 +27,7 @@ PASSED_THE_TEST = (
 STICKER_ID: str = (
     "CAACAgIAAxkBAAIDwGUEItYpuU5DXDRigDA1M9SL-AdcAALTJAACHRAwSj-yFNWnj6hDMAQ"
 )
+
 FEEDBACK_MESSAGE: str = (
     'Мы сделали анонимную форму обратной связи для сотрудников Фонда — для '
     'тех, кто работает в бэк\-офисе, на складах в Москве и Костроме, '
@@ -37,3 +42,4 @@ BACK_TO_MAIN_MENU = 'В главное меню'
 
 # Для возвращения в меню раздела
 BACK_TO_MENU = 'Выбери интересующую тебя тему из списка:'
+

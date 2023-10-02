@@ -1,3 +1,18 @@
+from telegram import Update
+from telegram.ext import ContextTypes
+
+from bot.constants.text import KNOWLEDGE_BASE_MESSAGE
+
+
+async def knowledge_base(
+    update: Update, context: ContextTypes.DEFAULT_TYPE
+) -> None:
+    """Отсылает сообщение с описанием базы знаний и ссылку на нее."""
+    await update.message.reply_text(
+        text=KNOWLEDGE_BASE_MESSAGE,
+        parse_mode="Markdown",
+        disable_web_page_preview=True,
+    )
 from telegram import CallbackQuery, Update
 from telegram.ext import ContextTypes
 
@@ -26,3 +41,4 @@ async def handle_back_to_main_menu(query: CallbackQuery) -> int:
         BACK_TO_MAIN_MENU, reply_markup=main_menu_markup
     )
     return MAIN_MENU
+
