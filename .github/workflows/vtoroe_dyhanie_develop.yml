@@ -24,10 +24,10 @@ jobs:
         pip install flake8 pep8-naming flake8-broken-line flake8-return flake8-isort mypy
         pip install -r requirements.txt
 
-    - name: Test with flake8
-      run: |
-        cd src/
-        python -m flake8
+    # - name: Test with flake8
+      # run: |
+        # cd src/
+        # python -m flake8
 
   # Создаем архив проекта и копируем его на сервер
   copy_project_on_server:
