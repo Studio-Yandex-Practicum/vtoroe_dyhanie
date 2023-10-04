@@ -20,7 +20,6 @@
 from telegram import (
     CallbackQuery,
     Message,
-    MessageEntity,
     Update
 )
 from telegram.constants import ParseMode
@@ -41,8 +40,10 @@ from bot.keyboards.about_fund_keyboards import (
     fund_mission_markup, fund_projects_markup, processes_anatomy_markup,
     things_path_markup
 )
+from bot.utils import permission_required
 
 
+@permission_required
 async def handle_back_to_menu(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
@@ -58,6 +59,7 @@ async def handle_back_to_menu(
     )
 
 
+@permission_required
 async def about_fund_menu_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
@@ -67,6 +69,7 @@ async def about_fund_menu_callback(
     await about_menu_handlers.get(menu_item)(update, context)
 
 
+@permission_required
 async def about_fund_inline_btns_handler(
         update: Update,
         context: ContextTypes.DEFAULT_TYPE
@@ -237,6 +240,7 @@ async def annual_reports(
     """Обработчик кнопки "Годовые отчеты".
     """
     await send_annual_reports_message(update.message)
+
 
 about_inline_handlers = {
     f'{ABOUT_PREFIX}more_info_mission': handle_mission_more_info,

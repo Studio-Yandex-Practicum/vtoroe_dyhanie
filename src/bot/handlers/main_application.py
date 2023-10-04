@@ -15,6 +15,7 @@ from bot.core.settings import settings
 from bot.keyboards.keyboards import (
     main_menu_markup
 )
+from bot.utils import add_permission
 
 
 async def greeting_callback(
@@ -40,6 +41,7 @@ async def check_the_secret_word_callback(
     if word.lower() != settings.secret_word.lower():
         await update.message.reply_text(text.FAILED_THE_TEST)
         return CHECK
+    await add_permission(update.message.from_user.id)
     await update.message.reply_sticker(text.STICKER_ID)
     await update.message.reply_text(
         text.PASSED_THE_TEST, reply_markup=main_menu_markup

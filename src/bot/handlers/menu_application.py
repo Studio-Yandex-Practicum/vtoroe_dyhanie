@@ -17,8 +17,10 @@ from bot.keyboards.keyboards import (
     faq_menu_markup, main_button_markup, main_menu_markup
 )
 from bot.keyboards.about_fund_keyboards import about_fund_markup
+from bot.utils import permission_required
 
 
+@permission_required
 async def reg_forms_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
@@ -31,6 +33,7 @@ async def reg_forms_callback(
     )
 
 
+@permission_required
 async def about_fund_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
@@ -43,6 +46,7 @@ async def about_fund_callback(
     )
 
 
+@permission_required
 async def feedback_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
@@ -55,6 +59,7 @@ async def feedback_callback(
     )
 
 
+@permission_required
 async def basic_information_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
@@ -65,6 +70,7 @@ async def basic_information_callback(
     )
 
 
+@permission_required
 async def faq_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
@@ -74,6 +80,7 @@ async def faq_callback(
     )
 
 
+@permission_required
 async def knowledge_base_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
@@ -86,6 +93,7 @@ async def knowledge_base_callback(
     )
 
 
+@permission_required
 async def query_back_to_main_menu_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
@@ -97,6 +105,7 @@ async def query_back_to_main_menu_callback(
     )
 
 
+@permission_required
 async def back_to_main_menu_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
