@@ -1,0 +1,89 @@
+name: Vtoroe_dyhanie_develop
+
+# Workflow будет срабатывать на команду push в ветку develop
+on:
+  push:
+    branches: [ develop ]
+
+# После срабатывания "on" выполнятся следующие действия:
+jobs:
+  # Проверяем код в папке src/ с помощью flake8
+  tests:
+    name: Code test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8 pep8-naming flake8-broken-line flake8-return flake8-isort mypy
+        pip install -r requirements.txt
+
+    # - name: Test with flake8
+      # run: |
+        # cd src/
+        # python -m flake8
+
+  # Создаем архив проекта и копируем его на сервер
+  copy_project_on_server:
+    name: Copy project on server
+    runs-on: ubuntu-latest
+    needs: tests
+    steps:
+    - uses: actions/checkout@v3
+    - name: Create archive with project
+      run: |
+        mkdir ../build
+        cp -TR . ../build
+        tar -cvf deploy.tar ../build/
+
+    - name: Copy archive on server
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USER }}
+        key: ${{ secrets.SSH_KEY }}
+        source: "deploy.tar"
+        target: "/home/"
+
+  # Распаковываем архив и через docker-compose собираем
+  # и запускаем контейнер с ботом
+  run_bot:
+    name: Run bot
+    runs-on: ubuntu-latest
+    needs: copy_project_on_server
+    # На Этапе разработки стоит условие, что push должен осуществляться в ветку develop
+    # После тестирования необходимо поменять на master
+    if: github.ref_name == 'develop'
+    steps:
+      - name: Run bot in docker
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.SSH_KEY }}
+          # Заходим в домашнюю директорию. В ней находится архив.
+          # Распакуем архив. После распаковки удалим его.
+          # Заходим в директорию с проектом.
+          # Если в директории оказался .env файл - удаляем его.
+          # Создаем .env файл, в который помещаем токен бота.
+          # Заходим в директорию с docker-compose.yaml.
+          # Останавливаем работающие контейнеры и удаляем их.
+          # Удаляем все имеющиеся на сервере docker-образы.
+          # Запускаем docker-compose в фоновом режиме.
+          script: |
+            cd /home
+            tar -xvf deploy.tar
+            rm deploy.tar
+            cd build/
+            rm -f .env
+            echo TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }} >> .env
+            cd infra/
+            docker-compose rm -fsv
+            docker rmi $(docker images -aq)
+            docker-compose up -d
