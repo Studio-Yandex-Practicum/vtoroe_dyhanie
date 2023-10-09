@@ -1,2 +1,2 @@
-CHECK: int = 1
-CONTACT_LIST: int = 1
+CHECK = 1
+CONTACT_LIST = 1
