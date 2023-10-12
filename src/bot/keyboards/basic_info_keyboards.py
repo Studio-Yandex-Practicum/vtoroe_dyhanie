@@ -259,3 +259,12 @@ guardian_council_keyboard = [
     ],
 ]
 guardian_council_markup = InlineKeyboardMarkup(guardian_council_keyboard)
+
+# 9. Клавиатура для 'contact_list'
+contact_list_keyboard = [
+    (InlineKeyboardButton(
+        'Скачать справочник',
+        url='https://docs.google.com/spreadsheets/d/1m_y8rtod0VEGBAmhmqxK3ax-ulOUfeJNlvMApluhBFM/edit'
+    ),),
+]
+contact_list_markup = InlineKeyboardMarkup(contact_list_keyboard)
