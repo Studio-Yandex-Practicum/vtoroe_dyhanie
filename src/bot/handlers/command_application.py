@@ -1,6 +1,8 @@
 from telegram import Update
 from telegram.ext import (
-    Application, CommandHandler, ContextTypes,
+    Application,
+    CommandHandler,
+    ContextTypes,
     ConversationHandler,
 )
 
@@ -19,5 +21,5 @@ async def stop(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 def register_handlers(app: Application):
-    app.add_handler(CommandHandler("start", help))
-    app.add_handler(CommandHandler("stop", stop))
+    app.add_handler(CommandHandler('start', help))
+    app.add_handler(CommandHandler('stop', stop))
