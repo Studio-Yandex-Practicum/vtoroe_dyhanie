@@ -2,36 +2,37 @@ from telegram import (
     Update,
 )
 from telegram.ext import (
-    Application, CommandHandler, ContextTypes,
-    ConversationHandler, filters, MessageHandler,
+    Application,
+    CommandHandler,
+    ContextTypes,
+    ConversationHandler,
+    filters,
+    MessageHandler,
 )
 
 from bot.constants import text
 from bot.constants.state import CHECK
-from bot.constants.text import (
-    START_MESSAGE
-)
+from bot.constants.text import START_MESSAGE_PART_ONE, START_MESSAGE_PART_TWO
 from bot.core.settings import settings
-from bot.keyboards.keyboards import (
-    main_menu_markup
-)
+from bot.keyboards.keyboards import main_menu_markup
 
 
 async def greeting_callback(
-        update: Update,
-        context: ContextTypes.DEFAULT_TYPE,
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
 ) -> int:
     """
     Базовая функция начинающая диалог с юзером
     и открывающий доступ к check_secret_conv_handler.
     """
-    await update.message.reply_text(START_MESSAGE)
+    await update.message.reply_text(START_MESSAGE_PART_ONE)
+    await update.message.reply_text(START_MESSAGE_PART_TWO)
     return CHECK
 
 
 async def check_the_secret_word_callback(
-        update: Update,
-        context: ContextTypes.DEFAULT_TYPE,
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
 ) -> int:
     """
     Функция проверяющая доступ к боту по секретному слову.
@@ -48,8 +49,8 @@ async def check_the_secret_word_callback(
 
 
 async def done_callback(
-        update: Update,
-        context: ContextTypes.DEFAULT_TYPE,
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
 ) -> int:
     """
     Функция заканчивающая работу бота.
