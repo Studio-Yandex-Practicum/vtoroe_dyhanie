@@ -20,7 +20,7 @@ basic_information_keyboard = [
         callback_data=f'{INFO_PREFIX}our_team'
     )],
     [InlineKeyboardButton(
-        'Соцсети фонда',
+        'Соцсети Фонда',
         callback_data=f'{INFO_PREFIX}social_networks'
     )],
     [
@@ -34,7 +34,7 @@ basic_information_markup = InlineKeyboardMarkup(basic_information_keyboard)
 # 2. Клавиатура для 'organization_structure'
 org_structure_keyboard = [
     [InlineKeyboardButton(
-        'Совет Фонда',
+        'Совет фонда',
         callback_data=f'{INFO_PREFIX}council'
     )],
     [
@@ -111,13 +111,13 @@ council_keyboard = [
     ],
     [
         InlineKeyboardButton(
-            'Как связаны Директор и Совет фонда?',
+            'Как связаны директор и Совет фонда?',
             callback_data=f'{INFO_PREFIX}council_question_03',
         )
     ],
     [
         InlineKeyboardButton(
-            'В чем различие между Директором фонда и Председателем Совета?'
+            'В чем различие между директором Фонда и Председателем Совета?'
             'Кто "главнее"?',
             callback_data=f'{INFO_PREFIX}council_question_04',
         )
@@ -130,7 +130,7 @@ council_keyboard = [
     ],
     [
         InlineKeyboardButton(
-            'Чем занимается Попечительский Совет фонда?',
+            'Чем занимается Попечительский совет Фонда?',
             callback_data=f'{INFO_PREFIX}council_question_06',
         )
     ],
