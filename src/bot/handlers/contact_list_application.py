@@ -8,6 +8,7 @@ from bot.constants.button import MENU_CONTACT_LIST
 from bot.constants.state import CONTACT_LIST
 from bot.handlers.main_application import done_callback
 from bot.keyboards.keyboards import main_menu_markup
+from bot.keyboards.basic_info_keyboards import contact_list_markup
 
 
 async def contact_list_callback(
@@ -18,7 +19,8 @@ async def contact_list_callback(
         contact_list_text.MENU_CONTACT_LIST_INPUT_FIO
     )
     await update.message.reply_text(
-        contact_list_text.MENU_CONTACT_LIST_LOAD_CONTACT_LIST
+        contact_list_text.MENU_CONTACT_LIST_LOAD_CONTACT_LIST,
+        reply_markup=contact_list_markup
     )
     return CONTACT_LIST
 
