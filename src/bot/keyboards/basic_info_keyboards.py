@@ -22,7 +22,7 @@ basic_information_keyboard = [
     ],
     [
         InlineKeyboardButton(
-            'Соцсети фонда', callback_data=f'{INFO_PREFIX}social_networks'
+            'Соцсети Фонда', callback_data=f'{INFO_PREFIX}social_networks'
         )
     ],
     [
@@ -102,25 +102,25 @@ social_networks_markup = InlineKeyboardMarkup(social_networks_keyboard)
 council_keyboard = [
     [
         InlineKeyboardButton(
-            'За что отвечает Совет фонда?',
+            'За что отвечает Совет Фонда?',
             callback_data=f'{INFO_PREFIX}council_question_01',
         )
     ],
     [
         InlineKeyboardButton(
-            'Что делает Совет фонда?',
+            'Что делает Совет Фонда?',
             callback_data=f'{INFO_PREFIX}council_question_02',
         )
     ],
     [
         InlineKeyboardButton(
-            'Как связаны Директор и Совет фонда?',
+            'Как связаны Директор и Совет Фонда?',
             callback_data=f'{INFO_PREFIX}council_question_03',
         )
     ],
     [
         InlineKeyboardButton(
-            'В чем различие между Директором фонда и Председателем Совета?'
+            'В чем различие между директором Фонда и Председателем Совета?'
             'Кто "главнее"?',
             callback_data=f'{INFO_PREFIX}council_question_04',
         )
@@ -133,7 +133,7 @@ council_keyboard = [
     ],
     [
         InlineKeyboardButton(
-            'Чем занимается Попечительский Совет фонда?',
+            'Чем занимается Попечительский Совет Фонда?',
             callback_data=f'{INFO_PREFIX}council_question_06',
         )
     ],
@@ -273,3 +273,15 @@ guardian_council_keyboard = [
     ],
 ]
 guardian_council_markup = InlineKeyboardMarkup(guardian_council_keyboard)
+
+# 9. Клавиатура для 'contact_list'
+contact_list_keyboard = [
+    (
+        InlineKeyboardButton(
+            'Скачать справочник',
+            url='https://docs.google.com/spreadsheets/d/'
+            '1m_y8rtod0VEGBAmhmqxK3ax-ulOUfeJNlvMApluhBFM/edit',
+        ),
+    ),
+]
+contact_list_markup = InlineKeyboardMarkup(contact_list_keyboard)

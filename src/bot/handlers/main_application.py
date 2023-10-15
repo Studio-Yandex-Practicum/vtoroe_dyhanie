@@ -12,7 +12,7 @@ from telegram.ext import (
 
 from bot.constants import text
 from bot.constants.state import CHECK
-from bot.constants.text import START_MESSAGE
+from bot.constants.text import START_MESSAGE_PART_ONE, START_MESSAGE_PART_TWO
 from bot.core.settings import settings
 from bot.keyboards.keyboards import main_menu_markup
 
@@ -25,7 +25,8 @@ async def greeting_callback(
     Базовая функция начинающая диалог с юзером
     и открывающий доступ к check_secret_conv_handler.
     """
-    await update.message.reply_text(START_MESSAGE)
+    await update.message.reply_text(START_MESSAGE_PART_ONE)
+    await update.message.reply_text(START_MESSAGE_PART_TWO)
     return CHECK
 
 
