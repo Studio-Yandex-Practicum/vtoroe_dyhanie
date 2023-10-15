@@ -12,17 +12,19 @@ basic_information_keyboard = [
     [
         InlineKeyboardButton(
             'Организационная структура',
-            callback_data=f'{INFO_PREFIX}organization_structure'
+            callback_data=f'{INFO_PREFIX}organization_structure',
         )
     ],
-    [InlineKeyboardButton(
-        'Наша команда',
-        callback_data=f'{INFO_PREFIX}our_team'
-    )],
-    [InlineKeyboardButton(
-        'Соцсети Фонда',
-        callback_data=f'{INFO_PREFIX}social_networks'
-    )],
+    [
+        InlineKeyboardButton(
+            'Наша команда', callback_data=f'{INFO_PREFIX}our_team'
+        )
+    ],
+    [
+        InlineKeyboardButton(
+            'Соцсети Фонда', callback_data=f'{INFO_PREFIX}social_networks'
+        )
+    ],
     [
         InlineKeyboardButton(
             'Вернуться в главное меню', callback_data='back_to_main_menu'
@@ -33,51 +35,51 @@ basic_information_markup = InlineKeyboardMarkup(basic_information_keyboard)
 
 # 2. Клавиатура для 'organization_structure'
 org_structure_keyboard = [
-    [InlineKeyboardButton(
-        'Совет фонда',
-        callback_data=f'{INFO_PREFIX}council'
-    )],
+    [
+        InlineKeyboardButton(
+            'Совет Фонда', callback_data=f'{INFO_PREFIX}council'
+        )
+    ],
     [
         InlineKeyboardButton(
             'Попечительский совет',
-            callback_data=f'{INFO_PREFIX}guardian_council'
+            callback_data=f'{INFO_PREFIX}guardian_council',
         )
     ],
-    [InlineKeyboardButton(
-        'Отделы Фонда',
-        callback_data=f'{INFO_PREFIX}about_departments'
-    )],
-    [InlineKeyboardButton(
-        'Назад',
-        callback_data='basic_information_back'
-    )],
-    [InlineKeyboardButton(
-        'В главное меню',
-        callback_data='back_to_main_menu'
-    )],
+    [
+        InlineKeyboardButton(
+            'Отделы Фонда', callback_data=f'{INFO_PREFIX}about_departments'
+        )
+    ],
+    [InlineKeyboardButton('Назад', callback_data='basic_information_back')],
+    [
+        InlineKeyboardButton(
+            'В главное меню', callback_data='back_to_main_menu'
+        )
+    ],
 ]
 org_structure_markup = InlineKeyboardMarkup(org_structure_keyboard)
 
 # 3. Клавиатура для 'our_team'
 our_team_keyboard = [
     # Пока ещё не реализовано и на схеме нет:
-    [InlineKeyboardButton(
-        'Список контактов',
-        callback_data=f'{INFO_PREFIX}contact_list'
-        )],
-    [InlineKeyboardButton(
-        "Отделы Фонда",
-        callback_data=f'{INFO_PREFIX}org_departmentss'
-        )],
-    [InlineKeyboardButton(
-        'Назад',
-        callback_data='basic_information_back'
-        )],
+    [
+        InlineKeyboardButton(
+            'Список контактов', callback_data=f'{INFO_PREFIX}contact_list'
+        )
+    ],
+    [
+        InlineKeyboardButton(
+            'Отделы Фонда', callback_data=f'{INFO_PREFIX}org_departmentss'
+        )
+    ],
+    [InlineKeyboardButton('Назад', callback_data='basic_information_back')],
     # На схеме этой кнопки нет, но она мне кажется логичной
-    [InlineKeyboardButton(
-        'В главное меню',
-        callback_data='back_to_main_menu'
-    )],
+    [
+        InlineKeyboardButton(
+            'В главное меню', callback_data='back_to_main_menu'
+        )
+    ],
 ]
 our_team_markup = InlineKeyboardMarkup(our_team_keyboard)
 
@@ -88,10 +90,11 @@ social_networks_keyboard = [
             'Спасибо, изучу!', callback_data='basic_information_back'
         )
     ],
-    [InlineKeyboardButton(
-        'В главное меню',
-        callback_data='back_to_main_menu'
-    )],
+    [
+        InlineKeyboardButton(
+            'В главное меню', callback_data='back_to_main_menu'
+        )
+    ],
 ]
 social_networks_markup = InlineKeyboardMarkup(social_networks_keyboard)
 
@@ -99,19 +102,19 @@ social_networks_markup = InlineKeyboardMarkup(social_networks_keyboard)
 council_keyboard = [
     [
         InlineKeyboardButton(
-            'За что отвечает Совет фонда?',
-            callback_data=f'{INFO_PREFIX}council_question_01'
+            'За что отвечает Совет Фонда?',
+            callback_data=f'{INFO_PREFIX}council_question_01',
         )
     ],
     [
         InlineKeyboardButton(
-            'Что делает Совет фонда?',
-            callback_data=f'{INFO_PREFIX}council_question_02'
+            'Что делает Совет Фонда?',
+            callback_data=f'{INFO_PREFIX}council_question_02',
         )
     ],
     [
         InlineKeyboardButton(
-            'Как связаны директор и Совет фонда?',
+            'Как связаны Директор и Совет Фонда?',
             callback_data=f'{INFO_PREFIX}council_question_03',
         )
     ],
@@ -130,28 +133,35 @@ council_keyboard = [
     ],
     [
         InlineKeyboardButton(
-            'Чем занимается Попечительский совет Фонда?',
+            'Чем занимается Попечительский Совет Фонда?',
             callback_data=f'{INFO_PREFIX}council_question_06',
         )
     ],
-    [InlineKeyboardButton(
-        'Назад',
-        callback_data=f'{INFO_PREFIX}organization_structure'
-    )],
-    [InlineKeyboardButton(
-        'В главное меню',
-        callback_data='back_to_main_menu'
-    )],
+    [
+        InlineKeyboardButton(
+            'Назад', callback_data=f'{INFO_PREFIX}organization_structure'
+        )
+    ],
+    [
+        InlineKeyboardButton(
+            'В главное меню', callback_data='back_to_main_menu'
+        )
+    ],
 ]
 council_markup = InlineKeyboardMarkup(council_keyboard)
 
 # 6. Клавиатура для возвратов из раздела о департаментах
 departments_final_keyboard = [
-    [InlineKeyboardButton(
-        'Понятно, спасибо!',
-        callback_data='back_to_main_menu'
-    )],
-    [InlineKeyboardButton('Назад', callback_data=f'{INFO_PREFIX}about_departments')],
+    [
+        InlineKeyboardButton(
+            'Понятно, спасибо!', callback_data='back_to_main_menu'
+        )
+    ],
+    [
+        InlineKeyboardButton(
+            'Назад', callback_data=f'{INFO_PREFIX}about_departments'
+        )
+    ],
 ]
 departments_final_markup = InlineKeyboardMarkup(departments_final_keyboard)
 
@@ -221,14 +231,16 @@ departments_keyboard_base = [
 departments_keyboard = deepcopy(departments_keyboard_base)
 departments_keyboard.extend(
     [
-        [InlineKeyboardButton(
-            'Назад',
-            callback_data=f'{INFO_PREFIX}organization_structure'
-        )],
-        [InlineKeyboardButton(
-            'В главное меню',
-            callback_data='back_to_main_menu'
-        )],
+        [
+            InlineKeyboardButton(
+                'Назад', callback_data=f'{INFO_PREFIX}organization_structure'
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                'В главное меню', callback_data='back_to_main_menu'
+            )
+        ],
     ]
 )
 departments_markup = InlineKeyboardMarkup(departments_keyboard)
@@ -237,14 +249,16 @@ departments_markup = InlineKeyboardMarkup(departments_keyboard)
 departmentss_keyboard = deepcopy(departments_keyboard_base)
 departmentss_keyboard.extend(
     [
-        [InlineKeyboardButton(
-            'Назад',
-            callback_data=f'{INFO_PREFIX}our_team'
-        )],
-        [InlineKeyboardButton(
-            'В главное меню',
-            callback_data='back_to_main_menu'
-        )],
+        [
+            InlineKeyboardButton(
+                'Назад', callback_data=f'{INFO_PREFIX}our_team'
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                'В главное меню', callback_data='back_to_main_menu'
+            )
+        ],
     ]
 )
 departmentss_markup = InlineKeyboardMarkup(departmentss_keyboard)
@@ -254,7 +268,7 @@ guardian_council_keyboard = [
     [
         InlineKeyboardButton(
             'Понятно, спасибо!',
-            callback_data=f'{INFO_PREFIX}organization_structure'
+            callback_data=f'{INFO_PREFIX}organization_structure',
         )
     ],
 ]
@@ -262,9 +276,12 @@ guardian_council_markup = InlineKeyboardMarkup(guardian_council_keyboard)
 
 # 9. Клавиатура для 'contact_list'
 contact_list_keyboard = [
-    (InlineKeyboardButton(
-        'Скачать справочник',
-        url='https://docs.google.com/spreadsheets/d/1m_y8rtod0VEGBAmhmqxK3ax-ulOUfeJNlvMApluhBFM/edit'
-    ),),
+    (
+        InlineKeyboardButton(
+            'Скачать справочник',
+            url='https://docs.google.com/spreadsheets/d/'
+            '1m_y8rtod0VEGBAmhmqxK3ax-ulOUfeJNlvMApluhBFM/edit',
+        ),
+    ),
 ]
 contact_list_markup = InlineKeyboardMarkup(contact_list_keyboard)
