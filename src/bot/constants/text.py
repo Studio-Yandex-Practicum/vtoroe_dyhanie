@@ -3,7 +3,7 @@ from bot.constants.links import FEEDBACK_LINK, URL_KNOWLEDGE_BASE
 
 STOP_MESSAGE = 'Работа приложения остановлена.'
 HELP_MESSAGE = 'Написать в поддержку'
-START_MESSAGE = (
+START_MESSAGE_PART_ONE = (
     'Привет! Меня зовут Втордыш, '
     'и я помощник сотрудников Фонда ВТОРОЕ ДЫХАНИЕ. '
     'Я создан для того, чтобы помочь новеньким адаптироваться, '
