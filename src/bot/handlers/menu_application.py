@@ -9,9 +9,7 @@ from bot.constants.about_fund_text import ABOUT_FUND_HISTORY
 from bot.constants.basic_info_text import BASIC_INFORMATION_MENU
 from bot.constants.faq_text import FAQ_MESSAGE
 from bot.constants.rules_text import RULES_INFORMATION_MENU
-from bot.constants.text import (
-    FEEDBACK_MESSAGE, KNOWLEDGE_BASE_MESSAGE
-)
+from bot.constants.text import (FEEDBACK_MESSAGE, KNOWLEDGE_BASE_MESSAGE)
 from bot.handlers.contact_list_application import contact_list_conv_handler
 from bot.keyboards.basic_info_keyboards import basic_information_markup
 from bot.keyboards.keyboards import (
@@ -127,12 +125,7 @@ def register_handlers(app: Application) -> None:
         button.BACK_TO_MAIN_MENU: back_to_main_menu_callback,
     }
     for btn, callback in registrator.items():
-        app.add_handler(
-            MessageHandler(
-                filters.Text([btn]),
-                callback
-            )
-        )
+        app.add_handler(MessageHandler(filters.Text([btn]),callback))
 
 
 async def rules_information_callback(
