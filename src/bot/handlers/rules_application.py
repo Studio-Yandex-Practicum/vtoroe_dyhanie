@@ -1,4 +1,4 @@
-from telegram import Update, InputFile, Message, User
+from telegram import Update
 from telegram.constants import ParseMode
 from telegram.ext import (
     Application, CallbackQueryHandler, ContextTypes
@@ -7,14 +7,14 @@ from telegram.ext import (
 from bot.constants import rules_text
 from bot.constants.query_patterns import INFO_PREFIX
 from bot.constants.rules_text import (
-    COMMUNICATION, WORKSHOP, KITCHEN,
+    COMMUNICATION, WORKSHOP,
     IN_COMMUNICATION, OUT_COMMUNICATION,
 )
 from bot.keyboards.rules_keyboards import (
     communication_markup, rules_markup,
     kitchen_markup, separate_collection_markup,
     regular_meetings_markup, workshop_markup,
-    in_communication_markup,
+    in_communication_markup, out_communication_markup
 )
 
 
@@ -45,16 +45,13 @@ async def workshop_callback(
     )
 
 
-
 async def kitchen_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
     """Обработка кнопки Кухня."""
-    query = update.callback_query
-    await query.answer()
-    await query.message.edit_text(
+    await update.callback_query.message.edit_text(
         rules_text.KITCHEN,
-        parse_mode='HTML',
+        parse_mode=ParseMode.MARKDOWN_V2,
         disable_web_page_preview=True,
         reply_markup=kitchen_markup,
     )
@@ -64,11 +61,9 @@ async def separate_collection_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
     """Обработка кнопки Раздельный сбор."""
-    query = update.callback_query
-    await query.answer()
-    await query.message.edit_text(
+    await update.callback_query.message.edit_text(
         rules_text.SEPARATE_COLLECTION,
-        parse_mode='HTML',
+        parse_mode=ParseMode.MARKDOWN_V2,
         disable_web_page_preview=True,
         reply_markup=separate_collection_markup,
     )
@@ -78,11 +73,9 @@ async def regular_meetings_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
     """Обработка кнопки Регулярные встречи."""
-    query = update.callback_query
-    await query.answer()
-    await query.message.edit_text(
+    await update.callback_query.message.edit_text(
         rules_text.REGULAR_MEETINGS,
-        parse_mode='HTML',
+        parse_mode=ParseMode.MARKDOWN_V2,
         disable_web_page_preview=True,
         reply_markup=regular_meetings_markup,
     )
@@ -92,9 +85,7 @@ async def rules_back_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     """Обработка кнопки Возврата в меню Общие правила."""
-    query = update.callback_query
-    await query.answer()
-    await query.message.edit_text(
+    await update.callback_query.message.edit_text(
         'Выберете действие:', reply_markup=rules_markup
     )
 
@@ -103,8 +94,6 @@ async def in_communication_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     """Обработка кнопки Внутренняя коммуникация."""
-    query = update.callback_query
-    await query.answer()
     await update.callback_query.message.reply_text(
         IN_COMMUNICATION,
         parse_mode=ParseMode.MARKDOWN_V2,
@@ -116,19 +105,13 @@ async def out_communication_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     """Обработка кнопки Внешняя коммуникация."""
-    query = update.callback_query
-    await query.answer()
-    file_path = 'test_pdf.pdf'
-    print(User.id)
-    with open(file_path, "rb") as file:
-        # Создаем объект InputFile, передаем в него файл
-        input_file = InputFile(file)
-        await context.bot.send_document(document=input_file, chat_id=context._chat_id)
     await update.callback_query.message.reply_text(
         OUT_COMMUNICATION.get('msg_1'),
         parse_mode=ParseMode.MARKDOWN_V2,
-        reply_markup=in_communication_markup
+        reply_markup=out_communication_markup
     )
+    document = open('пиар и коммуникация в фонде.pdf', 'rb')
+    await update.callback_query.message.reply_document(document)
 
 
 def register_handlers(app: Application) -> None:

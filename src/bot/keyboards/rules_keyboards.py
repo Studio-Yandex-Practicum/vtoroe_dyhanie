@@ -114,3 +114,16 @@ in_communication_keyboard = [
     )],
 ]
 in_communication_markup = InlineKeyboardMarkup(in_communication_keyboard)
+
+# 8. Клавиатура для возврата из раздела о внешней коммуникации
+out_communication_keyboard = [
+    [InlineKeyboardButton(
+        'Назад',
+        callback_data='rules_back'
+    )],
+    [InlineKeyboardButton(
+        'В главное меню',
+        callback_data='back_to_main_menu'
+    )],
+]
+out_communication_markup = InlineKeyboardMarkup(out_communication_keyboard)
