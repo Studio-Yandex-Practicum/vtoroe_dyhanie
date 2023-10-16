@@ -169,7 +169,8 @@ def register_handlers(app: Application) -> None:
         f'{INFO_PREFIX}our_team': our_team_callback,
         f'{INFO_PREFIX}contact_list': contact_list_callback,
         f'{INFO_PREFIX}org_departmentss': org_departments_callback,
-        f'{INFO_PREFIX}organization_structure': organization_structure_callback,
+        f'{INFO_PREFIX}organization_structure': (
+            organization_structure_callback),
         f'{INFO_PREFIX}council': about_council_callback,
         f'{INFO_PREFIX}guardian_council': guardian_council_callback,
         f'{INFO_PREFIX}social_networks': social_networks_callback,
