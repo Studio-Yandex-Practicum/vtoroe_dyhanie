@@ -1,4 +1,4 @@
-from telegram import Update
+from telegram import Update, InputFile, Message, User
 from telegram.constants import ParseMode
 from telegram.ext import (
     Application, CallbackQueryHandler, ContextTypes
@@ -6,11 +6,15 @@ from telegram.ext import (
 
 from bot.constants import rules_text
 from bot.constants.query_patterns import INFO_PREFIX
-from bot.constants.rules_text import COMMUNICATION, WORKSHOP
+from bot.constants.rules_text import (
+    COMMUNICATION, WORKSHOP, KITCHEN,
+    IN_COMMUNICATION, OUT_COMMUNICATION,
+)
 from bot.keyboards.rules_keyboards import (
     communication_markup, rules_markup,
     kitchen_markup, separate_collection_markup,
-    regular_meetings_markup, workshop_markup
+    regular_meetings_markup, workshop_markup,
+    in_communication_markup,
 )
 
 
@@ -18,8 +22,8 @@ async def communication_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     """Обработка кнопки Коммуникация."""
-    await update.callback_query.message.edit_text(COMMUNICATION.get('msg_1'))
-    await update.callback_query.message.edit_text(
+    await update.callback_query.message.reply_text(COMMUNICATION.get('msg_1'))
+    await update.callback_query.message.reply_text(
         COMMUNICATION.get('msg_2'),
         parse_mode=ParseMode.MARKDOWN_V2,
         reply_markup=communication_markup
@@ -30,6 +34,15 @@ async def workshop_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
     """Обработка кнопки Мастерская."""
+    await update.callback_query.message.reply_text(WORKSHOP.get('msg_1'))
+    await update.callback_query.message.reply_text(WORKSHOP.get('msg_2'))
+    await update.callback_query.message.reply_text(WORKSHOP.get('msg_3'))
+    await update.callback_query.message.reply_text(WORKSHOP.get('msg_4'))
+    await update.callback_query.message.reply_text(
+        WORKSHOP.get('msg_5'),
+        parse_mode=ParseMode.MARKDOWN_V2,
+        reply_markup=workshop_markup
+    )
 
 
 
@@ -86,6 +99,38 @@ async def rules_back_callback(
     )
 
 
+async def in_communication_callback(
+        update: Update, context: ContextTypes.DEFAULT_TYPE
+) -> None:
+    """Обработка кнопки Внутренняя коммуникация."""
+    query = update.callback_query
+    await query.answer()
+    await update.callback_query.message.reply_text(
+        IN_COMMUNICATION,
+        parse_mode=ParseMode.MARKDOWN_V2,
+        reply_markup=in_communication_markup
+    )
+
+
+async def out_communication_callback(
+        update: Update, context: ContextTypes.DEFAULT_TYPE
+) -> None:
+    """Обработка кнопки Внешняя коммуникация."""
+    query = update.callback_query
+    await query.answer()
+    file_path = 'test_pdf.pdf'
+    print(User.id)
+    with open(file_path, "rb") as file:
+        # Создаем объект InputFile, передаем в него файл
+        input_file = InputFile(file)
+        await context.bot.send_document(document=input_file, chat_id=context._chat_id)
+    await update.callback_query.message.reply_text(
+        OUT_COMMUNICATION.get('msg_1'),
+        parse_mode=ParseMode.MARKDOWN_V2,
+        reply_markup=in_communication_markup
+    )
+
+
 def register_handlers(app: Application) -> None:
     registrator = {
         f'{INFO_PREFIX}communication': communication_callback,
@@ -93,6 +138,8 @@ def register_handlers(app: Application) -> None:
         f'{INFO_PREFIX}kitchen': kitchen_callback,
         f'{INFO_PREFIX}separate_collection': separate_collection_callback,
         f'{INFO_PREFIX}regular_meetings': regular_meetings_callback,
+        f'{INFO_PREFIX}in_communication': in_communication_callback,
+        f'{INFO_PREFIX}out_communication': out_communication_callback,
         'rules_back': rules_back_callback
     }
     for pattern, handler in registrator.items():

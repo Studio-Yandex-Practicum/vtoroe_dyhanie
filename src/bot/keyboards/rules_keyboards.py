@@ -110,7 +110,7 @@ in_communication_keyboard = [
         callback_data='back_to_main_menu'
     )],
     [InlineKeyboardButton(
-        'Назад', callback_data=f'{INFO_PREFIX}in_communication'
+        'Назад', callback_data='rules_back'
     )],
 ]
 in_communication_markup = InlineKeyboardMarkup(in_communication_keyboard)
