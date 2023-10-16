@@ -56,18 +56,18 @@ async def done_callback(
     Функция заканчивающая работу бота.
     После её работы, бот будет принимать только команду /start.
     """
-    await update.message.reply_text("Возвращайтесь, буду рад пообщаться!")
+    await update.message.reply_text('Возвращайтесь, буду рад пообщаться!')
     return ConversationHandler.END
 
 
 check_secret_conv_handler = ConversationHandler(
-    entry_points=[CommandHandler("start", greeting_callback)],
+    entry_points=[CommandHandler('start', greeting_callback)],
     states={
         CHECK: [
             MessageHandler(filters.TEXT, check_the_secret_word_callback),
         ],
     },
-    fallbacks=[MessageHandler(filters.Regex("^Done$"), done_callback)],
+    fallbacks=[MessageHandler(filters.Regex('^Done$'), done_callback)],
 )
 
 
