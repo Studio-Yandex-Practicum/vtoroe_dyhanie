@@ -20,7 +20,6 @@
 from telegram import (
     CallbackQuery,
     Message,
-    MessageEntity,
     Update
 )
 from telegram.constants import ParseMode

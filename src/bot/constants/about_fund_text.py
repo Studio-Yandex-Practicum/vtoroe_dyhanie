@@ -119,4 +119,5 @@ FUND_PROJECTS = {
 ANNUAL_REPORTS = (
     rf'*Почитай наши [годовые отчеты]({ANNUAL_REPORTS_LINK})\.'
     r' Мы ими очень гордимся\!*'
+
 )
