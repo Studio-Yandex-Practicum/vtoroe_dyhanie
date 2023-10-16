@@ -151,7 +151,8 @@ departments_final_keyboard = [
         'Понятно, спасибо!',
         callback_data='back_to_main_menu'
     )],
-    [InlineKeyboardButton('Назад', callback_data=f'{INFO_PREFIX}about_departments')],
+    [InlineKeyboardButton(
+        'Назад', callback_data=f'{INFO_PREFIX}about_departments')],
 ]
 departments_final_markup = InlineKeyboardMarkup(departments_final_keyboard)
 
