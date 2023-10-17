@@ -1,4 +1,4 @@
-"""Файл с константами для блока 'О Фонде'."""
+'''Файл с константами для блока 'О Фонде'.'''
 PROCESSES_LINK = (
     'https://drive.google.com/file/d/'
     '11Oh9YIbvPuy4aZNNTRAzI0Oy0kJ7U0iG/view?usp=sharing'
@@ -119,5 +119,4 @@ FUND_PROJECTS = {
 ANNUAL_REPORTS = (
     rf'*Почитай наши [годовые отчеты]({ANNUAL_REPORTS_LINK})\.'
     r' Мы ими очень гордимся\!*'
-
 )

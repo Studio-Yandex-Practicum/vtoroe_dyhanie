@@ -2,16 +2,16 @@ from telegram import Update
 from telegram.ext import (
     ContextTypes,
     ConversationHandler,
-    filters,
     MessageHandler,
+    filters,
 )
 
 from bot.constants import contact_list_text
 from bot.constants.button import MENU_CONTACT_LIST
 from bot.constants.state import CONTACT_LIST
 from bot.handlers.main_application import done_callback
-from bot.keyboards.keyboards import main_menu_markup
 from bot.keyboards.basic_info_keyboards import contact_list_markup
+from bot.keyboards.keyboards import main_menu_markup
 
 
 async def contact_list_callback(

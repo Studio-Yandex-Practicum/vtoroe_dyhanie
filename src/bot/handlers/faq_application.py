@@ -1,5 +1,5 @@
 from telegram import Update
-from telegram.ext import Application, ContextTypes, filters, MessageHandler
+from telegram.ext import Application, ContextTypes, MessageHandler, filters
 
 from bot.constants import faq_text
 
