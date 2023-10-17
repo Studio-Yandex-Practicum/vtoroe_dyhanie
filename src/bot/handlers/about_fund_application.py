@@ -17,61 +17,61 @@
 дополнительной информации, например "Конечно! Расскажи подробнее!",
 "Да, было бы здорово посмотреть!" и др.
 """
-from telegram import (
-    CallbackQuery,
-    Message,
-    Update
-)
+
+from telegram import CallbackQuery, Message, Update
 from telegram.constants import ParseMode
-from telegram.ext import Application, CallbackQueryHandler, ContextTypes, \
-    filters, MessageHandler
+from telegram.ext import (
+    Application,
+    CallbackQueryHandler,
+    ContextTypes,
+    MessageHandler,
+    filters,
+)
 
 from bot.constants.about_fund_text import (
     ANNUAL_REPORTS,
     FUND_MISSION,
     FUND_PROJECTS,
     PROCESS_ANATOMY,
-    THINGS_PATH
+    THINGS_PATH,
 )
 from bot.constants.query_patterns import ABOUT_PREFIX
 from bot.constants.text import BACK_TO_MENU
 from bot.keyboards.about_fund_keyboards import (
-    about_fund_markup, about_fund_section, annual_reports_markup,
-    fund_mission_markup, fund_projects_markup, processes_anatomy_markup,
-    things_path_markup
+    about_fund_markup,
+    about_fund_section,
+    annual_reports_markup,
+    fund_mission_markup,
+    fund_projects_markup,
+    processes_anatomy_markup,
+    things_path_markup,
 )
 
 
 async def handle_back_to_menu(
-        update: Update, context: ContextTypes.DEFAULT_TYPE
+    update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
-    """Обработчик нажатия кнопки "В меню раздела"
-    """
+    """Обработчик нажатия кнопки "В меню раздела" """
     query = update.callback_query
     await query.answer()
-    await query.message.edit_text(
-        'Возвращаемся в меню раздела «О фонде»...'
-    )
+    await query.message.edit_text('Возвращаемся в меню раздела «О фонде»...')
     await query.message.reply_text(
         BACK_TO_MENU, reply_markup=about_fund_markup
     )
 
 
 async def about_fund_menu_callback(
-        update: Update, context: ContextTypes.DEFAULT_TYPE
+    update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
-    """Обработчик кнопок основного меню блока "О Фонде".
-    """
+    """Обработчик кнопок основного меню блока "О Фонде"."""
     menu_item = update.message.text
     await about_menu_handlers.get(menu_item)(update, context)
 
 
 async def about_fund_inline_btns_handler(
-        update: Update,
-        context: ContextTypes.DEFAULT_TYPE
+    update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
-    """Обработчик inline кнопок всех меню блока "О Фонде"
-    """
+    """Обработчик inline кнопок всех меню блока "О Фонде" """
     query = update.callback_query
     menu_item = query.data
     await query.answer()
@@ -91,16 +91,14 @@ async def send_about_fund_message(message: Message) -> None:
     await message.reply_text(
         FUND_MISSION.get('msg_6'),
         parse_mode=ParseMode.MARKDOWN_V2,
-        reply_markup=fund_mission_markup
+        reply_markup=fund_mission_markup,
     )
 
 
 async def about_fund_mission(
-        update: Update,
-        context: ContextTypes.DEFAULT_TYPE
+    update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
-    """Обработчик кнопки "Миссия и основная цель"
-    """
+    """Обработчик кнопки "Миссия и основная цель" """
     await send_about_fund_message(update.message)
 
 
@@ -116,6 +114,7 @@ async def handle_mission_more_info(query: CallbackQuery) -> None:
 
 # Блок "Путь вещей"
 
+
 async def send_things_path_message(message: Message) -> None:
     """Отправляет сообщение и раскладку клавиатуры
     при нажатии кнопки "Путь вещей".
@@ -127,15 +126,14 @@ async def send_things_path_message(message: Message) -> None:
     await message.reply_text(
         THINGS_PATH.get('msg_5'),
         parse_mode=ParseMode.MARKDOWN_V2,
-        reply_markup=things_path_markup
+        reply_markup=things_path_markup,
     )
 
 
 async def things_path(
-        update: Update, context: ContextTypes.DEFAULT_TYPE
+    update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
-    """Обработчик кнопки "Путь вещей".
-    """
+    """Обработчик кнопки "Путь вещей"."""
     await send_things_path_message(update.message)
 
 
@@ -151,6 +149,7 @@ async def handle_path_more_info(query: CallbackQuery) -> None:
 
 # Блок "Анатомия процессов"
 
+
 async def send_processes_anatomy_message(message: Message) -> None:
     """Отправляет сообщение и раскладку клавиатуры
     при нажатии кнопки "Анатомия процессов".
@@ -159,16 +158,14 @@ async def send_processes_anatomy_message(message: Message) -> None:
         PROCESS_ANATOMY,
         parse_mode=ParseMode.MARKDOWN_V2,
         disable_web_page_preview=True,
-        reply_markup=processes_anatomy_markup
+        reply_markup=processes_anatomy_markup,
     )
 
 
 async def processes_anatomy(
-        update: Update,
-        context: ContextTypes.DEFAULT_TYPE
+    update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
-    """Обработчик кнопки "Анатомия процессов".
-    """
+    """Обработчик кнопки "Анатомия процессов"."""
     await send_processes_anatomy_message(update.message)
 
 
@@ -184,6 +181,7 @@ async def handle_process_anatomy_more_info(query: CallbackQuery) -> None:
 
 # Блок "Проекты Фонда"
 
+
 async def send_fund_projects_message(message: Message) -> None:
     """Отправляет сообщение и раскладку клавиатуры
     при нажатии кнопки "Проекты Фонда".
@@ -192,17 +190,14 @@ async def send_fund_projects_message(message: Message) -> None:
     await message.reply_text(FUND_PROJECTS.get('msg_2'))
     await message.reply_text(FUND_PROJECTS.get('msg_3'))
     await message.reply_markdown(
-        FUND_PROJECTS.get('msg_4'),
-        reply_markup=fund_projects_markup
+        FUND_PROJECTS.get('msg_4'), reply_markup=fund_projects_markup
     )
 
 
 async def fund_projects(
-        update: Update,
-        context: ContextTypes.DEFAULT_TYPE
+    update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
-    """Обработчик кнопки "Проекты Фонда".
-    """
+    """Обработчик кнопки "Проекты Фонда"."""
     await send_fund_projects_message(update.message)
 
 
@@ -218,6 +213,7 @@ async def handle_projects_more_info(query: CallbackQuery) -> None:
 
 # Блок "Годовые отчеты"
 
+
 async def send_annual_reports_message(message: Message) -> None:
     """Отправляет сообщение и раскладку клавиатуры
     при нажатии кнопки "Годовые отчеты".
@@ -225,17 +221,16 @@ async def send_annual_reports_message(message: Message) -> None:
     await message.reply_markdown_v2(
         ANNUAL_REPORTS,
         disable_web_page_preview=True,
-        reply_markup=annual_reports_markup
+        reply_markup=annual_reports_markup,
     )
 
 
 async def annual_reports(
-        update: Update,
-        context: ContextTypes.DEFAULT_TYPE
+    update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
-    """Обработчик кнопки "Годовые отчеты".
-    """
+    """Обработчик кнопки "Годовые отчеты"."""
     await send_annual_reports_message(update.message)
+
 
 about_inline_handlers = {
     f'{ABOUT_PREFIX}more_info_mission': handle_mission_more_info,
@@ -256,18 +251,16 @@ def register_handlers(app: Application) -> None:
     app.add_handler(
         CallbackQueryHandler(
             about_fund_inline_btns_handler,
-            pattern=fr'{ABOUT_PREFIX}more_info(\w+)'
+            pattern=fr'{ABOUT_PREFIX}more_info(\w+)',
         )
     )
     app.add_handler(
         CallbackQueryHandler(
-            handle_back_to_menu,
-            pattern=fr'{ABOUT_PREFIX}back_to_menu'
+            handle_back_to_menu, pattern=fr'{ABOUT_PREFIX}back_to_menu'
         )
     )
     app.add_handler(
         MessageHandler(
-            filters.Text(about_fund_section),
-            about_fund_menu_callback
+            filters.Text(about_fund_section), about_fund_menu_callback
         )
     )

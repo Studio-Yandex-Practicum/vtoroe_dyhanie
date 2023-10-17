@@ -1,10 +1,11 @@
 from telegram import (
     InlineKeyboardButton,
     InlineKeyboardMarkup,
-    ReplyKeyboardMarkup
+    ReplyKeyboardMarkup,
 )
 
 from bot.constants.button import BACK_BUTTON
+
 
 main_menu_keyboard = [
     ["О Фонде", "Онбординг"],

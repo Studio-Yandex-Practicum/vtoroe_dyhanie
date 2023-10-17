@@ -1,19 +1,24 @@
 from telegram import Update
-from telegram.ext import (
-    Application, CallbackQueryHandler, ContextTypes,
-)
+from telegram.ext import Application, CallbackQueryHandler, ContextTypes
 
 from bot.constants import basic_info_text
 from bot.constants.query_patterns import INFO_PREFIX
 from bot.keyboards.basic_info_keyboards import (
-    basic_information_markup, council_markup, departments_final_markup,
-    departments_markup, departmentss_markup, guardian_council_markup,
-    org_structure_markup, our_team_markup, social_networks_markup
+    basic_information_markup,
+    council_markup,
+    departments_final_markup,
+    departments_markup,
+    departmentss_markup,
+    guardian_council_markup,
+    org_structure_markup,
+    our_team_markup,
+    social_networks_markup,
 )
 
 
 async def organization_structure_callback(
-        update: Update, context: ContextTypes.DEFAULT_TYPE,
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
     """Обработка кнопки Организационная структура."""
     query = update.callback_query
@@ -27,7 +32,8 @@ async def organization_structure_callback(
 
 
 async def about_council_callback(
-        update: Update, context: ContextTypes.DEFAULT_TYPE,
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
     """Обработка кнопки Совет фонда."""
     query = update.callback_query
@@ -41,7 +47,8 @@ async def about_council_callback(
 
 
 async def guardian_council_callback(
-        update: Update, context: ContextTypes.DEFAULT_TYPE,
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
     """Обработка кнопки Попечительский совет."""
     query = update.callback_query
@@ -55,7 +62,8 @@ async def guardian_council_callback(
 
 
 async def about_departments_callback(
-        update: Update, context: ContextTypes.DEFAULT_TYPE,
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
     """Обработка кнопки Отделы Фонда."""
     query = update.callback_query
@@ -66,7 +74,8 @@ async def about_departments_callback(
 
 
 async def our_team_callback(
-        update: Update, context: ContextTypes.DEFAULT_TYPE,
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
     """Обработка кнопки Наша команда."""
     query = update.callback_query
@@ -80,7 +89,8 @@ async def our_team_callback(
 
 
 async def contact_list_callback(
-        update: Update, context: ContextTypes.DEFAULT_TYPE,
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
     """Обработка кнопки список контактов."""
     query = update.callback_query
@@ -91,7 +101,8 @@ async def contact_list_callback(
 
 
 async def org_departments_callback(
-        update: Update, context: ContextTypes.DEFAULT_TYPE,
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
     query = update.callback_query
     await query.answer()
@@ -101,7 +112,7 @@ async def org_departments_callback(
 
 
 async def social_networks_callback(
-        update: Update, context: ContextTypes.DEFAULT_TYPE
+    update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     """Обработка клавиатуры Социальные сети."""
     query = update.callback_query
@@ -114,10 +125,7 @@ async def social_networks_callback(
 
 
 async def handle_multipattern(
-        update: Update,
-        context: ContextTypes.DEFAULT_TYPE,
-        text: dict,
-        markup
+    update: Update, context: ContextTypes.DEFAULT_TYPE, text: dict, markup
 ) -> None:
     query = update.callback_query
     await query.answer()
@@ -133,7 +141,7 @@ async def handle_multipattern(
 
 
 async def council_callback(
-        update: Update, context: ContextTypes.DEFAULT_TYPE
+    update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     """Обработка клавиатуры совета Фонда."""
     text = basic_info_text.COUNCIL_QUESTIONS
@@ -142,7 +150,7 @@ async def council_callback(
 
 
 async def departments_callback(
-        update: Update, context: ContextTypes.DEFAULT_TYPE
+    update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     """Обработка клавиатуры отделов Фонда."""
     text = basic_info_text.DEPARTMENTS_MESSAGE
@@ -151,7 +159,7 @@ async def departments_callback(
 
 
 async def basic_information_back_callback(
-        update: Update, context: ContextTypes.DEFAULT_TYPE
+    update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     """Обработка кнопки Возврата в меню Основной информации."""
     query = update.callback_query
@@ -170,7 +178,8 @@ def register_handlers(app: Application) -> None:
         f'{INFO_PREFIX}contact_list': contact_list_callback,
         f'{INFO_PREFIX}org_departmentss': org_departments_callback,
         f'{INFO_PREFIX}organization_structure': (
-            organization_structure_callback),
+            organization_structure_callback
+        ),
         f'{INFO_PREFIX}council': about_council_callback,
         f'{INFO_PREFIX}guardian_council': guardian_council_callback,
         f'{INFO_PREFIX}social_networks': social_networks_callback,
