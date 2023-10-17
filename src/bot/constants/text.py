@@ -1,5 +1,6 @@
 from bot.constants.links import FEEDBACK_LINK, URL_KNOWLEDGE_BASE
 
+
 STOP_MESSAGE = 'Работа приложения остановлена.'
 HELP_MESSAGE = 'Если у тебя есть вопрос, присылай его на почту hr@vtoroe.ru'
 START_MESSAGE_PART_ONE = (

@@ -9,9 +9,10 @@ from telegram.ext import (
 )
 
 
-async def help(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+async def help(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     """Команда запроса помощи"""
     await update.message.reply_text(HELP_MESSAGE)
+    return ConversationHandler.END
 
 
 async def stop(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
