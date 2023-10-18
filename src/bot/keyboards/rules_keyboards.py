@@ -4,6 +4,7 @@ from telegram import (
 )
 
 from bot.constants.query_patterns import INFO_PREFIX
+from bot.constants.rules_text import RULES_LINK
 
 # 1. Клавиатура для подраздела "Общие правила"
 rules_keyboard = [
@@ -128,7 +129,7 @@ out_communication_keyboard = [
     )],
     [InlineKeyboardButton(
         'Перейти на сайт в раздел коммуникация ',
-        url='https://www.notion.so/kozlovskikh/14953c96349b4c96a77c53a76637635c'
+        url=RULES_LINK
     )],
 ]
 out_communication_markup = InlineKeyboardMarkup(out_communication_keyboard)

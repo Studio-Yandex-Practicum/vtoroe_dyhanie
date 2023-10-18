@@ -112,3 +112,5 @@ OUT_COMMUNICATION = {
         '\nСохраняй себе и пользуйся\\!'
     ),
 }
+
+RULES_LINK = 'https://www.notion.so/kozlovskikh/14953c96349b4c96a77c53a76637635c'
