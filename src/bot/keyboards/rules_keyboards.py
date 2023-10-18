@@ -39,6 +39,7 @@ communication_keyboard = [
     [InlineKeyboardButton(
         'Внешняя коммуникация',
         callback_data=f'{INFO_PREFIX}out_communication'
+
     )],
     [InlineKeyboardButton(
         'Назад',
@@ -124,6 +125,10 @@ out_communication_keyboard = [
     [InlineKeyboardButton(
         'В главное меню',
         callback_data='back_to_main_menu'
+    )],
+    [InlineKeyboardButton(
+        'Перейти на сайт в раздел коммуникация ',
+        url='https://www.notion.so/kozlovskikh/14953c96349b4c96a77c53a76637635c'
     )],
 ]
 out_communication_markup = InlineKeyboardMarkup(out_communication_keyboard)

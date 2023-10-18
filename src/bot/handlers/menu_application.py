@@ -134,9 +134,9 @@ def register_handlers(app: Application) -> None:
 async def rules_information_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
+
     """Обрабатывает кнопку "Общие правила" из главного меню."""
     await update.message.reply_text(
         RULES_INFORMATION_MENU,
         reply_markup=rules_markup
     )
-        app.add_handler(MessageHandler(filters.Text([btn]), callback))

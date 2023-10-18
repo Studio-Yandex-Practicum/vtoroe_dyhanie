@@ -110,8 +110,6 @@ async def out_communication_callback(
         parse_mode=ParseMode.MARKDOWN_V2,
         reply_markup=out_communication_markup
     )
-    document = open('пиар и коммуникация в фонде.pdf', 'rb')
-    await update.callback_query.message.reply_document(document)
 
 
 def register_handlers(app: Application) -> None:
