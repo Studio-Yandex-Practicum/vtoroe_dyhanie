@@ -1,8 +1,11 @@
 from telegram.ext import Application
 
 from . import (
-    menu_application, main_application, faq_application,
-    basic_info_application, about_fund_application, rules_application
+    about_fund_application,
+    basic_info_application,
+    faq_application,
+    main_application,
+    rules_application
 )
 
 

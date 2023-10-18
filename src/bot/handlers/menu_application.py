@@ -4,8 +4,8 @@ from telegram.ext import (
     Application,
     CallbackQueryHandler,
     ContextTypes,
-    filters,
     MessageHandler,
+    filters,
 )
 
 from bot.constants import button, reg_forms_text, text
@@ -17,14 +17,14 @@ from bot.constants.rules_text import RULES_INFORMATION_MENU
 
 from bot.constants.text import FEEDBACK_MESSAGE, KNOWLEDGE_BASE_MESSAGE
 from bot.handlers.contact_list_application import contact_list_conv_handler
+from bot.keyboards.about_fund_keyboards import about_fund_markup
 from bot.keyboards.basic_info_keyboards import basic_information_markup
 from bot.keyboards.keyboards import (
     faq_menu_markup,
     main_button_markup,
-    main_menu_markup,
+    main_menu_markup
 )
 from bot.keyboards.rules_keyboards import rules_markup
-from bot.keyboards.about_fund_keyboards import about_fund_markup
 
 
 async def reg_forms_callback(
