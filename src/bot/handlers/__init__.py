@@ -5,6 +5,7 @@ from . import (
     basic_info_application,
     faq_application,
     main_application,
+    menu_application,
     rules_application
 )
 
