@@ -22,9 +22,10 @@ from bot.keyboards.basic_info_keyboards import basic_information_markup
 from bot.keyboards.keyboards import (
     faq_menu_markup,
     main_button_markup,
-    main_menu_markup
+    main_menu_markup,
 )
 from bot.keyboards.rules_keyboards import rules_markup
+from bot.utils import send_message
 
 
 async def reg_forms_callback(
@@ -43,10 +44,10 @@ async def about_fund_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     """Обрабатывает кнопку "О Фонде" из главного меню."""
-    await update.message.reply_text(ABOUT_FUND_HISTORY.get('msg_1'))
-    await update.message.reply_text(ABOUT_FUND_HISTORY.get('msg_2'))
-    await update.message.reply_text(
-        ABOUT_FUND_HISTORY.get('msg_3'), reply_markup=about_fund_markup
+    await send_message(
+        message=update.message,
+        message_text_value=ABOUT_FUND_HISTORY,
+        reply_markup=about_fund_markup,
     )
 
 
@@ -84,7 +85,7 @@ async def knowledge_base_callback(
     """Обрабатывает кнопку "База знаний" из главного меню."""
     await update.message.reply_text(
         text=KNOWLEDGE_BASE_MESSAGE,
-        parse_mode='Markdown',
+        parse_mode=ParseMode.MARKDOWN_V2,
         disable_web_page_preview=True,
         reply_markup=main_button_markup,
     )
@@ -128,15 +129,13 @@ def register_handlers(app: Application) -> None:
         button.BACK_TO_MAIN_MENU: back_to_main_menu_callback,
     }
     for btn, callback in registrator.items():
-        app.add_handler(MessageHandler(filters.Text([btn]),callback))
+        app.add_handler(MessageHandler(filters.Text([btn]), callback))
 
 
 async def rules_information_callback(
-        update: Update, context: ContextTypes.DEFAULT_TYPE
+    update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
-
     """Обрабатывает кнопку "Общие правила" из главного меню."""
     await update.message.reply_text(
-        RULES_INFORMATION_MENU,
-        reply_markup=rules_markup
+        RULES_INFORMATION_MENU, reply_markup=rules_markup
     )

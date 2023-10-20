@@ -17,9 +17,8 @@
 дополнительной информации, например "Конечно! Расскажи подробнее!",
 "Да, было бы здорово посмотреть!" и др.
 """
-from typing import Dict
 
-from telegram import CallbackQuery, InlineKeyboardMarkup, Message, Update
+from telegram import CallbackQuery, Message, Update
 from telegram.constants import ParseMode
 from telegram.ext import (
     Application,
@@ -47,6 +46,7 @@ from bot.keyboards.about_fund_keyboards import (
     processes_anatomy_markup,
     things_path_markup,
 )
+from bot.utils import send_message
 
 
 async def handle_back_to_menu(
@@ -77,23 +77,6 @@ async def about_fund_inline_btns_handler(
     menu_item = query.data
     await query.answer()
     await about_inline_handlers.get(menu_item)(query)
-
-
-async def send_message(
-    message: Message,
-    message_text_value: Dict[str, str],
-    reply_markup: InlineKeyboardMarkup,
-) -> None:
-    """Отправляет сообщение и раскладку клавиатуры."""
-    for index, value in enumerate(message_text_value.values()):
-        if index < len(message_text_value) - 1:
-            await message.reply_text(value)
-        else:
-            await message.reply_text(
-                (value),
-                parse_mode=ParseMode.MARKDOWN_V2,
-                reply_markup=reply_markup,
-            )
 
 
 # Блок "Миссия и основная цель"
