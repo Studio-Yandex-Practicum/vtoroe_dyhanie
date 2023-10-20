@@ -6,6 +6,7 @@ from . import (
     faq_application,
     main_application,
     menu_application,
+    rules_application
 )
 
 
@@ -15,3 +16,4 @@ def register_all_handlers(app: Application):
     faq_application.register_handlers(app)
     basic_info_application.register_handlers(app)
     about_fund_application.register_handlers(app)
+    rules_application.register_handlers(app)
