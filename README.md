@@ -1,4 +1,7 @@
-## vtoroe_dyhanie (Второе дыхание)
+![workflow](https://github.com/Studio-Yandex-Practicum/vtoroe_dyhanie/actions/workflows/vtoroe_dyhanie_develop.yml/badge.svg) 
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
+
+## <img src='https://shop.vtoroe.ru/wp-content/themes/cshops/assets/img/favicon.ico'/> vtoroe_dyhanie (Второе дыхание)
 
 Проект телеграм-бота для новых и действующих сотрудников фонда "Второе дыхание". Помогает автоматизировать HR-процессы и позволяет новым сотрудникам быстрее адаптироваться за счет автоматизации предоставления необходимой информации о работе фонда.
 
@@ -40,7 +43,7 @@
 - Python-telegram-bot 20.5
 - Docker
 - Docker-Compose
-- Poetry 1.6.1
+- Poetry 1.6.1 
 </details>
 
 <details>
