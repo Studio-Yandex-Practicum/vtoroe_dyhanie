@@ -6,7 +6,7 @@ from . import (
     faq_application,
     main_application,
     menu_application,
-    rules_application
+    rules_application,
 )
 
 
