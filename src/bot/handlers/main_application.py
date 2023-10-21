@@ -29,7 +29,6 @@ async def greeting_callback(
         [button.START_CMD, button.HELP_CMD],
         scope=BotCommandScopeChat(update.effective_chat.id),
     )
-    BotCommandScopeChat(update.effective_chat.id)
     await update.message.reply_text(START_MESSAGE_PART_ONE)
     await update.message.reply_text(START_MESSAGE_PART_TWO)
     return CHECK
