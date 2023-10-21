@@ -7,7 +7,7 @@ from bot.keyboards.keyboards import menu_button
 
 
 def main() -> None:  # noqa
-    """Start the bot"""
+    '''Start the bot'''
 
     app = (
         Application.builder()
@@ -23,5 +23,5 @@ def main() -> None:  # noqa
     app.run_polling()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
