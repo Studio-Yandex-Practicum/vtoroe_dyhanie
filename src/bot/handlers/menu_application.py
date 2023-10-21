@@ -12,6 +12,7 @@ from bot.constants import button, reg_forms_text, text
 from bot.constants.about_fund_text import ABOUT_FUND_HISTORY
 from bot.constants.basic_info_text import BASIC_INFORMATION_MENU
 from bot.constants.faq_text import FAQ_MESSAGE
+from bot.constants.rules_text import RULES_INFORMATION_MENU
 from bot.constants.text import FEEDBACK_MESSAGE, KNOWLEDGE_BASE_MESSAGE
 from bot.handlers.contact_list_application import contact_list_conv_handler
 from bot.keyboards.about_fund_keyboards import about_fund_markup
@@ -21,6 +22,7 @@ from bot.keyboards.keyboards import (
     main_button_markup,
     main_menu_markup,
 )
+from bot.keyboards.rules_keyboards import rules_markup
 
 
 async def reg_forms_callback(
@@ -118,9 +120,19 @@ def register_handlers(app: Application) -> None:
         button.MENU_ABOUT_FOND: about_fund_callback,
         button.MENU_FEEDBACK: feedback_callback,
         button.MENU_BASIC_INFO: basic_information_callback,
+        button.MENU_GENERAL_RULES: rules_information_callback,
         button.MENU_FAQ: faq_callback,
         button.MENU_KNOWLEDGE_BASE: knowledge_base_callback,
         button.BACK_TO_MAIN_MENU: back_to_main_menu_callback,
     }
     for btn, callback in registrator.items():
         app.add_handler(MessageHandler(filters.Text([btn]), callback))
+
+
+async def rules_information_callback(
+    update: Update, context: ContextTypes.DEFAULT_TYPE
+) -> None:
+    """Обрабатывает кнопку "Общие правила" из главного меню."""
+    await update.message.reply_text(
+        RULES_INFORMATION_MENU, reply_markup=rules_markup
+    )
