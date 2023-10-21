@@ -9,3 +9,9 @@ MENU_FAQ = 'FAQ'
 MENU_CONTACT_LIST = 'Список контактов'
 BACK_BUTTON = 'Назад'
 BACK_TO_MAIN_MENU = 'В главное меню'
+
+BLUE_MENU_BUTTON = [
+    ('start', 'Начать работу'),
+    ('help', 'Нужна помощь?'),
+    ('stop', 'Завершить работу'),
+]
