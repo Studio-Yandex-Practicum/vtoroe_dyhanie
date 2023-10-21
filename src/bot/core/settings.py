@@ -18,4 +18,4 @@ class Settings(BaseSettings):
 
 settings = Settings()
 
-from bot.core.logger import logger  # noqa
+from bot.core.logger import logger      # noqa
