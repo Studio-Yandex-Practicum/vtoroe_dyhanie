@@ -1,11 +1,9 @@
 from copy import deepcopy
 
-from telegram import (
-    InlineKeyboardButton,
-    InlineKeyboardMarkup,
-)
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
 from bot.constants.query_patterns import INFO_PREFIX
+
 
 # 1. Клавиатура для подраздела "основная информация"
 basic_information_keyboard = [
