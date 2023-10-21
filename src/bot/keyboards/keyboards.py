@@ -3,14 +3,8 @@ from telegram import (
     InlineKeyboardMarkup,
     ReplyKeyboardMarkup,
 )
-from telegram.ext import Application
 
-from bot.constants.button import BACK_BUTTON, BLUE_MENU_BUTTON
-
-
-async def menu_button(application: Application) -> None:
-    await application.bot.set_my_commands(BLUE_MENU_BUTTON)
-
+from bot.constants.button import BACK_BUTTON
 
 main_menu_keyboard = [
     ['О Фонде', 'Онбординг'],

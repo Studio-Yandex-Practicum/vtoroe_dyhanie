@@ -6,7 +6,8 @@ from telegram.ext import (
     ConversationHandler,
 )
 
-from bot.constants.text import HELP_MESSAGE, STOP_MESSAGE
+from bot.constants.text import BACK_TO_MENU, HELP_MESSAGE, STOP_MESSAGE
+from bot.keyboards.keyboards import main_menu_markup
 
 
 async def help_callback(
@@ -15,6 +16,17 @@ async def help_callback(
     '''Команда запроса помощи'''
 
     await update.message.reply_text(HELP_MESSAGE)
+    return ConversationHandler.END
+
+
+async def menu_callback(
+    update: Update, context: ContextTypes.DEFAULT_TYPE
+) -> int:
+    '''Команда перехода в главное меню'''
+
+    await update.message.reply_text(
+        BACK_TO_MENU, reply_markup=main_menu_markup
+    )
     return ConversationHandler.END
 
 
@@ -35,4 +47,5 @@ async def stop_callback(
 
 def register_handlers(app: Application) -> None:
     app.add_handler(CommandHandler('help', help_callback))
+    app.add_handler(CommandHandler('menu', menu_callback))
     app.add_handler(CommandHandler('stop', stop_callback))
