@@ -1,5 +1,6 @@
 from telegram.ext import Application
 
+from bot.core.logger import logger  # noqa
 from bot.core.settings import settings
 from bot.error_handler import error_handler
 from bot.handlers import register_all_handlers
