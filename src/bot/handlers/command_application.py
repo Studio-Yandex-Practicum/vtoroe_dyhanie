@@ -12,7 +12,7 @@ from bot.keyboards.keyboards import main_menu_markup
 
 async def help_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
-) -> int:
+) -> None:
     '''Команда запроса помощи'''
 
     await update.message.reply_text(HELP_MESSAGE)
@@ -20,7 +20,7 @@ async def help_callback(
 
 async def menu_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
-) -> int:
+) -> None:
     '''Команда перехода в главное меню'''
 
     await update.message.reply_text(
