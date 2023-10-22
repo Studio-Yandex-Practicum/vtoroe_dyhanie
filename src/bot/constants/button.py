@@ -14,5 +14,5 @@ BACK_TO_MAIN_MENU = 'В главное меню'
 
 START_CMD = BotCommand('/start', 'Начать работу')
 STOP_CMD = BotCommand('/stop', 'Завершить работу')
-HELP_CMD = BotCommand('/help', 'Нужна помощь?')
+HELP_CMD = BotCommand('/help', 'Написать в поддержку')
 MENU_CMD = BotCommand('/menu', 'Главное меню')

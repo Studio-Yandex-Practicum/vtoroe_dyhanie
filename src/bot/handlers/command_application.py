@@ -16,7 +16,6 @@ async def help_callback(
     '''Команда запроса помощи'''
 
     await update.message.reply_text(HELP_MESSAGE)
-    return ConversationHandler.END
 
 
 async def menu_callback(
@@ -27,7 +26,6 @@ async def menu_callback(
     await update.message.reply_text(
         BACK_TO_MENU, reply_markup=main_menu_markup
     )
-    return ConversationHandler.END
 
 
 async def stop_callback(
