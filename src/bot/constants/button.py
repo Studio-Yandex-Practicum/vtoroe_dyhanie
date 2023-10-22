@@ -1,5 +1,6 @@
 from telegram import BotCommand
 
+
 MENU_ABOUT_FOND = 'О Фонде'
 MENU_ONBOARDING = 'Онбординг'
 MENU_BASIC_INFO = 'Основная информация'
