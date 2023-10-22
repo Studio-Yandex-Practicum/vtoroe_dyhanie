@@ -23,8 +23,8 @@ from bot.keyboards.keyboards import (
     main_button_markup,
     main_menu_markup,
 )
-from bot.keyboards.rules_keyboards import rules_markup
 from bot.keyboards.onboarding_keyboards import onboarding_markup
+from bot.keyboards.rules_keyboards import rules_markup
 
 
 async def reg_forms_callback(
@@ -146,5 +146,8 @@ async def onboarding_callback(
 ) -> None:
     """Обрабатывает кнопку "Онбординг" из главного меню."""
     await update.message.reply_text(
-        ONBOARDING_MENU, reply_markup=onboarding_markup
+        ONBOARDING_MENU,
+        parse_mode=ParseMode.MARKDOWN_V2,
+        disable_web_page_preview=True,
+        reply_markup=onboarding_markup,
     )
