@@ -7,7 +7,7 @@ class Settings(BaseSettings):
     telegram_token: str
     debug: bool = False
     secret_word: str = 'Бруня'
-    logging_level: int = logging.DEBUG
+    logging_level: int = logging.INFO
     logging_format: str = '%(asctime)s, %(name)s, %(levelname)s, %(message)s'
     logging_dir: str = './src/bot/data/logs'
 
@@ -17,5 +17,3 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
-
-from bot.core.logger import logger      # noqa

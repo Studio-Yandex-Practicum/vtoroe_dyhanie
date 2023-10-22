@@ -2,7 +2,6 @@ import datetime
 import logging
 import logging.config
 import os
-from logging.config import dictConfig
 from pathlib import Path
 
 from .settings import settings
@@ -42,6 +41,6 @@ LOGGING = {
 }
 
 
-dictConfig(LOGGING)
+logging.config.dictConfig(LOGGING)
 
 logger = logging.getLogger(__name__)
