@@ -6,6 +6,7 @@ from telegram import (
 
 from bot.constants.button import BACK_BUTTON
 
+
 main_menu_keyboard = [
     ['О Фонде', 'Онбординг'],
     ['Основная информация', 'Общие правила'],

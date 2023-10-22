@@ -8,9 +8,8 @@ from telegram.ext import (
     filters,
 )
 
-from bot.constants import text, button
+from bot.constants import button, text
 from bot.constants.state import CHECK
-from bot.constants.text import START_MESSAGE_PART_ONE, START_MESSAGE_PART_TWO
 from bot.core.settings import settings
 from bot.handlers.command_application import stop_callback
 from bot.keyboards.keyboards import main_menu_markup
@@ -29,8 +28,8 @@ async def greeting_callback(
         [button.START_CMD, button.HELP_CMD],
         scope=BotCommandScopeChat(update.effective_chat.id),
     )
-    await update.message.reply_text(START_MESSAGE_PART_ONE)
-    await update.message.reply_text(START_MESSAGE_PART_TWO)
+    await update.message.reply_text(text.START_MESSAGE_PART_ONE)
+    await update.message.reply_text(text.START_MESSAGE_PART_TWO)
     return CHECK
 
 
