@@ -1,12 +1,14 @@
 from telegram.ext import Application
 
+from bot.core.logger import logger  # noqa
 from bot.core.settings import settings
 from bot.error_handler import error_handler
 from bot.handlers import register_all_handlers
 
 
 def main() -> None:  # noqa
-    """Start the bot"""
+    '''Start the bot'''
+
     app = Application.builder().token(settings.telegram_token).build()
 
     register_all_handlers(app)
@@ -16,5 +18,5 @@ def main() -> None:  # noqa
     app.run_polling()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

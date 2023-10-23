@@ -1,3 +1,6 @@
+from telegram import BotCommand
+
+
 MENU_ABOUT_FOND = 'О Фонде'
 MENU_ONBOARDING = 'Онбординг'
 MENU_BASIC_INFO = 'Основная информация'
@@ -9,3 +12,8 @@ MENU_FAQ = 'FAQ'
 MENU_CONTACT_LIST = 'Список контактов'
 BACK_BUTTON = 'Назад'
 BACK_TO_MAIN_MENU = 'В главное меню'
+
+START_CMD = BotCommand('/start', 'Начать работу')
+STOP_CMD = BotCommand('/stop', 'Завершить работу')
+HELP_CMD = BotCommand('/help', 'Написать в поддержку')
+MENU_CMD = BotCommand('/menu', 'Главное меню')
