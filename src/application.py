@@ -7,7 +7,7 @@ from bot.handlers import register_all_handlers
 
 
 def main() -> None:  # noqa
-    '''Start the bot'''
+    '''Старт бота.'''
 
     app = Application.builder().token(settings.telegram_token).build()
 
