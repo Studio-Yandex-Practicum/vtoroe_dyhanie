@@ -46,3 +46,42 @@ mentor_tasks_keyboard = [
     ],
 ]
 mentor_tasks_markup = InlineKeyboardMarkup(mentor_tasks_keyboard)
+
+# 3. Клавиатура для 'Новичка'
+beginner_keyboard = [
+    [
+        InlineKeyboardButton(
+            'Ой, мне не сюда', callback_data='back_to_main_menu'
+        )
+    ],
+]
+beginner_markup = InlineKeyboardMarkup(beginner_keyboard)
+
+# 3. Клавиатура после турдоустройства 'Новичка'
+beginner_employment_keyboard = [
+    [
+        InlineKeyboardButton(
+            'Первый день',
+            callback_data=f'{INFO_PREFIX}first_day',
+        )
+    ],
+    [
+        InlineKeyboardButton(
+            'Этапы адаптации',
+            callback_data=f'{INFO_PREFIX}adaptation',
+        )
+    ],
+    [
+        InlineKeyboardButton(
+            'План работы на испытательный срок',
+            callback_data=f'{INFO_PREFIX}work_plan',
+        )
+    ],
+    [
+        InlineKeyboardButton(
+            'Чек-лист нового сотрудника',
+            callback_data=f'{INFO_PREFIX}checklist',
+        )
+    ],
+]
+beginner_employment_markup = InlineKeyboardMarkup(beginner_employment_keyboard)
