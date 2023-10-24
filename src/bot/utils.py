@@ -19,6 +19,6 @@ async def send_message(
         else:
             await message.reply_text(
                 (value),
-                parse_mode=ParseMode.MARKDOWN_V2,
+                parse_mode=ParseMode.MARKDOWN,
                 reply_markup=reply_markup,
             )
