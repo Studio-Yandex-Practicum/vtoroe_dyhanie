@@ -1,3 +1,5 @@
+import logging
+
 from dotenv import load_dotenv
 from pydantic_settings import BaseSettings
 
@@ -9,6 +11,9 @@ class Settings(BaseSettings):
     telegram_token: str
     debug: bool = False
     secret_word: str = 'Бруня'
+    logging_level: int = logging.INFO
+    logging_format: str = '%(asctime)s, %(name)s, %(levelname)s, %(message)s'
+    logging_dir: str = './src/bot/data/logs'
     smtp_server: str = 'smtp.yandex.ru'
     port: int = 465
     sender_email: str
