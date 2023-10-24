@@ -20,7 +20,7 @@ async def organization_structure_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
-    """Обработка кнопки Организационная структура."""
+    '''Обработка кнопки Организационная структура.'''
     query = update.callback_query
     await query.answer()
     await query.message.edit_text(
@@ -35,7 +35,7 @@ async def about_council_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
-    """Обработка кнопки Совет фонда."""
+    '''Обработка кнопки Совет фонда.'''
     query = update.callback_query
     await query.answer()
     await query.message.edit_text(
@@ -50,7 +50,7 @@ async def guardian_council_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
-    """Обработка кнопки Попечительский совет."""
+    '''Обработка кнопки Попечительский совет.'''
     query = update.callback_query
     await query.answer()
     await query.message.edit_text(
@@ -65,7 +65,7 @@ async def about_departments_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
-    """Обработка кнопки Отделы Фонда."""
+    '''Обработка кнопки Отделы Фонда.'''
     query = update.callback_query
     await query.answer()
     await query.message.edit_text(
@@ -77,7 +77,7 @@ async def our_team_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
-    """Обработка кнопки Наша команда."""
+    '''Обработка кнопки Наша команда.'''
     query = update.callback_query
     await query.answer()
     await query.message.edit_text(
@@ -92,7 +92,7 @@ async def contact_list_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
-    """Обработка кнопки список контактов."""
+    '''Обработка кнопки Список контактов.'''
     query = update.callback_query
     await query.answer()
     await query.message.edit_text(
@@ -104,6 +104,7 @@ async def org_departments_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
+    '''Обработка кнопки Организационная структура.'''
     query = update.callback_query
     await query.answer()
     await query.message.edit_text(
@@ -114,7 +115,7 @@ async def org_departments_callback(
 async def social_networks_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
-    """Обработка клавиатуры Социальные сети."""
+    '''Обработка клавиатуры Социальные сети.'''
     query = update.callback_query
     await query.answer()
     await query.message.edit_text(
@@ -127,6 +128,7 @@ async def social_networks_callback(
 async def handle_multipattern(
     update: Update, context: ContextTypes.DEFAULT_TYPE, text: dict, markup
 ) -> None:
+    '''Обработка клавиатуры.'''
     query = update.callback_query
     await query.answer()
     new_text = text.get(query.data)
@@ -143,7 +145,7 @@ async def handle_multipattern(
 async def council_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
-    """Обработка клавиатуры совета Фонда."""
+    '''Обработка клавиатуры Совет Фонда.'''
     text = basic_info_text.COUNCIL_QUESTIONS
     markup = council_markup
     await handle_multipattern(update, context, text, markup)
@@ -152,7 +154,7 @@ async def council_callback(
 async def departments_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
-    """Обработка клавиатуры отделов Фонда."""
+    '''Обработка клавиатуры Отделы Фонда.'''
     text = basic_info_text.DEPARTMENTS_MESSAGE
     markup = departments_final_markup
     await handle_multipattern(update, context, text, markup)
@@ -161,15 +163,16 @@ async def departments_callback(
 async def basic_information_back_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
-    """Обработка кнопки Возврата в меню Основной информации."""
+    '''Обработка кнопки Возврата в меню Основной информации.'''
     query = update.callback_query
     await query.answer()
     await query.message.edit_text(
-        "Выберите действие:", reply_markup=basic_information_markup
+        'Выберите действие:', reply_markup=basic_information_markup
     )
 
 
 def register_handlers(app: Application) -> None:
+    '''Регистрация обработчиков.'''
     registrator = {
         fr'{INFO_PREFIX}department(\w+)': departments_callback,
         fr'{INFO_PREFIX}council_question(\w+)': council_callback,
