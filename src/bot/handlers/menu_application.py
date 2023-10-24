@@ -12,9 +12,7 @@ from bot.constants import button, reg_forms_text, text
 from bot.constants.about_fund_text import ABOUT_FUND_HISTORY
 from bot.constants.basic_info_text import BASIC_INFORMATION_MENU
 from bot.constants.faq_text import FAQ_MESSAGE
-
 from bot.constants.rules_text import RULES_INFORMATION_MENU
-
 from bot.constants.text import FEEDBACK_MESSAGE, KNOWLEDGE_BASE_MESSAGE
 from bot.handlers.contact_list_application import contact_list_conv_handler
 from bot.keyboards.about_fund_keyboards import about_fund_markup

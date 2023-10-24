@@ -6,19 +6,19 @@ from bot.constants import rules_text
 from bot.constants.query_patterns import INFO_PREFIX
 from bot.constants.rules_text import (
     COMMUNICATION,
-    WORKSHOP,
     IN_COMMUNICATION,
     OUT_COMMUNICATION,
+    WORKSHOP,
 )
 from bot.keyboards.rules_keyboards import (
     communication_markup,
-    rules_markup,
-    kitchen_markup,
-    separate_collection_markup,
-    regular_meetings_markup,
-    workshop_markup,
     in_communication_markup,
+    kitchen_markup,
     out_communication_markup,
+    regular_meetings_markup,
+    rules_markup,
+    separate_collection_markup,
+    workshop_markup,
 )
 from bot.utils import send_message
 
