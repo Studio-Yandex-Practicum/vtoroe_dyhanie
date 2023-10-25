@@ -37,7 +37,7 @@ mentor_keyboard = [
 ]
 mentor_markup = InlineKeyboardMarkup(mentor_keyboard)
 
-# 2. Клавиатура для 'Задачи Наставника/Бадди'
+# 3. Клавиатура для 'Задачи Наставника/Бадди'
 mentor_tasks_keyboard = [
     [
         InlineKeyboardButton(

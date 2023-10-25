@@ -3,10 +3,8 @@ from telegram.constants import ParseMode
 from telegram.ext import Application, CallbackQueryHandler, ContextTypes
 
 from bot.constants import onboarding_text
+
 from bot.constants.query_patterns import INFO_PREFIX
-from bot.constants.onboarding_text import (
-    TASKS_FOR_MENTOR,
-)
 from bot.keyboards.onboarding_keyboards import (
     mentor_markup,
     mentor_tasks_markup,
