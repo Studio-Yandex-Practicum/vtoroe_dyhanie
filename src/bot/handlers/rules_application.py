@@ -20,16 +20,16 @@ from bot.keyboards.rules_keyboards import (
     separate_collection_markup,
     workshop_markup,
 )
+from bot.utils import send_message
 
 
 async def communication_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     """Обработка кнопки Коммуникация."""
-    await update.callback_query.message.reply_text(COMMUNICATION.get('msg_1'))
-    await update.callback_query.message.reply_text(
-        COMMUNICATION.get('msg_2'),
-        parse_mode=ParseMode.MARKDOWN_V2,
+    await send_message(
+        update.callback_query.message,
+        COMMUNICATION,
         reply_markup=communication_markup,
     )
 
@@ -39,14 +39,8 @@ async def workshop_callback(
     context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
     """Обработка кнопки Мастерская."""
-    await update.callback_query.message.reply_text(WORKSHOP.get('msg_1'))
-    await update.callback_query.message.reply_text(WORKSHOP.get('msg_2'))
-    await update.callback_query.message.reply_text(WORKSHOP.get('msg_3'))
-    await update.callback_query.message.reply_text(WORKSHOP.get('msg_4'))
-    await update.callback_query.message.reply_text(
-        WORKSHOP.get('msg_5'),
-        parse_mode=ParseMode.MARKDOWN_V2,
-        reply_markup=workshop_markup,
+    await send_message(
+        update.callback_query.message, WORKSHOP, reply_markup=workshop_markup
     )
 
 
@@ -113,9 +107,9 @@ async def out_communication_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     """Обработка кнопки Внешняя коммуникация."""
-    await update.callback_query.message.reply_text(
-        OUT_COMMUNICATION.get('msg_1'),
-        parse_mode=ParseMode.MARKDOWN_V2,
+    await send_message(
+        update.callback_query.message,
+        OUT_COMMUNICATION,
         reply_markup=out_communication_markup,
     )
 

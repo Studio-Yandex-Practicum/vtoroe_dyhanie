@@ -25,6 +25,7 @@ from bot.keyboards.keyboards import (
 )
 from bot.keyboards.onboarding_keyboards import onboarding_markup
 from bot.keyboards.rules_keyboards import rules_markup
+from bot.utils import send_message
 
 
 async def reg_forms_callback(
@@ -43,10 +44,10 @@ async def about_fund_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     """Обрабатывает кнопку "О Фонде" из главного меню."""
-    await update.message.reply_text(ABOUT_FUND_HISTORY.get('msg_1'))
-    await update.message.reply_text(ABOUT_FUND_HISTORY.get('msg_2'))
-    await update.message.reply_text(
-        ABOUT_FUND_HISTORY.get('msg_3'), reply_markup=about_fund_markup
+    await send_message(
+        message=update.message,
+        message_text_value=ABOUT_FUND_HISTORY,
+        reply_markup=about_fund_markup,
     )
 
 
@@ -84,7 +85,7 @@ async def knowledge_base_callback(
     """Обрабатывает кнопку "База знаний" из главного меню."""
     await update.message.reply_text(
         text=KNOWLEDGE_BASE_MESSAGE,
-        parse_mode='Markdown',
+        parse_mode=ParseMode.MARKDOWN_V2,
         disable_web_page_preview=True,
         reply_markup=main_button_markup,
     )

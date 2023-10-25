@@ -24,8 +24,8 @@ from telegram.ext import (
     Application,
     CallbackQueryHandler,
     ContextTypes,
-    MessageHandler,
     filters,
+    MessageHandler,
 )
 
 from bot.constants.about_fund_text import (
@@ -46,6 +46,7 @@ from bot.keyboards.about_fund_keyboards import (
     processes_anatomy_markup,
     things_path_markup,
 )
+from bot.utils import send_message
 
 
 async def handle_back_to_menu(
@@ -83,14 +84,9 @@ async def send_about_fund_message(message: Message) -> None:
     """Отправляет сообщение и раскладку клавиатуры
     при нажатии кнопки "Миссия и основная цель".
     """
-    await message.reply_text(FUND_MISSION.get('msg_1'))
-    await message.reply_text(FUND_MISSION.get('msg_2'))
-    await message.reply_text(FUND_MISSION.get('msg_3'))
-    await message.reply_text(FUND_MISSION.get('msg_4'))
-    await message.reply_text(FUND_MISSION.get('msg_5'))
-    await message.reply_text(
-        FUND_MISSION.get('msg_6'),
-        parse_mode=ParseMode.MARKDOWN_V2,
+    await send_message(
+        message=message,
+        message_text_value=FUND_MISSION,
         reply_markup=fund_mission_markup,
     )
 
@@ -119,13 +115,9 @@ async def send_things_path_message(message: Message) -> None:
     """Отправляет сообщение и раскладку клавиатуры
     при нажатии кнопки "Путь вещей".
     """
-    await message.reply_text(THINGS_PATH.get('msg_1'))
-    await message.reply_text(THINGS_PATH.get('msg_2'))
-    await message.reply_text(THINGS_PATH.get('msg_3'))
-    await message.reply_text(THINGS_PATH.get('msg_4'))
-    await message.reply_text(
-        THINGS_PATH.get('msg_5'),
-        parse_mode=ParseMode.MARKDOWN_V2,
+    await send_message(
+        message=message,
+        message_text_value=THINGS_PATH,
         reply_markup=things_path_markup,
     )
 
@@ -186,11 +178,10 @@ async def send_fund_projects_message(message: Message) -> None:
     """Отправляет сообщение и раскладку клавиатуры
     при нажатии кнопки "Проекты Фонда".
     """
-    await message.reply_text(FUND_PROJECTS.get('msg_1'))
-    await message.reply_text(FUND_PROJECTS.get('msg_2'))
-    await message.reply_text(FUND_PROJECTS.get('msg_3'))
-    await message.reply_markdown(
-        FUND_PROJECTS.get('msg_4'), reply_markup=fund_projects_markup
+    await send_message(
+        message=message,
+        message_text_value=FUND_PROJECTS,
+        reply_markup=fund_projects_markup,
     )
 
 
