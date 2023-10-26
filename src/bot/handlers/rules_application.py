@@ -26,7 +26,7 @@ from bot.utils import send_message
 async def communication_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
-    """Обработка кнопки Коммуникация."""
+    '''Обработка кнопки Коммуникация.'''
     await send_message(
         update.callback_query.message,
         COMMUNICATION,
@@ -38,7 +38,7 @@ async def workshop_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
-    """Обработка кнопки Мастерская."""
+    '''Обработка кнопки Мастерская.'''
     await send_message(
         update.callback_query.message, WORKSHOP, reply_markup=workshop_markup
     )
@@ -48,7 +48,7 @@ async def kitchen_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
-    """Обработка кнопки Кухня."""
+    '''Обработка кнопки Кухня.'''
     await update.callback_query.message.edit_text(
         rules_text.KITCHEN,
         parse_mode=ParseMode.MARKDOWN_V2,
@@ -61,7 +61,7 @@ async def separate_collection_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
-    """Обработка кнопки Раздельный сбор."""
+    '''Обработка кнопки Раздельный сбор.'''
     await update.callback_query.message.edit_text(
         rules_text.SEPARATE_COLLECTION,
         parse_mode=ParseMode.MARKDOWN_V2,
@@ -74,7 +74,7 @@ async def regular_meetings_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
-    """Обработка кнопки Регулярные встречи."""
+    '''Обработка кнопки Регулярные встречи.'''
     await update.callback_query.message.edit_text(
         rules_text.REGULAR_MEETINGS,
         parse_mode=ParseMode.MARKDOWN_V2,
@@ -86,7 +86,7 @@ async def regular_meetings_callback(
 async def rules_back_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
-    """Обработка кнопки Возврата в меню Общие правила."""
+    '''Обработка кнопки Возврата в меню Общие правила.'''
     await update.callback_query.message.edit_text(
         'Выберете действие:', reply_markup=rules_markup
     )
@@ -95,7 +95,7 @@ async def rules_back_callback(
 async def in_communication_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
-    """Обработка кнопки Внутренняя коммуникация."""
+    '''Обработка кнопки Внутренняя коммуникация.'''
     await update.callback_query.message.reply_text(
         IN_COMMUNICATION,
         parse_mode=ParseMode.MARKDOWN_V2,
@@ -106,7 +106,7 @@ async def in_communication_callback(
 async def out_communication_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
-    """Обработка кнопки Внешняя коммуникация."""
+    '''Обработка кнопки Внешняя коммуникация.'''
     await send_message(
         update.callback_query.message,
         OUT_COMMUNICATION,
@@ -115,6 +115,7 @@ async def out_communication_callback(
 
 
 def register_handlers(app: Application) -> None:
+    '''Регистрация обработчиков.'''
     registrator = {
         f'{INFO_PREFIX}communication': communication_callback,
         f'{INFO_PREFIX}workshop': workshop_callback,

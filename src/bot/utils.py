@@ -12,7 +12,7 @@ async def send_message(
     message_text_value: Dict[str, str],
     reply_markup: InlineKeyboardMarkup,
 ) -> None:
-    """Отправляет сообщение и раскладку клавиатуры."""
+    '''Отправляет сообщение и раскладку клавиатуры.'''
     for index, value in enumerate(message_text_value.values()):
         if index < len(message_text_value) - 1:
             await message.reply_text(value)
