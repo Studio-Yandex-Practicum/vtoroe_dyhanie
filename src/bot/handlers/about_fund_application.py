@@ -24,8 +24,8 @@ from telegram.ext import (
     Application,
     CallbackQueryHandler,
     ContextTypes,
-    filters,
     MessageHandler,
+    filters,
 )
 
 from bot.constants.about_fund_text import (
