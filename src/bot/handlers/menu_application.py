@@ -31,7 +31,7 @@ from bot.utils import send_message
 async def reg_forms_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
-    """Обрабатывает кнопку "Регламенты и формы" из главного меню."""
+    '''Обрабатывает кнопку "Регламенты и формы" из главного меню.'''
     await update.message.reply_text(
         reg_forms_text.REG_FORM_MESSAGE,
         parse_mode=ParseMode.MARKDOWN_V2,
@@ -43,7 +43,7 @@ async def reg_forms_callback(
 async def about_fund_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
-    """Обрабатывает кнопку "О Фонде" из главного меню."""
+    '''Обрабатывает кнопку "О Фонде" из главного меню.'''
     await send_message(
         message=update.message,
         message_text_value=ABOUT_FUND_HISTORY,
@@ -54,7 +54,7 @@ async def about_fund_callback(
 async def feedback_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
-    """Обрабатывает кнопку "Обратная связь" из главного меню."""
+    '''Обрабатывает кнопку "Обратная связь" из главного меню.'''
     await update.message.reply_text(
         FEEDBACK_MESSAGE,
         parse_mode=ParseMode.MARKDOWN_V2,
@@ -66,7 +66,7 @@ async def feedback_callback(
 async def basic_information_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
-    """Обрабатывает кнопку "Основная информация" из главного меню."""
+    '''Обрабатывает кнопку "Основная информация" из главного меню.'''
     await update.message.reply_text(
         BASIC_INFORMATION_MENU, reply_markup=basic_information_markup
     )
@@ -75,14 +75,14 @@ async def basic_information_callback(
 async def faq_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
-    """Обрабатывает кнопку "FAQ" из главного меню."""
+    '''Обрабатывает кнопку "FAQ" из главного меню.'''
     await update.message.reply_text(FAQ_MESSAGE, reply_markup=faq_menu_markup)
 
 
 async def knowledge_base_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
-    """Обрабатывает кнопку "База знаний" из главного меню."""
+    '''Обрабатывает кнопку "База знаний" из главного меню.'''
     await update.message.reply_text(
         text=KNOWLEDGE_BASE_MESSAGE,
         parse_mode=ParseMode.MARKDOWN_V2,
@@ -94,7 +94,7 @@ async def knowledge_base_callback(
 async def query_back_to_main_menu_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
-    """Обработка inline кнопки возврата в главное меню из всех подразделов."""
+    '''Обработка inline кнопки возврата в главное меню из всех подразделов.'''
     query = update.callback_query
     await query.answer()
     await query.message.reply_text(
@@ -105,13 +105,14 @@ async def query_back_to_main_menu_callback(
 async def back_to_main_menu_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
-    """Возвращает в главное меню."""
+    '''Возвращает в главное меню.'''
     await update.message.reply_text(
         text.BACK_TO_MENU, reply_markup=main_menu_markup
     )
 
 
 def register_handlers(app: Application) -> None:
+    '''Регистрация обработчиков.'''
     app.add_handler(
         CallbackQueryHandler(
             query_back_to_main_menu_callback, pattern='back_to_main_menu'
@@ -136,7 +137,7 @@ def register_handlers(app: Application) -> None:
 async def rules_information_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
-    """Обрабатывает кнопку "Общие правила" из главного меню."""
+    '''Обрабатывает кнопку "Общие правила" из главного меню.'''
     await update.message.reply_text(
         RULES_INFORMATION_MENU, reply_markup=rules_markup
     )

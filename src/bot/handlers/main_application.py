@@ -23,7 +23,6 @@ async def greeting_callback(
     Базовая функция начинающая диалог с юзером
     и открывающий доступ к check_secret_conv_handler.
     '''
-
     await context.bot.set_my_commands(
         [button.START_CMD, button.HELP_CMD],
         scope=BotCommandScopeChat(update.effective_chat.id),
@@ -38,7 +37,6 @@ async def check_the_secret_word_callback(
     context: ContextTypes.DEFAULT_TYPE,
 ) -> int:
     '''Функция проверяющая доступ к боту по секретному слову.'''
-
     word = update.message.text
     if word.lower() != settings.secret_word.lower():
         await update.message.reply_text(text.FAILED_THE_TEST)
@@ -66,4 +64,5 @@ check_secret_conv_handler = ConversationHandler(
 
 
 def register_handlers(app: Application) -> None:
+    '''Регистрация обработчика.'''
     app.add_handler(check_secret_conv_handler)

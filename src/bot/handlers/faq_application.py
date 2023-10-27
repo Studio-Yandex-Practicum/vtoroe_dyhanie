@@ -8,7 +8,7 @@ async def faq_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
-    """Обрабатывает команды раздела FAQ"""
+    '''Обрабатывает команды раздела FAQ.'''
     user_input = update.message.text
     await update.message.reply_text(
         text=faq_text.FAQ_MESSAGES.get(user_input),
@@ -18,6 +18,7 @@ async def faq_callback(
 
 
 def register_handlers(app: Application) -> None:
+    '''Регистрация обработчика.'''
     app.add_handler(
         MessageHandler(
             filters.Text(faq_text.FAQ_MESSAGES.keys()), faq_callback
