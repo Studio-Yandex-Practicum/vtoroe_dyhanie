@@ -5,7 +5,7 @@ from typing import Dict
 from telegram import InlineKeyboardMarkup, Message, Update
 from telegram.constants import ParseMode
 
-from core.settings import settings
+from bot.core.settings import settings
 
 
 _TYPES = [Message, Update]
@@ -35,20 +35,25 @@ def send_email(subject, body_text):
     # Создание безопасного контекста SSL
     context = ssl.create_default_context()
 
-    message = '\r\n'.join((
-        f'From: {settings.sender_email}',
-        f'To: {settings.receiver_email}',
-        f'Subject: {subject}',
-        '',
-        body_text))
+    message = '\r\n'.join(
+        (
+            f'From: {settings.sender_email}',
+            f'To: {settings.receiver_email}',
+            f'Subject: {subject}',
+            '',
+            body_text,
+        )
+    )
 
-    with smtplib.SMTP_SSL(settings.smtp_server,
-                          settings.port,
-                          context=context) as server:
+    with smtplib.SMTP_SSL(
+        settings.smtp_server, settings.port, context=context
+    ) as server:
         server.login(settings.sender_email, settings.password_email)
-        server.sendmail(settings.sender_email,
-                        settings.receiver_email,
-                        message.encode('UTF-8'))
+        server.sendmail(
+            settings.sender_email,
+            settings.receiver_email,
+            message.encode('UTF-8'),
+        )
 
 
 # Тестовые данные
