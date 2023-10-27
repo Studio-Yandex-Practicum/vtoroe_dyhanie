@@ -13,7 +13,7 @@ onboarding_keyboard = [
     ],
     [
         InlineKeyboardButton(
-            'Наставник/бадди',
+            'Наставник/Бадди',
             callback_data=f'{INFO_PREFIX}mentor_or_buddy',
         )
     ],
@@ -25,7 +25,7 @@ onboarding_markup = InlineKeyboardMarkup(onboarding_keyboard)
 mentor_keyboard = [
     [
         InlineKeyboardButton(
-            'Задачи наставника/Бадди при онбординге',
+            'Задачи Наставника/Бадди',
             callback_data=f'{INFO_PREFIX}menor_tasks',
         )
     ],
@@ -179,7 +179,7 @@ director_keyboard = [
     ],
     [
         InlineKeyboardButton(
-            'Задачи Руководителя',
+            'Задачи руководителя',
             callback_data=f'{INFO_PREFIX}director_tasks',
         )
     ],
