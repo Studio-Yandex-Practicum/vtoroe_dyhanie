@@ -34,7 +34,6 @@ async def mentor_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Наставник/Бадди.'''
-
     query = update.callback_query
     await query.answer()
     await query.message.edit_text(
@@ -47,7 +46,6 @@ async def mentor_tasks_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Задачи Наставника/Бадди.'''
-
     await update.callback_query.message.reply_text(
         onboarding_text.MENTOR_TASKS,
         parse_mode=ParseMode.MARKDOWN_V2,
@@ -59,7 +57,6 @@ async def beginner_start_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Новичок.'''
-
     await update.callback_query.message.reply_text(
         onboarding_text.BEGINNER_START_MESSAGE_ONE
     )
@@ -116,7 +113,6 @@ async def beginner_first_day_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Первый день.'''
-
     await update.callback_query.message.reply_text(
         onboarding_text.BEGINNER_FIRST_DAY_MESSAGE_ONE
     )
@@ -136,7 +132,6 @@ async def beginner_adaptation_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Этапы адаптации.'''
-
     await update.callback_query.message.reply_text(
         onboarding_text.BEGINNER_STAGES_ADAPTATION_MESSAGE_ONE,
         parse_mode=ParseMode.MARKDOWN_V2,
@@ -159,7 +154,6 @@ async def beginner_work_plan_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки План работы на испытательный срок.'''
-
     await update.callback_query.message.reply_text(
         onboarding_text.BEGINNER_WORK_PLAN_MESSAGE_ONE,
         parse_mode=ParseMode.MARKDOWN_V2,
@@ -172,7 +166,6 @@ async def beginner_checklist_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Чек-лист нового сотрудника.'''
-
     await update.callback_query.message.reply_text(
         onboarding_text.BEGINNER_CHECK_LIST_MESSAGE_ONE,
         parse_mode=ParseMode.MARKDOWN_V2,
@@ -181,11 +174,20 @@ async def beginner_checklist_callback(
     )
 
 
+async def beginner_back_callback(
+    update: Update, context: ContextTypes.DEFAULT_TYPE
+) -> None:
+    '''Обработка кнопки Возврата в меню Новичок.'''
+    await update.callback_query.message.edit_text(
+        'Выберете действие:',
+        reply_markup=beginner_employment_markup,
+    )
+
+
 async def director_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Руководитель.'''
-
     query = update.callback_query
     await query.answer()
     await query.message.edit_text(
@@ -200,7 +202,6 @@ async def tasks_director_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Задачи Руководителя.'''
-
     await update.callback_query.message.reply_text(
         onboarding_text.DIRECTOR_TASKS,
         parse_mode=ParseMode.MARKDOWN_V2,
@@ -212,7 +213,6 @@ async def director_question_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Что за встречи?'''
-
     await update.callback_query.message.reply_text(
         onboarding_text.MEETINGS_MESSAGE_FOR_DIRECTOR,
         parse_mode=ParseMode.MARKDOWN_V2,
@@ -224,7 +224,6 @@ async def director_confirmation_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Супер, давай.'''
-
     await update.callback_query.message.reply_text(
         onboarding_text.DATA_MESSAGE_FOR_NEW_WORKER
     )
@@ -282,6 +281,7 @@ def register_handlers(app: Application) -> None:
         f'{INFO_PREFIX}director': director_callback,
         f'{INFO_PREFIX}mentor_or_buddy': mentor_callback,
         f'{INFO_PREFIX}menor_tasks': mentor_tasks_callback,
+        'beginner_back': beginner_back_callback,
     }
     for pattern, handler in registrator.items():
         app.add_handler(CallbackQueryHandler(handler, pattern=pattern))

@@ -83,13 +83,6 @@ beginner_employment_keyboard = [
             callback_data=f'{INFO_PREFIX}checklist',
         )
     ],
-    # на схеме нет
-    [
-        InlineKeyboardButton(
-            'Назад',
-            callback_data='beginner_back',
-        )
-    ],
 ]
 beginner_employment_markup = InlineKeyboardMarkup(beginner_employment_keyboard)
 
@@ -141,8 +134,13 @@ work_plan_keyboard = [
             callback_data='back_to_main_menu',
         )
     ],
+    [
+        InlineKeyboardButton(
+            'Назад',
+            callback_data='beginner_back',
+        )
+    ],
 ]
-work_plan_keyboard.extend(navigation_menu)
 work_plan_markup = InlineKeyboardMarkup(work_plan_keyboard)
 
 # 9. Клавиатура для выхода из раздела 'Чек лист нового сотрудника'
@@ -154,8 +152,13 @@ checklist_keyboard = [
             callback_data='back_to_main_menu',
         )
     ],
+    [
+        InlineKeyboardButton(
+            'Назад',
+            callback_data='beginner_back',
+        )
+    ],
 ]
-checklist_keyboard.extend(navigation_menu)
 checklist_markup = InlineKeyboardMarkup(checklist_keyboard)
 
 
