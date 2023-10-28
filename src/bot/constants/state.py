@@ -1,2 +1,3 @@
 CHECK: int = 1
 CONTACT_LIST: int = 1
+BEGINNER_ONBOARDING: int = 1

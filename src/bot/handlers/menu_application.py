@@ -12,6 +12,7 @@ from bot.constants import button, reg_forms_text, text
 from bot.constants.about_fund_text import ABOUT_FUND_HISTORY
 from bot.constants.basic_info_text import BASIC_INFORMATION_MENU
 from bot.constants.faq_text import FAQ_MESSAGE
+from bot.constants.onboarding_text import ONBOARDING_MENU
 from bot.constants.rules_text import RULES_INFORMATION_MENU
 from bot.constants.text import FEEDBACK_MESSAGE, KNOWLEDGE_BASE_MESSAGE
 from bot.handlers.contact_list_application import contact_list_conv_handler
@@ -22,6 +23,7 @@ from bot.keyboards.keyboards import (
     main_button_markup,
     main_menu_markup,
 )
+from bot.keyboards.onboarding_keyboards import onboarding_markup
 from bot.keyboards.rules_keyboards import rules_markup
 from bot.utils import send_message
 
@@ -120,6 +122,7 @@ def register_handlers(app: Application) -> None:
     registrator = {
         button.MENU_REGLAMENTS_AND_FORMS: reg_forms_callback,
         button.MENU_ABOUT_FOND: about_fund_callback,
+        button.MENU_ONBOARDING: onboarding_callback,
         button.MENU_FEEDBACK: feedback_callback,
         button.MENU_BASIC_INFO: basic_information_callback,
         button.MENU_GENERAL_RULES: rules_information_callback,
@@ -137,4 +140,16 @@ async def rules_information_callback(
     '''Обрабатывает кнопку "Общие правила" из главного меню.'''
     await update.message.reply_text(
         RULES_INFORMATION_MENU, reply_markup=rules_markup
+    )
+
+
+async def onboarding_callback(
+    update: Update, context: ContextTypes.DEFAULT_TYPE
+) -> None:
+    """Обрабатывает кнопку "Онбординг" из главного меню."""
+    await update.message.reply_text(
+        ONBOARDING_MENU,
+        parse_mode=ParseMode.MARKDOWN_V2,
+        disable_web_page_preview=True,
+        reply_markup=onboarding_markup,
     )
