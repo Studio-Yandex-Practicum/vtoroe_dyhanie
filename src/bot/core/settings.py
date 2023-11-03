@@ -19,6 +19,10 @@ class Settings(BaseSettings):
     sender_email: str
     receiver_email: str
     password_email: str
+    postgres_user: str = 'postgress'
+    postgres_password: str = 'postgress'
+    db_host: str = 'db'
+    db_port: int = 5432
 
     class Config:
         env_file = '.env'
