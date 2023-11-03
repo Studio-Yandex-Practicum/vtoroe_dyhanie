@@ -25,7 +25,7 @@ onboarding_markup = InlineKeyboardMarkup(onboarding_keyboard)
 mentor_keyboard = [
     [
         InlineKeyboardButton(
-            'Задачи Наставника/Бадди',
+            'Задачи Наставника/Бадди при онбординге',
             callback_data=f'{INFO_PREFIX}menor_tasks',
         )
     ],
