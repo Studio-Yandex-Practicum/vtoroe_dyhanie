@@ -1,4 +1,4 @@
-![workflow](https://github.com/Studio-Yandex-Practicum/vtoroe_dyhanie/actions/workflows/vtoroe_dyhanie_develop.yml/badge.svg) 
+![workflow](https://github.com/Studio-Yandex-Practicum/vtoroe_dyhanie/actions/workflows/vtoroe_dyhanie_develop.yml/badge.svg)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/pre-commit/pre-commit-hooks/main.svg)](https://results.pre-commit.ci/latest/github/pre-commit/pre-commit-hooks/main)
 
@@ -44,7 +44,7 @@
 - Python-telegram-bot 20.5
 - Docker
 - Docker-Compose
-- Poetry 1.6.1 
+- Poetry 1.6.1
 </details>
 
 <details>
@@ -126,5 +126,10 @@ python src\application.py
 - [Настасья Мартынова](https://github.com/Nastasya-M)
 - [Евгений Голодных](https://github.com/Evgeniy-Golodnykh)
 - [Дмитрий Корепанов](https://github.com/DNKer)
+- [Михаил Волков](https://github.com/greenpandorik)
+- [Евгений Коваленко](https://github.com/evgeny-dmitrievich)
+- [Александр Новожилов](https://github.com/AleksNovo)
+- [Олег Исаев](https://github.com/oisaev)
+- [Дмитрий Белолипецкий](https://github.com/EvolDem)
 
 </details>
