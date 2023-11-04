@@ -71,7 +71,9 @@ jobs:
           # Распакуем архив. После распаковки удалим его.
           # Заходим в директорию с проектом.
           # Если в директории оказался .env файл - удаляем его.
-          # Создаем .env файл, в который помещаем токен бота.
+          # Создаем .env файл, в который помещаем:
+          # - токен бота,
+          # - настройки БД: логин, пароль, хост, порт.
           # Заходим в директорию с docker-compose.yaml.
           # Останавливаем работающие контейнеры и удаляем их.
           # Удаляем все имеющиеся на сервере docker-образы.
@@ -83,6 +85,10 @@ jobs:
             cd build/
             rm -f .env
             echo TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }} >> .env
+            echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
+            echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
+            echo DB_HOST=${{ secrets.DB_HOST }} >> .env
+            echo DB_PORT=${{ secrets.DB_PORT }} >> .env
             cd infra/
             docker-compose rm -fsv
             docker rmi $(docker images -aq)
