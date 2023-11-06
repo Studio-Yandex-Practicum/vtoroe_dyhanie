@@ -4,17 +4,39 @@ from telegram.ext import (
     CommandHandler,
     ContextTypes,
     ConversationHandler,
+    MessageHandler,
+    filters,
 )
 
-from bot.constants.text import BACK_TO_MENU, HELP_MESSAGE, STOP_MESSAGE
+from bot.constants.text import BACK_TO_MENU, STOP_MESSAGE
 from bot.keyboards.keyboards import main_menu_markup
+from bot.utils import send_email
+
+
+GET_USER_QUESTION = 1
 
 
 async def help_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
-) -> None:
+) -> int:
     '''Команда запроса помощи.'''
-    await update.message.reply_text(HELP_MESSAGE)
+    await update.message.reply_text('Введите ваш вопрос:')
+    return GET_USER_QUESTION
+
+
+async def get_user_question_callback(
+    update: Update, context: ContextTypes.DEFAULT_TYPE
+) -> int:
+    '''Функция обрабатывает сообщение с вопросом от пользователя.'''
+    user_id = update.effective_user.username
+    user_question = update.message.text
+    subject = 'Вопрос от пользователя'
+    body_text = f'Пользователь: {user_id}\nЗадает вопрос: {user_question}'
+    send_email(subject, body_text)
+    await update.message.reply_text(
+        'Ваш вопрос отправлен. Мы свяжемся с вами в ближайшее время.'
+    )
+    return ConversationHandler.END
 
 
 async def menu_callback(
@@ -42,6 +64,15 @@ async def stop_callback(
 
 def register_handlers(app: Application) -> None:
     '''Регистрация обработчиков.'''
-    app.add_handler(CommandHandler('help', help_callback))
+    help_handler = ConversationHandler(
+        entry_points=[CommandHandler('help', help_callback)],
+        states={
+            GET_USER_QUESTION: [
+                MessageHandler(filters.ALL, get_user_question_callback)
+            ]
+        },
+        fallbacks=[CommandHandler('stop', stop_callback)],
+    )
+    app.add_handler(help_handler)
     app.add_handler(CommandHandler('menu', menu_callback))
     app.add_handler(CommandHandler('stop', stop_callback))
