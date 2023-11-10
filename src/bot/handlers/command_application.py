@@ -1,3 +1,5 @@
+import re
+
 from telegram import ReplyKeyboardRemove, Update
 from telegram.ext import (
     Application,
@@ -30,6 +32,13 @@ async def get_user_question_callback(
     '''Функция обрабатывает сообщение с вопросом от пользователя.'''
     user_id = update.effective_user.username
     user_question = update.message.text
+
+    if not re.match(r'^[а-яА-Я0-9\s\W]*$', user_question):
+        await update.message.reply_text(
+            'Сообщение должно содержать только кириллицу.'
+        )
+        return GET_USER_QUESTION
+
     subject = 'Вопрос от пользователя'
     body_text = f'Пользователь: {user_id}\nЗадает вопрос: {user_question}'
     send_email(subject, body_text)
