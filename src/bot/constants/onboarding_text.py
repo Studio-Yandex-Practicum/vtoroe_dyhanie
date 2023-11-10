@@ -207,7 +207,7 @@ DIRECTOR_TASKS = (
 )
 
 DATA_MESSAGE_FOR_NEW_WORKER = (
-    'Напиши пожалуйста, дату приема нового сотрудника'
+    'Напиши пожалуйста, дату приема нового сотрудника '
 )
 
 MEETINGS_MESSAGE_FOR_DIRECTOR = (
