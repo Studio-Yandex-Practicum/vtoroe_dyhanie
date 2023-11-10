@@ -1,5 +1,4 @@
-import re
-
+from pydantic import ValidationError
 from telegram import ReplyKeyboardRemove, Update
 from telegram.ext import (
     Application,
@@ -12,7 +11,7 @@ from telegram.ext import (
 
 from bot.constants.text import BACK_TO_MENU, STOP_MESSAGE
 from bot.keyboards.keyboards import main_menu_markup
-from bot.utils import send_email
+from bot.utils import QuestionModel, send_email
 
 
 GET_USER_QUESTION = 1
@@ -32,13 +31,13 @@ async def get_user_question_callback(
     '''Функция обрабатывает сообщение с вопросом от пользователя.'''
     user_id = update.effective_user.username
     user_question = update.message.text
-
-    if not re.match(r'^[а-яА-Я0-9\s\W]*$', user_question):
-        await update.message.reply_text(
-            'Сообщение должно содержать только кириллицу.'
-        )
+    try:
+        QuestionModel(question=user_question)
+    except ValidationError as e:
+        error_message = '\n'.join([error['msg'] for error in e.errors()])
+        error_message = error_message.replace('Value error,', '')
+        await update.message.reply_text(error_message.strip())
         return GET_USER_QUESTION
-
     subject = 'Вопрос от пользователя'
     body_text = f'Пользователь: {user_id}\nЗадает вопрос: {user_question}'
     send_email(subject, body_text)
