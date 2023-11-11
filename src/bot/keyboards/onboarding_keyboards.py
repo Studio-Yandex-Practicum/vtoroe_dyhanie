@@ -25,7 +25,7 @@ onboarding_markup = InlineKeyboardMarkup(onboarding_keyboard)
 mentor_keyboard = [
     [
         InlineKeyboardButton(
-            'Задачи Наставника/Бадди при онбординге',
+            'Задачи Наставника/Бадди',
             callback_data=f'{INFO_PREFIX}menor_tasks',
         )
     ],
@@ -212,3 +212,48 @@ director_confirm_keyboard = [
     [InlineKeyboardButton('Назад', callback_data='back_to_main_menu')],
 ]
 director_confirm_markup = InlineKeyboardMarkup(director_confirm_keyboard)
+
+# 14. Клавиатура с вариантами ответов после сообщения BEGINNER_AFTER_25_DAY_MESSAGE
+feedback_keyboard = [
+    [
+        InlineKeyboardButton(
+            'Все отлично!', callback_data='feedback_great'
+        )
+    ],
+    [
+        InlineKeyboardButton(
+            '50/50', callback_data='feedback_so_so'
+        )
+    ],
+    [
+        InlineKeyboardButton(
+            'Не все гладко, help', callback_data='feedback_help'
+        )
+    ],
+]
+feedback_keyboard_markup = InlineKeyboardMarkup(feedback_keyboard)
+
+# 15. Клавиатура с вариантами ответов после сообщения BEGINNER_DEFERRED_MESSAGES_VARIANTS
+calendar_keyboard = [
+    [
+        InlineKeyboardButton(
+            'Да все в календаре', callback_data='calendar_yes'
+        )
+    ],
+    [
+        InlineKeyboardButton(
+            'Еще не успел', callback_data='calendar_no'
+        )
+    ],
+]
+calendar_keyboard_markup = InlineKeyboardMarkup(calendar_keyboard)
+
+# 16. Клавиатура "Ок, спасибо"
+thanks_keyboard = [
+    [
+        InlineKeyboardButton(
+            'Ясно, спасибо!', callback_data='back_to_main_menu'
+        )
+    ],
+]
+thanks_markup = InlineKeyboardMarkup(thanks_keyboard)
