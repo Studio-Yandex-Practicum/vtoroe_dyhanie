@@ -1,6 +1,6 @@
 import asyncio
 
-from pydantic import BaseModel, validator, ValidationError
+from pydantic import ValidationError
 from datetime import datetime
 from ..utils import send_email
 
@@ -42,6 +42,9 @@ from bot.keyboards.onboarding_keyboards import (
     thanks_markup,
 )
 
+from .schemas import DateModel
+
+
 async def mentor_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
@@ -80,15 +83,6 @@ async def beginner_start_callback(
     return BEGINNER_ONBOARDING
 
 
-class DateModel(BaseModel):
-    employment_date: datetime
-
-    @validator('employment_date')
-    def date_must_be_past_or_present(cls, v):
-        if v.date() > datetime.today().date():
-            raise ValueError('Дата должна быть прошлой или сегодняшней. Будущие даты вводить нельзя.')
-        return v
-
 async def send_delayed_message(bot, delay, chat_id, message, reply_markup=None):
     await asyncio.sleep(delay)
     await bot.send_message(chat_id, message, reply_markup=reply_markup)
@@ -122,16 +116,16 @@ async def beginner_employment_date_callback(
         # Отправку отложенных сообщений и проверку
         bot = context.bot
         asyncio.create_task(send_delayed_message(
-            bot, 25, update.message.chat_id, 
+            bot, 25*86400, update.message.chat_id, 
             onboarding_text.BEGINNER_AFTER_25_DAY_MESSAGE,
             reply_markup=feedback_keyboard_markup,
         ))
         asyncio.create_task(send_delayed_message(
-            bot, 40, update.message.chat_id, 
+            bot, 40*86400, update.message.chat_id, 
             onboarding_text.BEGINNER_AFTER_40_DAY_MESSAGE,
         ))
         asyncio.create_task(send_delayed_message(
-            bot, 85, update.message.chat_id, 
+            bot, 85*86400, update.message.chat_id, 
             onboarding_text.BEGINNER_AFTER_85_DAY_MESSAGE,
         ))
 
@@ -370,16 +364,16 @@ async def director_employment_date_callback(
         # Отправку отложенных сообщений и проверку
         bot = context.bot
         asyncio.create_task(send_delayed_message(
-            bot, 25, update.message.chat_id, 
+            bot, 25*86400, update.message.chat_id, 
             onboarding_text.DIRECTOR_AFTER_25_DAY_MESSAGE,
             reply_markup=calendar_keyboard_markup,
         ))
         asyncio.create_task(send_delayed_message(
-            bot, 40, update.message.chat_id, 
+            bot, 40*86400, update.message.chat_id, 
             onboarding_text.DIRECTOR_AFTER_40_DAY_MESSAGE,
         ))
         asyncio.create_task(send_delayed_message(
-            bot, 85, update.message.chat_id, 
+            bot, 85*86400, update.message.chat_id, 
             onboarding_text.DIRECTOR_AFTER_85_DAY_MESSAGE,
         ))
         await update.message.reply_text(
