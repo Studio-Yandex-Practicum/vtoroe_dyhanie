@@ -42,7 +42,7 @@ from bot.keyboards.onboarding_keyboards import (
     thanks_markup,
 )
 
-from .schemas import DateModel
+from bot.constants.schemas import DateModel
 
 
 async def mentor_callback(
