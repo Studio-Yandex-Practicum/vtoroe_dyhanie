@@ -11,8 +11,25 @@ from telegram.ext import (
 from bot.constants import button, text
 from bot.constants.state import CHECK
 from bot.core.settings import settings
-from bot.handlers.command_application import greeting_callback, stop_callback
+from bot.handlers.command_application import stop_callback
 from bot.keyboards.keyboards import main_menu_markup
+
+
+async def greeting_callback(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+) -> int:
+    '''
+    Базовая функция начинающая диалог с юзером
+    и открывающий доступ к check_secret_conv_handler.
+    '''
+    await context.bot.set_my_commands(
+        [button.START_CMD, button.HELP_CMD],
+        scope=BotCommandScopeChat(update.effective_chat.id),
+    )
+    await update.message.reply_text(text.START_MESSAGE_PART_ONE)
+    await update.message.reply_text(text.START_MESSAGE_PART_TWO)
+    return CHECK
 
 
 async def check_the_secret_word_callback(
