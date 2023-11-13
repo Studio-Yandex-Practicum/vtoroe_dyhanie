@@ -128,5 +128,10 @@ python src\application.py
 - [Настасья Мартынова](https://github.com/Nastasya-M)
 - [Евгений Голодных](https://github.com/Evgeniy-Golodnykh)
 - [Дмитрий Корепанов](https://github.com/DNKer)
+- [Михаил Волков](https://github.com/greenpandorik)
+- [Евгений Коваленко](https://github.com/evgeny-dmitrievich)
+- [Александр Новожилов](https://github.com/AleksNovo)
+- [Олег Исаев](https://github.com/oisaev)
+- [Дмитрий Белолипецкий](https://github.com/EvolDem)
 
 </details>
