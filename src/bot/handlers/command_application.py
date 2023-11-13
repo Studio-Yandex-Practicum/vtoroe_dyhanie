@@ -9,12 +9,10 @@ from telegram.ext import (
     filters,
 )
 
+from bot.constants.state import GET_USER_QUESTION
 from bot.constants.text import BACK_TO_MENU, STOP_MESSAGE
 from bot.keyboards.keyboards import main_menu_markup
 from bot.utils import QuestionModel, send_email
-
-
-GET_USER_QUESTION = 1
 
 
 async def help_callback(
@@ -31,6 +29,13 @@ async def get_user_question_callback(
     '''Функция обрабатывает сообщение с вопросом от пользователя.'''
     user_id = update.effective_user.username
     user_question = update.message.text
+    if update.message.text.startswith('/'):
+        command = update.message.text[1:]
+        if command == 'menu':
+            await menu_callback(update, context)
+        elif command == 'stop':
+            await stop_callback(update, context)
+            return ConversationHandler.END
     try:
         QuestionModel(question=user_question)
     except ValidationError as e:
@@ -38,8 +43,8 @@ async def get_user_question_callback(
         error_message = error_message.replace('Value error,', '')
         await update.message.reply_text(error_message.strip())
         return GET_USER_QUESTION
-    subject = 'Вопрос от пользователя'
-    body_text = f'Пользователь: {user_id}\nЗадает вопрос: {user_question}'
+    subject = 'Обращение в поддержку телеграм бота'
+    body_text = f'Никнейм в телеграм: {user_id}\nВопрос: {user_question}'
     send_email(subject, body_text)
     await update.message.reply_text(
         'Ваш вопрос отправлен. Мы свяжемся с вами в ближайшее время.'
