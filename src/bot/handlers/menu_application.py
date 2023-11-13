@@ -25,7 +25,7 @@ from bot.keyboards.keyboards import (
 )
 from bot.keyboards.onboarding_keyboards import onboarding_markup
 from bot.keyboards.rules_keyboards import rules_markup
-from bot.utils import send_message
+from bot.utils.send_message import send_message
 
 
 async def reg_forms_callback(
