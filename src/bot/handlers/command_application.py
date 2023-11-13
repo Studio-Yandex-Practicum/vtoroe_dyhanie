@@ -1,5 +1,5 @@
 from pydantic import ValidationError
-from telegram import ReplyKeyboardRemove, Update
+from telegram import BotCommandScopeChat, ReplyKeyboardRemove, Update
 from telegram.ext import (
     Application,
     CommandHandler,
@@ -9,10 +9,27 @@ from telegram.ext import (
     filters,
 )
 
-from bot.constants.state import GET_USER_QUESTION
-from bot.constants.text import BACK_TO_MENU, STOP_MESSAGE
+from bot.constants import button, text
+from bot.constants.state import CHECK, GET_USER_QUESTION
 from bot.keyboards.keyboards import main_menu_markup
 from bot.utils import QuestionModel, send_email
+
+
+async def greeting_callback(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+) -> int:
+    '''
+    Базовая функция начинающая диалог с юзером
+    и открывающий доступ к check_secret_conv_handler.
+    '''
+    await context.bot.set_my_commands(
+        [button.START_CMD, button.HELP_CMD],
+        scope=BotCommandScopeChat(update.effective_chat.id),
+    )
+    await update.message.reply_text(text.START_MESSAGE_PART_ONE)
+    await update.message.reply_text(text.START_MESSAGE_PART_TWO)
+    return CHECK
 
 
 async def help_callback(
@@ -35,6 +52,8 @@ async def get_user_question_callback(
             await menu_callback(update, context)
         elif command == 'stop':
             await stop_callback(update, context)
+        elif command == 'start':
+            await greeting_callback(update, context)
             return ConversationHandler.END
     try:
         QuestionModel(question=user_question)
@@ -57,7 +76,7 @@ async def menu_callback(
 ) -> None:
     '''Команда перехода в главное меню.'''
     await update.message.reply_text(
-        BACK_TO_MENU, reply_markup=main_menu_markup
+        text.BACK_TO_MENU, reply_markup=main_menu_markup
     )
 
 
@@ -70,7 +89,7 @@ async def stop_callback(
     После её работы, бот будет принимать только команду /start.
     '''
     await update.message.reply_text(
-        STOP_MESSAGE, reply_markup=ReplyKeyboardRemove()
+        text.STOP_MESSAGE, reply_markup=ReplyKeyboardRemove()
     )
     return ConversationHandler.END
 
@@ -89,3 +108,4 @@ def register_handlers(app: Application) -> None:
     app.add_handler(help_handler)
     app.add_handler(CommandHandler('menu', menu_callback))
     app.add_handler(CommandHandler('stop', stop_callback))
+    app.add_handler(CommandHandler('start', greeting_callback))
