@@ -62,6 +62,12 @@ git clone git@github.com:Studio-Yandex-Practicum/vtoroe_dyhanie.git
 cd vtoroe_dyhanie/
 ```
 
+Создайте и заполните в ней файл .env. В качестве шаблона используйте файл .env.example
+
+Проект можно запустить как непосредственно в вашей ОС, так и в контейнерах Docker
+
+### Для запуска проекта непосредственно в вашей ОС:
+
 Инициализируйте создание директории виртуального окружения в проекте:
 
 ```
@@ -87,16 +93,48 @@ source .venv/bin/activate (для UNIX)
 source .venv/Scripts/activate (для WINDOWS)
 ```
 
-Создайте в корневой папке проекта файл .env, используя телеграм-токен, полученный от BotFather:
+Примените миграции для создания структуры БД:
 
 ```
-TELEGRAM_TOKEN='<здесь ваш токен>'
+alembic upgrade head
 ```
 
-Запустите проект локально, чтобы проверить работоспособность:
+Запустите скрипт наполнения БД информацией о контактах:
 
 ```
-python src\application.py
+python -m src.contacts_upload
+```
+
+Запустите проект локально:
+
+```
+python src/application.py
+```
+
+### Для запуска проекта в контейнерах Docker:
+
+Перейдите в директорию infra:
+
+```
+cd infra/
+```
+
+Выполните команду для создания и запуска приложения в контейнерах:
+
+```
+docker-compose up -d
+```
+
+Примените миграции для создания структуры БД:
+
+```
+docker-compose exec vtordish alembic upgrade head
+```
+
+Запустите скрипт наполнения БД информацией о контактах:
+
+```
+docker-compose exec vtordish python3 -m src.contacts_upload
 ```
 
 </details>
