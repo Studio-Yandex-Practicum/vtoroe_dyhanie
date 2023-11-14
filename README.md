@@ -42,6 +42,8 @@
 
 - Python 3.11
 - Python-telegram-bot 20.5
+- PostgreSQL 16.0
+- Alembic
 - Docker
 - Docker-Compose
 - Poetry 1.6.1
