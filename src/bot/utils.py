@@ -6,7 +6,7 @@ from telegram import InlineKeyboardMarkup, Message, Update
 from telegram.constants import ParseMode
 
 from bot.core.settings import settings
-
+from datetime import datetime
 
 _TYPES = [Message, Update]
 
@@ -55,6 +55,14 @@ def send_email(subject, body_text):
             message.encode('UTF-8'),
         )
 
+
+def check_date_format(date_string):
+    try:
+        # Проверка корректности введенной даты
+        datetime.strptime(date_string, '%d-%m-%Y')
+        return True
+    except ValueError:
+        return False
 
 # Тестовые данные
 # subject = 'Тестирование'

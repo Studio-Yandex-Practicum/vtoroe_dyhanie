@@ -43,6 +43,7 @@ from bot.keyboards.onboarding_keyboards import (
 )
 
 from bot.constants.schemas import DateModel
+from bot.utils import check_date_format
 
 
 async def mentor_callback(
@@ -97,10 +98,7 @@ async def beginner_employment_date_callback(
     '''
 
     employment_date = update.message.text
-    try:
-        # Проверка корректности введенной даты
-        datetime.strptime(employment_date, '%d-%m-%Y')
-    except ValueError:
+    if not check_date_format(employment_date):
         await update.message.reply_text('Некорректная дата. Пожалуйста, введите дату в формате ДД-ММ-ГГГГ.')
         return
 
@@ -138,6 +136,7 @@ async def beginner_employment_date_callback(
         reply_markup=beginner_employment_markup,
     )
     return ConversationHandler.END
+
 
 async def beginner_great_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     send_email('Feedback', 'Все отлично!')
@@ -345,10 +344,7 @@ async def director_employment_date_callback(
     '''
 
     employment_date = update.message.text
-    try:
-        # Проверка корректности введенной даты
-        datetime.strptime(employment_date, '%d-%m-%Y')
-    except ValueError:
+    if not check_date_format(employment_date):
         await update.message.reply_text('Некорректная дата. Пожалуйста, введите дату в формате ДД-ММ-ГГГГ.')
         return
 
