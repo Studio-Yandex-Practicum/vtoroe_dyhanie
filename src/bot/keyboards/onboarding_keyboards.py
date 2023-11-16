@@ -213,7 +213,8 @@ director_confirm_keyboard = [
 ]
 director_confirm_markup = InlineKeyboardMarkup(director_confirm_keyboard)
 
-# 14. Клавиатура с вариантами ответов после сообщения BEGINNER_AFTER_25_DAY_MESSAGE
+# 14. Клавиатура с вариантами ответов
+# после сообщения BEGINNER_AFTER_25_DAY_MESSAGE
 feedback_keyboard = [
     [
         InlineKeyboardButton(
@@ -233,7 +234,8 @@ feedback_keyboard = [
 ]
 feedback_keyboard_markup = InlineKeyboardMarkup(feedback_keyboard)
 
-# 15. Клавиатура с вариантами ответов после сообщения BEGINNER_DEFERRED_MESSAGES_VARIANTS
+# 15. Клавиатура с вариантами ответов
+# после сообщения BEGINNER_DEFERRED_MESSAGES_VARIANTS
 calendar_keyboard = [
     [
         InlineKeyboardButton(

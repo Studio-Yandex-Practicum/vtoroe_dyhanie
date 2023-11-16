@@ -6,7 +6,7 @@ ONBOARDING_LINK = (
 ONBOARDING_LINK_FORM = (
     'https://docs.google.com/forms/d/e/'
     '1FAIpQLScg142_kukGejpLHsMIWiVPVqSbCQNP2i_HzAbW6jvlsZEG2A/'
-    'formrestricted'    
+    'formrestricted'
 )
 
 START_MEETING_LINK = (
@@ -196,15 +196,15 @@ BEGINNER_CHECK_LIST_MESSAGE_ONE = (
 )
 
 BEGINNER_DEFERRED_MESSAGES_VARIANTS = (
-    'Записал\! Спасибо за ответ\! У тебя уже '
+    'Записал\\! Спасибо за ответ\\! У тебя уже '
     'назначена встреча по итогам '
     'первого месяца с руководителем? '
 )
 
 BEGINNER_DEFERRED_MESSAGES_VARIANTS_YES = (
-    'Отлично\! Скоро пришлю тебе '
-    'напоминание о следующей встрече\! '
-    'Хорошего дня\! '
+    'Отлично\\! Скоро пришлю тебе '
+    'напоминание о следующей встрече\\! '
+    'Хорошего дня\\! '
 )
 
 BEGINNER_DEFERRED_MESSAGES_VARIANTS_NO = (
@@ -258,21 +258,21 @@ DIRECTOR_AFTER_25_DAY_MESSAGE = (
 )
 
 DIRECTOR_AFTER_40_DAY_MESSAGE = (
-    'Привет! Уже почти два месяца, ' 
+    'Привет! Уже почти два месяца, '
     'как в твоем отделе новый сотрудник. '
     'Вы уже назначили встречу по итогам 2-х месяцев? '
 )
 
 DIRECTOR_AFTER_85_DAY_MESSAGE = (
-    'Привет! Уже почти три месяца, ' 
+    'Привет! Уже почти три месяца, '
     'как в твоем отделе новый сотрудник. '
     'Вы уже назначили встречу по итогам 3-х месяцев? '
 )
 
 DIRECTOR_DEFERRED_MESSAGES_VARIANTS_YES = (
-    'Отлично\! Скоро пришлю тебе '
-    'напоминание о следующей встрече\! '
-    'Хорошего дня\! '
+    'Отлично\\! Скоро пришлю тебе '
+    'напоминание о следующей встрече\\! '
+    'Хорошего дня\\! '
 )
 
 DIRECTOR_DEFERRED_MESSAGES_VARIANTS_NO = (

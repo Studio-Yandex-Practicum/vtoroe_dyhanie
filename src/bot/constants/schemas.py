@@ -1,7 +1,7 @@
 import re
+from datetime import datetime
 
 from pydantic import BaseModel, validator
-from datetime import datetime
 
 
 class QuestionModel(BaseModel):
@@ -22,7 +22,7 @@ class QuestionModel(BaseModel):
         if not re.match(r'^[а-яА-Я0-9\s\W]*$', value):
             raise ValueError('Сообщение должно содержать только кириллицу.')
         return value
-    
+
 
 class DateModel(BaseModel):
     employment_date: datetime
@@ -31,5 +31,8 @@ class DateModel(BaseModel):
     def date_must_be_past_or_present(cls, v):
         '''Проверка правильности введенной даты'''
         if v.date() > datetime.today().date():
-            raise ValueError('Дата должна быть прошлой или сегодняшней. Будущие даты вводить нельзя.')
+            raise ValueError(
+                'Дата должна быть прошлой или сегодняшней.'
+                'Будущие даты вводить нельзя.'
+            )
         return v

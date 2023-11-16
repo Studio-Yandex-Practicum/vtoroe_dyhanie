@@ -1,12 +1,13 @@
 import smtplib
 import ssl
+from datetime import datetime
 from typing import Dict
 
 from telegram import InlineKeyboardMarkup, Message, Update
 from telegram.constants import ParseMode
 
 from bot.core.settings import settings
-from datetime import datetime
+
 
 _TYPES = [Message, Update]
 
