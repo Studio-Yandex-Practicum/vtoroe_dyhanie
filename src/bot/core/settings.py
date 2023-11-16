@@ -14,8 +14,8 @@ class Settings(BaseSettings):
     logging_level: int = logging.INFO
     logging_format: str = '%(asctime)s, %(name)s, %(levelname)s, %(message)s'
     logging_dir: str = './src/bot/data/logs'
-    smtp_server: str = 'smtp.yandex.ru'
-    port: int = 465
+    smtp_server: str
+    port: int
     sender_email: str
     receiver_email: str
     password_email: str
