@@ -28,7 +28,7 @@ class DateModel(BaseModel):
     employment_date: datetime
 
     @validator('employment_date')
-    def date_must_be_past_or_present(cls, v):
+    def date_must_be_past_or_present(cls, v):  # noqa
         '''Проверка правильности введенной даты'''
         if v.date() > datetime.today().date():
             raise ValueError(
