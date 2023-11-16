@@ -103,7 +103,7 @@ async def beginner_employment_date_callback(
         await update.message.reply_text(
             'Некорректная дата. Пожалуйста, введите дату в формате ДД-ММ-ГГГГ.'
         )
-        return
+        return None
 
     try:
         employment_date = datetime.strptime(employment_date, '%d-%m-%Y')
@@ -114,7 +114,7 @@ async def beginner_employment_date_callback(
             error_message.replace('Value error, ', '')
         )
         await update.message.reply_text(user_friendly_error_message)
-        return
+        return None
 
     if employment_date:
         # Отправку отложенных сообщений и проверку
@@ -374,7 +374,7 @@ async def director_employment_date_callback(
         await update.message.reply_text(
             'Некорректная дата. Пожалуйста, введите дату в формате ДД-ММ-ГГГГ.'
         )
-        return
+        return None
 
     try:
         employment_date = datetime.strptime(employment_date, '%d-%m-%Y')
@@ -385,7 +385,7 @@ async def director_employment_date_callback(
             error_message.replace('Value error, ', '')
         )
         await update.message.reply_text(user_friendly_error_message)
-        return
+        return None
 
     if employment_date:
         # Отправку отложенных сообщений и проверку
