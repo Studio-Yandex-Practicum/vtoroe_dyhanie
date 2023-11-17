@@ -272,8 +272,8 @@ guardian_council_keyboard = [
 ]
 guardian_council_markup = InlineKeyboardMarkup(guardian_council_keyboard)
 
-# 9. Клавиатура для 'contact_list'
-contact_list_keyboard = [
+# 9. Клавиатуры для 'contact_list'
+contact_list_download_keyboard = [
     (
         InlineKeyboardButton(
             'Скачать справочник',
@@ -282,4 +282,14 @@ contact_list_keyboard = [
         ),
     ),
 ]
-contact_list_markup = InlineKeyboardMarkup(contact_list_keyboard)
+contact_list_download_markup = InlineKeyboardMarkup(
+    contact_list_download_keyboard
+)
+contact_list_exit_keyboard = [
+    (
+        InlineKeyboardButton(
+            'В главное меню', callback_data='exit_from_contact_search'
+        ),
+    ),
+]
+contact_list_exit_markup = InlineKeyboardMarkup(contact_list_exit_keyboard)
