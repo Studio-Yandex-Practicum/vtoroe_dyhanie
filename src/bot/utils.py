@@ -1,6 +1,8 @@
 import smtplib
 import ssl
 from typing import Dict
+import requests
+import aiohttp
 
 from telegram import InlineKeyboardMarkup, Message, Update
 from telegram.constants import ParseMode
@@ -26,6 +28,12 @@ async def send_message(
                 parse_mode=ParseMode.MARKDOWN,
                 reply_markup=reply_markup,
             )
+
+
+async def check_text():
+    response = requests.get('http://127.0.0.1:8000/keyboards/10:17/')
+    message_data = response.json()
+    return message_data.values()
 
 
 def send_email(subject, body_text):
@@ -55,6 +63,11 @@ def send_email(subject, body_text):
             message.encode('UTF-8'),
         )
 
+
+async def get_django_json(url):
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as response:
+            return await response.json()
 
 # Тестовые данные
 # subject = 'Тестирование'

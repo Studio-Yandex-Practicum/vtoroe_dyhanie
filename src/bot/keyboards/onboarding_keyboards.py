@@ -1,214 +1,295 @@
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
 from bot.constants.query_patterns import INFO_PREFIX
+from bot.utils import get_django_json
 
 
-# 1. Клавиатура для подраздела 'Онбординг'
-onboarding_keyboard = [
-    [InlineKeyboardButton('Новичок', callback_data=f'{INFO_PREFIX}beginner')],
-    [
-        InlineKeyboardButton(
-            'Руководитель', callback_data=f'{INFO_PREFIX}director'
-        )
-    ],
-    [
-        InlineKeyboardButton(
-            'Наставник/Бадди',
-            callback_data=f'{INFO_PREFIX}mentor_or_buddy',
-        )
-    ],
-    [InlineKeyboardButton('Назад в меню', callback_data='back_to_main_menu')],
-]
-onboarding_markup = InlineKeyboardMarkup(onboarding_keyboard)
+# 1. Клавиатура для подраздела "Онбординг"
+async def onboarding_markup():
+    messages = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_keyboards/1:4/')
+    onboarding_keyboard = [
+        [
+            InlineKeyboardButton(
+                messages['onboarding_keyboard_beginner'],
+                callback_data=f'{INFO_PREFIX}beginner')],
+        [
+            InlineKeyboardButton(
+                messages['onboarding_keyboard_director'],
+                callback_data=f'{INFO_PREFIX}director'
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                messages['onboarding_keyboard_mentor_or_buddy'],
+                callback_data=f'{INFO_PREFIX}mentor_or_buddy',
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                messages['onboarding_keyboard_back_to_main_menu'],
+                callback_data='back_to_main_menu'
+            )
+        ],
+    ]
+    return InlineKeyboardMarkup(onboarding_keyboard)
 
-# 2. Клавиатура для 'Наставник/Бадди'
-mentor_keyboard = [
-    [
-        InlineKeyboardButton(
-            'Задачи Наставника/Бадди',
-            callback_data=f'{INFO_PREFIX}menor_tasks',
-        )
-    ],
-    [
-        InlineKeyboardButton(
-            'Ой, мне не сюда', callback_data='back_to_main_menu'
-        )
-    ],
-]
-mentor_markup = InlineKeyboardMarkup(mentor_keyboard)
 
-# 3. Клавиатура для 'Задачи Наставника/Бадди'
-mentor_tasks_keyboard = [
-    [
-        InlineKeyboardButton(
-            'Понятно, спасибо!', callback_data='back_to_main_menu'
-        )
-    ],
-]
-mentor_tasks_markup = InlineKeyboardMarkup(mentor_tasks_keyboard)
+# 2. Клавиатура для "Наставник/Бадди"
+async def mentor_markup():
+    messages = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_keyboards/5:6/')
+    mentor_keyboard = [
+        [
+            InlineKeyboardButton(
+                messages['mentor_keyboard_menor_tasks'],
+                callback_data=f'{INFO_PREFIX}menor_tasks',
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                messages['mentor_keyboard_back_to_main_menu'],
+                callback_data='back_to_main_menu'
+            )
+        ],
+    ]
+    return InlineKeyboardMarkup(mentor_keyboard)
+
+
+# 3. Клавиатура для "Задачи Наставника/Бадди"
+async def mentor_tasks_markup():
+    messages = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_keyboards/7/')
+    mentor_tasks_keyboard = [
+        [
+            InlineKeyboardButton(
+                messages['mentor_tasks_keyboard_back_to_main_menu'],
+                callback_data='back_to_main_menu'
+            )
+        ],
+    ]
+    return InlineKeyboardMarkup(mentor_tasks_keyboard)
+
 
 # 4. Клавиатура для 'Новичка'
-beginner_keyboard = [
-    [
-        InlineKeyboardButton(
-            'Ой, мне не сюда', callback_data='back_to_main_menu'
-        )
-    ],
-]
-beginner_markup = InlineKeyboardMarkup(beginner_keyboard)
+async def beginner_markup():
+    messages = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_keyboards/8/')
+    beginner_keyboard = [
+        [
+            InlineKeyboardButton(
+                messages['beginner_keyboard_back_to_main_menu'],
+                callback_data='back_to_main_menu'
+            )
+        ],
+    ]
+    return InlineKeyboardMarkup(beginner_keyboard)
+
 
 # 5. Клавиатура после турдоустройства 'Новичка'
-beginner_employment_keyboard = [
-    [
-        InlineKeyboardButton(
-            'Первый день',
-            callback_data=f'{INFO_PREFIX}first_day',
-        )
-    ],
-    [
-        InlineKeyboardButton(
-            'Этапы адаптации',
-            callback_data=f'{INFO_PREFIX}adaptation',
-        )
-    ],
-    [
-        InlineKeyboardButton(
-            'План работы на испытательный срок',
-            callback_data=f'{INFO_PREFIX}work_plan',
-        )
-    ],
-    [
-        InlineKeyboardButton(
-            'Чек-лист нового сотрудника',
-            callback_data=f'{INFO_PREFIX}checklist',
-        )
-    ],
-]
-beginner_employment_markup = InlineKeyboardMarkup(beginner_employment_keyboard)
+async def beginner_employment_markup():
+    messages = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_keyboards/9:12/')
+    beginner_employment_keyboard = [
+        [
+            InlineKeyboardButton(
+                messages['beginner_employment_keyboard_first_day'],
+                callback_data=f'{INFO_PREFIX}first_day',
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                messages['beginner_employment_keyboard_adaptation'],
+                callback_data=f'{INFO_PREFIX}adaptation',
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                messages['beginner_employment_keyboard_work_plan'],
+                callback_data=f'{INFO_PREFIX}work_plan',
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                messages['beginner_employment_keyboard_checklist'],
+                callback_data=f'{INFO_PREFIX}checklist',
+            )
+        ],
+    ]
+    return InlineKeyboardMarkup(beginner_employment_keyboard)
 
-# общая часть меню раздела Новичок
-navigation_menu = [
-    (
-        InlineKeyboardButton(
-            'Назад',
-            callback_data='beginner_back',
-        ),
-    ),
-    (
-        InlineKeyboardButton(
-            'В главное меню',
-            callback_data='back_to_main_menu',
-        ),
-    ),
-]
 
 # 6. Клавиатура для выхода из раздела 'Первый день'
-first_day_keyboard = [
-    [
-        InlineKeyboardButton(
-            'Да, нужен чек-лист, спасибо!',
-            callback_data=f'{INFO_PREFIX}checklist',
-        )
-    ],
-]
-first_day_keyboard.extend(navigation_menu)
-first_day_markup = InlineKeyboardMarkup(first_day_keyboard)
+async def first_day_markup():
+    messages = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_keyboards/13:15/')
+    first_day_keyboard = [
+        [
+            InlineKeyboardButton(
+                messages['first_day_keyboard_checklist'],
+                callback_data=f'{INFO_PREFIX}checklist',
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                messages['navigation_menu_beginner_back'],
+                callback_data='beginner_back',
+            ),
+        ],
+        [
+            InlineKeyboardButton(
+                messages['navigation_menu_back_to_main_menu'],
+                callback_data='back_to_main_menu',
+            ),
+        ],
+    ]
+    return InlineKeyboardMarkup(first_day_keyboard)
+
 
 # 7. Клавиатура для выхода из раздела 'Этапы адаптации'
-adaptation_keyboard = [
-    [
-        InlineKeyboardButton(
-            'Да, давай!', callback_data=f'{INFO_PREFIX}work_plan'
-        )
-    ],
-]
-adaptation_keyboard.extend(navigation_menu)
-adaptation_markup = InlineKeyboardMarkup(adaptation_keyboard)
+async def adaptation_markup():
+    messages = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_keyboards/')
+    adaptation_keyboard = [
+        [
+            InlineKeyboardButton(
+                messages['adaptation_keyboard_work_plan'],
+                callback_data=f'{INFO_PREFIX}work_plan'
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                messages['navigation_menu_beginner_back'],
+                callback_data='beginner_back',
+            ),
+        ],
+        [
+            InlineKeyboardButton(
+                messages['navigation_menu_back_to_main_menu'],
+                callback_data='back_to_main_menu',
+            ),
+        ],
+    ]
+    return InlineKeyboardMarkup(adaptation_keyboard)
+
 
 # 8. Клавиатура для выхода из раздела 'План работы на испытательный срок'
-work_plan_keyboard = [
-    [
-        InlineKeyboardButton(
-            'Все ясно, спасибо',
-            # на схеме нет
-            callback_data='back_to_main_menu',
-        )
-    ],
-    [
-        InlineKeyboardButton(
-            'Назад',
-            callback_data='beginner_back',
-        )
-    ],
-]
-work_plan_markup = InlineKeyboardMarkup(work_plan_keyboard)
+async def work_plan_markup():
+    messages = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_keyboards/17:18/')
+    work_plan_keyboard = [
+        [
+            InlineKeyboardButton(
+                messages['work_plan_keyboard_back_to_main_menu'],
+                # на схеме нет
+                callback_data='back_to_main_menu',
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                messages['work_plan_keyboard_beginner_back'],
+                callback_data='beginner_back',
+            )
+        ],
+    ]
+    return InlineKeyboardMarkup(work_plan_keyboard)
+
 
 # 9. Клавиатура для выхода из раздела 'Чек лист нового сотрудника'
-checklist_keyboard = [
-    [
-        InlineKeyboardButton(
-            'То, что нужно! Спасибо!',
-            # на схеме нет
-            callback_data='back_to_main_menu',
-        )
-    ],
-    [
-        InlineKeyboardButton(
-            'Назад',
-            callback_data='beginner_back',
-        )
-    ],
-]
-checklist_markup = InlineKeyboardMarkup(checklist_keyboard)
+async def checklist_markup():
+    messages = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_keyboards/19:20/')
+    checklist_keyboard = [
+        [
+            InlineKeyboardButton(
+                messages['checklist_keyboard_back_to_main_menu'],
+                # на схеме нет
+                callback_data='back_to_main_menu',
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                messages['checklist_keyboard_beginner_back'],
+                callback_data='beginner_back',
+            )
+        ],
+    ]
+    return InlineKeyboardMarkup(checklist_keyboard)
 
 
 # 10. Клавиатура для 'Руководитель'
-director_keyboard = [
-    # Расходится со схемой - такое меню показалось логичней
-    [
-        InlineKeyboardButton(
-            'Супер, давай!',
-            callback_data=f'{INFO_PREFIX}director_confirmation',
-        )
-    ],
-    [
-        InlineKeyboardButton(
-            'Что за встречи?',
-            callback_data=f'{INFO_PREFIX}director_question',
-        )
-    ],
-    [
-        InlineKeyboardButton(
-            'Задачи руководителя',
-            callback_data=f'{INFO_PREFIX}director_tasks',
-        )
-    ],
-    [
-        InlineKeyboardButton(
-            'Ой, мне не сюда', callback_data='back_to_main_menu'
-        )
-    ],
-]
-director_markup = InlineKeyboardMarkup(director_keyboard)
+async def director_markup():
+    messages = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_keyboards/21:24/')
+    director_keyboard = [
+        [
+            InlineKeyboardButton(
+                messages['director_keyboard_director_confirmation'],
+                callback_data=f'{INFO_PREFIX}director_confirmation',
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                messages['director_keyboard_director_question'],
+                callback_data=f'{INFO_PREFIX}director_question',
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                messages['director_keyboard_director_tasks'],
+                callback_data=f'{INFO_PREFIX}director_tasks',
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                messages['director_keyboard_back_to_main_menu'],
+                callback_data='back_to_main_menu'
+            )
+        ],
+    ]
+    return InlineKeyboardMarkup(director_keyboard)
+
 
 # 11. Клавиатура для 'Задачи Руководителя'
-director_tasks_keyboard = [
-    [InlineKeyboardButton('Ок, спасибо!', callback_data='back_to_main_menu')],
-]
-director_tasks_markup = InlineKeyboardMarkup(director_tasks_keyboard)
+async def director_tasks_markup():
+    messages = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_keyboards/25/')
+    director_tasks_keyboard = [
+        [
+            InlineKeyboardButton(
+                messages['director_tasks_keyboard_back_to_main_menu'],
+                callback_data='back_to_main_menu'
+            )
+        ],
+    ]
+    return InlineKeyboardMarkup(director_tasks_keyboard)
+
 
 # 12. Клавиатура для возврата из раздела 'Что за встречи'
-director_question_keyboard = [
-    [
-        InlineKeyboardButton(
-            'Ясно, спасибо!', callback_data='back_to_main_menu'
-        )
-    ],
-]
-director_question_markup = InlineKeyboardMarkup(director_question_keyboard)
+async def director_question_markup():
+    messages = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_keyboards/26/')
+    director_question_keyboard = [
+        [
+            InlineKeyboardButton(
+                messages['director_question_keyboard_back_to_main_menu'],
+                callback_data='back_to_main_menu'
+            )
+        ],
+    ]
+    return InlineKeyboardMarkup(director_question_keyboard)
+
 
 # 13. Клавиатура для возврата из раздела 'Супер, давай'
-director_confirm_keyboard = [
-    [InlineKeyboardButton('Назад', callback_data='back_to_main_menu')],
-]
-director_confirm_markup = InlineKeyboardMarkup(director_confirm_keyboard)
+async def director_confirm_markup():
+    messages = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_keyboards/27/')
+    director_confirm_keyboard = [
+        [
+            InlineKeyboardButton(
+                messages['director_confirm_keyboard_back_to_main_menu'],
+                callback_data='back_to_main_menu'
+            )
+        ],
+    ]
+    return InlineKeyboardMarkup(director_confirm_keyboard)

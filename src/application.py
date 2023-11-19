@@ -3,7 +3,7 @@ from telegram.ext import Application
 from bot.core.logger import logger  # noqa
 from bot.core.settings import settings
 from bot.error_handler import error_handler
-from bot.handlers import register_all_handlers
+from bot.handlers import start_handler_updater_thread
 
 
 def main() -> None:  # noqa
@@ -11,7 +11,7 @@ def main() -> None:  # noqa
 
     app = Application.builder().token(settings.telegram_token).build()
 
-    register_all_handlers(app)
+    start_handler_updater_thread(app)
 
     app.add_error_handler(error_handler)
 

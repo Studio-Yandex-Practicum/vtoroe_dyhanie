@@ -1,3 +1,67 @@
-from django.shortcuts import render
+from django.shortcuts import get_list_or_404, get_object_or_404
+from django.http import JsonResponse
 
-# Create your views here.
+from admin_bot.models import (
+    AboutFundKeyboard,
+    AboutFundText,
+    BasicInfoKeyboard,
+    BasicInfoText,
+    Button,
+    ContactListtext,
+    FaqText,
+    Keyboard,
+    Links,
+    OnboardingKeyboard,
+    OnboardingText,
+    QueryPatterns,
+    RegFormsText,
+    RulesKeyboard,
+    RulesText,
+    State,
+    Text,
+)
+
+DICT_MODELS = {
+    'about_fund_text': AboutFundText,
+    'about_fund_keyboards': AboutFundKeyboard,
+    'basic_info_text':  BasicInfoText,
+    'basic_info_keyboards': BasicInfoKeyboard,
+    'button': Button,
+    'contact_list_text': ContactListtext,
+    'faq_text': FaqText,
+    'keyboards': Keyboard,
+    'links': Links,
+    'onboarding_keyboards': OnboardingKeyboard,
+    'onboarding_text': OnboardingText,
+    'query_patterns': QueryPatterns,
+    'reg_forms_text': RegFormsText,
+    'rules_keyboards': RulesKeyboard,
+    'rules_text': RulesText,
+    'state': State,
+    'text': Text,
+}
+
+
+def get_constants(request, model_name, start_id, end_id):
+    constants = get_list_or_404(
+        DICT_MODELS[model_name], pk__in=(range(start_id, end_id + 1)))
+    constant_data = {}
+    for constant in constants:
+        constant_data.update({
+            constant.constant_name: constant.constant_text,
+        })
+    return JsonResponse(constant_data, safe=False)
+
+
+def get_constant(request, model_name, id):
+    constant = get_object_or_404(
+        DICT_MODELS[model_name], pk=id)
+    constant_data = {constant.constant_name: constant.constant_text}
+    return JsonResponse(constant_data, safe=False)
+
+
+def list_constant(request, model_name):
+    constant = DICT_MODELS[model_name].objects.values_list(
+                'constant_name', 'constant_text')
+    new_result = dict(constant)
+    return JsonResponse(new_result, safe=False)

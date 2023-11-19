@@ -10,7 +10,6 @@ from telegram.ext import (
     filters,
 )
 
-from bot.constants import onboarding_text
 from bot.constants.query_patterns import INFO_PREFIX
 from bot.constants.state import BEGINNER_ONBOARDING
 from bot.handlers.command_application import stop_callback
@@ -28,6 +27,7 @@ from bot.keyboards.onboarding_keyboards import (
     mentor_tasks_markup,
     work_plan_markup,
 )
+from bot.utils import get_django_json
 
 
 async def mentor_callback(
@@ -36,9 +36,11 @@ async def mentor_callback(
     '''Обработка кнопки Наставник/Бадди.'''
     query = update.callback_query
     await query.answer()
+    message_data = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_text/8/')
     await query.message.edit_text(
-        onboarding_text.MENTOR,
-        reply_markup=mentor_markup,
+        message_data.get('MENTOR', ''),
+        reply_markup=await mentor_markup(),
     )
 
 
@@ -46,10 +48,12 @@ async def mentor_tasks_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Задачи Наставника/Бадди.'''
+    message_data = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_text/9/')
     await update.callback_query.message.reply_text(
-        onboarding_text.MENTOR_TASKS,
-        parse_mode=ParseMode.MARKDOWN_V2,
-        reply_markup=mentor_tasks_markup,
+        message_data.get('MENTOR_TASKS', ''),
+        parse_mode=ParseMode.MARKDOWN,
+        reply_markup=await mentor_tasks_markup(),
     )
 
 
@@ -57,13 +61,15 @@ async def beginner_start_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Новичок.'''
+    message_data = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_text/10:11/')
     await update.callback_query.message.reply_text(
-        onboarding_text.BEGINNER_START_MESSAGE_ONE
+        message_data.get('BEGINNER_START_MESSAGE_ONE', '')
     )
     await update.callback_query.message.reply_text(
-        onboarding_text.BEGINNER_START_MESSAGE_TWO,
-        parse_mode=ParseMode.MARKDOWN_V2,
-        reply_markup=beginner_markup,
+        message_data.get('BEGINNER_START_MESSAGE_TWO', ''),
+        parse_mode=ParseMode.MARKDOWN,
+        reply_markup=await beginner_markup(),
     )
     return BEGINNER_ONBOARDING
 
@@ -82,14 +88,15 @@ async def beginner_employment_date_callback(
         # Здесь можно реализовать отправку отложенных сообщений и проверку
         # корректности введенной даты трудоустройства
         pass
-
+    message_data = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_text/12:13/')
     await update.message.reply_text(
-        onboarding_text.BEGINNER_EMPLOYMENT_MESSAGE_ONE
+        message_data.get('BEGINNER_EMPLOYMENT_MESSAGE_ONE', '')
     )
     await update.message.reply_text(
-        onboarding_text.BEGINNER_EMPLOYMENT_MESSAGE_TWO,
-        parse_mode=ParseMode.MARKDOWN_V2,
-        reply_markup=beginner_employment_markup,
+        message_data.get('BEGINNER_EMPLOYMENT_MESSAGE_TWO', ''),
+        parse_mode=ParseMode.MARKDOWN,
+        reply_markup=await beginner_employment_markup(),
     )
     return ConversationHandler.END
 
@@ -113,18 +120,30 @@ async def beginner_first_day_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Первый день.'''
+    message_data = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_text/15:17/')
+    message_link = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_text/6/')
+    link = message_link.get('PROBATION_PLAN_LINK', '')
+    message_one = message_data.get(
+        'BEGINNER_FIRST_DAY_MESSAGE_ONE', '')
+    message_two = message_data.get(
+        'BEGINNER_FIRST_DAY_MESSAGE_TWO', '').format(
+            PROBATION_PLAN_LINK=link)
+    message_three = message_data.get(
+        'BEGINNER_FIRST_DAY_MESSAGE_THREE', '')
     await update.callback_query.message.reply_text(
-        onboarding_text.BEGINNER_FIRST_DAY_MESSAGE_ONE
+        message_one
     )
     await update.callback_query.message.reply_text(
-        onboarding_text.BEGINNER_FIRST_DAY_MESSAGE_TWO,
-        parse_mode=ParseMode.MARKDOWN_V2,
+        message_two,
+        parse_mode=ParseMode.MARKDOWN,
         disable_web_page_preview=True,
     )
     await update.callback_query.message.reply_text(
-        onboarding_text.BEGINNER_FIRST_DAY_MESSAGE_THREE,
-        parse_mode=ParseMode.MARKDOWN_V2,
-        reply_markup=first_day_markup,
+        message_three,
+        parse_mode=ParseMode.MARKDOWN,
+        reply_markup=await first_day_markup(),
     )
 
 
@@ -132,21 +151,28 @@ async def beginner_adaptation_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Этапы адаптации.'''
+    message_data = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_text/18:21/')
+    message_link = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_text/5/')
+    link = message_link.get('TASK_PLAN_LINK', '')
     await update.callback_query.message.reply_text(
-        onboarding_text.BEGINNER_STAGES_ADAPTATION_MESSAGE_ONE,
-        parse_mode=ParseMode.MARKDOWN_V2,
+        message_data.get(
+            'BEGINNER_STAGES_ADAPTATION_MESSAGE_ONE', ''
+        ).format(TASK_PLAN_LINK=link),
+        parse_mode=ParseMode.MARKDOWN,
         disable_web_page_preview=True,
     )
     await update.callback_query.message.reply_text(
-        onboarding_text.BEGINNER_STAGES_ADAPTATION_MESSAGE_TWO
+        message_data.get('BEGINNER_STAGES_ADAPTATION_MESSAGE_TWO', '')
     )
     await update.callback_query.message.reply_text(
-        onboarding_text.BEGINNER_STAGES_ADAPTATION_MESSAGE_THREE
+        message_data.get('BEGINNER_STAGES_ADAPTATION_MESSAGE_THREE', '')
     )
     await update.callback_query.message.reply_text(
-        onboarding_text.BEGINNER_STAGES_ADAPTATION_MESSAGE_FOUR,
-        parse_mode=ParseMode.MARKDOWN_V2,
-        reply_markup=adaptation_markup,
+        message_data.get('BEGINNER_STAGES_ADAPTATION_MESSAGE_FOUR', ''),
+        parse_mode=ParseMode.MARKDOWN,
+        reply_markup=await adaptation_markup(),
     )
 
 
@@ -154,11 +180,18 @@ async def beginner_work_plan_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки План работы на испытательный срок.'''
+    message_data = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_text/22/')
+    message_link = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_text/4/')
+    link = message_link.get('WORK_PLAN_LINK', '')
     await update.callback_query.message.reply_text(
-        onboarding_text.BEGINNER_WORK_PLAN_MESSAGE_ONE,
-        parse_mode=ParseMode.MARKDOWN_V2,
+        message_data.get(
+            'BEGINNER_WORK_PLAN_MESSAGE_ONE', ''
+        ).format(WORK_PLAN_LINK=link),
+        parse_mode=ParseMode.MARKDOWN,
         disable_web_page_preview=True,
-        reply_markup=work_plan_markup,
+        reply_markup=await work_plan_markup(),
     )
 
 
@@ -166,11 +199,19 @@ async def beginner_checklist_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Чек-лист нового сотрудника.'''
+    message_data = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_text/23/')
+    link_data = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_text/3/')
+    link = link_data.get('CHECK_LIST_LINK', '')
+    message = message_data.get(
+        'BEGINNER_CHECK_LIST_MESSAGE_ONE', '').format(
+            CHECK_LIST_LINK=link)
     await update.callback_query.message.reply_text(
-        onboarding_text.BEGINNER_CHECK_LIST_MESSAGE_ONE,
-        parse_mode=ParseMode.MARKDOWN_V2,
+        message,
+        parse_mode=ParseMode.MARKDOWN,
         disable_web_page_preview=True,
-        reply_markup=checklist_markup,
+        reply_markup=await checklist_markup(),
     )
 
 
@@ -180,7 +221,7 @@ async def beginner_back_callback(
     '''Обработка кнопки Возврата в меню Новичок.'''
     await update.callback_query.message.edit_text(
         'Выберете действие:',
-        reply_markup=beginner_employment_markup,
+        reply_markup=await beginner_employment_markup(),
     )
 
 
@@ -190,11 +231,13 @@ async def director_callback(
     '''Обработка кнопки Руководитель.'''
     query = update.callback_query
     await query.answer()
+    message_data = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_text/24/')
     await query.message.edit_text(
-        onboarding_text.DIRECTOR.get('msg_1'),
+        message_data.get('DIRECTOR_msg_1', ''),
         parse_mode='HTML',
         disable_web_page_preview=True,
-        reply_markup=director_markup,
+        reply_markup=await director_markup(),
     )
 
 
@@ -202,10 +245,13 @@ async def tasks_director_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Задачи Руководителя.'''
+    message_data = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_text/25/')
+    text = message_data.get('DIRECTOR_TASKS', '')
     await update.callback_query.message.reply_text(
-        onboarding_text.DIRECTOR_TASKS,
-        parse_mode=ParseMode.MARKDOWN_V2,
-        reply_markup=director_tasks_markup,
+        text,
+        parse_mode=ParseMode.MARKDOWN,
+        reply_markup=await director_tasks_markup(),
     )
 
 
@@ -213,10 +259,17 @@ async def director_question_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Что за встречи?'''
+    message_data = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_text/27/')
+    message_data_link = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_text/2/')
+    link = message_data_link.get('START_MEETING_LINK', '')
+    message = message_data.get(
+        'MEETINGS_MESSAGE_FOR_DIRECTOR', '').format(START_MEETING_LINK=link)
     await update.callback_query.message.reply_text(
-        onboarding_text.MEETINGS_MESSAGE_FOR_DIRECTOR,
-        parse_mode=ParseMode.MARKDOWN_V2,
-        reply_markup=director_question_markup,
+        message,
+        parse_mode=ParseMode.MARKDOWN,
+        reply_markup=await director_question_markup(),
     )
 
 
@@ -224,8 +277,10 @@ async def director_confirmation_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Супер, давай.'''
+    message_data = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_text/26/')
     await update.callback_query.message.reply_text(
-        onboarding_text.DATA_MESSAGE_FOR_NEW_WORKER
+        message_data.get('DATA_MESSAGE_FOR_NEW_WORKER', '')
     )
     return BEGINNER_ONBOARDING
 
@@ -243,10 +298,12 @@ async def director_employment_date_callback(
         # Здесь можно реализовать отправку отложенных сообщений и проверку
         # корректности введенной даты трудоустройства
         pass
+    message_data = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_text/27/')
     await update.message.reply_text(
-        onboarding_text.REMINDER_MESSAGE_FOR_MEETINGS.get('msg_1'),
-        parse_mode=ParseMode.MARKDOWN_V2,
-        reply_markup=director_confirm_markup,
+        message_data.get('REMINDER_MESSAGE_FOR_MEETINGS_msg_1', ''),
+        parse_mode=ParseMode.MARKDOWN,
+        reply_markup=await director_confirm_markup(),
     )
     return ConversationHandler.END
 
@@ -281,7 +338,7 @@ def register_handlers(app: Application) -> None:
         f'{INFO_PREFIX}director': director_callback,
         f'{INFO_PREFIX}mentor_or_buddy': mentor_callback,
         f'{INFO_PREFIX}menor_tasks': mentor_tasks_callback,
-        'beginner_back': beginner_back_callback,
+        'beginner': beginner_back_callback,
     }
     for pattern, handler in registrator.items():
         app.add_handler(CallbackQueryHandler(handler, pattern=pattern))

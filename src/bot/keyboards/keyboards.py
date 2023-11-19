@@ -4,34 +4,41 @@ from telegram import (
     ReplyKeyboardMarkup,
 )
 
-from bot.constants.button import BACK_BUTTON
+from bot.utils import get_django_json
 
 
-main_menu_keyboard = [
-    ['О Фонде', 'Онбординг'],
-    ['Основная информация', 'Общие правила'],
-    ['База знаний', 'Обратная связь'],
-    ['Регламенты и формы', 'FAQ'],
-    ['Список контактов'],
-]
+# Основное меню
+async def main_menu_markup():
+    messages = await get_django_json(
+        'http://127.0.0.1:8000/keyboards/1:9/')
+    messages = [text for text in messages.values()]
+    about_fund_markup = ReplyKeyboardMarkup(
+        [messages[x:x+2] for x in range(0, len(messages), 2)],
+        resize_keyboard=True,
+        one_time_keyboard=True,
+        )
+    return about_fund_markup
 
-main_menu_markup = ReplyKeyboardMarkup(
-    main_menu_keyboard, one_time_keyboard=True, resize_keyboard=True
-)
 
-faq_menu_keyboard = [
-    ['Организационные вопросы', 'Волонтёрство'],
-    ['Обучение', 'Отпуск'],
-    ['Рабочий процесс', 'Административные вопросы'],
-    ['Оформление документов', 'Командировки'],
-    ['В главное меню'],
-]
-faq_menu_markup = ReplyKeyboardMarkup(
-    faq_menu_keyboard, one_time_keyboard=False, resize_keyboard=True
-)
+async def faq_menu_markup():
+    messages = await get_django_json(
+        'http://127.0.0.1:8000/keyboards/10:18/')
+    messages = [text for text in messages.values()]
+    faq_menu_keyboard = ReplyKeyboardMarkup(
+        [messages[x:x+2] for x in range(0, len(messages), 2)],
+        resize_keyboard=True,
+        one_time_keyboard=True,
+        )
+    return faq_menu_keyboard
 
-main_button_keyboard = [
-    [InlineKeyboardButton(BACK_BUTTON, callback_data='back_to_main_menu')]
-]
 
-main_button_markup = InlineKeyboardMarkup(main_button_keyboard)
+async def main_button_markup():
+    messages = await get_django_json(
+        'http://127.0.0.1:8000/keyboards/19/')
+    main_button_keyboard = [
+        [
+            InlineKeyboardButton(
+                messages['BACK_BUTTON'],
+                callback_data='back_to_main_menu')]  # ?
+    ]
+    return InlineKeyboardMarkup(main_button_keyboard)

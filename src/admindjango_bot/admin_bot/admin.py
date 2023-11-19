@@ -1,3 +1,4 @@
+from django import forms
 from admin_bot.models import (
     AboutFundKeyboard,
     AboutFundText,
@@ -20,22 +21,19 @@ from admin_bot.models import (
 from django.contrib import admin
 
 
-class BaseModelAdminKeys(admin.ModelAdmin):
-    list_display = ('keyboard_name', 'keyboard_text')
-    empty_value_display = '-пусто-'
-    # readonly_fields = ('keyboard_name',)
-
+class TextAdminForm(forms.ModelForm):
     class Meta:
-        abstract = True
+        model = Text
+        fields = "__all__"
+        widgets = {
+            'constant_text': forms.Textarea(attrs={'rows': 10, 'cols': 80}),
+        }
 
 
-class BaseModelAdminConstant(admin.ModelAdmin):
+class TextAdmin(admin.ModelAdmin):
     list_display = ('constant_name', 'constant_text')
     empty_value_display = '-пусто-'
-    # readonly_fields = ('constant_name',)
-
-    class Meta:
-        abstract = True
+    form = TextAdminForm
 
 
 myModelsKeys = [
@@ -60,5 +58,5 @@ myModelsConstant = [
     Text,
 ]
 
-admin.site.register(myModelsKeys, BaseModelAdminKeys)
-admin.site.register(myModelsConstant, BaseModelAdminConstant)
+admin.site.register(myModelsKeys, TextAdmin)
+admin.site.register(myModelsConstant, TextAdmin)

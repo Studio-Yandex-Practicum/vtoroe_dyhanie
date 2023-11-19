@@ -1,3 +1,4 @@
+import requests
 from telegram import Update
 from telegram.ext import (
     CommandHandler,
@@ -7,24 +8,26 @@ from telegram.ext import (
     filters,
 )
 
-from bot.constants import contact_list_text
-from bot.constants.button import MENU_CONTACT_LIST
 from bot.constants.state import CONTACT_LIST
 from bot.handlers.command_application import stop_callback
 from bot.keyboards.basic_info_keyboards import contact_list_markup
 from bot.keyboards.keyboards import main_menu_markup
+from bot.utils import get_django_json
+# from bot.utils import get_django_json
 
 
 async def contact_list_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> int:
     '''Обрабатывает кнопку "Список контактов" из главного меню.'''
+    message_data = await get_django_json(
+        'http://127.0.0.1:8000/contact_list_text/1:2/')
     await update.message.reply_text(
-        contact_list_text.MENU_CONTACT_LIST_INPUT_FIO
+        message_data.get("MENU_CONTACT_LIST_INPUT_FIO", "")
     )
     await update.message.reply_text(
-        contact_list_text.MENU_CONTACT_LIST_LOAD_CONTACT_LIST,
-        reply_markup=contact_list_markup,
+        message_data.get("MENU_CONTACT_LIST_LOAD_CONTACT_LIST", ""),
+        reply_markup=await contact_list_markup(),
     )
     return CONTACT_LIST
 
@@ -42,15 +45,22 @@ async def find_contact_by_fio(
 
     #    await query.answer()
     await update.message.reply_text(
-        text='Контакты нужного человека', reply_markup=main_menu_markup
+        text='Контакты нужного человека',
+        reply_markup=await main_menu_markup()
     )
     return ConversationHandler.END
+
+
+def get_menu_contact_list() -> dict:
+    response = requests.get('http://127.0.0.1:8000/button/9/')
+    return response.json()
 
 
 contact_list_conv_handler = ConversationHandler(
     entry_points=[
         MessageHandler(
-            filters.Text([MENU_CONTACT_LIST]), contact_list_callback
+            filters.Text(get_menu_contact_list()['MENU_CONTACT_LIST']),
+            contact_list_callback
         )
     ],
     states={
