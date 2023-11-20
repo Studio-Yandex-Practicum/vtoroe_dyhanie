@@ -59,6 +59,7 @@ async def main_menu_pressed_callback(
     context: ContextTypes.DEFAULT_TYPE,
 ):
     '''Обрабатывает нажатие кнопки выхода после очередного поиска.'''
+    await update.callback_query.message.delete()
     await update.callback_query.message.reply_text(
         BACK_TO_MENU, reply_markup=main_menu_markup
     )
