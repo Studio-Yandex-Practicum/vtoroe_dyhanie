@@ -1,6 +1,7 @@
-from telegram.ext import Application
 import threading
 import time
+
+from telegram.ext import Application
 
 from . import (
     about_fund_application,

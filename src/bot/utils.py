@@ -1,9 +1,9 @@
 import smtplib
 import ssl
 from typing import Dict
-import requests
-import aiohttp
 
+import aiohttp
+import requests
 from telegram import InlineKeyboardMarkup, Message, Update
 from telegram.constants import ParseMode
 

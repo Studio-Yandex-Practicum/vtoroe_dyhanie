@@ -310,7 +310,7 @@ Traceback (most recent call last):
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Dev\vtoroe_dyhanie\src\bot\handlers\menu_application.py", line 63, in about_fund_callback
     )
-      
+
   File "C:\Dev\vtoroe_dyhanie\src\bot\utils.py", line 20, in send_message
     for index, value in enumerate(message_text_value.values()):
                                   ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -7706,7 +7706,7 @@ Traceback (most recent call last):
   File "C:\Dev\vtoroe_dyhanie\.venv\Lib\site-packages\telegram\request\_httpxrequest.py", line 243, in do_request
     raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
 telegram.error.NetworkError: httpx.RemoteProtocolError: Server disconnected without sending a response.
-2023-11-07 16:44:43,666, telegram.ext.Updater, ERROR, Error while getting Updates: httpx.ConnectError: 
+2023-11-07 16:44:43,666, telegram.ext.Updater, ERROR, Error while getting Updates: httpx.ConnectError:
 2023-11-07 16:44:43,667, root, ERROR, Exception while handling an update:
 Traceback (most recent call last):
   File "C:\Dev\vtoroe_dyhanie\.venv\Lib\site-packages\httpcore\_exceptions.py", line 10, in map_exceptions
@@ -7821,7 +7821,7 @@ Traceback (most recent call last):
                     ^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Dev\vtoroe_dyhanie\.venv\Lib\site-packages\telegram\request\_httpxrequest.py", line 243, in do_request
     raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
-telegram.error.NetworkError: httpx.ConnectError: 
+telegram.error.NetworkError: httpx.ConnectError:
 2023-11-07 16:44:54,834, httpx, INFO, HTTP Request: POST https://api.telegram.org/bot5838578821:AAHcOqXe1QOor2KK0a4_ERKCSnU3l0hxtm4/getUpdates "HTTP/1.1 200 OK"
 2023-11-07 16:45:04,892, httpx, INFO, HTTP Request: POST https://api.telegram.org/bot5838578821:AAHcOqXe1QOor2KK0a4_ERKCSnU3l0hxtm4/getUpdates "HTTP/1.1 200 OK"
 2023-11-07 16:45:14,961, httpx, INFO, HTTP Request: POST https://api.telegram.org/bot5838578821:AAHcOqXe1QOor2KK0a4_ERKCSnU3l0hxtm4/getUpdates "HTTP/1.1 200 OK"

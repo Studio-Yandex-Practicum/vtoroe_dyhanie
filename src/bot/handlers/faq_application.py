@@ -1,7 +1,7 @@
 import requests
 from telegram import Update
-from telegram.ext import Application, ContextTypes, MessageHandler, filters
 from telegram.constants import ParseMode
+from telegram.ext import Application, ContextTypes, MessageHandler, filters
 
 
 def get_keyboard_data() -> dict:

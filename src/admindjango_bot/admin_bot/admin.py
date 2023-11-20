@@ -1,4 +1,3 @@
-from django import forms
 from admin_bot.models import (
     AboutFundKeyboard,
     AboutFundText,
@@ -18,6 +17,7 @@ from admin_bot.models import (
     State,
     Text,
 )
+from django import forms
 from django.contrib import admin
 
 

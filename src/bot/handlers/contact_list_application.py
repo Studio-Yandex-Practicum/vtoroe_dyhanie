@@ -13,6 +13,8 @@ from bot.handlers.command_application import stop_callback
 from bot.keyboards.basic_info_keyboards import contact_list_markup
 from bot.keyboards.keyboards import main_menu_markup
 from bot.utils import get_django_json
+
+
 # from bot.utils import get_django_json
 
 

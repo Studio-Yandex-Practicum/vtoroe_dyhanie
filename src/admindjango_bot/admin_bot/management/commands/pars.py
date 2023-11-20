@@ -1,5 +1,4 @@
 import json
-from django.core.management.base import BaseCommand
 
 from admin_bot.admin import myModels
 from admin_bot.models import (
@@ -21,6 +20,7 @@ from admin_bot.models import (
     State,
     Text,
 )
+from django.core.management.base import BaseCommand
 
 
 RES = {}

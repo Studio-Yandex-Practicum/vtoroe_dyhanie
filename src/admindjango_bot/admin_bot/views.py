@@ -1,6 +1,3 @@
-from django.shortcuts import get_list_or_404, get_object_or_404
-from django.http import JsonResponse
-
 from admin_bot.models import (
     AboutFundKeyboard,
     AboutFundText,
@@ -20,6 +17,9 @@ from admin_bot.models import (
     State,
     Text,
 )
+from django.http import JsonResponse
+from django.shortcuts import get_list_or_404, get_object_or_404
+
 
 DICT_MODELS = {
     'about_fund_text': AboutFundText,
