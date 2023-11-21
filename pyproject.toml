@@ -36,6 +36,9 @@ asyncpg = "^0.28.0"
 autopep8 = "2.0.4"
 flake8-isort = ["6.1.0"]
 mypy = "^1.6.1"
+django = "4.2.7"
+django-jazzmin = "2.6.0"
+aiohttp = "3.8.6"
 
 [tool.poetry.extras]
 flake8 = ["3.9.2"]

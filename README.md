@@ -96,7 +96,7 @@ TELEGRAM_TOKEN='<здесь ваш токен>'
 Запустите проект локально, чтобы проверить работоспособность:
 
 ```
-python src\application.py
+python src/application.py
 ```
 
 </details>
