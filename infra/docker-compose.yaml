@@ -1,10 +1,20 @@
+#docker-compose.yaml
 version: '3.8'
 
 services:
-  vtordish:
-    container_name: vtordish
+  db:
+    image: postgres:16.0-alpine
+    volumes:
+      - /var/lib/postgresql/data/
+    env_file:
+      - ../.env
+
+  djangoapp_and_bot:
+    container_name: djangoapp_and_bot
     build:
       context: ../
       dockerfile: ./infra/Dockerfile
+    depends_on:
+      - db
     env_file:
       - ../.env
