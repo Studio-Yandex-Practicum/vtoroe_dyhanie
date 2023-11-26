@@ -14,7 +14,7 @@ from telegram.ext import (
     filters,
 )
 
-from ..utils import send_email
+from ..utils.send_email import check_date_format, send_email
 from bot.constants import onboarding_text
 from bot.constants.query_patterns import INFO_PREFIX
 from bot.constants.schemas import DateModel
@@ -37,7 +37,6 @@ from bot.keyboards.onboarding_keyboards import (
     thanks_markup,
     work_plan_markup,
 )
-from bot.utils import check_date_format
 
 
 async def mentor_callback(
@@ -79,7 +78,7 @@ async def beginner_start_callback(
 
 
 async def send_delayed_message(
-        bot, delay, chat_id, message, reply_markup=None
+    bot, delay, chat_id, message, reply_markup=None
 ):
     await asyncio.sleep(delay)
     await bot.send_message(
@@ -110,8 +109,8 @@ async def beginner_employment_date_callback(
         DateModel(employment_date=employment_date)
     except ValidationError as e:
         error_message = e.errors()[0]['msg']
-        user_friendly_error_message = (
-            error_message.replace('Value error, ', '')
+        user_friendly_error_message = error_message.replace(
+            'Value error, ', ''
         )
         await update.message.reply_text(user_friendly_error_message)
         return None
@@ -119,19 +118,31 @@ async def beginner_employment_date_callback(
     if employment_date:
         # Отправку отложенных сообщений и проверку
         bot = context.bot
-        asyncio.create_task(send_delayed_message(
-            bot, 25*86400, update.message.chat_id,
-            onboarding_text.BEGINNER_AFTER_25_DAY_MESSAGE,
-            reply_markup=feedback_keyboard_markup,
-        ))
-        asyncio.create_task(send_delayed_message(
-            bot, 40*86400, update.message.chat_id,
-            onboarding_text.BEGINNER_AFTER_40_DAY_MESSAGE,
-        ))
-        asyncio.create_task(send_delayed_message(
-            bot, 85*86400, update.message.chat_id,
-            onboarding_text.BEGINNER_AFTER_85_DAY_MESSAGE,
-        ))
+        asyncio.create_task(
+            send_delayed_message(
+                bot,
+                25 * 86400,
+                update.message.chat_id,
+                onboarding_text.BEGINNER_AFTER_25_DAY_MESSAGE,
+                reply_markup=feedback_keyboard_markup,
+            )
+        )
+        asyncio.create_task(
+            send_delayed_message(
+                bot,
+                40 * 86400,
+                update.message.chat_id,
+                onboarding_text.BEGINNER_AFTER_40_DAY_MESSAGE,
+            )
+        )
+        asyncio.create_task(
+            send_delayed_message(
+                bot,
+                85 * 86400,
+                update.message.chat_id,
+                onboarding_text.BEGINNER_AFTER_85_DAY_MESSAGE,
+            )
+        )
 
     await update.message.reply_text(
         onboarding_text.BEGINNER_EMPLOYMENT_MESSAGE_ONE
@@ -145,27 +156,28 @@ async def beginner_employment_date_callback(
 
 
 async def beginner_great_callback(
-        update: Update,
-        context: ContextTypes.DEFAULT_TYPE,
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
     send_email('Feedback', 'Все отлично!')
     await update.callback_query.answer()
 
 
 async def beginner_so_so_callback(
-        update: Update,
-        context: ContextTypes.DEFAULT_TYPE,
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
     send_email('Feedback', '50/50')
     await update.callback_query.answer()
 
 
 async def beginner_help_callback(
-        update: Update,
-        context: ContextTypes.DEFAULT_TYPE,
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
     send_email('Feedback', 'Не все гладко, help')
     await update.callback_query.answer()
+
 
 beginner_callback = ConversationHandler(
     entry_points=[
@@ -346,7 +358,8 @@ async def director_confirmation_callback(
 
 
 async def calendar_yes_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE,
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
     send_email('Calendar button pressed', 'Да все в календаре')
     await update.callback_query.answer()
@@ -381,8 +394,8 @@ async def director_employment_date_callback(
         DateModel(employment_date=employment_date)
     except ValidationError as e:
         error_message = e.errors()[0]['msg']
-        user_friendly_error_message = (
-            error_message.replace('Value error, ', '')
+        user_friendly_error_message = error_message.replace(
+            'Value error, ', ''
         )
         await update.message.reply_text(user_friendly_error_message)
         return None
@@ -390,19 +403,31 @@ async def director_employment_date_callback(
     if employment_date:
         # Отправку отложенных сообщений и проверку
         bot = context.bot
-        asyncio.create_task(send_delayed_message(
-            bot, 25*86400, update.message.chat_id,
-            onboarding_text.DIRECTOR_AFTER_25_DAY_MESSAGE,
-            reply_markup=calendar_keyboard_markup,
-        ))
-        asyncio.create_task(send_delayed_message(
-            bot, 40*86400, update.message.chat_id,
-            onboarding_text.DIRECTOR_AFTER_40_DAY_MESSAGE,
-        ))
-        asyncio.create_task(send_delayed_message(
-            bot, 85*86400, update.message.chat_id,
-            onboarding_text.DIRECTOR_AFTER_85_DAY_MESSAGE,
-        ))
+        asyncio.create_task(
+            send_delayed_message(
+                bot,
+                25 * 86400,
+                update.message.chat_id,
+                onboarding_text.DIRECTOR_AFTER_25_DAY_MESSAGE,
+                reply_markup=calendar_keyboard_markup,
+            )
+        )
+        asyncio.create_task(
+            send_delayed_message(
+                bot,
+                40 * 86400,
+                update.message.chat_id,
+                onboarding_text.DIRECTOR_AFTER_40_DAY_MESSAGE,
+            )
+        )
+        asyncio.create_task(
+            send_delayed_message(
+                bot,
+                85 * 86400,
+                update.message.chat_id,
+                onboarding_text.DIRECTOR_AFTER_85_DAY_MESSAGE,
+            )
+        )
         await update.message.reply_text(
             onboarding_text.REMINDER_MESSAGE_FOR_MEETINGS.get('msg_1'),
             parse_mode=ParseMode.MARKDOWN_V2,

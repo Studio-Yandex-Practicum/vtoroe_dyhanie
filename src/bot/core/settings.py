@@ -23,6 +23,7 @@ class Settings(BaseSettings):
     postgres_password: str = 'postgress'
     db_host: str = 'db'
     db_port: int = 5432
+    database_url: str
 
     class Config:
         env_file = '.env'

@@ -89,6 +89,7 @@ jobs:
             echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
             echo DB_HOST=${{ secrets.DB_HOST }} >> .env
             echo DB_PORT=${{ secrets.DB_PORT }} >> .env
+            echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> .env
             cd infra/
             docker-compose rm -fsv
             docker rmi $(docker images -aq)

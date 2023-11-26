@@ -20,7 +20,7 @@ from bot.keyboards.rules_keyboards import (
     separate_collection_markup,
     workshop_markup,
 )
-from bot.utils import send_message
+from bot.utils.send_message import send_message
 
 
 async def communication_callback(
