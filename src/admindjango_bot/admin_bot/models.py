@@ -78,7 +78,6 @@ class FaqText(BasicModel):
 class Links(BasicModel):
     class Meta:
         db_table = 'links'
-        verbose_name_plural = ('links')
         verbose_name_plural = ('Ссылки для подраздела "Обратнаня связь" и "База знаний"')
 
 
