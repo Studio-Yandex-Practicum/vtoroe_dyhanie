@@ -49,59 +49,58 @@ class RulesKeyboard(BasicModel):
 class AboutFundText(BasicModel):
     class Meta:
         db_table = 'about_fund_text'
-
+        verbose_name_plural = ('Тексты для подраздела "О Фонде"')
 
 class BasicInfoText(BasicModel):
     class Meta:
         db_table = 'basic_info_text'
+        verbose_name_plural = ('Тексты для подраздела "Основная иннформация"')
 
 
 class Button(BasicModel):
     class Meta:
         db_table = 'button'
+        verbose_name_plural = ('Названия кнопок меню')
 
 
 class ContactListtext(BasicModel):
     class Meta:
         db_table = 'contact_list_text'
+        verbose_name_plural = ('Тексты для подраздела "Список контактов"')
 
 
 class FaqText(BasicModel):
     class Meta:
         db_table = 'faq_text'
+        verbose_name_plural = ('Тексты для подраздела "FAQ"')
 
 
 class Links(BasicModel):
     class Meta:
         db_table = 'links'
         verbose_name_plural = ('links')
+        verbose_name_plural = ('Ссылки для подраздела "Обратнаня связь" и "База знаний"')
 
 
 class OnboardingText(BasicModel):
     class Meta:
         db_table = 'onboarding_text'
-
-
-class QueryPatterns(BasicModel):
-    class Meta:
-        db_table = 'query_patterns'
+        verbose_name_plural = ('Тексты для подраздела "Онбоардинг"')
 
 
 class RegFormsText(BasicModel):
     class Meta:
         db_table = 'reg_forms_text'
+        verbose_name_plural = ('Тексты для подраздела "Регламенннты и формы"')
 
 
 class RulesText(BasicModel):
     class Meta:
         db_table = 'rules_text'
-
-
-class State(BasicModel):
-    class Meta:
-        db_table = 'state'
+        verbose_name_plural = ('Тексты для подраздела "Общие правила"')
 
 
 class Text(BasicModel):
     class Meta:
         db_table = 'text'
+        verbose_name_plural = ('Базовые сообщения бота')

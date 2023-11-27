@@ -10,11 +10,9 @@ from admin_bot.models import (
     Links,
     OnboardingKeyboard,
     OnboardingText,
-    QueryPatterns,
     RegFormsText,
     RulesKeyboard,
     RulesText,
-    State,
     Text,
 )
 from django import forms
@@ -51,10 +49,8 @@ myModelsConstant = [
     FaqText,
     Links,
     OnboardingText,
-    QueryPatterns,
     RegFormsText,
     RulesText,
-    State,
     Text,
 ]
 

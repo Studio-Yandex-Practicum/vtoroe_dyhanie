@@ -10,11 +10,9 @@ from admin_bot.models import (
     Links,
     OnboardingKeyboard,
     OnboardingText,
-    QueryPatterns,
     RegFormsText,
     RulesKeyboard,
     RulesText,
-    State,
     Text,
 )
 from django.http import JsonResponse
@@ -33,11 +31,9 @@ DICT_MODELS = {
     'links': Links,
     'onboarding_keyboards': OnboardingKeyboard,
     'onboarding_text': OnboardingText,
-    'query_patterns': QueryPatterns,
     'reg_forms_text': RegFormsText,
     'rules_keyboards': RulesKeyboard,
     'rules_text': RulesText,
-    'state': State,
     'text': Text,
 }
 
