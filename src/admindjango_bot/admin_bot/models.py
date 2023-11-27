@@ -54,7 +54,7 @@ class AboutFundText(BasicModel):
 class BasicInfoText(BasicModel):
     class Meta:
         db_table = 'basic_info_text'
-        verbose_name_plural = ('Тексты для подраздела "Основная иннформация"')
+        verbose_name_plural = ('Тексты для подраздела "Основная информация"')
 
 
 class Button(BasicModel):
@@ -90,7 +90,7 @@ class OnboardingText(BasicModel):
 class RegFormsText(BasicModel):
     class Meta:
         db_table = 'reg_forms_text'
-        verbose_name_plural = ('Тексты для подраздела "Регламенннты и формы"')
+        verbose_name_plural = ('Тексты для подраздела "Регламенты и формы"')
 
 
 class RulesText(BasicModel):
