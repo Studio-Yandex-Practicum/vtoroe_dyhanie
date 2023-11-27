@@ -78,7 +78,7 @@ async def get_contacts_full_info(contacts: Contact) -> list:
     return result.all()
 
 
-async def find_contacts_in_DB(words: set) -> list:
+async def find_contacts_in_db(words: set) -> list:
     '''
     Поиск по ключевым словам.
     Поиск контактов в БД.
@@ -128,6 +128,6 @@ async def find_contacts(user_text: str) -> str:
     Поиск контактов по запросу пользователя.
     '''
     words = prepare_words(user_text)
-    contacts = await find_contacts_in_DB(words)
+    contacts = await find_contacts_in_db(words)
     contacts_full_info = await get_contacts_full_info(contacts)
     return generate_answer(contacts_full_info)

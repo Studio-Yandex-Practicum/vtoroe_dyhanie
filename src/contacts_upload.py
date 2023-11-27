@@ -846,7 +846,7 @@ async def upload_contacts():
 
 
 async def upload_departments():
-    '''Загрузка данных в таблицу отделос.'''
+    '''Загрузка данных в таблицу отделов.'''
     async with AsyncSessionLocal() as session:
         for department in DEPARTMENTS_RAW:
             new_department = Department()
