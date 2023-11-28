@@ -40,6 +40,7 @@ def register_all_handlers(app: Application):
 # запуск регистрации хэндлеров в отдельном потоке
 def start_handler_updater_thread(app):
     updater_thread = threading.Thread(
-        target=update_handlers_periodically, args=(app,))
+        target=update_handlers_periodically, args=(app,)
+    )
     updater_thread.daemon = True
     updater_thread.start()

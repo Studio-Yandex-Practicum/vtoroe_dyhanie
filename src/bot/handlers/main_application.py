@@ -28,8 +28,7 @@ async def greeting_callback(
         [button.START_CMD, button.HELP_CMD],
         scope=BotCommandScopeChat(update.effective_chat.id),
     )
-    message_data = await get_django_json(
-        'http://127.0.0.1:8000/text/3:4/')
+    message_data = await get_django_json('http://127.0.0.1:8000/text/3:4/')
     await update.message.reply_text(message_data['START_MESSAGE_PART_ONE'])
     await update.message.reply_text(message_data['START_MESSAGE_PART_TWO'])
     return CHECK
@@ -40,12 +39,12 @@ async def check_the_secret_word_callback(
     context: ContextTypes.DEFAULT_TYPE,
 ) -> int:
     '''Функция проверяющая доступ к боту по секретному слову.'''
-    message_data = await get_django_json(
-        'http://127.0.0.1:8000/text/')
+    message_data = await get_django_json('http://127.0.0.1:8000/text/')
     word = update.message.text
     if word.lower() != settings.secret_word.lower():
         await update.message.reply_text(
-            message_data.get('FAILED_THE_TEST', ''))
+            message_data.get('FAILED_THE_TEST', '')
+        )
         return CHECK
     await context.bot.set_my_commands(
         [button.START_CMD, button.MENU_CMD, button.HELP_CMD, button.STOP_CMD],
@@ -54,7 +53,7 @@ async def check_the_secret_word_callback(
     await update.message.reply_sticker(message_data.get('STICKER_ID', ''))
     await update.message.reply_text(
         message_data.get('PASSED_THE_TEST', ''),
-        reply_markup=await main_menu_markup()
+        reply_markup=await main_menu_markup(),
     )
     return ConversationHandler.END
 

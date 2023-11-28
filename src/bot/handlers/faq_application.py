@@ -21,9 +21,9 @@ async def faq_callback(
     keyboard_data = get_keyboard_data()
     user_input = update.message.text
     key_message_data = next(
-        (
-            key for key,
-            value in keyboard_data.items() if value == user_input), None)
+        (key for key, value in keyboard_data.items() if value == user_input),
+        None,
+    )
 
     if key_message_data:
         faq_text_data = get_faq_text_data()
@@ -33,7 +33,7 @@ async def faq_callback(
         text = faq_text_data.get(key_message_data).format(
             STORAGE_LINK=STORAGE_LINK,
             STUDIES_LINK=STUDIES_LINK,
-            VOLUNTARISM_LINK=VOLUNTARISM_LINK
+            VOLUNTARISM_LINK=VOLUNTARISM_LINK,
         )
         await update.message.reply_text(
             text=text,
@@ -46,7 +46,5 @@ def register_handlers(app: Application) -> None:
     '''Регистрация обработчика.'''
     keyboard_data = get_keyboard_data()
     app.add_handler(
-        MessageHandler(
-            filters.Text(keyboard_data.values()), faq_callback
-        )
+        MessageHandler(filters.Text(keyboard_data.values()), faq_callback)
     )

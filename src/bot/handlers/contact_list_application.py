@@ -9,11 +9,13 @@ from telegram.ext import (
     filters,
 )
 
+# from bot.keyboards.basic_info_keyboards
+# import contact_list_markup, - from feature33
 from bot.constants.keyword_serch import SEARCH_AGAIN_OR_EXIT
 from bot.constants.state import FIND_CONTACT, FIND_CONTACT_AGAIN
 from bot.constants.text import BACK_TO_MENU
 from bot.handlers.command_application import stop_callback
-from bot.keyboards.basic_info_keyboards import (  # contact_list_markup, - from feature33
+from bot.keyboards.basic_info_keyboards import (
     contact_list_download_markup,
     contact_list_exit_markup,
 )
@@ -27,14 +29,16 @@ async def contact_list_callback(
 ) -> int:
     '''Обрабатывает кнопку "Список контактов" из главного меню.'''
     message_data = await get_django_json(
-        'http://127.0.0.1:8000/contact_list_text/1:2/')
+        'http://127.0.0.1:8000/contact_list_text/1:2/'
+    )
     await update.message.reply_text(
         message_data.get("MENU_CONTACT_LIST_INPUT_FIO", "")
     )
     await update.message.reply_text(
         message_data.get("MENU_CONTACT_LIST_LOAD_CONTACT_LIST", ""),
-        reply_markup=contact_list_download_markup,  # await contact_list_markup(),
+        reply_markup=contact_list_download_markup,
     )
+    # await contact_list_markup(),
     return FIND_CONTACT
 
 
@@ -77,7 +81,7 @@ contact_list_conv_handler = ConversationHandler(
     entry_points=[
         MessageHandler(
             filters.Text(get_menu_contact_list()['MENU_CONTACT_LIST']),
-            contact_list_callback
+            contact_list_callback,
         )
     ],
     states={

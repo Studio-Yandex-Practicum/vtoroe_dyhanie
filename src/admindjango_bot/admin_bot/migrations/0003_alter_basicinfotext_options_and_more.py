@@ -4,7 +4,6 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('admin_bot', '0002_delete_querypatterns_delete_state_and_more'),
     ]
@@ -12,10 +11,20 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterModelOptions(
             name='basicinfotext',
-            options={'verbose_name_plural': 'Тексты для подраздела "Основная информация"'},
+            options={
+                'verbose_name_plural': (
+                    'Тексты для ',
+                    'подраздела "Основная информация"',
+                )
+            },
         ),
         migrations.AlterModelOptions(
             name='regformstext',
-            options={'verbose_name_plural': 'Тексты для подраздела "Регламенты и формы"'},
+            options={
+                'verbose_name_plural': (
+                    'Тексты для ',
+                    'подраздела "Регламенты и формы"',
+                )
+            },
         ),
     ]

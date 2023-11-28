@@ -24,12 +24,13 @@ async def organization_structure_callback(
     query = update.callback_query
     await query.answer()
     message_data = await get_django_json(
-        'http://127.0.0.1:8000/basic_info_text/4:25/')
+        'http://127.0.0.1:8000/basic_info_text/4:25/'
+    )
     org_structure_text = message_data.get("ORGANIZATION_MESSAGE", "")
     org_structure_link = message_data.get("ORGANIZATION_MESSAGE_LINK", "")
     org_structure_text = org_structure_text.format(
         org_structure_link=org_structure_link
-        )
+    )
     await query.message.edit_text(
         org_structure_text,
         parse_mode='HTML',
@@ -46,7 +47,8 @@ async def about_council_callback(
     query = update.callback_query
     await query.answer()
     message_data = await get_django_json(
-        'http://127.0.0.1:8000/basic_info_text/5/')
+        'http://127.0.0.1:8000/basic_info_text/5/'
+    )
     council_intro_text = message_data.get("COUNCIL_INTRODUCTION_MESSAGE", "")
     await query.message.edit_text(
         council_intro_text,
@@ -64,10 +66,11 @@ async def guardian_council_callback(
     query = update.callback_query
     await query.answer()
     message_data = await get_django_json(
-        'http://127.0.0.1:8000/basic_info_text/12/')
+        'http://127.0.0.1:8000/basic_info_text/12/'
+    )
     guardian_council_intro_text = message_data.get(
         "GARDIAN_COUNCIL_INTRODUCTION_MESSAGE", ""
-        )
+    )
     await query.message.edit_text(
         guardian_council_intro_text,
         parse_mode='HTML',
@@ -84,11 +87,11 @@ async def about_departments_callback(
     query = update.callback_query
     await query.answer()
     message_data = await get_django_json(
-        'http://127.0.0.1:8000/basic_info_text/13/')
+        'http://127.0.0.1:8000/basic_info_text/13/'
+    )
     departments_text = message_data.get("DEPARTMENTS", "")
     await query.message.edit_text(
-        departments_text,
-        reply_markup=await func_departments_keyboard_base()
+        departments_text, reply_markup=await func_departments_keyboard_base()
     )
 
 
@@ -100,13 +103,13 @@ async def our_team_callback(
     query = update.callback_query
     await query.answer()
     message_data = await get_django_json(
-        'http://127.0.0.1:8000/basic_info_text/3:24/')
+        'http://127.0.0.1:8000/basic_info_text/3:24/'
+    )
     our_team_message = message_data.get("OUR_TEAM_MESSAGE", "")
-    our_team_message_link = message_data.get(
-        "OUR_TEAM_MESSAGE_LINK", "")
+    our_team_message_link = message_data.get("OUR_TEAM_MESSAGE_LINK", "")
     our_team_message = our_team_message.format(
         our_team_message_link=our_team_message_link
-        )
+    )
     await query.message.edit_text(
         our_team_message,
         parse_mode='HTML',
@@ -123,8 +126,7 @@ async def contact_list_callback(
     query = update.callback_query
     await query.answer()
     await query.message.edit_text(
-        'Информация о контактах.',
-        reply_markup=await our_team_markup()
+        'Информация о контактах.', reply_markup=await our_team_markup()
     )
 
 
@@ -136,11 +138,11 @@ async def org_departments_callback(
     query = update.callback_query
     await query.answer()
     message_data = await get_django_json(
-        'http://127.0.0.1:8000/basic_info_text/13/')
+        'http://127.0.0.1:8000/basic_info_text/13/'
+    )
     departments_text = message_data.get("DEPARTMENTS", "")
     await query.message.edit_text(
-        departments_text,
-        reply_markup=await departmentss_markup()
+        departments_text, reply_markup=await departmentss_markup()
     )
 
 
@@ -151,7 +153,8 @@ async def social_networks_callback(
     query = update.callback_query
     await query.answer()
     message_data = await get_django_json(
-        'http://127.0.0.1:8000/basic_info_text/2/')
+        'http://127.0.0.1:8000/basic_info_text/2/'
+    )
     fund_news_text = message_data.get("FUND_NEWS", "")
     await query.message.edit_text(
         fund_news_text,
@@ -165,14 +168,13 @@ async def handle_multipattern(
 ) -> None:
     '''Обработка клавиатуры.'''
     message_data = await get_django_json(
-        'http://127.0.0.1:8000/basic_info_text/26/')
+        'http://127.0.0.1:8000/basic_info_text/26/'
+    )
     message_link = message_data.get("COUNCIL_ANSWER_01_LINK", "")
     query = update.callback_query
     await query.answer()
     new_text = text.get(query.data)
-    new_text = new_text.format(
-        message_link=message_link
-        )
+    new_text = new_text.format(message_link=message_link)
     if query.message.text_html == new_text or query.message.text == new_text:
         return
     await query.message.edit_text(
@@ -189,7 +191,8 @@ async def council_callback(
     '''Обработка клавиатуры Совет Фонда.'''
     markup = await council_markup()
     message_data = await get_django_json(
-        'http://127.0.0.1:8000/basic_info_text/6:11/')
+        'http://127.0.0.1:8000/basic_info_text/6:11/'
+    )
     await handle_multipattern(update, context, message_data, markup)
 
 
@@ -199,7 +202,8 @@ async def departments_callback(
     '''Обработка клавиатуры Отделы Фонда.'''
     markup = await departments_final_markup()
     message_data = await get_django_json(
-        'http://127.0.0.1:8000/basic_info_text/14:23/')
+        'http://127.0.0.1:8000/basic_info_text/14:23/'
+    )
     await handle_multipattern(update, context, message_data, markup)
 
 
@@ -210,8 +214,7 @@ async def basic_information_back_callback(
     query = update.callback_query
     await query.answer()
     await query.message.edit_text(
-        'Выберите действие:',
-        reply_markup=await basic_information_markup()
+        'Выберите действие:', reply_markup=await basic_information_markup()
     )
 
 

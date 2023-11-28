@@ -68,11 +68,11 @@ async def menu_callback(
 ) -> None:
     '''Команда перехода в главное меню.'''
     messages = messages = await get_django_json(
-        'http://127.0.0.1:8000/text/10/')
+        'http://127.0.0.1:8000/text/10/'
+    )
     message_data = messages.get('BACK_TO_MENU', '')
     await update.message.reply_text(
-        message_data,
-        reply_markup=await main_menu_markup()
+        message_data, reply_markup=await main_menu_markup()
     )
 
 
@@ -85,11 +85,11 @@ async def stop_callback(
     После её работы, бот будет принимать только команду /start.
     '''
     messages = messages = await get_django_json(
-        'http://127.0.0.1:8000/text/1/')
+        'http://127.0.0.1:8000/text/1/'
+    )
     message_data = messages.get('STOP_MESSAGE', '')
     await update.message.reply_text(
-        message_data,
-        reply_markup=ReplyKeyboardRemove()
+        message_data, reply_markup=ReplyKeyboardRemove()
     )
     return ConversationHandler.END
 

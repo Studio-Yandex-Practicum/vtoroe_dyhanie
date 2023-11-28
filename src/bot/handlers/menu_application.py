@@ -1,5 +1,4 @@
 import html
-import re
 
 import requests
 from telegram import Update
@@ -31,9 +30,11 @@ async def reg_forms_callback(
 ) -> None:
     '''Обрабатывает кнопку "Регламенты и формы" из главного меню.'''
     message_data = await get_django_json(
-        'http://127.0.0.1:8000/reg_forms_text/16/')
+        'http://127.0.0.1:8000/reg_forms_text/16/'
+    )
     message_links = await get_django_json(
-        'http://127.0.0.1:8000/reg_forms_text/1:15/')
+        'http://127.0.0.1:8000/reg_forms_text/1:15/'
+    )
     text = message_data.get('REG_FORM_MESSAGE', '')
     text = text.format(*(message_links.values()))
     await update.message.reply_text(
@@ -64,8 +65,9 @@ async def feedback_callback(
     response = requests.get('http://127.0.0.1:8000/text/9:13/')
     message_data = response.json()
     feedback_message_link = message_data.get("FEEDBACK_LINK", "")
-    feedback_message = message_data.get(
-        "FEEDBACK_MESSAGE", "").format(FEEDBACK_LINK=feedback_message_link)
+    feedback_message = message_data.get("FEEDBACK_MESSAGE", "").format(
+        FEEDBACK_LINK=feedback_message_link
+    )
     await update.message.reply_text(
         feedback_message,
         parse_mode=ParseMode.MARKDOWN,
@@ -82,8 +84,7 @@ async def basic_information_callback(
     message_data = response.json()
     basic_info_message = message_data.get("BASIC_INFORMATION_MENU", "")
     await update.message.reply_text(
-        basic_info_message,
-        reply_markup=await basic_information_markup()
+        basic_info_message, reply_markup=await basic_information_markup()
     )
 
 
@@ -95,8 +96,7 @@ async def faq_callback(
     message_data = response.json()
     faq_message = message_data.get("FAQ_MESSAGE", "")
     await update.message.reply_text(
-        faq_message,
-        reply_markup=await faq_menu_markup()
+        faq_message, reply_markup=await faq_menu_markup()
     )
 
 
@@ -127,8 +127,7 @@ async def query_back_to_main_menu_callback(
     message_data = response.json()
     back_to_menu_text = message_data.get("BACK_TO_MENU", "")
     await query.message.reply_text(
-        back_to_menu_text,
-        reply_markup=await main_menu_markup()
+        back_to_menu_text, reply_markup=await main_menu_markup()
     )
 
 
@@ -140,8 +139,7 @@ async def back_to_main_menu_callback(
     message_data = response.json()
     back_to_menu_text = message_data.get("BACK_TO_MENU", "")
     await update.message.reply_text(
-        back_to_menu_text,
-        reply_markup=await main_menu_markup()
+        back_to_menu_text, reply_markup=await main_menu_markup()
     )
 
 
@@ -178,8 +176,7 @@ async def rules_information_callback(
     message_data = response.json()
     rules_info_text = message_data.get("RULES_INFORMATION_MENU", "")
     await update.message.reply_text(
-        rules_info_text,
-        reply_markup=await rules_markup()
+        rules_info_text, reply_markup=await rules_markup()
     )
 
 
@@ -194,7 +191,7 @@ async def onboarding_callback(
     onboarding_text_link = message_data.get("ONBOARDING_LINK", "")
     onboarding_text_message = html.unescape(onboarding_text).format(
         ONBOARDING_LINK=onboarding_text_link
-        )
+    )
     await update.message.reply_text(
         onboarding_text_message,
         parse_mode=ParseMode.MARKDOWN,

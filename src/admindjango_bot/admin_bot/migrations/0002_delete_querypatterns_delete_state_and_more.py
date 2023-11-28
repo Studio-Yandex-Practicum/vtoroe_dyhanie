@@ -4,7 +4,6 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('admin_bot', '0001_initial'),
     ]
@@ -22,7 +21,12 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterModelOptions(
             name='basicinfotext',
-            options={'verbose_name_plural': 'Тексты для подраздела "Основная иннформация"'},
+            options={
+                'verbose_name_plural': (
+                    'Тексты для ',
+                    'подраздела "Основная иннформация"',
+                )
+            },
         ),
         migrations.AlterModelOptions(
             name='button',
@@ -30,7 +34,12 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterModelOptions(
             name='contactlisttext',
-            options={'verbose_name_plural': 'Тексты для подраздела "Список контактов"'},
+            options={
+                'verbose_name_plural': (
+                    'Тексты для ',
+                    'подраздела "Список контактов"',
+                )
+            },
         ),
         migrations.AlterModelOptions(
             name='faqtext',
@@ -38,19 +47,33 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterModelOptions(
             name='links',
-            options={'verbose_name_plural': 'Ссылки для подраздела "Обратнаня связь" и "База знаний"'},
+            options={
+                'verbose_name_plural': (
+                    'Ссылки для подраздела ',
+                    '"Обратнаня связь" и "База знаний"',
+                )
+            },
         ),
         migrations.AlterModelOptions(
             name='onboardingtext',
-            options={'verbose_name_plural': 'Тексты для подраздела "Онбоардинг"'},
+            options={
+                'verbose_name_plural': 'Тексты для подраздела "Онбоардинг"'
+            },
         ),
         migrations.AlterModelOptions(
             name='regformstext',
-            options={'verbose_name_plural': 'Тексты для подраздела "Регламенннты и формы"'},
+            options={
+                'verbose_name_plural': (
+                    'Тексты для ',
+                    'подраздела "Регламенннты и формы"',
+                )
+            },
         ),
         migrations.AlterModelOptions(
             name='rulestext',
-            options={'verbose_name_plural': 'Тексты для подраздела "Общие правила"'},
+            options={
+                'verbose_name_plural': 'Тексты для подраздела "Общие правила"'
+            },
         ),
         migrations.AlterModelOptions(
             name='text',

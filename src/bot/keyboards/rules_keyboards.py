@@ -7,24 +7,27 @@ from bot.utils.admin_api import get_django_json
 # 1. Клавиатура для подраздела "Общие правила"
 async def rules_markup():
     messages = await get_django_json(
-        'http://127.0.0.1:8000/rules_keyboards/1:5/')
+        'http://127.0.0.1:8000/rules_keyboards/1:5/'
+    )
     rules_keyboard = [
         [
             InlineKeyboardButton(
                 messages['rules_keyboard_communication'],
-                callback_data=f'{INFO_PREFIX}communication'
+                callback_data=f'{INFO_PREFIX}communication',
             )
         ],
         [
             InlineKeyboardButton(
                 messages['rules_keyboard_workshop'],
-                callback_data=f'{INFO_PREFIX}workshop'
+                callback_data=f'{INFO_PREFIX}workshop',
             )
         ],
         [
             InlineKeyboardButton(
                 messages['rules_keyboard_kitchen'],
-                callback_data=f'{INFO_PREFIX}kitchen')],
+                callback_data=f'{INFO_PREFIX}kitchen',
+            )
+        ],
         [
             InlineKeyboardButton(
                 messages['rules_keyboard_separate_collection'],
@@ -44,7 +47,8 @@ async def rules_markup():
 # 2. Клавиатура для 'Коммуникация'
 async def communication_markup():
     messages = await get_django_json(
-        'http://127.0.0.1:8000/rules_keyboards/6:9/')
+        'http://127.0.0.1:8000/rules_keyboards/6:9/'
+    )
     communication_keyboard = [
         [
             InlineKeyboardButton(
@@ -61,11 +65,13 @@ async def communication_markup():
         [
             InlineKeyboardButton(
                 messages['communication_keyboard_rules_back'],
-                callback_data='rules_back')],
+                callback_data='rules_back',
+            )
+        ],
         [
             InlineKeyboardButton(
                 messages['communication_keyboard_back_to_main_menu'],
-                callback_data='back_to_main_menu'
+                callback_data='back_to_main_menu',
             )
         ],
     ]
@@ -75,18 +81,19 @@ async def communication_markup():
 # 3. Клавиатура для 'Мастерская'
 async def workshop_markup():
     messages = await get_django_json(
-        'http://127.0.0.1:8000/rules_keyboards/10:11/')
+        'http://127.0.0.1:8000/rules_keyboards/10:11/'
+    )
     workshop_keyboard = [
         [
             InlineKeyboardButton(
                 messages['workshop_keyboard_rules_back'],
-                callback_data='rules_back'
+                callback_data='rules_back',
             )
         ],
         [
             InlineKeyboardButton(
                 messages['workshop_keyboard_back_to_main_menu'],
-                callback_data='back_to_main_menu'
+                callback_data='back_to_main_menu',
             )
         ],
     ]
@@ -96,18 +103,19 @@ async def workshop_markup():
 # 4. Клавиатура для 'Кухня'
 async def kitchen_markup():
     messages = await get_django_json(
-        'http://127.0.0.1:8000/rules_keyboards/12:13/')
+        'http://127.0.0.1:8000/rules_keyboards/12:13/'
+    )
     kitchen_keyboard = [
         [
             InlineKeyboardButton(
                 messages['kitchen_keyboard_rules_back'],
-                callback_data='rules_back'
+                callback_data='rules_back',
             )
         ],
         [
             InlineKeyboardButton(
                 messages['kitchen_keyboard_back_to_main_menu'],
-                callback_data='back_to_main_menu'
+                callback_data='back_to_main_menu',
             )
         ],
     ]
@@ -117,18 +125,19 @@ async def kitchen_markup():
 # 5. Клавиатура для 'Раздельный сбор'
 async def separate_collection_markup():
     messages = await get_django_json(
-        'http://127.0.0.1:8000/rules_keyboards/14:15/')
+        'http://127.0.0.1:8000/rules_keyboards/14:15/'
+    )
     separate_collection_keyboard = [
         [
             InlineKeyboardButton(
                 messages['separate_collection_keyboard_rules_back'],
-                callback_data='rules_back'
+                callback_data='rules_back',
             )
         ],
         [
             InlineKeyboardButton(
                 messages['separate_collection_keyboard_back_to_main_menu'],
-                callback_data='back_to_main_menu'
+                callback_data='back_to_main_menu',
             )
         ],
     ]
@@ -138,18 +147,19 @@ async def separate_collection_markup():
 # 6. Клавиатура для 'Регулярные встречи'
 async def regular_meetings_markup():
     messages = await get_django_json(
-        'http://127.0.0.1:8000/rules_keyboards/16:17/')
+        'http://127.0.0.1:8000/rules_keyboards/16:17/'
+    )
     regular_meetings_keyboard = [
         [
             InlineKeyboardButton(
                 messages['regular_meetings_keyboard_rules_back'],
-                callback_data='rules_back'
+                callback_data='rules_back',
             )
         ],
         [
             InlineKeyboardButton(
                 messages['regular_meetings_keyboard_back_to_main_menu'],
-                callback_data='back_to_main_menu'
+                callback_data='back_to_main_menu',
             )
         ],
     ]
@@ -159,18 +169,19 @@ async def regular_meetings_markup():
 # 7. Клавиатура для возврата из раздела о внутренней коммуникации
 async def in_communication_markup():
     messages = await get_django_json(
-        'http://127.0.0.1:8000/rules_keyboards/18:19/')
+        'http://127.0.0.1:8000/rules_keyboards/18:19/'
+    )
     in_communication_keyboard = [
         [
             InlineKeyboardButton(
                 messages['in_communication_keyboard_back_to_main_menu'],
-                callback_data='back_to_main_menu'
+                callback_data='back_to_main_menu',
             )
         ],
         [
             InlineKeyboardButton(
                 messages['in_communication_keyboard_rules_back'],
-                callback_data='rules_back'
+                callback_data='rules_back',
             )
         ],
     ]
@@ -180,27 +191,28 @@ async def in_communication_markup():
 # 8. Клавиатура для возврата из раздела о внешней коммуникации
 async def out_communication_markup():
     messages = await get_django_json(
-        'http://127.0.0.1:8000/rules_keyboards/20:22/')
+        'http://127.0.0.1:8000/rules_keyboards/20:22/'
+    )
     message_link = await get_django_json(
-        'http://127.0.0.1:8000/rules_text/14/')
+        'http://127.0.0.1:8000/rules_text/14/'
+    )
     link = message_link.get("RULES_LINK", "")
     out_communication_keyboard = [
         [
             InlineKeyboardButton(
                 messages['out_communication_keyboard_rules_back'],
-                callback_data='rules_back'
+                callback_data='rules_back',
             )
         ],
         [
             InlineKeyboardButton(
                 messages['out_communication_keyboard_back_to_main_menu'],
-                callback_data='back_to_main_menu'
+                callback_data='back_to_main_menu',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['out_communication_keyboard_url'],
-                url=link
+                messages['out_communication_keyboard_url'], url=link
             )
         ],
     ]

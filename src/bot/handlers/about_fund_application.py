@@ -51,12 +51,10 @@ async def handle_back_to_menu(
     query = update.callback_query
     await query.answer()
     await query.message.edit_text('Возвращаемся в меню раздела «О фонде»...')
-    message_data = await get_django_json(
-        'http://127.0.0.1:8000/text/10/')
+    message_data = await get_django_json('http://127.0.0.1:8000/text/10/')
     back_to_menu_text = message_data.get("BACK_TO_MENU", "")
     await query.message.reply_text(
-        back_to_menu_text,
-        reply_markup=await about_fund_section()
+        back_to_menu_text, reply_markup=await about_fund_section()
     )
 
 
@@ -65,12 +63,13 @@ async def about_fund_menu_callback(
 ) -> None:
     '''Обработчик кнопок основного меню блока "О Фонде".'''
     message_data = await get_django_json(
-        'http://127.0.0.1:8000/about_fund_keyboards/3:7/')
+        'http://127.0.0.1:8000/about_fund_keyboards/3:7/'
+    )
     menu_item = update.message.text
     key_message_data = next(
-        (
-            key for key,
-            value in message_data.items() if value == menu_item), None)
+        (key for key, value in message_data.items() if value == menu_item),
+        None,
+    )
     function_to_call = getattr(sys.modules[__name__], key_message_data, None)
     await function_to_call(update, context)
 
@@ -91,7 +90,8 @@ async def send_about_fund_message(message: Message) -> None:
     при нажатии кнопки "Миссия и основная цель".
     '''
     message_data = await get_django_json(
-        'http://127.0.0.1:8000/about_fund_text/4:9/')
+        'http://127.0.0.1:8000/about_fund_text/4:9/'
+    )
     await send_message(
         message=message,
         message_text_value=message_data,
@@ -124,7 +124,8 @@ async def send_things_path_message(message: Message) -> None:
     при нажатии кнопки "Путь вещей".
     '''
     message_data = await get_django_json(
-        'http://127.0.0.1:8000/about_fund_text/10:14/')
+        'http://127.0.0.1:8000/about_fund_text/10:14/'
+    )
     await send_message(
         message=message,
         message_text_value=message_data,
@@ -157,12 +158,13 @@ async def send_processes_anatomy_message(message: Message) -> None:
     при нажатии кнопки "Анатомия процессов".
     '''
     message_data = await get_django_json(
-        'http://127.0.0.1:8000/about_fund_text/15:22/')
+        'http://127.0.0.1:8000/about_fund_text/15:22/'
+    )
     processes_anatomy_text = message_data.get("PROCESS_ANATOMY", "")
     processes_anatomy_link = message_data.get("PROCESSES_LINK", "")
     processes_anatomy_text = processes_anatomy_text.format(
         PROCESSES_LINK=processes_anatomy_link
-        )
+    )
     await message.reply_text(
         processes_anatomy_text,
         parse_mode=ParseMode.MARKDOWN,
@@ -196,12 +198,13 @@ async def send_fund_projects_message(message: Message) -> None:
     при нажатии кнопки "Проекты Фонда".
     '''
     message_data = await get_django_json(
-        'http://127.0.0.1:8000/about_fund_text/16:19/')
+        'http://127.0.0.1:8000/about_fund_text/16:19/'
+    )
     await send_message(
-            message=message,
-            message_text_value=message_data,
-            reply_markup=await fund_projects_markup(),
-        )
+        message=message,
+        message_text_value=message_data,
+        reply_markup=await fund_projects_markup(),
+    )
 
 
 async def fund_projects(
@@ -225,12 +228,13 @@ async def send_annual_reports_message(message: Message) -> None:
     при нажатии кнопки "Годовые отчеты".
     '''
     message_data = await get_django_json(
-        'http://127.0.0.1:8000/about_fund_text/20:21/')
+        'http://127.0.0.1:8000/about_fund_text/20:21/'
+    )
     annual_reports_text = message_data.get("ANNUAL_REPORTS", "")
     annual_reports_link = message_data.get("ANNUAL_REPORTS_LINK", "")
     annual_reports_text = annual_reports_text.format(
         ANNUAL_REPORTS_LINK=annual_reports_link
-        )
+    )
 
     await message.reply_text(
         text=annual_reports_text,
@@ -271,7 +275,5 @@ def register_handlers(app: Application) -> None:
         )
     )
     app.add_handler(
-        MessageHandler(
-            filters.Text(about_fund_text), about_fund_menu_callback
-        )
+        MessageHandler(filters.Text(about_fund_text), about_fund_menu_callback)
     )

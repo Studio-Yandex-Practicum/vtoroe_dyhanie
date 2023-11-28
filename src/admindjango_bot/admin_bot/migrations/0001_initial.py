@@ -4,32 +4,69 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
             name='AboutFundKeyboard',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('constant_description', models.CharField(max_length=1600, null=True, verbose_name='Описание')),
-                ('constant_text', models.CharField(max_length=1600, verbose_name='Текст внутри кнопки')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
+                (
+                    'constant_description',
+                    models.CharField(
+                        max_length=1600, null=True, verbose_name='Описание'
+                    ),
+                ),
+                (
+                    'constant_text',
+                    models.CharField(
+                        max_length=1600, verbose_name='Текст внутри кнопки'
+                    ),
+                ),
                 ('constant_name', models.CharField(max_length=100)),
             ],
             options={
-                'verbose_name_plural': 'Модуль с реализацией клавиатур для блока "О Фонде"',
+                'verbose_name_plural': (
+                    'Модуль с реализацией клавиатур ',
+                    'для блока "О Фонде"',
+                ),
                 'db_table': 'about_fund_keyboards',
             },
         ),
         migrations.CreateModel(
             name='AboutFundText',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('constant_description', models.CharField(max_length=1600, null=True, verbose_name='Описание')),
-                ('constant_text', models.CharField(max_length=1600, verbose_name='Текст внутри кнопки')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
+                (
+                    'constant_description',
+                    models.CharField(
+                        max_length=1600, null=True, verbose_name='Описание'
+                    ),
+                ),
+                (
+                    'constant_text',
+                    models.CharField(
+                        max_length=1600, verbose_name='Текст внутри кнопки'
+                    ),
+                ),
                 ('constant_name', models.CharField(max_length=100)),
             ],
             options={
@@ -39,9 +76,27 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='BasicInfoKeyboard',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('constant_description', models.CharField(max_length=1600, null=True, verbose_name='Описание')),
-                ('constant_text', models.CharField(max_length=1600, verbose_name='Текст внутри кнопки')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
+                (
+                    'constant_description',
+                    models.CharField(
+                        max_length=1600, null=True, verbose_name='Описание'
+                    ),
+                ),
+                (
+                    'constant_text',
+                    models.CharField(
+                        max_length=1600, verbose_name='Текст внутри кнопки'
+                    ),
+                ),
                 ('constant_name', models.CharField(max_length=100)),
             ],
             options={
@@ -52,9 +107,27 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='BasicInfoText',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('constant_description', models.CharField(max_length=1600, null=True, verbose_name='Описание')),
-                ('constant_text', models.CharField(max_length=1600, verbose_name='Текст внутри кнопки')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
+                (
+                    'constant_description',
+                    models.CharField(
+                        max_length=1600, null=True, verbose_name='Описание'
+                    ),
+                ),
+                (
+                    'constant_text',
+                    models.CharField(
+                        max_length=1600, verbose_name='Текст внутри кнопки'
+                    ),
+                ),
                 ('constant_name', models.CharField(max_length=100)),
             ],
             options={
@@ -64,9 +137,27 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Button',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('constant_description', models.CharField(max_length=1600, null=True, verbose_name='Описание')),
-                ('constant_text', models.CharField(max_length=1600, verbose_name='Текст внутри кнопки')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
+                (
+                    'constant_description',
+                    models.CharField(
+                        max_length=1600, null=True, verbose_name='Описание'
+                    ),
+                ),
+                (
+                    'constant_text',
+                    models.CharField(
+                        max_length=1600, verbose_name='Текст внутри кнопки'
+                    ),
+                ),
                 ('constant_name', models.CharField(max_length=100)),
             ],
             options={
@@ -76,9 +167,27 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='ContactListtext',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('constant_description', models.CharField(max_length=1600, null=True, verbose_name='Описание')),
-                ('constant_text', models.CharField(max_length=1600, verbose_name='Текст внутри кнопки')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
+                (
+                    'constant_description',
+                    models.CharField(
+                        max_length=1600, null=True, verbose_name='Описание'
+                    ),
+                ),
+                (
+                    'constant_text',
+                    models.CharField(
+                        max_length=1600, verbose_name='Текст внутри кнопки'
+                    ),
+                ),
                 ('constant_name', models.CharField(max_length=100)),
             ],
             options={
@@ -88,9 +197,27 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='FaqText',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('constant_description', models.CharField(max_length=1600, null=True, verbose_name='Описание')),
-                ('constant_text', models.CharField(max_length=1600, verbose_name='Текст внутри кнопки')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
+                (
+                    'constant_description',
+                    models.CharField(
+                        max_length=1600, null=True, verbose_name='Описание'
+                    ),
+                ),
+                (
+                    'constant_text',
+                    models.CharField(
+                        max_length=1600, verbose_name='Текст внутри кнопки'
+                    ),
+                ),
                 ('constant_name', models.CharField(max_length=100)),
             ],
             options={
@@ -100,9 +227,27 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Keyboard',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('constant_description', models.CharField(max_length=1600, null=True, verbose_name='Описание')),
-                ('constant_text', models.CharField(max_length=1600, verbose_name='Текст внутри кнопки')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
+                (
+                    'constant_description',
+                    models.CharField(
+                        max_length=1600, null=True, verbose_name='Описание'
+                    ),
+                ),
+                (
+                    'constant_text',
+                    models.CharField(
+                        max_length=1600, verbose_name='Текст внутри кнопки'
+                    ),
+                ),
                 ('constant_name', models.CharField(max_length=100)),
             ],
             options={
@@ -113,9 +258,27 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Links',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('constant_description', models.CharField(max_length=1600, null=True, verbose_name='Описание')),
-                ('constant_text', models.CharField(max_length=1600, verbose_name='Текст внутри кнопки')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
+                (
+                    'constant_description',
+                    models.CharField(
+                        max_length=1600, null=True, verbose_name='Описание'
+                    ),
+                ),
+                (
+                    'constant_text',
+                    models.CharField(
+                        max_length=1600, verbose_name='Текст внутри кнопки'
+                    ),
+                ),
                 ('constant_name', models.CharField(max_length=100)),
             ],
             options={
@@ -126,9 +289,27 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='OnboardingKeyboard',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('constant_description', models.CharField(max_length=1600, null=True, verbose_name='Описание')),
-                ('constant_text', models.CharField(max_length=1600, verbose_name='Текст внутри кнопки')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
+                (
+                    'constant_description',
+                    models.CharField(
+                        max_length=1600, null=True, verbose_name='Описание'
+                    ),
+                ),
+                (
+                    'constant_text',
+                    models.CharField(
+                        max_length=1600, verbose_name='Текст внутри кнопки'
+                    ),
+                ),
                 ('constant_name', models.CharField(max_length=100)),
             ],
             options={
@@ -139,9 +320,27 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='OnboardingText',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('constant_description', models.CharField(max_length=1600, null=True, verbose_name='Описание')),
-                ('constant_text', models.CharField(max_length=1600, verbose_name='Текст внутри кнопки')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
+                (
+                    'constant_description',
+                    models.CharField(
+                        max_length=1600, null=True, verbose_name='Описание'
+                    ),
+                ),
+                (
+                    'constant_text',
+                    models.CharField(
+                        max_length=1600, verbose_name='Текст внутри кнопки'
+                    ),
+                ),
                 ('constant_name', models.CharField(max_length=100)),
             ],
             options={
@@ -151,9 +350,27 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='QueryPatterns',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('constant_description', models.CharField(max_length=1600, null=True, verbose_name='Описание')),
-                ('constant_text', models.CharField(max_length=1600, verbose_name='Текст внутри кнопки')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
+                (
+                    'constant_description',
+                    models.CharField(
+                        max_length=1600, null=True, verbose_name='Описание'
+                    ),
+                ),
+                (
+                    'constant_text',
+                    models.CharField(
+                        max_length=1600, verbose_name='Текст внутри кнопки'
+                    ),
+                ),
                 ('constant_name', models.CharField(max_length=100)),
             ],
             options={
@@ -163,9 +380,27 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='RegFormsText',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('constant_description', models.CharField(max_length=1600, null=True, verbose_name='Описание')),
-                ('constant_text', models.CharField(max_length=1600, verbose_name='Текст внутри кнопки')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
+                (
+                    'constant_description',
+                    models.CharField(
+                        max_length=1600, null=True, verbose_name='Описание'
+                    ),
+                ),
+                (
+                    'constant_text',
+                    models.CharField(
+                        max_length=1600, verbose_name='Текст внутри кнопки'
+                    ),
+                ),
                 ('constant_name', models.CharField(max_length=100)),
             ],
             options={
@@ -175,22 +410,61 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='RulesKeyboard',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('constant_description', models.CharField(max_length=1600, null=True, verbose_name='Описание')),
-                ('constant_text', models.CharField(max_length=1600, verbose_name='Текст внутри кнопки')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
+                (
+                    'constant_description',
+                    models.CharField(
+                        max_length=1600, null=True, verbose_name='Описание'
+                    ),
+                ),
+                (
+                    'constant_text',
+                    models.CharField(
+                        max_length=1600, verbose_name='Текст внутри кнопки'
+                    ),
+                ),
                 ('constant_name', models.CharField(max_length=100)),
             ],
             options={
-                'verbose_name_plural': 'Клавиатура для подраздела "Общие правила"',
+                'verbose_name_plural': (
+                    'Клавиатура для ',
+                    'подраздела "Общие правила"',
+                ),
                 'db_table': 'rules_keyboards',
             },
         ),
         migrations.CreateModel(
             name='RulesText',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('constant_description', models.CharField(max_length=1600, null=True, verbose_name='Описание')),
-                ('constant_text', models.CharField(max_length=1600, verbose_name='Текст внутри кнопки')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
+                (
+                    'constant_description',
+                    models.CharField(
+                        max_length=1600, null=True, verbose_name='Описание'
+                    ),
+                ),
+                (
+                    'constant_text',
+                    models.CharField(
+                        max_length=1600, verbose_name='Текст внутри кнопки'
+                    ),
+                ),
                 ('constant_name', models.CharField(max_length=100)),
             ],
             options={
@@ -200,9 +474,27 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='State',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('constant_description', models.CharField(max_length=1600, null=True, verbose_name='Описание')),
-                ('constant_text', models.CharField(max_length=1600, verbose_name='Текст внутри кнопки')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
+                (
+                    'constant_description',
+                    models.CharField(
+                        max_length=1600, null=True, verbose_name='Описание'
+                    ),
+                ),
+                (
+                    'constant_text',
+                    models.CharField(
+                        max_length=1600, verbose_name='Текст внутри кнопки'
+                    ),
+                ),
                 ('constant_name', models.CharField(max_length=100)),
             ],
             options={
@@ -212,9 +504,27 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Text',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('constant_description', models.CharField(max_length=1600, null=True, verbose_name='Описание')),
-                ('constant_text', models.CharField(max_length=1600, verbose_name='Текст внутри кнопки')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
+                (
+                    'constant_description',
+                    models.CharField(
+                        max_length=1600, null=True, verbose_name='Описание'
+                    ),
+                ),
+                (
+                    'constant_text',
+                    models.CharField(
+                        max_length=1600, verbose_name='Текст внутри кнопки'
+                    ),
+                ),
                 ('constant_name', models.CharField(max_length=100)),
             ],
             options={

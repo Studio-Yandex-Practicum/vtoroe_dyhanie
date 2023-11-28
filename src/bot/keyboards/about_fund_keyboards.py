@@ -25,7 +25,8 @@ ABOUT_FUND_CALLBACKS = {
 
 async def func_navigation_menu():
     messages = await get_django_json(
-        'http://127.0.0.1:8000/about_fund_keyboards/')
+        'http://127.0.0.1:8000/about_fund_keyboards/'
+    )
     result = [
         (
             InlineKeyboardButton(
@@ -51,21 +52,23 @@ async def func_navigation_menu():
 
 async def about_fund_section():
     messages = await get_django_json(
-        'http://127.0.0.1:8000/about_fund_keyboards/3:8/')
+        'http://127.0.0.1:8000/about_fund_keyboards/3:8/'
+    )
     about_fund_section_text = [text for text in messages.values()]
     about_fund_markup = ReplyKeyboardMarkup(
         [[button] for button in about_fund_section_text],
         resize_keyboard=True,
         one_time_keyboard=True,
     )
-    return about_fund_markup
+    return about_fund_markup  # noqa
 
 
 async def things_path_markup():
     # response = requests.get('http://127.0.0.1:8000/about_fund_keyboards/')
     # messages = response.json()
     messages = await get_django_json(
-        'http://127.0.0.1:8000/about_fund_keyboards/')
+        'http://127.0.0.1:8000/about_fund_keyboards/'
+    )
     result = [
         (
             InlineKeyboardButton(
@@ -93,7 +96,8 @@ async def processes_anatomy_markup():
     # response = requests.get('http://127.0.0.1:8000/about_fund_keyboards/')
     # messages = response.json()
     messages = await get_django_json(
-        'http://127.0.0.1:8000/about_fund_keyboards/')
+        'http://127.0.0.1:8000/about_fund_keyboards/'
+    )
     result = [
         (
             InlineKeyboardButton(
@@ -121,7 +125,8 @@ async def fund_projects_markup():
     # response = requests.get('http://127.0.0.1:8000/about_fund_keyboards/')
     # messages = response.json()
     messages = await get_django_json(
-        'http://127.0.0.1:8000/about_fund_keyboards/')
+        'http://127.0.0.1:8000/about_fund_keyboards/'
+    )
     result = [
         (
             InlineKeyboardButton(
@@ -149,12 +154,13 @@ async def annual_reports_markup():
     # response = requests.get('http://127.0.0.1:8000/about_fund_keyboards/13/')
     # messages = response.json()
     messages = await get_django_json(
-        'http://127.0.0.1:8000/about_fund_keyboards/13/')
+        'http://127.0.0.1:8000/about_fund_keyboards/13/'
+    )
     result = [
         (
             InlineKeyboardButton(
                 messages['annual_reports_menu'],
-                callback_data='back_to_main_menu'
+                callback_data='back_to_main_menu',
             ),
         ),
     ]
