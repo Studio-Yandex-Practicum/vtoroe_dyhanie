@@ -1,7 +1,7 @@
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
 from bot.constants.query_patterns import INFO_PREFIX
-from bot.utils import get_django_json
+from bot.utils.admin_api import get_django_json
 
 
 # 1. Клавиатура для подраздела "Общие правила"

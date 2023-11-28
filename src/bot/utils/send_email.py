@@ -1,39 +1,7 @@
 import smtplib
 import ssl
-from typing import Dict
 
-import aiohttp
-import requests
-from telegram import InlineKeyboardMarkup, Message, Update
-from telegram.constants import ParseMode
-
-from bot.core.settings import settings
-
-
-_TYPES = [Message, Update]
-
-
-async def send_message(
-    message: _TYPES,
-    message_text_value: Dict[str, str],
-    reply_markup: InlineKeyboardMarkup,
-) -> None:
-    '''Отправляет сообщение и раскладку клавиатуры.'''
-    for index, value in enumerate(message_text_value.values()):
-        if index < len(message_text_value) - 1:
-            await message.reply_text(value)
-        else:
-            await message.reply_text(
-                (value),
-                parse_mode=ParseMode.MARKDOWN,
-                reply_markup=reply_markup,
-            )
-
-
-async def check_text():
-    response = requests.get('http://127.0.0.1:8000/keyboards/10:17/')
-    message_data = response.json()
-    return message_data.values()
+from ..core.settings import settings
 
 
 def send_email(subject, body_text):
@@ -63,11 +31,6 @@ def send_email(subject, body_text):
             message.encode('UTF-8'),
         )
 
-
-async def get_django_json(url):
-    async with aiohttp.ClientSession() as session:
-        async with session.get(url) as response:
-            return await response.json()
 
 # Тестовые данные
 # subject = 'Тестирование'

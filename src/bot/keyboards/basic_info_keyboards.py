@@ -1,7 +1,7 @@
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
 from bot.constants.query_patterns import INFO_PREFIX
-from bot.utils import get_django_json
+from bot.utils.admin_api import get_django_json
 
 
 # 1. Клавиатура для подраздела "основная информация"
@@ -387,18 +387,41 @@ async def guardian_council_markup():
     return InlineKeyboardMarkup(guardian_council_keyboard)
 
 
-# 9. Клавиатура для 'contact_list'
-async def contact_list_markup():
-    # response = requests.get('http://127.0.0.1:8000/basic_info_keyboards/35/')
-    messages = await get_django_json(
-        'http://127.0.0.1:8000/basic_info_keyboards/35/')
-    contact_list_keyboard = [
-        [
-            InlineKeyboardButton(
-               messages['contact_list_keyboard'],
-               url='https://docs.google.com/spreadsheets/d/'
-               '1m_y8rtod0VEGBAmhmqxK3ax-ulOUfeJNlvMApluhBFM/edit',
-            ),
-        ],
-    ]
-    return InlineKeyboardMarkup(contact_list_keyboard)
+# 9. Клавиатуры для 'contact_list'
+contact_list_download_keyboard = [
+    (
+        InlineKeyboardButton(
+            'Скачать справочник',
+            url='https://docs.google.com/spreadsheets/d/'
+            '1m_y8rtod0VEGBAmhmqxK3ax-ulOUfeJNlvMApluhBFM/edit',
+        ),
+    ),
+]
+contact_list_download_markup = InlineKeyboardMarkup(
+    contact_list_download_keyboard
+)
+contact_list_exit_keyboard = [
+    (
+        InlineKeyboardButton(
+            'В главное меню', callback_data='exit_from_contact_search'
+        ),
+    ),
+]
+contact_list_exit_markup = InlineKeyboardMarkup(contact_list_exit_keyboard)
+
+
+# from feature33
+# async def contact_list_markup():
+#     # response = requests.get('http://127.0.0.1:8000/basic_info_keyboards/35/')
+#     messages = await get_django_json(
+#         'http://127.0.0.1:8000/basic_info_keyboards/35/')
+#     contact_list_keyboard = [
+#         [
+#             InlineKeyboardButton(
+#                messages['contact_list_keyboard'],
+#                url='https://docs.google.com/spreadsheets/d/'
+#                '1m_y8rtod0VEGBAmhmqxK3ax-ulOUfeJNlvMApluhBFM/edit',
+#             ),
+#         ],
+#     ]
+#     return InlineKeyboardMarkup(contact_list_keyboard)

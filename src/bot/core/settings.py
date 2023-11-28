@@ -11,21 +11,20 @@ class Settings(BaseSettings):
     telegram_token: str
     debug: bool = False
     secret_word: str = 'Бруня'
-    secret_key: str
     logging_level: int = logging.INFO
     logging_format: str = '%(asctime)s, %(name)s, %(levelname)s, %(message)s'
     logging_dir: str = './src/bot/data/logs'
-    smtp_server: str = 'smtp.yandex.ru'
-    port: int = 465
+    smtp_server: str
+    port: int
     sender_email: str
     receiver_email: str
     password_email: str
-
-    # Добавлены значения по умолчанию для PostgreSQL
-    db_host: str = 'localhost'
+    postgres_user: str = 'postgress'
+    postgres_password: str = 'postgress'
+    db_name: str = 'postgress'
+    db_host: str = 'db'
     db_port: int = 5432
-    postgres_user: str = 'postgres'
-    postgres_password: str = 'postgres'
+    database_url: str
 
     class Config:
         env_file = '.env'

@@ -13,7 +13,8 @@ from bot.keyboards.rules_keyboards import (
     separate_collection_markup,
     workshop_markup,
 )
-from bot.utils import get_django_json, send_message
+from bot.utils.admin_api import get_django_json
+from bot.utils.send_message import send_message
 
 
 async def communication_callback(

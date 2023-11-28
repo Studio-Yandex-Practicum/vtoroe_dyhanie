@@ -40,7 +40,8 @@ from bot.keyboards.about_fund_keyboards import (
     processes_anatomy_markup,
     things_path_markup,
 )
-from bot.utils import get_django_json, send_message
+from bot.utils.admin_api import get_django_json
+from bot.utils.send_message import send_message
 
 
 async def handle_back_to_menu(

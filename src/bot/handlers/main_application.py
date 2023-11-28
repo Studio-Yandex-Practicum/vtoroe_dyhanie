@@ -13,7 +13,7 @@ from bot.constants.state import CHECK
 from bot.core.settings import settings
 from bot.handlers.command_application import stop_callback
 from bot.keyboards.keyboards import main_menu_markup
-from bot.utils import get_django_json
+from bot.utils.admin_api import get_django_json
 
 
 async def greeting_callback(

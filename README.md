@@ -1,10 +1,12 @@
-![workflow](https://github.com/Studio-Yandex-Practicum/vtoroe_dyhanie/actions/workflows/vtoroe_dyhanie_develop.yml/badge.svg) 
+![workflow](https://github.com/Studio-Yandex-Practicum/vtoroe_dyhanie/actions/workflows/vtoroe_dyhanie_develop.yml/badge.svg)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/pre-commit/pre-commit-hooks/main.svg)](https://results.pre-commit.ci/latest/github/pre-commit/pre-commit-hooks/main)
 
 ## <img src='https://shop.vtoroe.ru/wp-content/themes/cshops/assets/img/favicon.ico'/> vtoroe_dyhanie (Второе дыхание)
 
 Проект телеграм-бота для новых и действующих сотрудников Фонда "Второе дыхание". Помогает автоматизировать HR-процессы и позволяет новым сотрудникам быстрее адаптироваться за счет автоматизации предоставления необходимой информации о работе Фонда.
+
+- Тестовый Бот доступен по адресу: https://t.me/vtordish_test_bot
 
 <details>
 <summary>Задачи бота</summary>
@@ -42,9 +44,11 @@
 
 - Python 3.11
 - Python-telegram-bot 20.5
+- PostgreSQL 16.0
+- Alembic
 - Docker
 - Docker-Compose
-- Poetry 1.6.1 
+- Poetry 1.6.1
 </details>
 
 <details>
@@ -61,6 +65,12 @@ git clone git@github.com:Studio-Yandex-Practicum/vtoroe_dyhanie.git
 ```
 cd vtoroe_dyhanie/
 ```
+
+Создайте и заполните в ней файл .env - в качестве шаблона используйте файл .env.example
+
+Проект можно запустить как непосредственно в вашей ОС, так и в контейнерах Docker
+
+### Для запуска проекта непосредственно в вашей ОС:
 
 Инициализируйте создание директории виртуального окружения в проекте:
 
@@ -87,16 +97,48 @@ source .venv/bin/activate (для UNIX)
 source .venv/Scripts/activate (для WINDOWS)
 ```
 
-Создайте в корневой папке проекта файл .env, используя телеграм-токен, полученный от BotFather:
+Примените миграции для создания структуры БД:
 
 ```
-TELEGRAM_TOKEN='<здесь ваш токен>'
+alembic upgrade head
 ```
 
-Запустите проект локально, чтобы проверить работоспособность:
+Запустите скрипт наполнения БД информацией о контактах:
+
+```
+python -m src.contacts_upload
+```
+
+Запустите проект локально:
 
 ```
 python src/application.py
+```
+
+### Для запуска проекта в контейнерах Docker:
+
+Перейдите в директорию infra:
+
+```
+cd infra/
+```
+
+Выполните команду для создания и запуска приложения в контейнерах:
+
+```
+docker-compose up -d
+```
+
+Примените миграции для создания структуры БД:
+
+```
+docker-compose exec vtordish alembic upgrade head
+```
+
+Запустите скрипт наполнения БД информацией о контактах:
+
+```
+docker-compose exec vtordish python3 -m src.contacts_upload
 ```
 
 </details>
@@ -126,5 +168,10 @@ python src/application.py
 - [Настасья Мартынова](https://github.com/Nastasya-M)
 - [Евгений Голодных](https://github.com/Evgeniy-Golodnykh)
 - [Дмитрий Корепанов](https://github.com/DNKer)
+- [Михаил Волков](https://github.com/greenpandorik)
+- [Евгений Коваленко](https://github.com/evgeny-dmitrievich)
+- [Александр Новожилов](https://github.com/AleksNovo)
+- [Олег Исаев](https://github.com/oisaev)
+- [Дмитрий Белолипецкий](https://github.com/EvolDem)
 
 </details>

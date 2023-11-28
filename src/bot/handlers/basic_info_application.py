@@ -13,7 +13,7 @@ from bot.keyboards.basic_info_keyboards import (
     our_team_markup,
     social_networks_markup,
 )
-from bot.utils import get_django_json
+from bot.utils.admin_api import get_django_json
 
 
 async def organization_structure_callback(

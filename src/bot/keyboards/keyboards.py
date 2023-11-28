@@ -4,7 +4,7 @@ from telegram import (
     ReplyKeyboardMarkup,
 )
 
-from bot.utils import get_django_json
+from bot.utils.admin_api import get_django_json
 
 
 # Основное меню
