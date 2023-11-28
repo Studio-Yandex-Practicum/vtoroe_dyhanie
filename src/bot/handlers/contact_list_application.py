@@ -9,13 +9,11 @@ from telegram.ext import (
     filters,
 )
 
-# from bot.keyboards.basic_info_keyboards
-# import contact_list_markup, - from feature33
 from bot.constants.keyword_serch import SEARCH_AGAIN_OR_EXIT
 from bot.constants.state import FIND_CONTACT, FIND_CONTACT_AGAIN
 from bot.constants.text import BACK_TO_MENU
 from bot.handlers.command_application import stop_callback
-from bot.keyboards.basic_info_keyboards import (
+from bot.keyboards.contact_list_keyboards import (
     contact_list_download_markup,
     contact_list_exit_markup,
 )
@@ -36,9 +34,8 @@ async def contact_list_callback(
     )
     await update.message.reply_text(
         message_data.get("MENU_CONTACT_LIST_LOAD_CONTACT_LIST", ""),
-        reply_markup=contact_list_download_markup,
+        reply_markup=await contact_list_download_markup(),
     )
-    # await contact_list_markup(),
     return FIND_CONTACT
 
 
@@ -55,7 +52,7 @@ async def find_contact_callback(
     await update.message.reply_text(text=answer)
     await update.message.reply_text(
         text=SEARCH_AGAIN_OR_EXIT,
-        reply_markup=contact_list_exit_markup,
+        reply_markup=await contact_list_exit_markup(),
     )
     return FIND_CONTACT_AGAIN
 

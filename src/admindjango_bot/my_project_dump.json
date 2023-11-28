@@ -1899,6 +1899,15 @@
   }
 },
 {
+  "model": "admin_bot.links",
+  "pk": 3,
+  "fields": {
+    "constant_description": "Ссылка на скачивание справочника с контактами коллег",
+    "constant_text": "https://docs.google.com/spreadsheets/d/1m_y8rtod0VEGBAmhmqxK3ax-ulOUfeJNlvMApluhBFM/edit",
+    "constant_name": "CONTACT_LIST_LINK"
+  }
+},
+{
   "model": "admin_bot.onboardingtext",
   "pk": 1,
   "fields": {
@@ -2535,6 +2544,24 @@
     "constant_description": "Ссылка внутри текста после кнопки \"Обратная связь\"",
     "constant_text": "https://forms.gle/jmjtFJEh68HqMxe57",
     "constant_name": "FEEDBACK_LINK"
+  }
+},
+{
+  "model": "admin_bot.contactlistkeyboard",
+  "pk": 1,
+  "fields": {
+    "constant_description": "Клавиатура для скачивания справочника контактов",
+    "constant_text": "Скачать справочник",
+    "constant_name": "contact_list_download_keyboard"
+  }
+},
+{
+  "model": "admin_bot.contactlistkeyboard",
+  "pk": 2,
+  "fields": {
+    "constant_description": "Клавиатура для выхода в главное меню после поиска контактов",
+    "constant_text": "В главное меню",
+    "constant_name": "contact_list_exit_keyboard"
   }
 }
 ]

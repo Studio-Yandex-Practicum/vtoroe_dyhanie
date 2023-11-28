@@ -165,7 +165,7 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
-            name='ContactListtext',
+            name='ContactListText',
             fields=[
                 (
                     'id',

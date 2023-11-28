@@ -14,48 +14,82 @@ class BasicModel(models.Model):
         abstract = True
 
 
-class AboutFundKeyboard(BasicModel):
-    class Meta:
-        db_table = 'about_fund_keyboards'
-        verbose_name_plural = (
-            'Модуль с реализацией ' 'клавиатур для блока "О Фонде"'
-        )
-
-
-class BasicInfoKeyboard(BasicModel):
-    class Meta:
-        db_table = 'basic_info_keyboards'
-        verbose_name_plural = 'Базовые информационные кнопки'
-
-
 class Keyboard(BasicModel):
     class Meta:
         db_table = 'keyboards'
-        verbose_name_plural = 'Гл.Меню и FAQ кнопки'
+        verbose_name_plural = 'Клавиатуры основного меню и раздела "FAQ"'
+
+
+class AboutFundKeyboard(BasicModel):
+    class Meta:
+        db_table = 'about_fund_keyboards'
+        verbose_name_plural = 'Клавиатуры раздела "О Фонде"'
 
 
 class OnboardingKeyboard(BasicModel):
     class Meta:
         db_table = 'onboarding_keyboards'
-        verbose_name_plural = 'Онбординг кнопки'
+        verbose_name_plural = 'Клавиатуры раздела "Онбординг"'
+
+
+class BasicInfoKeyboard(BasicModel):
+    class Meta:
+        db_table = 'basic_info_keyboards'
+        verbose_name_plural = 'Клавиатуры раздела "Основная информация"'
 
 
 class RulesKeyboard(BasicModel):
     class Meta:
         db_table = 'rules_keyboards'
-        verbose_name_plural = 'Клавиатура для подраздела "Общие правила"'
+        verbose_name_plural = 'Клавиатуры раздела "Общие правила"'
+
+
+class ContactListKeyboard(BasicModel):
+    class Meta:
+        db_table = 'contact_list_keyboards'
+        verbose_name_plural = 'Клавиатуры раздела "Список контактов"'
 
 
 class AboutFundText(BasicModel):
     class Meta:
         db_table = 'about_fund_text'
-        verbose_name_plural = 'Тексты для подраздела "О Фонде"'
+        verbose_name_plural = 'Тексты раздела "О Фонде"'
+
+
+class OnboardingText(BasicModel):
+    class Meta:
+        db_table = 'onboarding_text'
+        verbose_name_plural = 'Тексты раздела "Онбоардинг"'
 
 
 class BasicInfoText(BasicModel):
     class Meta:
         db_table = 'basic_info_text'
-        verbose_name_plural = 'Тексты для подраздела "Основная информация"'
+        verbose_name_plural = 'Тексты раздела "Основная информация"'
+
+
+class RulesText(BasicModel):
+    class Meta:
+        db_table = 'rules_text'
+        verbose_name_plural = 'Тексты раздела "Общие правила"'
+
+
+class RegFormsText(BasicModel):
+    class Meta:
+        db_table = 'reg_forms_text'
+        verbose_name_plural = 'Тексты раздела "Регламенты и формы"'
+
+
+class FaqText(BasicModel):
+    class Meta:
+        db_table = 'faq_text'
+        verbose_name_plural = 'Тексты раздела "FAQ"'
+
+
+class ContactListText(BasicModel):
+    class Meta:
+        db_table = 'contact_list_text'
+        verbose_name_plural = 'Тексты раздела "Список контактов"'
 
 
 class Button(BasicModel):
@@ -64,42 +98,12 @@ class Button(BasicModel):
         verbose_name_plural = 'Названия кнопок меню'
 
 
-class ContactListtext(BasicModel):
-    class Meta:
-        db_table = 'contact_list_text'
-        verbose_name_plural = 'Тексты для подраздела "Список контактов"'
-
-
-class FaqText(BasicModel):
-    class Meta:
-        db_table = 'faq_text'
-        verbose_name_plural = 'Тексты для подраздела "FAQ"'
-
-
 class Links(BasicModel):
     class Meta:
         db_table = 'links'
         verbose_name_plural = (
             'Ссылки для подраздела "Обратнаня связь" и "База знаний"'
         )
-
-
-class OnboardingText(BasicModel):
-    class Meta:
-        db_table = 'onboarding_text'
-        verbose_name_plural = 'Тексты для подраздела "Онбоардинг"'
-
-
-class RegFormsText(BasicModel):
-    class Meta:
-        db_table = 'reg_forms_text'
-        verbose_name_plural = 'Тексты для подраздела "Регламенты и формы"'
-
-
-class RulesText(BasicModel):
-    class Meta:
-        db_table = 'rules_text'
-        verbose_name_plural = 'Тексты для подраздела "Общие правила"'
 
 
 class Text(BasicModel):
