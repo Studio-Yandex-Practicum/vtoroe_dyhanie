@@ -1678,7 +1678,7 @@
   "pk": 1,
   "fields": {
     "constant_description": null,
-    "constant_text": "Введи должность нужного коллеги, и я пришлю тебе его контакты.",
+    "constant_text": "Введи имя или должность нужного коллеги, и я пришлю тебе его контакты.",
     "constant_name": "MENU_CONTACT_LIST_INPUT_FIO"
   }
 },
@@ -1687,7 +1687,7 @@
   "pk": 2,
   "fields": {
     "constant_description": null,
-    "constant_text": "Если ты хочешь скачать справочник с контактами коллег, нажми на ссылку внизу.",
+    "constant_text": "Если хочешь скачать справочник с контактами коллег, нажми на ссылку ниже.",
     "constant_name": "MENU_CONTACT_LIST_LOAD_CONTACT_LIST"
   }
 },

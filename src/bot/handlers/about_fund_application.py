@@ -20,7 +20,6 @@
 
 import sys
 
-import requests
 from telegram import CallbackQuery, Message, Update
 from telegram.constants import ParseMode
 from telegram.ext import (
@@ -40,7 +39,7 @@ from bot.keyboards.about_fund_keyboards import (
     processes_anatomy_markup,
     things_path_markup,
 )
-from bot.utils.admin_api import get_django_json
+from bot.utils.admin_api import get_django_json, get_django_json_sync
 from bot.utils.send_message import send_message
 
 
@@ -260,8 +259,9 @@ about_inline_handlers = {
 
 
 def register_handlers(app: Application) -> None:
-    response = requests.get('http://127.0.0.1:8000/about_fund_keyboards/3:8/')
-    messages = response.json()
+    messages = get_django_json_sync(
+        'http://127.0.0.1:8000/about_fund_keyboards/3:8/'
+    )
     about_fund_text = [text for key, text in messages.items()]
     app.add_handler(
         CallbackQueryHandler(

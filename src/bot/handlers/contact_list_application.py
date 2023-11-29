@@ -1,4 +1,3 @@
-import requests
 from telegram import Update
 from telegram.ext import (
     CallbackQueryHandler,
@@ -18,7 +17,7 @@ from bot.keyboards.contact_list_keyboards import (
     contact_list_exit_markup,
 )
 from bot.keyboards.keyboards import main_menu_markup
-from bot.utils.admin_api import get_django_json
+from bot.utils.admin_api import get_django_json, get_django_json_sync
 from bot.utils.keyword_search import find_contacts
 
 
@@ -69,15 +68,14 @@ async def main_menu_pressed_callback(
     return ConversationHandler.END
 
 
-def get_menu_contact_list() -> dict:
-    response = requests.get('http://127.0.0.1:8000/button/9/')
-    return response.json()
-
-
 contact_list_conv_handler = ConversationHandler(
     entry_points=[
         MessageHandler(
-            filters.Text(get_menu_contact_list()['MENU_CONTACT_LIST']),
+            filters.Text(
+                get_django_json_sync('http://127.0.0.1:8000/button/9/').get(
+                    'MENU_CONTACT_LIST', ""
+                )
+            ),
             contact_list_callback,
         )
     ],

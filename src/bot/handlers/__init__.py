@@ -1,3 +1,4 @@
+import logging
 import threading
 import time
 
@@ -20,10 +21,11 @@ from . import (
 def update_handlers_periodically(app: Application, interval=5):
     while True:
         try:
+            app.handlers.clear()
             register_all_handlers(app)
             time.sleep(interval)
         except Exception as e:
-            print(f"Ошибка при обновлении обработчиков: {e}")
+            logging.critical(f'Ошибка при обновлении обработчиков: {e}')
 
 
 def register_all_handlers(app: Application):
