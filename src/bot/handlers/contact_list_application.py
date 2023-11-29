@@ -9,7 +9,6 @@ from telegram.ext import (
 )
 
 from bot.constants.state import FIND_CONTACT, FIND_CONTACT_AGAIN
-from bot.constants.text import BACK_TO_MENU
 from bot.handlers.command_application import stop_callback
 from bot.keyboards.contact_list_keyboards import (
     contact_list_download_markup,
@@ -64,8 +63,10 @@ async def main_menu_pressed_callback(
 ):
     '''Обрабатывает нажатие кнопки выхода после очередного поиска.'''
     await update.callback_query.message.delete()
+    message_data = await get_django_json('http://127.0.0.1:8000/text/10/')
     await update.callback_query.message.reply_text(
-        BACK_TO_MENU, reply_markup=await main_menu_markup()
+        text=message_data.get('BACK_TO_MENU', ''),
+        reply_markup=await main_menu_markup(),
     )
     return ConversationHandler.END
 

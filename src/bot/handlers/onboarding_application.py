@@ -18,7 +18,6 @@ from ..utils.generic import check_date_format
 from ..utils.send_email import send_email
 from bot.constants import onboarding_text
 from bot.constants.query_patterns import INFO_PREFIX
-from bot.constants.schemas import DateModel
 from bot.constants.state import BEGINNER_ONBOARDING
 from bot.handlers.command_application import stop_callback
 from bot.keyboards.onboarding_keyboards import (
@@ -39,6 +38,7 @@ from bot.keyboards.onboarding_keyboards import (
     work_plan_markup,
 )
 from bot.utils.admin_api import get_django_json
+from bot.utils.schemas import DateModel
 
 
 async def mentor_callback(
@@ -88,14 +88,14 @@ async def beginner_start_callback(
     return BEGINNER_ONBOARDING
 
 
-async def send_delayed_message(
-    bot, delay, chat_id, message, reply_markup=None
-):
+async def send_delayed_message(bot, delay, chat_id, text, reply_markup=None):
     await asyncio.sleep(delay)
     await bot.send_message(
         chat_id,
-        message,
+        text,
         reply_markup=reply_markup,
+        parse_mode=ParseMode.MARKDOWN,
+        disable_web_page_preview=True,
     )
 
 
@@ -107,11 +107,13 @@ async def beginner_employment_date_callback(
     Функция для сохранения даты трудоустройства новичка, так же возможно
     здесь реализовать отправку отложенных сообщений
     '''
-
     employment_date = update.message.text
     if not check_date_format(employment_date):
+        message_data = await get_django_json(
+            'http://127.0.0.1:8000/onboarding_text/29/'
+        )
         await update.message.reply_text(
-            'Некорректная дата. Пожалуйста, введите дату в формате ДД-ММ-ГГГГ.'
+            text=message_data.get('WRONG_DATE_FORMAT', '')
         )
         return None
 
@@ -129,12 +131,15 @@ async def beginner_employment_date_callback(
     if employment_date:
         # Отправку отложенных сообщений и проверку
         bot = context.bot
+        message_data = await get_django_json(
+            'http://127.0.0.1:8000/onboarding_text/30:33/'
+        )
         asyncio.create_task(
             send_delayed_message(
                 bot,
                 25 * 86400,
                 update.message.chat_id,
-                onboarding_text.BEGINNER_AFTER_25_DAY_MESSAGE,
+                text=message_data.get('BEGINNER_AFTER_25_DAY_MESSAGE', ''),
                 reply_markup=feedback_keyboard_markup,
             )
         )
@@ -143,15 +148,18 @@ async def beginner_employment_date_callback(
                 bot,
                 40 * 86400,
                 update.message.chat_id,
-                onboarding_text.BEGINNER_AFTER_40_DAY_MESSAGE,
+                text=message_data.get('BEGINNER_AFTER_40_DAY_MESSAGE', ''),
             )
         )
+        link = message_data.get('ONBOARDING_LINK_FORM', '')
         asyncio.create_task(
             send_delayed_message(
                 bot,
                 85 * 86400,
                 update.message.chat_id,
-                onboarding_text.BEGINNER_AFTER_85_DAY_MESSAGE,
+                text=message_data.get(
+                    'BEGINNER_AFTER_85_DAY_MESSAGE', ''
+                ).format(ONBOARDING_LINK_FORM=link),
             )
         )
 
@@ -173,7 +181,7 @@ async def beginner_great_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
-    send_email('Feedback', 'Все отлично!')
+    send_email('Feedback от новичка', 'Все отлично!')
     await update.callback_query.answer()
 
 
@@ -181,7 +189,7 @@ async def beginner_so_so_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
-    send_email('Feedback', '50/50')
+    send_email('Feedback от новичка', '50/50')
     await update.callback_query.answer()
 
 
@@ -189,7 +197,7 @@ async def beginner_help_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
-    send_email('Feedback', 'Не все гладко, help')
+    send_email('Feedback от новичка', 'Не все гладко, help')
     await update.callback_query.answer()
 
 
@@ -501,7 +509,7 @@ async def director_employment_date_callback(
             )
         )
         message_data = await get_django_json(
-            'http://127.0.0.1:8000/onboarding_text/27/'
+            'http://127.0.0.1:8000/onboarding_text/28/'
         )
         await update.message.reply_text(
             message_data.get('REMINDER_MESSAGE_FOR_MEETINGS_msg_1', ''),

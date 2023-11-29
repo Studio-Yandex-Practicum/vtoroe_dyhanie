@@ -9,10 +9,10 @@ from telegram.ext import (
     filters,
 )
 
-from bot.constants.schemas import QuestionModel
 from bot.constants.state import GET_USER_QUESTION
 from bot.keyboards.keyboards import main_menu_markup
 from bot.utils.admin_api import get_django_json
+from bot.utils.schemas import QuestionModel
 from bot.utils.send_email import send_email
 
 
