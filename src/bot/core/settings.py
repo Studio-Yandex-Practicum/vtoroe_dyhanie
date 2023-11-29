@@ -25,6 +25,7 @@ class Settings(BaseSettings):
     db_host: str = 'db'
     db_port: int = 5432
     database_url: str
+    max_contacts_to_show_in_sesarch: int = 5
 
     class Config:
         env_file = '.env'

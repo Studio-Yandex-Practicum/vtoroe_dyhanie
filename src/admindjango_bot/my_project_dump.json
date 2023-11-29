@@ -435,18 +435,18 @@
   "model": "admin_bot.basicinfokeyboard",
   "pk": 34,
   "fields": {
-    "constant_description": "Клавиатура для 'guardian_council'",
-    "constant_text": "Понятно, спасибо!",
-    "constant_name": "guardian_council_keyboard"
+    "constant_description": "Клавиатура для \"Отделы Фонда\"",
+    "constant_text": "Назад",
+    "constant_name": "departments_keyboard_our_team"
   }
 },
 {
   "model": "admin_bot.basicinfokeyboard",
   "pk": 35,
   "fields": {
-    "constant_description": "Клавиатура для 'contact_list'",
-    "constant_text": "Скачать справочник",
-    "constant_name": "contact_list_keyboard"
+    "constant_description": "Клавиатура для \"Отделы Фонда\"",
+    "constant_text": "В главное меню",
+    "constant_name": "departments_keyboard_back_to_main_menu"
   }
 },
 {
@@ -471,18 +471,9 @@
   "model": "admin_bot.basicinfokeyboard",
   "pk": 38,
   "fields": {
-    "constant_description": "Клавиатура для \"Отделы Фонда\"",
-    "constant_text": "Назад",
-    "constant_name": "departmentss_keyboard_our_team"
-  }
-},
-{
-  "model": "admin_bot.basicinfokeyboard",
-  "pk": 39,
-  "fields": {
-    "constant_description": "Клавиатура для \"Отделы Фонда\"",
-    "constant_text": "В главное меню",
-    "constant_name": "departmentss_keyboard_back_to_main_menu"
+    "constant_description": "Клавиатура для 'guardian_council'",
+    "constant_text": "Понятно, спасибо!",
+    "constant_name": "guardian_council_keyboard"
   }
 },
 {
@@ -1689,6 +1680,42 @@
     "constant_description": null,
     "constant_text": "Если хочешь скачать справочник с контактами коллег, нажми на ссылку ниже.",
     "constant_name": "MENU_CONTACT_LIST_LOAD_CONTACT_LIST"
+  }
+},
+{
+  "model": "admin_bot.contactlisttext",
+  "pk": 3,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "По твоему запросу контакты коллег не найдены",
+    "constant_name": "NO_CONTACTS_FOUND"
+  }
+},
+{
+  "model": "admin_bot.contactlisttext",
+  "pk": 4,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "По твоему запросу найдены коллеги:",
+    "constant_name": "CONTACTS_FOUND"
+  }
+},
+{
+  "model": "admin_bot.contactlisttext",
+  "pk": 5,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "и некоторые другие - постарайся использовать более точные запросы.",
+    "constant_name": "MORE_THAN_MAX_CONTACTS_FOUND"
+  }
+},
+{
+  "model": "admin_bot.contactlisttext",
+  "pk": 6,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Можешь ввести поисковый запрос еще раз или нажать кнопку ниже для возврата в главное меню.",
+    "constant_name": "SEARCH_AGAIN_OR_EXIT"
   }
 },
 {

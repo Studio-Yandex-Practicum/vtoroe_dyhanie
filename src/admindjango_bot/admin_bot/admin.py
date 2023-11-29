@@ -33,6 +33,7 @@ class TextAdmin(admin.ModelAdmin):
     list_display = ('constant_name', 'constant_text')
     empty_value_display = '-пусто-'
     form = TextAdminForm
+    ordering = ('id',)
 
 
 myModelsKeys = [

@@ -8,7 +8,6 @@ from telegram.ext import (
     filters,
 )
 
-from bot.constants.keyword_serch import SEARCH_AGAIN_OR_EXIT
 from bot.constants.state import FIND_CONTACT, FIND_CONTACT_AGAIN
 from bot.constants.text import BACK_TO_MENU
 from bot.handlers.command_application import stop_callback
@@ -49,8 +48,11 @@ async def find_contact_callback(
     user_text = update.message.text
     answer = await find_contacts(user_text)
     await update.message.reply_text(text=answer)
+    message_data = await get_django_json(
+        'http://127.0.0.1:8000/contact_list_text/6/'
+    )
     await update.message.reply_text(
-        text=SEARCH_AGAIN_OR_EXIT,
+        text=message_data.get('SEARCH_AGAIN_OR_EXIT', ''),
         reply_markup=await contact_list_exit_markup(),
     )
     return FIND_CONTACT_AGAIN

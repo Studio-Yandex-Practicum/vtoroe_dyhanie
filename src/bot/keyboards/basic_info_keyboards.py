@@ -298,10 +298,8 @@ async def func_departments_keyboard_base():
 
 # 7.5. Клавиатура для 'departmentss'
 async def departmentss_markup():
-    # response = requests.get(
-    #     'http://127.0.0.1:8000/basic_info_keyboards/24:39/')
     messages = await get_django_json(
-        'http://127.0.0.1:8000/basic_info_keyboards/24:39/'
+        'http://127.0.0.1:8000/basic_info_keyboards/24:35/'
     )
     departments_keyboard = [
         [
@@ -366,13 +364,13 @@ async def departmentss_markup():
         ],
         [
             InlineKeyboardButton(
-                messages['departmentss_keyboard_our_team'],
+                messages['departments_keyboard_our_team'],
                 callback_data=f'{INFO_PREFIX}our_team',  # ?
             )
         ],
         [
             InlineKeyboardButton(
-                messages['departmentss_keyboard_back_to_main_menu'],
+                messages['departments_keyboard_back_to_main_menu'],
                 callback_data='back_to_main_menu',
             )
         ],
@@ -382,9 +380,8 @@ async def departmentss_markup():
 
 # 8. Клавиатура для 'guardian_council'
 async def guardian_council_markup():
-    # response = requests.get('http://127.0.0.1:8000/basic_info_keyboards/34/')
     messages = await get_django_json(
-        'http://127.0.0.1:8000/basic_info_keyboards/34/'
+        'http://127.0.0.1:8000/basic_info_keyboards/38/'
     )
     guardian_council_keyboard = [
         [
