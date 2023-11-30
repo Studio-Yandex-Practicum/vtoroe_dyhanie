@@ -7,6 +7,7 @@ from telegram import (
 )
 
 from bot.constants.query_patterns import ABOUT_PREFIX
+from bot.core.settings import api_root
 from bot.utils.admin_api import get_django_json
 
 
@@ -24,9 +25,7 @@ ABOUT_FUND_CALLBACKS = {
 
 
 async def func_navigation_menu():
-    messages = await get_django_json(
-        'http://127.0.0.1:8000/about_fund_keyboards/'
-    )
+    messages = await get_django_json(f'{api_root}about_fund_keyboards/')
     result = [
         (
             InlineKeyboardButton(
@@ -51,9 +50,7 @@ async def func_navigation_menu():
 
 
 async def about_fund_section():
-    messages = await get_django_json(
-        'http://127.0.0.1:8000/about_fund_keyboards/3:8/'
-    )
+    messages = await get_django_json(f'{api_root}about_fund_keyboards/3:8/')
     about_fund_section_text = [text for text in messages.values()]
     about_fund_markup = ReplyKeyboardMarkup(
         [[button] for button in about_fund_section_text],
@@ -64,9 +61,7 @@ async def about_fund_section():
 
 
 async def things_path_markup():
-    messages = await get_django_json(
-        'http://127.0.0.1:8000/about_fund_keyboards/'
-    )
+    messages = await get_django_json(f'{api_root}about_fund_keyboards/')
     result = [
         (
             InlineKeyboardButton(
@@ -91,9 +86,7 @@ async def things_path_markup():
 
 
 async def processes_anatomy_markup():
-    messages = await get_django_json(
-        'http://127.0.0.1:8000/about_fund_keyboards/'
-    )
+    messages = await get_django_json(f'{api_root}about_fund_keyboards/')
     result = [
         (
             InlineKeyboardButton(
@@ -118,9 +111,7 @@ async def processes_anatomy_markup():
 
 
 async def fund_projects_markup():
-    messages = await get_django_json(
-        'http://127.0.0.1:8000/about_fund_keyboards/'
-    )
+    messages = await get_django_json(f'{api_root}about_fund_keyboards/')
     result = [
         (
             InlineKeyboardButton(
@@ -145,9 +136,7 @@ async def fund_projects_markup():
 
 
 async def annual_reports_markup():
-    messages = await get_django_json(
-        'http://127.0.0.1:8000/about_fund_keyboards/13/'
-    )
+    messages = await get_django_json(f'{api_root}about_fund_keyboards/13/')
     result = [
         (
             InlineKeyboardButton(

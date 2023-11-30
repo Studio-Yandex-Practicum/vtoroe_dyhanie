@@ -19,11 +19,8 @@ class Settings(BaseSettings):
     sender_email: str
     receiver_email: str
     password_email: str
-    postgres_user: str = 'postgress'
-    postgres_password: str = 'postgress'
-    db_name: str = 'postgress'
-    db_host: str = 'db'
-    db_port: int = 5432
+    admin_api_host: str = 'localhost'
+    admin_api_port: str = '8000'
     database_url: str
     max_contacts_to_show_in_sesarch: int = 5
 
@@ -34,3 +31,7 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
+
+api_root = f'http://{settings.admin_api_host}:{settings.admin_api_port}/'
+
+# database_url = f'postgresql+asyncpg://'

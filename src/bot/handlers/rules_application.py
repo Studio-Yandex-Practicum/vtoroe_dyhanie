@@ -3,6 +3,7 @@ from telegram.constants import ParseMode
 from telegram.ext import Application, CallbackQueryHandler, ContextTypes
 
 from bot.constants.query_patterns import INFO_PREFIX
+from bot.core.settings import api_root
 from bot.keyboards.rules_keyboards import (
     communication_markup,
     in_communication_markup,
@@ -21,9 +22,7 @@ async def communication_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Коммуникация.'''
-    message_data = await get_django_json(
-        'http://127.0.0.1:8000/rules_text/2:3/'
-    )
+    message_data = await get_django_json(f'{api_root}rules_text/2:3/')
     await send_message(
         update.callback_query.message,
         message_data,
@@ -36,9 +35,7 @@ async def workshop_callback(
     context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
     '''Обработка кнопки Мастерская.'''
-    message_data = await get_django_json(
-        'http://127.0.0.1:8000/rules_text/4:8/'
-    )
+    message_data = await get_django_json(f'{api_root}rules_text/4:8/')
     await send_message(
         update.callback_query.message,
         message_data,
@@ -51,7 +48,7 @@ async def kitchen_callback(
     context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
     '''Обработка кнопки Кухня.'''
-    message_data = await get_django_json('http://127.0.0.1:8000/rules_text/9/')
+    message_data = await get_django_json(f'{api_root}rules_text/9/')
     await update.callback_query.message.edit_text(
         message_data.get('KITCHEN', ''),
         parse_mode=ParseMode.MARKDOWN,
@@ -65,9 +62,7 @@ async def separate_collection_callback(
     context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
     '''Обработка кнопки Раздельный сбор.'''
-    message_data = await get_django_json(
-        'http://127.0.0.1:8000/rules_text/10/'
-    )
+    message_data = await get_django_json(f'{api_root}rules_text/10/')
     await update.callback_query.message.edit_text(
         message_data.get('SEPARATE_COLLECTION', ''),
         parse_mode=ParseMode.MARKDOWN,
@@ -81,9 +76,7 @@ async def regular_meetings_callback(
     context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
     '''Обработка кнопки Регулярные встречи.'''
-    message_data = await get_django_json(
-        'http://127.0.0.1:8000/rules_text/11/'
-    )
+    message_data = await get_django_json(f'{api_root}rules_text/11/')
     await update.callback_query.message.edit_text(
         message_data.get('REGULAR_MEETINGS', ''),
         parse_mode=ParseMode.MARKDOWN,
@@ -105,9 +98,7 @@ async def in_communication_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Внутренняя коммуникация.'''
-    message_data = await get_django_json(
-        'http://127.0.0.1:8000/rules_text/12/'
-    )
+    message_data = await get_django_json(f'{api_root}rules_text/12/')
     await update.callback_query.message.reply_text(
         message_data.get('IN_COMMUNICATION', ''),
         parse_mode=ParseMode.MARKDOWN,
@@ -119,9 +110,7 @@ async def out_communication_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Внешняя коммуникация.'''
-    message_data = await get_django_json(
-        'http://127.0.0.1:8000/rules_text/13/'
-    )
+    message_data = await get_django_json(f'{api_root}rules_text/13/')
     await send_message(
         update.callback_query.message,
         message_data,

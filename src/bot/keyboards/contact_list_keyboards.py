@@ -1,14 +1,13 @@
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
+from bot.core.settings import api_root
 from bot.utils.admin_api import get_django_json
 
 
 async def contact_list_download_markup():
     '''Клавиатура для скачивания справочника контактов.'''
-    messages = await get_django_json(
-        'http://127.0.0.1:8000/contact_list_keyboards/1/'
-    )
-    links = await get_django_json('http://127.0.0.1:8000/links/3/')
+    messages = await get_django_json(f'{api_root}contact_list_keyboards/1/')
+    links = await get_django_json(f'{api_root}links/3/')
     contact_list_download_keyboard = [
         [
             InlineKeyboardButton(
@@ -22,9 +21,7 @@ async def contact_list_download_markup():
 
 async def contact_list_exit_markup():
     '''Клавиатура для выхода в главное меню после поиска контактов.'''
-    messages = await get_django_json(
-        'http://127.0.0.1:8000/contact_list_keyboards/2/'
-    )
+    messages = await get_django_json(f'{api_root}contact_list_keyboards/2/')
     contact_list_exit_keyboard = [
         (
             InlineKeyboardButton(

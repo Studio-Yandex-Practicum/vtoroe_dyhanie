@@ -1,14 +1,13 @@
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
 from bot.constants.query_patterns import INFO_PREFIX
+from bot.core.settings import api_root
 from bot.utils.admin_api import get_django_json
 
 
 # 1. Клавиатура для подраздела "основная информация"
 async def basic_information_markup():
-    messages = await get_django_json(
-        'http://127.0.0.1:8000/basic_info_keyboards/1:4/'
-    )
+    messages = await get_django_json(f'{api_root}basic_info_keyboards/1:4/')
     result = [
         [
             InlineKeyboardButton(
@@ -44,9 +43,7 @@ async def basic_information_markup():
 
 # 2. Клавиатура для 'organization_structure'
 async def org_structure_markup():
-    messages = await get_django_json(
-        'http://127.0.0.1:8000/basic_info_keyboards/5:9/'
-    )
+    messages = await get_django_json(f'{api_root}basic_info_keyboards/5:9/')
     org_structure_keyboard = [
         [
             InlineKeyboardButton(
@@ -86,9 +83,7 @@ async def org_structure_markup():
 
 # 3. Клавиатура для "Наша команда"
 async def our_team_markup():
-    messages = await get_django_json(
-        'http://127.0.0.1:8000/basic_info_keyboards/10:13/'
-    )
+    messages = await get_django_json(f'{api_root}basic_info_keyboards/10:13/')
     our_team_keyboard = [
         [
             InlineKeyboardButton(
@@ -120,9 +115,7 @@ async def our_team_markup():
 
 # 4. Клавиатура для "Соцсети Фонда"
 async def social_networks_markup():
-    messages = await get_django_json(
-        'http://127.0.0.1:8000/basic_info_keyboards/14:15/'
-    )
+    messages = await get_django_json(f'{api_root}basic_info_keyboards/14:15/')
     social_networks_keyboard = [
         [
             InlineKeyboardButton(
@@ -144,9 +137,7 @@ async def social_networks_markup():
 
 # 5. Клавиатура для "Совет Фонда"
 async def council_markup():
-    messages = await get_django_json(
-        'http://127.0.0.1:8000/basic_info_keyboards/16:23/'
-    )
+    messages = await get_django_json(f'{api_root}basic_info_keyboards/16:23/')
     council_keyboard = [
         [
             InlineKeyboardButton(
@@ -202,9 +193,7 @@ async def council_markup():
 
 # 6. Клавиатура для возвратов из раздела о департаментах
 async def departments_final_markup():
-    messages = await get_django_json(
-        'http://127.0.0.1:8000/basic_info_keyboards/36:37/'
-    )
+    messages = await get_django_json(f'{api_root}basic_info_keyboards/36:37/')
     departments_final_keyboard = [
         [
             InlineKeyboardButton(
@@ -228,9 +217,7 @@ async def departments_final_markup():
 
 # 7. Клавиатура для "Отделы Фонда"
 async def func_departments_keyboard_base():
-    messages = await get_django_json(
-        'http://127.0.0.1:8000/basic_info_keyboards/22:33/'
-    )
+    messages = await get_django_json(f'{api_root}basic_info_keyboards/22:33/')
     departments_keyboard_base = [
         [
             InlineKeyboardButton(
@@ -310,9 +297,7 @@ async def func_departments_keyboard_base():
 
 # 7.5. Клавиатура для 'departmentss'
 async def departmentss_markup():
-    messages = await get_django_json(
-        'http://127.0.0.1:8000/basic_info_keyboards/24:35/'
-    )
+    messages = await get_django_json(f'{api_root}basic_info_keyboards/24:35/')
     departments_keyboard = [
         [
             InlineKeyboardButton(
@@ -392,9 +377,7 @@ async def departmentss_markup():
 
 # 8. Клавиатура для 'guardian_council'
 async def guardian_council_markup():
-    messages = await get_django_json(
-        'http://127.0.0.1:8000/basic_info_keyboards/38/'
-    )
+    messages = await get_django_json(f'{api_root}basic_info_keyboards/38/')
     guardian_council_keyboard = [
         [
             InlineKeyboardButton(

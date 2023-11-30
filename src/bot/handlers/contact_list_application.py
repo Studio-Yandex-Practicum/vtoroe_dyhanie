@@ -9,6 +9,7 @@ from telegram.ext import (
 )
 
 from bot.constants.state import FIND_CONTACT, FIND_CONTACT_AGAIN
+from bot.core.settings import api_root
 from bot.handlers.command_application import stop_callback
 from bot.keyboards.contact_list_keyboards import (
     contact_list_download_markup,
@@ -23,9 +24,7 @@ async def contact_list_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> int:
     '''Обрабатывает кнопку "Список контактов" из главного меню.'''
-    message_data = await get_django_json(
-        'http://127.0.0.1:8000/contact_list_text/1:2/'
-    )
+    message_data = await get_django_json(f'{api_root}contact_list_text/1:2/')
     await update.message.reply_text(
         message_data.get("MENU_CONTACT_LIST_INPUT_FIO", ""),
         reply_markup={'remove_keyboard': True},
@@ -48,9 +47,7 @@ async def find_contact_callback(
     user_text = update.message.text
     answer = await find_contacts(user_text)
     await update.message.reply_text(text=answer)
-    message_data = await get_django_json(
-        'http://127.0.0.1:8000/contact_list_text/6/'
-    )
+    message_data = await get_django_json(f'{api_root}contact_list_text/6/')
     await update.message.reply_text(
         text=message_data.get('SEARCH_AGAIN_OR_EXIT', ''),
         reply_markup=await contact_list_exit_markup(),
@@ -64,7 +61,7 @@ async def main_menu_pressed_callback(
 ):
     '''Обрабатывает нажатие кнопки выхода после очередного поиска.'''
     await update.callback_query.message.delete()
-    message_data = await get_django_json('http://127.0.0.1:8000/text/10/')
+    message_data = await get_django_json(f'{api_root}text/10/')
     await update.callback_query.message.reply_text(
         text=message_data.get('BACK_TO_MENU', ''),
         reply_markup=await main_menu_markup(),
@@ -76,7 +73,7 @@ contact_list_conv_handler = ConversationHandler(
     entry_points=[
         MessageHandler(
             filters.Text(
-                get_django_json_sync('http://127.0.0.1:8000/button/9/').get(
+                get_django_json_sync(f'{api_root}button/9/').get(
                     'MENU_CONTACT_LIST', ""
                 )
             ),

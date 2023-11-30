@@ -3,9 +3,10 @@ import re
 
 from sqlalchemy import select
 
-from ..core.db import AsyncSessionLocal
-from ..core.settings import settings
-from ..models import (
+from .admin_api import get_django_json
+from bot.core.db import AsyncSessionLocal
+from bot.core.settings import api_root, settings
+from bot.models import (
     Contact,
     ContactKeyword,
     Department,
@@ -14,7 +15,6 @@ from ..models import (
     Keyword,
     Position,
 )
-from .admin_api import get_django_json
 
 
 def prepare_words(word_string: str) -> set[str]:
@@ -102,9 +102,7 @@ async def generate_answer(contacts):
     Поиск по ключевым словам.
     Генерация текста ответа.
     '''
-    constants = await get_django_json(
-        'http://127.0.0.1:8000/contact_list_text/3:5/'
-    )
+    constants = await get_django_json(f'{api_root}contact_list_text/3:5/')
     if not contacts:
         return constants.get('NO_CONTACTS_FOUND', '')
     contacts_to_print = contacts[: settings.max_contacts_to_show_in_sesarch]
