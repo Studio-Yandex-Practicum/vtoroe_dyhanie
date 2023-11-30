@@ -16,7 +16,6 @@ from telegram.ext import (
 
 from ..utils.generic import check_date_format
 from ..utils.send_email import send_email
-from bot.constants import onboarding_text
 from bot.constants.query_patterns import INFO_PREFIX
 from bot.constants.state import BEGINNER_ONBOARDING
 from bot.handlers.command_application import stop_callback
@@ -104,8 +103,8 @@ async def beginner_employment_date_callback(
     context: ContextTypes.DEFAULT_TYPE,
 ) -> int:
     '''
-    Функция для сохранения даты трудоустройства новичка, так же возможно
-    здесь реализовать отправку отложенных сообщений
+    Функция для получения даты трудоустройства новичка
+    и отправка отложенных сообщений.
     '''
     employment_date = update.message.text
     if not check_date_format(employment_date):
@@ -118,7 +117,7 @@ async def beginner_employment_date_callback(
         return None
 
     try:
-        employment_date = datetime.strptime(employment_date, '%d-%m-%Y')
+        employment_date = datetime.strptime(employment_date, '%d.%m.%Y')
         DateModel(employment_date=employment_date)
     except ValidationError as e:
         error_message = e.errors()[0]['msg']
@@ -129,7 +128,6 @@ async def beginner_employment_date_callback(
         return None
 
     if employment_date:
-        # Отправку отложенных сообщений и проверку
         bot = context.bot
         message_data = await get_django_json(
             'http://127.0.0.1:8000/onboarding_text/30:33/'
@@ -140,7 +138,7 @@ async def beginner_employment_date_callback(
                 25 * 86400,
                 update.message.chat_id,
                 text=message_data.get('BEGINNER_AFTER_25_DAY_MESSAGE', ''),
-                reply_markup=feedback_keyboard_markup,
+                reply_markup=await feedback_keyboard_markup(),
             )
         )
         asyncio.create_task(
@@ -177,30 +175,6 @@ async def beginner_employment_date_callback(
     return ConversationHandler.END
 
 
-async def beginner_great_callback(
-    update: Update,
-    context: ContextTypes.DEFAULT_TYPE,
-) -> None:
-    send_email('Feedback от новичка', 'Все отлично!')
-    await update.callback_query.answer()
-
-
-async def beginner_so_so_callback(
-    update: Update,
-    context: ContextTypes.DEFAULT_TYPE,
-) -> None:
-    send_email('Feedback от новичка', '50/50')
-    await update.callback_query.answer()
-
-
-async def beginner_help_callback(
-    update: Update,
-    context: ContextTypes.DEFAULT_TYPE,
-) -> None:
-    send_email('Feedback от новичка', 'Не все гладко, help')
-    await update.callback_query.answer()
-
-
 beginner_callback = ConversationHandler(
     entry_points=[
         CallbackQueryHandler(
@@ -220,18 +194,27 @@ async def feedback_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопок обратной связи.'''
-    # Запоминаем нажатую кнопку
-    button_data = update.callback_query.data
-    context.user_data['last_button'] = button_data
-
-    # Отправляем значение кнопки на почту
-    send_email('Feedback button pressed', f'Button {button_data} was pressed')
-
-    # Отправляем сообщения
+    user_fullname = update.callback_query.from_user.full_name
+    username = update.callback_query.from_user.username
+    button_pressed = update.callback_query.data
+    message_data = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_text/34:42/'
+    )
+    send_email(
+        (
+            f"{message_data.get('BEGINNER_FEEDBACK_SUBJECT_USER', '')} "
+            f"{user_fullname}({username}) "
+            f"{message_data.get('BEGINNER_FEEDBACK_SUBJECT_ENDING', '')}"
+        ),
+        (
+            f"{message_data.get('BEGINNER_FEEDBACK_BODY_START', '')} "
+            f"{button_pressed}"
+        ),
+    )
     await update.callback_query.message.reply_text(
-        onboarding_text.BEGINNER_DEFERRED_MESSAGES_VARIANTS,
-        parse_mode=ParseMode.MARKDOWN_V2,
-        reply_markup=calendar_keyboard_markup,
+        message_data.get('BEGINNER_DEFERRED_MESSAGES_VARIANTS', ''),
+        parse_mode=ParseMode.MARKDOWN,
+        reply_markup=await calendar_keyboard_markup(),
     )
 
 
@@ -239,21 +222,33 @@ async def calendar_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопок calendar_keyboard_markup.'''
-    # Получаем данные обратного вызова
-    callback_data = update.callback_query.data
-
-    # Отправляем соответствующее сообщение
-    # в зависимости от данных обратного вызова
-    if callback_data == 'calendar_yes':
+    user_fullname = update.callback_query.from_user.full_name
+    username = update.callback_query.from_user.username
+    button_pressed = update.callback_query.data
+    message_data = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_text/35:45/'
+    )
+    send_email(
+        (
+            f"{message_data.get('CALENDAR_SUBJECT_USER', '')} "
+            f"{user_fullname}({username}) "
+            f"{message_data.get('CALENDAR_SUBJECT_ENDING', '')}"
+        ),
+        (
+            f"{message_data.get('CALENDAR_BODY_START', '')} "
+            f"{button_pressed}"
+        ),
+    )
+    if button_pressed == 'calendar_yes':
         await update.callback_query.message.reply_text(
-            onboarding_text.BEGINNER_DEFERRED_MESSAGES_VARIANTS_YES,
-            parse_mode=ParseMode.MARKDOWN_V2,
-            reply_markup=thanks_markup,
+            message_data.get('CALENDAR_DEFERRED_MESSAGES_VARIANTS_YES', ''),
+            parse_mode=ParseMode.MARKDOWN,
+            reply_markup=await thanks_markup(),
         )
-    elif callback_data == 'calendar_no':
+    elif button_pressed == 'calendar_no':
         await update.callback_query.message.reply_text(
-            onboarding_text.BEGINNER_DEFERRED_MESSAGES_VARIANTS_NO,
-            parse_mode=ParseMode.MARKDOWN_V2,
+            message_data.get('CALENDAR_DEFERRED_MESSAGES_VARIANTS_NO', ''),
+            parse_mode=ParseMode.MARKDOWN,
             reply_markup=thanks_markup,
         )
 
@@ -437,40 +432,23 @@ async def director_confirmation_callback(
     return BEGINNER_ONBOARDING
 
 
-async def calendar_yes_callback(
-    update: Update,
-    context: ContextTypes.DEFAULT_TYPE,
-) -> None:
-    send_email('Calendar button pressed', 'Да все в календаре')
-    await update.callback_query.answer()
-
-
-async def calendar_no_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
-) -> None:
-    send_email('Calendar button pressed', 'Еще не успел')
-    await update.callback_query.answer()
-
-
 async def director_employment_date_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> int:
     '''
-    Функция для сохранения даты трудоустройства новичка,
-    так же возможно здесь реализовать
-    отправку отложенных сообщений
+    Функция для получения даты трудоустройства новичка
+    и отправки отложенных сообщений
     '''
-
     employment_date = update.message.text
     if not check_date_format(employment_date):
         await update.message.reply_text(
-            'Некорректная дата. Пожалуйста, введите дату в формате ДД-ММ-ГГГГ.'
+            'Некорректная дата. Пожалуйста, введите дату в формате ДД.ММ.ГГГГ.'
         )
         return None
 
     try:
-        employment_date = datetime.strptime(employment_date, '%d-%m-%Y')
+        employment_date = datetime.strptime(employment_date, '%d.%m.%Y')
         DateModel(employment_date=employment_date)
     except ValidationError as e:
         error_message = e.errors()[0]['msg']
@@ -479,16 +457,17 @@ async def director_employment_date_callback(
         )
         await update.message.reply_text(user_friendly_error_message)
         return None
-
+    message_data = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_text/37:39/'
+    )
     if employment_date:
-        # Отправку отложенных сообщений и проверку
         bot = context.bot
         asyncio.create_task(
             send_delayed_message(
                 bot,
                 25 * 86400,
                 update.message.chat_id,
-                onboarding_text.DIRECTOR_AFTER_25_DAY_MESSAGE,
+                message_data.get('DIRECTOR_AFTER_25_DAY_MESSAGE', ''),
                 reply_markup=calendar_keyboard_markup,
             )
         )
@@ -497,7 +476,7 @@ async def director_employment_date_callback(
                 bot,
                 40 * 86400,
                 update.message.chat_id,
-                onboarding_text.DIRECTOR_AFTER_40_DAY_MESSAGE,
+                message_data.get('DIRECTOR_AFTER_40_DAY_MESSAGE', ''),
             )
         )
         asyncio.create_task(
@@ -505,7 +484,7 @@ async def director_employment_date_callback(
                 bot,
                 85 * 86400,
                 update.message.chat_id,
-                onboarding_text.DIRECTOR_AFTER_85_DAY_MESSAGE,
+                message_data.get('DIRECTOR_AFTER_85_DAY_MESSAGE', ''),
             )
         )
         message_data = await get_django_json(
@@ -539,21 +518,20 @@ def register_handlers(app: Application) -> None:
     app.add_handler(beginner_callback)
     app.add_handler(director_beginner_callback)
 
-    # Добавьте ваши обработчики здесь
     app.add_handler(
-        CallbackQueryHandler(beginner_great_callback, pattern='feedback_great')
+        CallbackQueryHandler(feedback_callback, pattern='feedback_great')
     )
     app.add_handler(
-        CallbackQueryHandler(beginner_so_so_callback, pattern='feedback_so_so')
+        CallbackQueryHandler(feedback_callback, pattern='feedback_so_so')
     )
     app.add_handler(
-        CallbackQueryHandler(beginner_help_callback, pattern='feedback_help')
+        CallbackQueryHandler(feedback_callback, pattern='feedback_help')
     )
     app.add_handler(
-        CallbackQueryHandler(calendar_yes_callback, pattern='calendar_yes')
+        CallbackQueryHandler(calendar_callback, pattern='calendar_yes')
     )
     app.add_handler(
-        CallbackQueryHandler(calendar_no_callback, pattern='calendar_no')
+        CallbackQueryHandler(calendar_callback, pattern='calendar_no')
     )
 
     registrator = {
@@ -567,8 +545,6 @@ def register_handlers(app: Application) -> None:
         f'{INFO_PREFIX}mentor_or_buddy': mentor_callback,
         f'{INFO_PREFIX}menor_tasks': mentor_tasks_callback,
         'beginner_back': beginner_back_callback,
-        'feedback': feedback_callback,
-        'calendar': calendar_callback,
     }
     for pattern, handler in registrator.items():
         app.add_handler(CallbackQueryHandler(handler, pattern=pattern))

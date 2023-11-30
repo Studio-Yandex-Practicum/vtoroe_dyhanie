@@ -201,13 +201,13 @@ BEGINNER_DEFERRED_MESSAGES_VARIANTS = (
     'первого месяца с руководителем? '
 )
 
-BEGINNER_DEFERRED_MESSAGES_VARIANTS_YES = (
+CALENDAR_DEFERRED_MESSAGES_VARIANTS_YES = (
     'Отлично\\! Скоро пришлю тебе '
     'напоминание о следующей встрече\\! '
     'Хорошего дня\\! '
 )
 
-BEGINNER_DEFERRED_MESSAGES_VARIANTS_NO = (
+CALENDAR_DEFERRED_MESSAGES_VARIANTS_NO = (
     'Не забудь поставить встречу в '
     'календарь, чтобы свериться с '
     'планом и обменяться обратной '

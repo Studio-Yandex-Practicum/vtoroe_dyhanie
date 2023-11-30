@@ -12,25 +12,29 @@ async def basic_information_markup():
     result = [
         [
             InlineKeyboardButton(
-                messages['basic_information_keyboard_organization_structure'],
+                messages.get(
+                    'basic_information_keyboard_organization_structure', ''
+                ),
                 callback_data=f'{INFO_PREFIX}organization_structure',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['basic_information_keyboard_our_team'],
+                messages.get('basic_information_keyboard_our_team', ''),
                 callback_data=f'{INFO_PREFIX}our_team',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['basic_information_keyboard_social_networks'],
+                messages.get('basic_information_keyboard_social_networks', ''),
                 callback_data=f'{INFO_PREFIX}social_networks',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['basic_information_keyboard_back_to_main_menu'],
+                messages.get(
+                    'basic_information_keyboard_back_to_main_menu', ''
+                ),
                 callback_data='back_to_main_menu',
             )
         ],
@@ -46,31 +50,33 @@ async def org_structure_markup():
     org_structure_keyboard = [
         [
             InlineKeyboardButton(
-                messages['org_structure_keyboard_council'],
+                messages.get('org_structure_keyboard_council', ''),
                 callback_data=f'{INFO_PREFIX}council',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['org_structure_keyboard_guardian_council'],
+                messages.get('org_structure_keyboard_guardian_council', ''),
                 callback_data=f'{INFO_PREFIX}guardian_council',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['org_structure_keyboard_about_departments'],
+                messages.get('org_structure_keyboard_about_departments', ''),
                 callback_data=f'{INFO_PREFIX}about_departments',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['org_structure_keyboard_basic_information_back'],
+                messages.get(
+                    'org_structure_keyboard_basic_information_back', ''
+                ),
                 callback_data='basic_information_back',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['org_structure_keyboard_back_to_main_menu'],
+                messages.get('org_structure_keyboard_back_to_main_menu', ''),
                 callback_data='back_to_main_menu',
             )
         ],
@@ -86,25 +92,25 @@ async def our_team_markup():
     our_team_keyboard = [
         [
             InlineKeyboardButton(
-                messages['our_team_keyboard_contact_list'],
+                messages.get('our_team_keyboard_contact_list', ''),
                 callback_data=f'{INFO_PREFIX}contact_list',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['our_team_keyboard_org_departmentss'],
+                messages.get('our_team_keyboard_org_departmentss', ''),
                 callback_data=f'{INFO_PREFIX}org_departmentss',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['our_team_keyboard_basic_information_back'],
+                messages.get('our_team_keyboard_basic_information_back', ''),
                 callback_data='basic_information_back',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['our_team_keyboard_back_to_main_menu'],
+                messages.get('our_team_keyboard_back_to_main_menu', ''),
                 callback_data='back_to_main_menu',
             )
         ],
@@ -120,13 +126,15 @@ async def social_networks_markup():
     social_networks_keyboard = [
         [
             InlineKeyboardButton(
-                messages['social_networks_keyboard_basic_information_back'],
+                messages.get(
+                    'social_networks_keyboard_basic_information_back', ''
+                ),
                 callback_data='basic_information_back',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['social_networks_keyboard_back_to_main_menu'],
+                messages.get('social_networks_keyboard_back_to_main_menu', ''),
                 callback_data='back_to_main_menu',
             )
         ],
@@ -142,49 +150,49 @@ async def council_markup():
     council_keyboard = [
         [
             InlineKeyboardButton(
-                messages['council_keyboard_council_question_01'],
+                messages.get('council_keyboard_council_question_01', ''),
                 callback_data=f'{INFO_PREFIX}council_question_01',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['council_keyboard_council_question_02'],
+                messages.get('council_keyboard_council_question_02', ''),
                 callback_data=f'{INFO_PREFIX}council_question_02',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['council_keyboard_council_question_03'],
+                messages.get('council_keyboard_council_question_03', ''),
                 callback_data=f'{INFO_PREFIX}council_question_03',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['council_keyboard_council_question_04'],
+                messages.get('council_keyboard_council_question_04', ''),
                 callback_data=f'{INFO_PREFIX}council_question_04',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['council_keyboard_council_question_05'],
+                messages.get('council_keyboard_council_question_05', ''),
                 callback_data=f'{INFO_PREFIX}council_question_05',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['council_keyboard_council_question_06'],
+                messages.get('council_keyboard_council_question_06', ''),
                 callback_data=f'{INFO_PREFIX}council_question_06',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['council_keyboard_organization_structure'],
+                messages.get('council_keyboard_organization_structure', ''),
                 callback_data=f'{INFO_PREFIX}organization_structure',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['council_keyboard_back_to_main_menu'],
+                messages.get('council_keyboard_back_to_main_menu', ''),
                 callback_data='back_to_main_menu',
             )
         ],
@@ -200,13 +208,17 @@ async def departments_final_markup():
     departments_final_keyboard = [
         [
             InlineKeyboardButton(
-                messages['departments_final_keyboard_back_to_main_menu'],
+                messages.get(
+                    'departments_final_keyboard_back_to_main_menu', ''
+                ),
                 callback_data='back_to_main_menu',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['departments_final_keyboard_about_departments'],
+                messages.get(
+                    'departments_final_keyboard_about_departments', ''
+                ),
                 callback_data=f'{INFO_PREFIX}about_departments',
             )
         ],
@@ -222,74 +234,74 @@ async def func_departments_keyboard_base():
     departments_keyboard_base = [
         [
             InlineKeyboardButton(
-                messages['departments_keyboard_base_department_01'],
+                messages.get('departments_keyboard_base_department_01', ''),
                 callback_data=f'{INFO_PREFIX}department_01',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['departments_keyboard_base_department_02'],
+                messages.get('departments_keyboard_base_department_02', ''),
                 callback_data=f'{INFO_PREFIX}department_02',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['departments_keyboard_base_department_03'],
+                messages.get('departments_keyboard_base_department_03', ''),
                 callback_data=f'{INFO_PREFIX}department_03',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['departments_keyboard_base_department_04'],
+                messages.get('departments_keyboard_base_department_04', ''),
                 callback_data=f'{INFO_PREFIX}department_04',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['departments_keyboard_base_department_05'],
+                messages.get('departments_keyboard_base_department_05', ''),
                 callback_data=f'{INFO_PREFIX}department_05',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['departments_keyboard_base_department_06'],
+                messages.get('departments_keyboard_base_department_06', ''),
                 callback_data=f'{INFO_PREFIX}department_06',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['departments_keyboard_base_department_07'],
+                messages.get('departments_keyboard_base_department_07', ''),
                 callback_data=f'{INFO_PREFIX}department_07',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['departments_keyboard_base_department_08'],
+                messages.get('departments_keyboard_base_department_08', ''),
                 callback_data=f'{INFO_PREFIX}department_08',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['departments_keyboard_base_department_09'],
+                messages.get('departments_keyboard_base_department_09', ''),
                 callback_data=f'{INFO_PREFIX}department_09',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['departments_keyboard_base_department_10'],
+                messages.get('departments_keyboard_base_department_10', ''),
                 callback_data=f'{INFO_PREFIX}department_10',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['council_keyboard_organization_structure'],
+                messages.get('council_keyboard_organization_structure', ''),
                 callback_data=f'{INFO_PREFIX}organization_structure',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['council_keyboard_back_to_main_menu'],
-                callback_data='back_to_main_menu',  # ?
+                messages.get('council_keyboard_back_to_main_menu', ''),
+                callback_data='back_to_main_menu',
             )
         ],
     ]
@@ -304,73 +316,73 @@ async def departmentss_markup():
     departments_keyboard = [
         [
             InlineKeyboardButton(
-                messages['departments_keyboard_base_department_01'],
+                messages.get('departments_keyboard_base_department_01', ''),
                 callback_data=f'{INFO_PREFIX}department_01',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['departments_keyboard_base_department_02'],
+                messages.get('departments_keyboard_base_department_02', ''),
                 callback_data=f'{INFO_PREFIX}department_02',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['departments_keyboard_base_department_03'],
+                messages.get('departments_keyboard_base_department_03', ''),
                 callback_data=f'{INFO_PREFIX}department_03',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['departments_keyboard_base_department_04'],
+                messages.get('departments_keyboard_base_department_04', ''),
                 callback_data=f'{INFO_PREFIX}department_04',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['departments_keyboard_base_department_05'],
+                messages.get('departments_keyboard_base_department_05', ''),
                 callback_data=f'{INFO_PREFIX}department_05',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['departments_keyboard_base_department_06'],
+                messages.get('departments_keyboard_base_department_06', ''),
                 callback_data=f'{INFO_PREFIX}department_06',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['departments_keyboard_base_department_07'],
+                messages.get('departments_keyboard_base_department_07', ''),
                 callback_data=f'{INFO_PREFIX}department_07',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['departments_keyboard_base_department_08'],
+                messages.get('departments_keyboard_base_department_08', ''),
                 callback_data=f'{INFO_PREFIX}department_08',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['departments_keyboard_base_department_09'],
+                messages.get('departments_keyboard_base_department_09', ''),
                 callback_data=f'{INFO_PREFIX}department_09',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['departments_keyboard_base_department_10'],
+                messages.get('departments_keyboard_base_department_10', ''),
                 callback_data=f'{INFO_PREFIX}department_10',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['departments_keyboard_our_team'],
-                callback_data=f'{INFO_PREFIX}our_team',  # ?
+                messages.get('departments_keyboard_our_team', ''),
+                callback_data=f'{INFO_PREFIX}our_team',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['departments_keyboard_back_to_main_menu'],
+                messages.get('departments_keyboard_back_to_main_menu', ''),
                 callback_data='back_to_main_menu',
             )
         ],
@@ -386,7 +398,7 @@ async def guardian_council_markup():
     guardian_council_keyboard = [
         [
             InlineKeyboardButton(
-                messages['guardian_council_keyboard'],
+                messages.get('guardian_council_keyboard', ''),
                 callback_data=f'{INFO_PREFIX}organization_structure',
             )
         ],

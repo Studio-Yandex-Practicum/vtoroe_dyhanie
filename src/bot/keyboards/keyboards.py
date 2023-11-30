@@ -35,7 +35,8 @@ async def main_button_markup():
     main_button_keyboard = [
         [
             InlineKeyboardButton(
-                messages['BACK_BUTTON'], callback_data='back_to_main_menu'
+                messages.get('BACK_BUTTON', ''),
+                callback_data='back_to_main_menu',
             )
         ]  # ?
     ]

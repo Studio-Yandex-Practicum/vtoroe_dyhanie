@@ -29,7 +29,10 @@ async def greeting_callback(
         scope=BotCommandScopeChat(update.effective_chat.id),
     )
     message_data = await get_django_json('http://127.0.0.1:8000/text/3:4/')
-    await update.message.reply_text(message_data['START_MESSAGE_PART_ONE'])
+    await update.message.reply_text(
+        text=message_data['START_MESSAGE_PART_ONE'],
+        reply_markup={'remove_keyboard': True},
+    )
     await update.message.reply_text(message_data['START_MESSAGE_PART_TWO'])
     return CHECK
 

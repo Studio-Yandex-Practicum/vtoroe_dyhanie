@@ -27,7 +27,8 @@ async def contact_list_callback(
         'http://127.0.0.1:8000/contact_list_text/1:2/'
     )
     await update.message.reply_text(
-        message_data.get("MENU_CONTACT_LIST_INPUT_FIO", "")
+        message_data.get("MENU_CONTACT_LIST_INPUT_FIO", ""),
+        reply_markup={'remove_keyboard': True},
     )
     await update.message.reply_text(
         message_data.get("MENU_CONTACT_LIST_LOAD_CONTACT_LIST", ""),

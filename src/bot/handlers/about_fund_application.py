@@ -116,8 +116,6 @@ async def handle_mission_more_info(query: CallbackQuery) -> None:
 
 
 # Блок "Путь вещей"
-
-
 async def send_things_path_message(message: Message) -> None:
     '''Отправляет сообщение и раскладку клавиатуры
     при нажатии кнопки "Путь вещей".

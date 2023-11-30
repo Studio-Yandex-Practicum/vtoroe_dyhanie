@@ -941,7 +941,7 @@
   "fields": {
     "constant_description": "Клавиатура новичка после прихода письма",
     "constant_text": "Все отлично!",
-    "constant_name": "feedback_keyboard_feedback_great"
+    "constant_name": "feedback_keyboard_great"
   }
 },
 {
@@ -950,7 +950,7 @@
   "fields": {
     "constant_description": "Клавиатура новичка после прихода письма",
     "constant_text": "50/50",
-    "constant_name": "feedback_keyboard_feedback_so_so"
+    "constant_name": "feedback_keyboard_so_so"
   }
 },
 {
@@ -959,7 +959,34 @@
   "fields": {
     "constant_description": "Клавиатура новичка после прихода письма",
     "constant_text": "Не все гладко, help",
-    "constant_name": "feedback_keyboard_feedback_help"
+    "constant_name": "feedback_keyboard_help"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 31,
+  "fields": {
+    "constant_description": "Клавиатура ответов на вопрос, назначена ли встреча",
+    "constant_text": "Да все в календаре",
+    "constant_name": "calendar_keyboard_yes"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 32,
+  "fields": {
+    "constant_description": "Клавиатура ответов на вопрос, назначена ли встреча",
+    "constant_text": "Еще не успел",
+    "constant_name": "calendar_keyboard_no"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 33,
+  "fields": {
+    "constant_description": "Переход в главное меню по окончании ветки отложенного сообщения",
+    "constant_text": "Ясно, спасибо!",
+    "constant_name": "thanks_keyboard_back_to_main_menu"
   }
 },
 {
@@ -2218,7 +2245,7 @@
   "pk": 29,
   "fields": {
     "constant_description": "Проверка корректности ввода даты трудоустройства",
-    "constant_text": "Некорректная дата. Пожалуйста, введите дату в формате ДД-ММ-ГГГГ.",
+    "constant_text": "Некорректная дата. Пожалуйста, введи дату в формате ДД.ММ.ГГГГ",
     "constant_name": "WRONG_DATE_FORMAT"
   }
 },
@@ -2226,7 +2253,7 @@
   "model": "admin_bot.onboardingtext",
   "pk": 30,
   "fields": {
-    "constant_description": "Сообщение через 25 дней от введенной даты",
+    "constant_description": "Сообщение через 25 дней от введенной даты для новичка",
     "constant_text": "Привет! Скоро будет месяц, как ты с нами!😊 Расскажи, какие у тебя впечатления от работы?\r\nТвой отзыв очень ценен для нас, ведь так мы сможем сделать онбординг еще лучше:) А если у тебя есть идеи и предложения по системе адаптации, смело пиши их в строке ввода😉",
     "constant_name": "BEGINNER_AFTER_25_DAY_MESSAGE"
   }
@@ -2235,7 +2262,7 @@
   "model": "admin_bot.onboardingtext",
   "pk": 31,
   "fields": {
-    "constant_description": "Сообщение через 40 дней от введенной даты",
+    "constant_description": "Сообщение через 40 дней от введенной даты для новичка",
     "constant_text": "Привет! Как летит время! Ты уже почти два месяца в команде! Как проходит адаптация?\r\nТвой отзыв очень ценен для нас, ведь так мы сможем сделать онбординг еще лучше:) А если у тебя есть идеи и предложения по системе адаптации, смело пиши их в строке ввода😉",
     "constant_name": "BEGINNER_AFTER_40_DAY_MESSAGE"
   }
@@ -2244,7 +2271,7 @@
   "model": "admin_bot.onboardingtext",
   "pk": 32,
   "fields": {
-    "constant_description": "Сообщение через 85 дней от введенной даты",
+    "constant_description": "Сообщение через 85 дней от введенной даты для новичка",
     "constant_text": "Привет! До окончания адаптации осталось совсем чуть-чуть😊 Как твои дела?\r\nТвой отзыв очень ценен для нас, ведь так мы сможем сделать онбординг еще лучше:) Мы будем благодарны если ты найдешь время заполнить [анкету по итогам адаптации]({ONBOARDING_LINK_FORM})",
     "constant_name": "BEGINNER_AFTER_85_DAY_MESSAGE"
   }
@@ -2262,9 +2289,108 @@
   "model": "admin_bot.onboardingtext",
   "pk": 34,
   "fields": {
-    "constant_description": "Тема письма для фидбэка от новичка",
-    "constant_text": "Feedback от новичка",
-    "constant_name": "BEGINNER_FEEDBACK_EMAIL_SUBJECT"
+    "constant_description": "Сообщение после фидбэка новичка",
+    "constant_text": "Записал! Спасибо за ответ! У тебя уже назначена встреча по итогам первого месяца с руководителем?",
+    "constant_name": "BEGINNER_DEFERRED_MESSAGES_VARIANTS"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 35,
+  "fields": {
+    "constant_description": "Сообщение при ответе вопрос о назначенной встрече",
+    "constant_text": "Отлично! Скоро пришлю тебе напоминание о следующей встрече! Хорошего дня!",
+    "constant_name": "CALENDAR_DEFERRED_MESSAGES_VARIANTS_YES"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 36,
+  "fields": {
+    "constant_description": "Сообщение при ответе вопрос о назначенной встрече",
+    "constant_text": "Не забудь поставить встречу в календарь, чтобы свериться с планом и обменяться обратной связью с коллегой.",
+    "constant_name": "CALENDAR_DEFERRED_MESSAGES_VARIANTS_NO"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 37,
+  "fields": {
+    "constant_description": "Сообщение через 25 дней от введенной даты для руководителя",
+    "constant_text": "Привет! Сегодня почти месяц, как в твоем отделе новый сотрудник. Вы уже назначили встречу по итогам первого месяца?",
+    "constant_name": "DIRECTOR_AFTER_25_DAY_MESSAGE"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 38,
+  "fields": {
+    "constant_description": "Сообщение через 40 дней от введенной даты для руководителя",
+    "constant_text": "Привет! Уже почти два месяца, как в твоем отделе новый сотрудник. Вы уже назначили встречу по итогам 2-х месяцев?",
+    "constant_name": "DIRECTOR_AFTER_40_DAY_MESSAGE"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 39,
+  "fields": {
+    "constant_description": "Сообщение через 85 дней от введенной даты для руководителя",
+    "constant_text": "Привет! Уже почти три месяца, как в твоем отделе новый сотрудник. Вы уже назначили встречу по итогам 3-х месяцев?",
+    "constant_name": "DIRECTOR_AFTER_85_DAY_MESSAGE"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 40,
+  "fields": {
+    "constant_description": "Отправка e-mail с фидбэком новичка",
+    "constant_text": "Пользователь",
+    "constant_name": "BEGINNER_FEEDBACK_SUBJECT_USER"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 41,
+  "fields": {
+    "constant_description": "Отправка e-mail с фидбэком новичка",
+    "constant_text": "оставил обратную связь",
+    "constant_name": "BEGINNER_FEEDBACK_SUBJECT_ENDING"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 42,
+  "fields": {
+    "constant_description": "Отправка e-mail с фидбэком новичка",
+    "constant_text": "Была нажата кнопка",
+    "constant_name": "BEGINNER_FEEDBACK_BODY_START"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 43,
+  "fields": {
+    "constant_description": "Отправка e-mail по вопросу назначенной встречи",
+    "constant_text": "Пользователь",
+    "constant_name": "CALENDAR_SUBJECT_USER"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 44,
+  "fields": {
+    "constant_description": "Отправка e-mail по вопросу назначенной встречи",
+    "constant_text": "ответил про встречу",
+    "constant_name": "CALENDAR_SUBJECT_ENDING"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 45,
+  "fields": {
+    "constant_description": "Отправка e-mail по вопросу назначенной встречи",
+    "constant_text": "Была нажата кнопка",
+    "constant_name": "CALENDAR_BODY_START"
   }
 },
 {
@@ -2652,6 +2778,51 @@
     "constant_description": "Ссылка внутри текста после кнопки \"Обратная связь\"",
     "constant_text": "https://forms.gle/jmjtFJEh68HqMxe57",
     "constant_name": "FEEDBACK_LINK"
+  }
+},
+{
+  "model": "admin_bot.text",
+  "pk": 14,
+  "fields": {
+    "constant_description": "Вопрос пользователя по e-mail",
+    "constant_text": "Обращение в поддержку телеграм бота",
+    "constant_name": "user_question_email_subject"
+  }
+},
+{
+  "model": "admin_bot.text",
+  "pk": 15,
+  "fields": {
+    "constant_description": "Вопрос пользователя по e-mail",
+    "constant_text": "Никнейм в телеграм:",
+    "constant_name": "user_question_tg_nick_prefix"
+  }
+},
+{
+  "model": "admin_bot.text",
+  "pk": 16,
+  "fields": {
+    "constant_description": "Вопрос пользователя по e-mail",
+    "constant_text": "Вопрос:",
+    "constant_name": "user_question_question_prefix"
+  }
+},
+{
+  "model": "admin_bot.text",
+  "pk": 17,
+  "fields": {
+    "constant_description": "Вопрос пользователя по e-mail",
+    "constant_text": "Ваш вопрос отправлен. Мы свяжемся с вами в ближайшее время.",
+    "constant_name": "user_question_final_text"
+  }
+},
+{
+  "model": "admin_bot.text",
+  "pk": 18,
+  "fields": {
+    "constant_description": "Вопрос пользователя по e-mail",
+    "constant_text": "Введите ваш вопрос:",
+    "constant_name": "user_question_initial_text"
   }
 },
 {

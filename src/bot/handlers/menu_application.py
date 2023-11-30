@@ -149,14 +149,14 @@ def register_handlers(app: Application) -> None:
     app.add_handler(contact_list_conv_handler)
     key_data = get_django_json_sync('http://127.0.0.1:8000/keyboards/')
     registrator = {
-        key_data['main_menu_keyboard_4_1']: reg_forms_callback,
         key_data['main_menu_keyboard_1_1']: about_fund_callback,
         key_data['main_menu_keyboard_1_2']: onboarding_callback,
-        key_data['main_menu_keyboard_3_2']: feedback_callback,
         key_data['main_menu_keyboard_2_1']: basic_information_callback,
         key_data['main_menu_keyboard_2_2']: rules_information_callback,
-        key_data['main_menu_keyboard_4_2']: faq_callback,
         key_data['main_menu_keyboard_3_1']: knowledge_base_callback,
+        key_data['main_menu_keyboard_3_2']: feedback_callback,
+        key_data['main_menu_keyboard_4_1']: reg_forms_callback,
+        key_data['main_menu_keyboard_4_2']: faq_callback,
         key_data['faq_menu_keyboard_5']: back_to_main_menu_callback,
     }
     for btn, callback in registrator.items():

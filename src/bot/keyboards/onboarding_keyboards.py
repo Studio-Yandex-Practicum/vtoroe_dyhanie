@@ -12,25 +12,25 @@ async def onboarding_markup():
     onboarding_keyboard = [
         [
             InlineKeyboardButton(
-                messages['onboarding_keyboard_beginner'],
+                messages.get('onboarding_keyboard_beginner', ''),
                 callback_data=f'{INFO_PREFIX}beginner',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['onboarding_keyboard_director'],
+                messages.get('onboarding_keyboard_director', ''),
                 callback_data=f'{INFO_PREFIX}director',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['onboarding_keyboard_mentor_or_buddy'],
+                messages.get('onboarding_keyboard_mentor_or_buddy', ''),
                 callback_data=f'{INFO_PREFIX}mentor_or_buddy',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['onboarding_keyboard_back_to_main_menu'],
+                messages.get('onboarding_keyboard_back_to_main_menu', ''),
                 callback_data='back_to_main_menu',
             )
         ],
@@ -46,13 +46,13 @@ async def mentor_markup():
     mentor_keyboard = [
         [
             InlineKeyboardButton(
-                messages['mentor_keyboard_menor_tasks'],
+                messages.get('mentor_keyboard_menor_tasks', ''),
                 callback_data=f'{INFO_PREFIX}menor_tasks',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['mentor_keyboard_back_to_main_menu'],
+                messages.get('mentor_keyboard_back_to_main_menu', ''),
                 callback_data='back_to_main_menu',
             )
         ],
@@ -68,7 +68,7 @@ async def mentor_tasks_markup():
     mentor_tasks_keyboard = [
         [
             InlineKeyboardButton(
-                messages['mentor_tasks_keyboard_back_to_main_menu'],
+                messages.get('mentor_tasks_keyboard_back_to_main_menu', ''),
                 callback_data='back_to_main_menu',
             )
         ],
@@ -84,7 +84,7 @@ async def beginner_markup():
     beginner_keyboard = [
         [
             InlineKeyboardButton(
-                messages['beginner_keyboard_back_to_main_menu'],
+                messages.get('beginner_keyboard_back_to_main_menu', ''),
                 callback_data='back_to_main_menu',
             )
         ],
@@ -100,25 +100,25 @@ async def beginner_employment_markup():
     beginner_employment_keyboard = [
         [
             InlineKeyboardButton(
-                messages['beginner_employment_keyboard_first_day'],
+                messages.get('beginner_employment_keyboard_first_day', ''),
                 callback_data=f'{INFO_PREFIX}first_day',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['beginner_employment_keyboard_adaptation'],
+                messages.get('beginner_employment_keyboard_adaptation', ''),
                 callback_data=f'{INFO_PREFIX}adaptation',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['beginner_employment_keyboard_work_plan'],
+                messages.get('beginner_employment_keyboard_work_plan', ''),
                 callback_data=f'{INFO_PREFIX}work_plan',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['beginner_employment_keyboard_checklist'],
+                messages.get('beginner_employment_keyboard_checklist', ''),
                 callback_data=f'{INFO_PREFIX}checklist',
             )
         ],
@@ -134,19 +134,19 @@ async def first_day_markup():
     first_day_keyboard = [
         [
             InlineKeyboardButton(
-                messages['first_day_keyboard_checklist'],
+                messages.get('first_day_keyboard_checklist', ''),
                 callback_data=f'{INFO_PREFIX}checklist',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['navigation_menu_beginner_back'],
+                messages.get('navigation_menu_beginner_back', ''),
                 callback_data='beginner_back',
             ),
         ],
         [
             InlineKeyboardButton(
-                messages['navigation_menu_back_to_main_menu'],
+                messages.get('navigation_menu_back_to_main_menu', ''),
                 callback_data='back_to_main_menu',
             ),
         ],
@@ -162,19 +162,19 @@ async def adaptation_markup():
     adaptation_keyboard = [
         [
             InlineKeyboardButton(
-                messages['adaptation_keyboard_work_plan'],
+                messages.get('adaptation_keyboard_work_plan', ''),
                 callback_data=f'{INFO_PREFIX}work_plan',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['navigation_menu_beginner_back'],
+                messages.get('navigation_menu_beginner_back', ''),
                 callback_data='beginner_back',
             ),
         ],
         [
             InlineKeyboardButton(
-                messages['navigation_menu_back_to_main_menu'],
+                messages.get('navigation_menu_back_to_main_menu', ''),
                 callback_data='back_to_main_menu',
             ),
         ],
@@ -190,14 +190,14 @@ async def work_plan_markup():
     work_plan_keyboard = [
         [
             InlineKeyboardButton(
-                messages['work_plan_keyboard_back_to_main_menu'],
+                messages.get('work_plan_keyboard_back_to_main_menu', ''),
                 # на схеме нет
                 callback_data='back_to_main_menu',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['work_plan_keyboard_beginner_back'],
+                messages.get('work_plan_keyboard_beginner_back', ''),
                 callback_data='beginner_back',
             )
         ],
@@ -213,14 +213,14 @@ async def checklist_markup():
     checklist_keyboard = [
         [
             InlineKeyboardButton(
-                messages['checklist_keyboard_back_to_main_menu'],
+                messages.get('checklist_keyboard_back_to_main_menu', ''),
                 # на схеме нет
                 callback_data='back_to_main_menu',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['checklist_keyboard_beginner_back'],
+                messages.get('checklist_keyboard_beginner_back', ''),
                 callback_data='beginner_back',
             )
         ],
@@ -236,25 +236,25 @@ async def director_markup():
     director_keyboard = [
         [
             InlineKeyboardButton(
-                messages['director_keyboard_director_confirmation'],
+                messages.get('director_keyboard_director_confirmation', ''),
                 callback_data=f'{INFO_PREFIX}director_confirmation',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['director_keyboard_director_question'],
+                messages.get('director_keyboard_director_question', ''),
                 callback_data=f'{INFO_PREFIX}director_question',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['director_keyboard_director_tasks'],
+                messages.get('director_keyboard_director_tasks', ''),
                 callback_data=f'{INFO_PREFIX}director_tasks',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['director_keyboard_back_to_main_menu'],
+                messages.get('director_keyboard_back_to_main_menu', ''),
                 callback_data='back_to_main_menu',
             )
         ],
@@ -270,7 +270,7 @@ async def director_tasks_markup():
     director_tasks_keyboard = [
         [
             InlineKeyboardButton(
-                messages['director_tasks_keyboard_back_to_main_menu'],
+                messages.get('director_tasks_keyboard_back_to_main_menu', ''),
                 callback_data='back_to_main_menu',
             )
         ],
@@ -286,7 +286,9 @@ async def director_question_markup():
     director_question_keyboard = [
         [
             InlineKeyboardButton(
-                messages['director_question_keyboard_back_to_main_menu'],
+                messages.get(
+                    'director_question_keyboard_back_to_main_menu', ''
+                ),
                 callback_data='back_to_main_menu',
             )
         ],
@@ -302,7 +304,9 @@ async def director_confirm_markup():
     director_confirm_keyboard = [
         [
             InlineKeyboardButton(
-                messages['director_confirm_keyboard_back_to_main_menu'],
+                messages.get(
+                    'director_confirm_keyboard_back_to_main_menu', ''
+                ),
                 callback_data='back_to_main_menu',
             )
         ],
@@ -312,31 +316,68 @@ async def director_confirm_markup():
 
 # 14. Клавиатура с вариантами ответов
 # после сообщения BEGINNER_AFTER_25_DAY_MESSAGE
-feedback_keyboard = [
-    [InlineKeyboardButton('Все отлично!', callback_data='feedback_great')],
-    [InlineKeyboardButton('50/50', callback_data='feedback_so_so')],
-    [
-        InlineKeyboardButton(
-            'Не все гладко, help', callback_data='feedback_help'
-        )
-    ],
-]
-feedback_keyboard_markup = InlineKeyboardMarkup(feedback_keyboard)
+async def feedback_keyboard_markup():
+    messages = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_keyboards/28:30/'
+    )
+    feedback_keyboard = [
+        [
+            InlineKeyboardButton(
+                messages.get('feedback_keyboard_great', ''),
+                callback_data='feedback_great',
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                messages.get('feedback_keyboard_so_so', ''),
+                callback_data='feedback_so_so',
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                messages.get('feedback_keyboard_help', ''),
+                callback_data='feedback_help',
+            )
+        ],
+    ]
+    return InlineKeyboardMarkup(feedback_keyboard)
 
-# 15. Клавиатура с вариантами ответов
-# после сообщения BEGINNER_DEFERRED_MESSAGES_VARIANTS
-calendar_keyboard = [
-    [InlineKeyboardButton('Да все в календаре', callback_data='calendar_yes')],
-    [InlineKeyboardButton('Еще не успел', callback_data='calendar_no')],
-]
-calendar_keyboard_markup = InlineKeyboardMarkup(calendar_keyboard)
+
+# 15. Клавиатура с вариантами ответов после сообщений
+# - BEGINNER_DEFERRED_MESSAGES_VARIANTS
+# - DIRECTOR_AFTER_25_DAY_MESSAGE
+async def calendar_keyboard_markup():
+    messages = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_keyboards/31:32/'
+    )
+    calendar_keyboard = [
+        [
+            InlineKeyboardButton(
+                messages.get('calendar_keyboard_yes', ''),
+                callback_data='calendar_yes',
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                messages.get('calendar_keyboard_no', ''),
+                callback_data='calendar_no',
+            )
+        ],
+    ]
+    return InlineKeyboardMarkup(calendar_keyboard)
+
 
 # 16. Клавиатура "Ок, спасибо"
-thanks_keyboard = [
-    [
-        InlineKeyboardButton(
-            'Ясно, спасибо!', callback_data='back_to_main_menu'
-        )
-    ],
-]
-thanks_markup = InlineKeyboardMarkup(thanks_keyboard)
+async def thanks_markup():
+    messages = await get_django_json(
+        'http://127.0.0.1:8000/onboarding_keyboards/33/'
+    )
+    thanks_keyboard = [
+        [
+            InlineKeyboardButton(
+                messages.get('thanks_keyboard_back_to_main_menu', ''),
+                callback_data='back_to_main_menu',
+            )
+        ],
+    ]
+    return InlineKeyboardMarkup(thanks_keyboard)

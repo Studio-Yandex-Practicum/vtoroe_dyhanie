@@ -12,7 +12,7 @@ async def contact_list_download_markup():
     contact_list_download_keyboard = [
         [
             InlineKeyboardButton(
-                messages['contact_list_download_keyboard'],
+                messages.get('contact_list_download_keyboard', ''),
                 url=links['CONTACT_LIST_LINK'],
             ),
         ],
@@ -28,7 +28,7 @@ async def contact_list_exit_markup():
     contact_list_exit_keyboard = [
         (
             InlineKeyboardButton(
-                messages['contact_list_exit_keyboard'],
+                messages.get('contact_list_exit_keyboard', ''),
                 callback_data='exit_from_contact_search',
             ),
         ),

@@ -12,31 +12,31 @@ async def rules_markup():
     rules_keyboard = [
         [
             InlineKeyboardButton(
-                messages['rules_keyboard_communication'],
+                messages.get('rules_keyboard_communication', ''),
                 callback_data=f'{INFO_PREFIX}communication',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['rules_keyboard_workshop'],
+                messages.get('rules_keyboard_workshop', ''),
                 callback_data=f'{INFO_PREFIX}workshop',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['rules_keyboard_kitchen'],
+                messages.get('rules_keyboard_kitchen', ''),
                 callback_data=f'{INFO_PREFIX}kitchen',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['rules_keyboard_separate_collection'],
+                messages.get('rules_keyboard_separate_collection', ''),
                 callback_data=f'{INFO_PREFIX}separate_collection',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['rules_keyboard_regular_meetings'],
+                messages.get('rules_keyboard_regular_meetings', ''),
                 callback_data=f'{INFO_PREFIX}regular_meetings',
             )
         ],
@@ -52,25 +52,25 @@ async def communication_markup():
     communication_keyboard = [
         [
             InlineKeyboardButton(
-                messages['communication_keyboard_in_communication'],
+                messages.get('communication_keyboard_in_communication', ''),
                 callback_data=f'{INFO_PREFIX}in_communication',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['communication_keyboard_out_communication'],
+                messages.get('communication_keyboard_out_communication', ''),
                 callback_data=f'{INFO_PREFIX}out_communication',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['communication_keyboard_rules_back'],
+                messages.get('communication_keyboard_rules_back', ''),
                 callback_data='rules_back',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['communication_keyboard_back_to_main_menu'],
+                messages.get('communication_keyboard_back_to_main_menu', ''),
                 callback_data='back_to_main_menu',
             )
         ],
@@ -86,13 +86,13 @@ async def workshop_markup():
     workshop_keyboard = [
         [
             InlineKeyboardButton(
-                messages['workshop_keyboard_rules_back'],
+                messages.get('workshop_keyboard_rules_back', ''),
                 callback_data='rules_back',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['workshop_keyboard_back_to_main_menu'],
+                messages.get('workshop_keyboard_back_to_main_menu', ''),
                 callback_data='back_to_main_menu',
             )
         ],
@@ -108,13 +108,13 @@ async def kitchen_markup():
     kitchen_keyboard = [
         [
             InlineKeyboardButton(
-                messages['kitchen_keyboard_rules_back'],
+                messages.get('kitchen_keyboard_rules_back', ''),
                 callback_data='rules_back',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['kitchen_keyboard_back_to_main_menu'],
+                messages.get('kitchen_keyboard_back_to_main_menu', ''),
                 callback_data='back_to_main_menu',
             )
         ],
@@ -130,13 +130,15 @@ async def separate_collection_markup():
     separate_collection_keyboard = [
         [
             InlineKeyboardButton(
-                messages['separate_collection_keyboard_rules_back'],
+                messages.get('separate_collection_keyboard_rules_back', ''),
                 callback_data='rules_back',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['separate_collection_keyboard_back_to_main_menu'],
+                messages.get(
+                    'separate_collection_keyboard_back_to_main_menu', ''
+                ),
                 callback_data='back_to_main_menu',
             )
         ],
@@ -152,13 +154,15 @@ async def regular_meetings_markup():
     regular_meetings_keyboard = [
         [
             InlineKeyboardButton(
-                messages['regular_meetings_keyboard_rules_back'],
+                messages.get('regular_meetings_keyboard_rules_back', ''),
                 callback_data='rules_back',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['regular_meetings_keyboard_back_to_main_menu'],
+                messages.get(
+                    'regular_meetings_keyboard_back_to_main_menu', ''
+                ),
                 callback_data='back_to_main_menu',
             )
         ],
@@ -174,13 +178,15 @@ async def in_communication_markup():
     in_communication_keyboard = [
         [
             InlineKeyboardButton(
-                messages['in_communication_keyboard_back_to_main_menu'],
+                messages.get(
+                    'in_communication_keyboard_back_to_main_menu', ''
+                ),
                 callback_data='back_to_main_menu',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['in_communication_keyboard_rules_back'],
+                messages.get('in_communication_keyboard_rules_back', ''),
                 callback_data='rules_back',
             )
         ],
@@ -200,19 +206,21 @@ async def out_communication_markup():
     out_communication_keyboard = [
         [
             InlineKeyboardButton(
-                messages['out_communication_keyboard_rules_back'],
+                messages.get('out_communication_keyboard_rules_back', ''),
                 callback_data='rules_back',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['out_communication_keyboard_back_to_main_menu'],
+                messages.get(
+                    'out_communication_keyboard_back_to_main_menu', ''
+                ),
                 callback_data='back_to_main_menu',
             )
         ],
         [
             InlineKeyboardButton(
-                messages['out_communication_keyboard_url'], url=link
+                messages.get('out_communication_keyboard_url', ''), url=link
             )
         ],
     ]

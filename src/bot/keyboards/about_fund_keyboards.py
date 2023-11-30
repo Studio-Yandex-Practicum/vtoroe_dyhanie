@@ -30,19 +30,19 @@ async def func_navigation_menu():
     result = [
         (
             InlineKeyboardButton(
-                messages['navigation_menu_back_to_menu'],
+                messages.get('navigation_menu_back_to_menu', ''),
                 callback_data=ABOUT_FUND_CALLBACKS.get('back_to_menu'),
             ),
         ),
         (
             InlineKeyboardButton(
-                messages['navigation_menu_back_to_main_menu'],
+                messages.get('navigation_menu_back_to_main_menu', ''),
                 callback_data=ABOUT_FUND_CALLBACKS.get('back_to_main_menu'),
             ),
         ),
         (
             InlineKeyboardButton(
-                messages['fund_mission_menu'],
+                messages.get('fund_mission_menu', ''),
                 callback_data=ABOUT_FUND_CALLBACKS.get('more_info_mission'),
             ),
         ),
@@ -64,27 +64,25 @@ async def about_fund_section():
 
 
 async def things_path_markup():
-    # response = requests.get('http://127.0.0.1:8000/about_fund_keyboards/')
-    # messages = response.json()
     messages = await get_django_json(
         'http://127.0.0.1:8000/about_fund_keyboards/'
     )
     result = [
         (
             InlineKeyboardButton(
-                messages['navigation_menu_back_to_menu'],
+                messages.get('navigation_menu_back_to_menu', ''),
                 callback_data=ABOUT_FUND_CALLBACKS.get('back_to_menu'),
             ),
         ),
         (
             InlineKeyboardButton(
-                messages['navigation_menu_back_to_main_menu'],
+                messages.get('navigation_menu_back_to_main_menu', ''),
                 callback_data=ABOUT_FUND_CALLBACKS.get('back_to_main_menu'),
             ),
         ),
         (
             InlineKeyboardButton(
-                messages['things_path_menu'],
+                messages.get('things_path_menu', ''),
                 callback_data=ABOUT_FUND_CALLBACKS.get('more_info_path'),
             ),
         ),
@@ -93,27 +91,25 @@ async def things_path_markup():
 
 
 async def processes_anatomy_markup():
-    # response = requests.get('http://127.0.0.1:8000/about_fund_keyboards/')
-    # messages = response.json()
     messages = await get_django_json(
         'http://127.0.0.1:8000/about_fund_keyboards/'
     )
     result = [
         (
             InlineKeyboardButton(
-                messages['navigation_menu_back_to_menu'],
+                messages.get('navigation_menu_back_to_menu', ''),
                 callback_data=ABOUT_FUND_CALLBACKS.get('back_to_menu'),
             ),
         ),
         (
             InlineKeyboardButton(
-                messages['navigation_menu_back_to_main_menu'],
+                messages.get('navigation_menu_back_to_main_menu', ''),
                 callback_data=ABOUT_FUND_CALLBACKS.get('back_to_main_menu'),
             ),
         ),
         (
             InlineKeyboardButton(
-                messages['processes_anatomy_menu'],
+                messages.get('processes_anatomy_menu', ''),
                 callback_data=ABOUT_FUND_CALLBACKS.get('more_info_processes'),
             ),
         ),
@@ -122,27 +118,25 @@ async def processes_anatomy_markup():
 
 
 async def fund_projects_markup():
-    # response = requests.get('http://127.0.0.1:8000/about_fund_keyboards/')
-    # messages = response.json()
     messages = await get_django_json(
         'http://127.0.0.1:8000/about_fund_keyboards/'
     )
     result = [
         (
             InlineKeyboardButton(
-                messages['navigation_menu_back_to_menu'],
+                messages.get('navigation_menu_back_to_menu', ''),
                 callback_data=ABOUT_FUND_CALLBACKS.get('back_to_menu'),
             ),
         ),
         (
             InlineKeyboardButton(
-                messages['navigation_menu_back_to_main_menu'],
+                messages.get('navigation_menu_back_to_main_menu', ''),
                 callback_data=ABOUT_FUND_CALLBACKS.get('back_to_main_menu'),
             ),
         ),
         (
             InlineKeyboardButton(
-                messages['fund_projects_menu'],
+                messages.get('fund_projects_menu', ''),
                 callback_data=ABOUT_FUND_CALLBACKS.get('more_info_projects'),
             ),
         ),
@@ -151,15 +145,13 @@ async def fund_projects_markup():
 
 
 async def annual_reports_markup():
-    # response = requests.get('http://127.0.0.1:8000/about_fund_keyboards/13/')
-    # messages = response.json()
     messages = await get_django_json(
         'http://127.0.0.1:8000/about_fund_keyboards/13/'
     )
     result = [
         (
             InlineKeyboardButton(
-                messages['annual_reports_menu'],
+                messages.get('annual_reports_menu', ''),
                 callback_data='back_to_main_menu',
             ),
         ),

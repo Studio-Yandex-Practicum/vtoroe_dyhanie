@@ -20,7 +20,10 @@ async def help_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> int:
     '''Команда запроса помощи.'''
-    await update.message.reply_text('Введите ваш вопрос:')
+    messages = await get_django_json('http://127.0.0.1:8000/text/18')
+    await update.message.reply_text(
+        messages.get('user_question_initial_text', '')
+    )
     return GET_USER_QUESTION
 
 
@@ -54,11 +57,17 @@ async def get_user_question_callback(
         error_message = error_message.replace('Value error,', '')
         await update.message.reply_text(error_message.strip())
         return GET_USER_QUESTION
-    subject = 'Обращение в поддержку телеграм бота'
-    body_text = f'Никнейм в телеграм: {user_id}\nВопрос: {user_question}'
+    messages = await get_django_json('http://127.0.0.1:8000/text/14:17')
+    subject = messages.get('user_question_email_subject', '')
+    body_text = (
+        f"{messages.get('user_question_tg_nick_prefix', '')} "
+        f"{user_id}\n\n"
+        f"{messages.get('user_question_question_prefix', '')} "
+        f"{user_question}\n"
+    )
     send_email(subject, body_text)
     await update.message.reply_text(
-        'Ваш вопрос отправлен. Мы свяжемся с вами в ближайшее время.'
+        messages.get('user_question_final_text', '')
     )
     return ConversationHandler.END
 
