@@ -46,6 +46,7 @@
 - Python-telegram-bot 20.5
 - PostgreSQL 16.0
 - Alembic
+- Django 4.2.7
 - Docker
 - Docker-Compose
 - Poetry 1.6.1
@@ -72,6 +73,8 @@ cd vtoroe_dyhanie/
 
 ### Для запуска проекта непосредственно в вашей ОС:
 
+Потребуются два терминала для запуска бота и приложения администрации контента и 2 базы данных Postgres.
+
 Инициализируйте создание директории виртуального окружения в проекте:
 
 ```
@@ -97,7 +100,33 @@ source .venv/bin/activate (для UNIX)
 source .venv/Scripts/activate (для WINDOWS)
 ```
 
-Примените миграции для создания структуры БД:
+В первом терминале необходимо запустить приложение администрации контента. перейдите в него:
+
+```
+cd src/admindjango_bot
+```
+
+Примените миграции:
+
+```
+python manage.py migrate
+```
+
+Загрузите контент в базу данных приложения:
+
+```
+manage.py loaddata initial_data.json
+```
+
+Запустите приложение:
+
+```
+python manage.py runserver
+```
+
+Логин / пароль админки, соответственно admin / admin - их лучше поменять
+
+Во втором терминале необходимо запустить приложение бота. Для этого примените миграции для создания структуры БД:
 
 ```
 alembic upgrade head
@@ -106,7 +135,7 @@ alembic upgrade head
 Запустите скрипт наполнения БД информацией о контактах:
 
 ```
-python -m src.contacts_upload
+python src/contacts_upload.py
 ```
 
 Запустите проект локально:
@@ -126,19 +155,37 @@ cd infra/
 Выполните команду для создания и запуска приложения в контейнерах:
 
 ```
-docker-compose up -d
+docker-compose up -d --build
 ```
 
-Примените миграции для создания структуры БД:
+Примените миграции для создания структуры БД админки:
 
 ```
-docker-compose exec vtordish alembic upgrade head
+docker-compose exec admin_django python3 manage.py migrate
+```
+
+Запустите наполнение БД информацией о константах:
+
+```
+docker-compose exec admin_django python3 manage.py loaddata initial_data.json
+```
+
+Соберите статику приложения в отдельной директории:
+
+```
+docker-compose exec admin_django python3 manage.py collectstatic
+```
+
+Примените миграции для создания структуры БД бота:
+
+```
+docker-compose exec tg_bot_second_wind alembic upgrade head
 ```
 
 Запустите скрипт наполнения БД информацией о контактах:
 
 ```
-docker-compose exec vtordish python3 -m src.contacts_upload
+docker-compose exec tg_bot_second_wind python3 src/contacts_upload.py
 ```
 
 </details>

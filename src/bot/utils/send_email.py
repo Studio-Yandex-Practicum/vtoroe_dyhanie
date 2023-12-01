@@ -22,7 +22,7 @@ def send_email(subject, body_text):
     )
 
     with smtplib.SMTP_SSL(
-        settings.smtp_server, settings.port, context=context
+        settings.smtp_server, settings.smtp_port, context=context
     ) as server:
         server.login(settings.sender_email, settings.password_email)
         server.sendmail(

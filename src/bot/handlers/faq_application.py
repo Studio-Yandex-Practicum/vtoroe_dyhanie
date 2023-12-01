@@ -3,14 +3,14 @@ from telegram.constants import ParseMode
 from telegram.ext import Application, ContextTypes, MessageHandler, filters
 
 from bot.core.settings import api_root
-from bot.utils.admin_api import get_django_json_sync
+from bot.utils.admin_api import get_django_json, get_django_json_sync
 
 
 async def faq_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обрабатывает команды раздела FAQ.'''
-    keyboard_data = get_django_json_sync(f'{api_root}keyboards/10:17/')
+    keyboard_data = await get_django_json(f'{api_root}keyboards/10:17/')
     user_input = update.message.text
     key_message_data = next(
         (key for key, value in keyboard_data.items() if value == user_input),
@@ -18,7 +18,7 @@ async def faq_callback(
     )
 
     if key_message_data:
-        faq_text_data = get_django_json_sync(f'{api_root}faq_text/1:12/')
+        faq_text_data = await get_django_json(f'{api_root}faq_text/1:12/')
         STORAGE_LINK = faq_text_data.get("STORAGE_LINK", "")
         STUDIES_LINK = faq_text_data.get("STUDIES_LINK", "")
         VOLUNTARISM_LINK = faq_text_data.get("VOLUNTARISM_LINK", "")

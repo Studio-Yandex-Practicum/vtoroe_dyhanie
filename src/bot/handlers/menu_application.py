@@ -5,13 +5,21 @@ from telegram.constants import ParseMode
 from telegram.ext import (
     Application,
     CallbackQueryHandler,
+    CommandHandler,
     ContextTypes,
+    ConversationHandler,
     MessageHandler,
     filters,
 )
 
+from bot.constants.state import FIND_CONTACT, FIND_CONTACT_AGAIN
 from bot.core.settings import api_root
-from bot.handlers.contact_list_application import contact_list_conv_handler
+from bot.handlers.command_application import stop_callback
+from bot.handlers.contact_list_application import (
+    contact_list_callback,
+    find_contact_callback,
+    main_menu_pressed_callback,
+)
 from bot.keyboards.about_fund_keyboards import about_fund_section
 from bot.keyboards.basic_info_keyboards import basic_information_markup
 from bot.keyboards.keyboards import (
@@ -132,30 +140,6 @@ async def back_to_main_menu_callback(
     )
 
 
-def register_handlers(app: Application) -> None:
-    '''Регистрация обработчиков.'''
-    app.add_handler(
-        CallbackQueryHandler(
-            query_back_to_main_menu_callback, pattern='back_to_main_menu'
-        )
-    )
-    app.add_handler(contact_list_conv_handler)
-    key_data = get_django_json_sync(f'{api_root}keyboards/')
-    registrator = {
-        key_data['main_menu_keyboard_1_1']: about_fund_callback,
-        key_data['main_menu_keyboard_1_2']: onboarding_callback,
-        key_data['main_menu_keyboard_2_1']: basic_information_callback,
-        key_data['main_menu_keyboard_2_2']: rules_information_callback,
-        key_data['main_menu_keyboard_3_1']: knowledge_base_callback,
-        key_data['main_menu_keyboard_3_2']: feedback_callback,
-        key_data['main_menu_keyboard_4_1']: reg_forms_callback,
-        key_data['main_menu_keyboard_4_2']: faq_callback,
-        key_data['faq_menu_keyboard_5']: back_to_main_menu_callback,
-    }
-    for btn, callback in registrator.items():
-        app.add_handler(MessageHandler(filters.Text([btn]), callback))
-
-
 async def rules_information_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
@@ -184,3 +168,49 @@ async def onboarding_callback(
         disable_web_page_preview=True,
         reply_markup=await onboarding_markup(),
     )
+
+
+def register_handlers(app: Application) -> None:
+    '''Регистрация обработчиков.'''
+    app.add_handler(
+        CallbackQueryHandler(
+            query_back_to_main_menu_callback, pattern='back_to_main_menu'
+        )
+    )
+    key_data = get_django_json_sync(f'{api_root}keyboards/1:9/')
+    app.add_handler(
+        ConversationHandler(
+            entry_points=[
+                MessageHandler(
+                    filters.Text(key_data.get('main_menu_keyboard_5', '')),
+                    contact_list_callback,
+                )
+            ],
+            states={
+                FIND_CONTACT: [
+                    MessageHandler(filters.TEXT, find_contact_callback),
+                ],
+                FIND_CONTACT_AGAIN: [
+                    CallbackQueryHandler(
+                        main_menu_pressed_callback,
+                        pattern='exit_from_contact_search',
+                    ),
+                    MessageHandler(filters.TEXT, find_contact_callback),
+                ],
+            },
+            fallbacks=[CommandHandler('stop', stop_callback)],
+        )
+    )
+    registrator = {
+        key_data.get('main_menu_keyboard_1_1', ''): about_fund_callback,
+        key_data.get('main_menu_keyboard_1_2', ''): onboarding_callback,
+        key_data.get('main_menu_keyboard_2_1', ''): basic_information_callback,
+        key_data.get('main_menu_keyboard_2_2', ''): rules_information_callback,
+        key_data.get('main_menu_keyboard_3_1', ''): knowledge_base_callback,
+        key_data.get('main_menu_keyboard_3_2', ''): feedback_callback,
+        key_data.get('main_menu_keyboard_4_1', ''): reg_forms_callback,
+        key_data.get('main_menu_keyboard_4_2', ''): faq_callback,
+        key_data.get('faq_menu_keyboard_5', ''): back_to_main_menu_callback,
+    }
+    for btn, callback in registrator.items():
+        app.add_handler(MessageHandler(filters.Text([btn]), callback))
