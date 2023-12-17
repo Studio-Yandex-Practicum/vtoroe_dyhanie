@@ -98,6 +98,8 @@ async def beginner_employment_date_callback(
     '''
 
     employment_date = update.message.text
+    current_date = datetime.now()
+
     if not check_date_format(employment_date):
         await update.message.reply_text(
             'Некорректная дата. Пожалуйста, введите дату в формате ДД-ММ-ГГГГ.'
@@ -115,34 +117,40 @@ async def beginner_employment_date_callback(
         await update.message.reply_text(user_friendly_error_message)
         return None
 
+    # Расчет количества дней после трудоустройства
+    delta_days = (current_date - employment_date).days
+
     if employment_date:
         # Отправку отложенных сообщений и проверку
         bot = context.bot
-        asyncio.create_task(
-            send_delayed_message(
-                bot,
-                25 * 86400,
-                update.message.chat_id,
-                onboarding_text.BEGINNER_AFTER_25_DAY_MESSAGE,
-                reply_markup=feedback_keyboard_markup,
+        if delta_days <= 25:
+            asyncio.create_task(
+                send_delayed_message(
+                    bot,
+                    (25 - delta_days) * 86400,
+                    update.message.chat_id,
+                    onboarding_text.BEGINNER_AFTER_25_DAY_MESSAGE,
+                    reply_markup=feedback_keyboard_markup,
+                )
             )
-        )
-        asyncio.create_task(
-            send_delayed_message(
-                bot,
-                40 * 86400,
-                update.message.chat_id,
-                onboarding_text.BEGINNER_AFTER_40_DAY_MESSAGE,
+        elif 40 >= delta_days > 25:
+            asyncio.create_task(
+                send_delayed_message(
+                    bot,
+                    (40 - delta_days) * 86400,
+                    update.message.chat_id,
+                    onboarding_text.BEGINNER_AFTER_40_DAY_MESSAGE,
+                )
             )
-        )
-        asyncio.create_task(
-            send_delayed_message(
-                bot,
-                85 * 86400,
-                update.message.chat_id,
-                onboarding_text.BEGINNER_AFTER_85_DAY_MESSAGE,
+        elif 85 >= delta_days > 40:
+            asyncio.create_task(
+                send_delayed_message(
+                    bot,
+                    (85 - delta_days) * 86400,
+                    update.message.chat_id,
+                    onboarding_text.BEGINNER_AFTER_85_DAY_MESSAGE,
+                )
             )
-        )
 
     await update.message.reply_text(
         onboarding_text.BEGINNER_EMPLOYMENT_MESSAGE_ONE
@@ -160,7 +168,11 @@ async def beginner_great_callback(
     context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
     send_email('Feedback', 'Все отлично!')
-    await update.callback_query.answer()
+    await update.callback_query.message.reply_text(
+        onboarding_text.BEGINNER_DEFERRED_MESSAGES_VARIANTS,
+        parse_mode=ParseMode.MARKDOWN_V2,
+        reply_markup=calendar_keyboard_markup,
+    )
 
 
 async def beginner_so_so_callback(
@@ -168,7 +180,11 @@ async def beginner_so_so_callback(
     context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
     send_email('Feedback', '50/50')
-    await update.callback_query.answer()
+    await update.callback_query.message.reply_text(
+        onboarding_text.BEGINNER_DEFERRED_MESSAGES_VARIANTS,
+        parse_mode=ParseMode.MARKDOWN_V2,
+        reply_markup=calendar_keyboard_markup,
+    )
 
 
 async def beginner_help_callback(
@@ -176,7 +192,11 @@ async def beginner_help_callback(
     context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
     send_email('Feedback', 'Не все гладко, help')
-    await update.callback_query.answer()
+    await update.callback_query.message.reply_text(
+        onboarding_text.BEGINNER_DEFERRED_MESSAGES_VARIANTS,
+        parse_mode=ParseMode.MARKDOWN_V2,
+        reply_markup=calendar_keyboard_markup,
+    )
 
 
 beginner_callback = ConversationHandler(
@@ -362,14 +382,14 @@ async def calendar_yes_callback(
     context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
     send_email('Calendar button pressed', 'Да все в календаре')
-    await update.callback_query.answer()
+    await calendar_callback(update, context)
 
 
 async def calendar_no_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     send_email('Calendar button pressed', 'Еще не успел')
-    await update.callback_query.answer()
+    await calendar_callback(update, context)
 
 
 async def director_employment_date_callback(
@@ -383,6 +403,8 @@ async def director_employment_date_callback(
     '''
 
     employment_date = update.message.text
+    current_date = datetime.now()
+
     if not check_date_format(employment_date):
         await update.message.reply_text(
             'Некорректная дата. Пожалуйста, введите дату в формате ДД-ММ-ГГГГ.'
@@ -400,34 +422,40 @@ async def director_employment_date_callback(
         await update.message.reply_text(user_friendly_error_message)
         return None
 
+    # Расчет количества дней после трудоустройства
+    delta_days = (current_date - employment_date).days
+
     if employment_date:
         # Отправку отложенных сообщений и проверку
         bot = context.bot
-        asyncio.create_task(
-            send_delayed_message(
-                bot,
-                25 * 86400,
-                update.message.chat_id,
-                onboarding_text.DIRECTOR_AFTER_25_DAY_MESSAGE,
-                reply_markup=calendar_keyboard_markup,
+        if delta_days <= 25:
+            asyncio.create_task(
+                send_delayed_message(
+                    bot,
+                    (25 - delta_days) * 86400,
+                    update.message.chat_id,
+                    onboarding_text.DIRECTOR_AFTER_25_DAY_MESSAGE,
+                    reply_markup=calendar_keyboard_markup,
+                )
             )
-        )
-        asyncio.create_task(
-            send_delayed_message(
-                bot,
-                40 * 86400,
-                update.message.chat_id,
-                onboarding_text.DIRECTOR_AFTER_40_DAY_MESSAGE,
+        elif 40 >= delta_days > 25:
+            asyncio.create_task(
+                send_delayed_message(
+                    bot,
+                    (40 - delta_days) * 86400,
+                    update.message.chat_id,
+                    onboarding_text.DIRECTOR_AFTER_40_DAY_MESSAGE,
+                )
             )
-        )
-        asyncio.create_task(
-            send_delayed_message(
-                bot,
-                85 * 86400,
-                update.message.chat_id,
-                onboarding_text.DIRECTOR_AFTER_85_DAY_MESSAGE,
+        elif 85 >= delta_days > 40:
+            asyncio.create_task(
+                send_delayed_message(
+                    bot,
+                    (85 - delta_days) * 86400,
+                    update.message.chat_id,
+                    onboarding_text.DIRECTOR_AFTER_85_DAY_MESSAGE,
+                )
             )
-        )
         await update.message.reply_text(
             onboarding_text.REMINDER_MESSAGE_FOR_MEETINGS.get('msg_1'),
             parse_mode=ParseMode.MARKDOWN_V2,

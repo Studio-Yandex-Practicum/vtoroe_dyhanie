@@ -13,7 +13,7 @@ from bot.constants.schemas import QuestionModel
 from bot.constants.state import GET_USER_QUESTION
 from bot.constants.text import BACK_TO_MENU, STOP_MESSAGE
 from bot.keyboards.keyboards import main_menu_markup
-from bot.utils import send_email
+from bot.utils.send_email import send_email
 
 
 async def help_callback(
