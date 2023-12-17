@@ -171,7 +171,7 @@ async def beginner_employment_date_callback(
         asyncio.create_task(
             send_delayed_message(
                 bot,
-                3,  # 25 * 86400,
+                25 * 86400,
                 update.message.chat_id,
                 onboarding_text.BEGINNER_AFTER_25_DAY_MESSAGE,
                 reply_markup=feedback_keyboard_markup,
@@ -180,7 +180,7 @@ async def beginner_employment_date_callback(
         asyncio.create_task(
             send_delayed_message(
                 bot,
-                15,  # 40 * 86400,
+                40 * 86400,
                 update.message.chat_id,
                 onboarding_text.BEGINNER_AFTER_40_DAY_MESSAGE,
             )
