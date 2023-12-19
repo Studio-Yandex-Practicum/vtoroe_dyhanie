@@ -18,7 +18,11 @@ from ..utils.send_email import check_date_format, send_email
 from bot.constants import onboarding_text
 from bot.constants.query_patterns import INFO_PREFIX
 from bot.constants.schemas import DateModel
-from bot.constants.state import BEGINNER_ONBOARDING
+from bot.constants.state import (
+    BEGINNER_ONBOARDING,
+    BEGINNER_ONBOARDING_25_DAYS,
+    BEGINNER_ONBOARDING_40_DAYS,
+)
 from bot.handlers.command_application import stop_callback
 from bot.keyboards.onboarding_keyboards import (
     adaptation_markup,
@@ -86,6 +90,52 @@ async def send_delayed_message(
         message,
         reply_markup=reply_markup,
     )
+
+
+async def send_beginner_feedback(update, bot):
+    '''
+    Отправка фидбэка новичка на корпоративную почту
+    '''
+    user_id = update.message.chat_id
+    username = update.effective_user.username
+    feedback = update.message.text
+    text = (
+        f'Никнейм пользователя в Telegram: {username}\n'
+        f'Предложения:\n{feedback}'
+    )
+    subject = 'Фидбэк новичка'
+    send_email(subject, text)
+    await bot.send_message(
+        user_id,
+        (
+            'Благодарим за обратную связь!\n'
+            'Ваше предложение будет рассмотрено в ближайшее время'
+        ),
+    )
+
+
+async def beginner_employment_feedback_after_25_days(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+) -> int:
+    '''
+    Обработчик фидбэка по прошествию 25 дней
+    '''
+    bot = context.bot
+    await send_beginner_feedback(update, bot)
+    return BEGINNER_ONBOARDING_40_DAYS
+
+
+async def beginner_employment_feedback_after_40_days(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+) -> int:
+    '''
+    Обработчик фидбэка по прошествию 40 дней
+    '''
+    bot = context.bot
+    await send_beginner_feedback(update, bot)
+    return ConversationHandler.END
 
 
 async def beginner_employment_date_callback(
@@ -160,7 +210,7 @@ async def beginner_employment_date_callback(
         parse_mode=ParseMode.MARKDOWN_V2,
         reply_markup=beginner_employment_markup,
     )
-    return ConversationHandler.END
+    return BEGINNER_ONBOARDING_25_DAYS
 
 
 async def beginner_great_callback(
@@ -208,6 +258,16 @@ beginner_callback = ConversationHandler(
     states={
         BEGINNER_ONBOARDING: [
             MessageHandler(filters.TEXT, beginner_employment_date_callback),
+        ],
+        BEGINNER_ONBOARDING_25_DAYS: [
+            MessageHandler(
+                filters.TEXT, beginner_employment_feedback_after_25_days
+            ),
+        ],
+        BEGINNER_ONBOARDING_40_DAYS: [
+            MessageHandler(
+                filters.TEXT, beginner_employment_feedback_after_40_days
+            ),
         ],
     },
     fallbacks=[CommandHandler('stop', stop_callback)],
