@@ -90,6 +90,11 @@ jobs:
             echo DB_HOST=${{ secrets.DB_HOST }} >> .env
             echo DB_PORT=${{ secrets.DB_PORT }} >> .env
             echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> .env
+            echo SMTP_SERVER=${{ secrets.SMTP_SERVER }} >> .env
+            echo SENDER_EMAIL=${{ secrets.SENDER_EMAIL }} >> .env
+            echo RECEIVER_EMAIL=${{ secrets.RECEIVER_EMAIL }} >> .env
+            echo PASSWORD_EMAIL=${{ secrets.PASSWORD_EMAIL }} >> .env
+            echo PORT=${{ secrets.PORT }} >> .env
             cd infra/
             docker-compose rm -fsv
             docker rmi $(docker images -aq)
