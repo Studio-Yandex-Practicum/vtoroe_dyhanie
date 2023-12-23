@@ -19,7 +19,6 @@ from admin_bot.models import (
 from django.http import JsonResponse
 from django.shortcuts import get_list_or_404, get_object_or_404
 
-
 DICT_MODELS = {
     'about_fund_text': AboutFundText,
     'about_fund_keyboards': AboutFundKeyboard,
@@ -44,13 +43,14 @@ def get_constants(request, model_name, start_id, end_id):
     constants = get_list_or_404(
         DICT_MODELS[model_name], pk__in=(range(start_id, end_id + 1))
     )
-    constant_data = {}
-    for constant in constants:
-        constant_data.update(
-            {
-                constant.constant_name: constant.constant_text,
-            }
-        )
+    constant_data = {constant.constant_name: constant.constant_text for
+                     constant in constants}
+    # for constant in constants:
+    #     constant_data.update(
+    #         {
+    #             constant.constant_name: constant.constant_text,
+    #         }
+    #     )
     return JsonResponse(constant_data, safe=False)
 
 

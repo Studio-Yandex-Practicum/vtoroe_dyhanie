@@ -102,7 +102,7 @@ async def generate_answer(contacts):
     Поиск по ключевым словам.
     Генерация текста ответа.
     '''
-    constants = await get_django_json(f'{api_root}contact_list_text/3:5/')
+    constants = await get_django_json(f'/contact_list_text/3:5/')
     if not contacts:
         return constants.get('NO_CONTACTS_FOUND', '')
     contacts_to_print = contacts[: settings.max_contacts_to_show_in_sesarch]

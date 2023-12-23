@@ -10,7 +10,7 @@ from telegram.ext import (
 
 from bot.constants import button
 from bot.constants.state import CHECK
-from bot.core.settings import api_root, settings
+from bot.core.settings import settings
 from bot.handlers.command_application import stop_callback
 from bot.keyboards.keyboards import main_menu_markup
 from bot.utils.admin_api import get_django_json
@@ -28,7 +28,7 @@ async def greeting_callback(
         [button.START_CMD, button.HELP_CMD],
         scope=BotCommandScopeChat(update.effective_chat.id),
     )
-    message_data = await get_django_json(f'{api_root}text/3:4/')
+    message_data = await get_django_json('/text/3:4/')
     await update.message.reply_text(
         text=message_data['START_MESSAGE_PART_ONE'],
         reply_markup={'remove_keyboard': True},
@@ -42,7 +42,7 @@ async def check_the_secret_word_callback(
     context: ContextTypes.DEFAULT_TYPE,
 ) -> int:
     '''Функция проверяющая доступ к боту по секретному слову.'''
-    message_data = await get_django_json(f'{api_root}text/')
+    message_data = await get_django_json('/text/')
     word = update.message.text
     if word.lower() != settings.secret_word.lower():
         await update.message.reply_text(

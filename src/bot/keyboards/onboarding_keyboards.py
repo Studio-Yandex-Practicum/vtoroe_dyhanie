@@ -1,13 +1,12 @@
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
 from bot.constants.query_patterns import INFO_PREFIX
-from bot.core.settings import api_root
 from bot.utils.admin_api import get_django_json
 
 
 # 1. Клавиатура для подраздела "Онбординг"
 async def onboarding_markup():
-    messages = await get_django_json(f'{api_root}onboarding_keyboards/1:4/')
+    messages = await get_django_json('/onboarding_keyboards/1:4/')
     onboarding_keyboard = [
         [
             InlineKeyboardButton(
@@ -39,7 +38,7 @@ async def onboarding_markup():
 
 # 2. Клавиатура для "Наставник/Бадди"
 async def mentor_markup():
-    messages = await get_django_json(f'{api_root}onboarding_keyboards/5:6/')
+    messages = await get_django_json('/onboarding_keyboards/5:6/')
     mentor_keyboard = [
         [
             InlineKeyboardButton(
@@ -59,7 +58,7 @@ async def mentor_markup():
 
 # 3. Клавиатура для "Задачи Наставника/Бадди"
 async def mentor_tasks_markup():
-    messages = await get_django_json(f'{api_root}onboarding_keyboards/7/')
+    messages = await get_django_json('/onboarding_keyboards/7/')
     mentor_tasks_keyboard = [
         [
             InlineKeyboardButton(
@@ -73,7 +72,7 @@ async def mentor_tasks_markup():
 
 # 4. Клавиатура для 'Новичка'
 async def beginner_markup():
-    messages = await get_django_json(f'{api_root}onboarding_keyboards/8/')
+    messages = await get_django_json('/onboarding_keyboards/8/')
     beginner_keyboard = [
         [
             InlineKeyboardButton(
@@ -87,7 +86,7 @@ async def beginner_markup():
 
 # 5. Клавиатура после турдоустройства 'Новичка'
 async def beginner_employment_markup():
-    messages = await get_django_json(f'{api_root}onboarding_keyboards/9:12/')
+    messages = await get_django_json('/onboarding_keyboards/9:12/')
     beginner_employment_keyboard = [
         [
             InlineKeyboardButton(
@@ -119,7 +118,7 @@ async def beginner_employment_markup():
 
 # 6. Клавиатура для выхода из раздела 'Первый день'
 async def first_day_markup():
-    messages = await get_django_json(f'{api_root}onboarding_keyboards/13:15/')
+    messages = await get_django_json('/onboarding_keyboards/13:15/')
     first_day_keyboard = [
         [
             InlineKeyboardButton(
@@ -145,7 +144,7 @@ async def first_day_markup():
 
 # 7. Клавиатура для выхода из раздела 'Этапы адаптации'
 async def adaptation_markup():
-    messages = await get_django_json(f'{api_root}onboarding_keyboards/')
+    messages = await get_django_json('/onboarding_keyboards/')
     adaptation_keyboard = [
         [
             InlineKeyboardButton(
@@ -171,7 +170,7 @@ async def adaptation_markup():
 
 # 8. Клавиатура для выхода из раздела 'План работы на испытательный срок'
 async def work_plan_markup():
-    messages = await get_django_json(f'{api_root}onboarding_keyboards/17:18/')
+    messages = await get_django_json('/onboarding_keyboards/17:18/')
     work_plan_keyboard = [
         [
             InlineKeyboardButton(
@@ -192,7 +191,7 @@ async def work_plan_markup():
 
 # 9. Клавиатура для выхода из раздела 'Чек лист нового сотрудника'
 async def checklist_markup():
-    messages = await get_django_json(f'{api_root}onboarding_keyboards/19:20/')
+    messages = await get_django_json('/onboarding_keyboards/19:20/')
     checklist_keyboard = [
         [
             InlineKeyboardButton(
@@ -213,7 +212,7 @@ async def checklist_markup():
 
 # 10. Клавиатура для 'Руководитель'
 async def director_markup():
-    messages = await get_django_json(f'{api_root}onboarding_keyboards/21:24/')
+    messages = await get_django_json('/onboarding_keyboards/21:24/')
     director_keyboard = [
         [
             InlineKeyboardButton(
@@ -245,7 +244,7 @@ async def director_markup():
 
 # 11. Клавиатура для 'Задачи Руководителя'
 async def director_tasks_markup():
-    messages = await get_django_json(f'{api_root}onboarding_keyboards/25/')
+    messages = await get_django_json('/onboarding_keyboards/25/')
     director_tasks_keyboard = [
         [
             InlineKeyboardButton(
@@ -259,7 +258,7 @@ async def director_tasks_markup():
 
 # 12. Клавиатура для возврата из раздела 'Что за встречи'
 async def director_question_markup():
-    messages = await get_django_json(f'{api_root}onboarding_keyboards/26/')
+    messages = await get_django_json('/onboarding_keyboards/26/')
     director_question_keyboard = [
         [
             InlineKeyboardButton(
@@ -275,7 +274,7 @@ async def director_question_markup():
 
 # 13. Клавиатура для возврата из раздела 'Супер, давай'
 async def director_confirm_markup():
-    messages = await get_django_json(f'{api_root}onboarding_keyboards/27/')
+    messages = await get_django_json('/onboarding_keyboards/27/')
     director_confirm_keyboard = [
         [
             InlineKeyboardButton(
@@ -292,7 +291,7 @@ async def director_confirm_markup():
 # 14. Клавиатура с вариантами ответов
 # после сообщения BEGINNER_AFTER_25_DAY_MESSAGE
 async def feedback_keyboard_markup():
-    messages = await get_django_json(f'{api_root}onboarding_keyboards/28:30/')
+    messages = await get_django_json('/onboarding_keyboards/28:30/')
     feedback_keyboard = [
         [
             InlineKeyboardButton(
@@ -320,7 +319,7 @@ async def feedback_keyboard_markup():
 # - BEGINNER_DEFERRED_MESSAGES_VARIANTS
 # - DIRECTOR_AFTER_25_DAY_MESSAGE
 async def calendar_keyboard_markup():
-    messages = await get_django_json(f'{api_root}onboarding_keyboards/31:32/')
+    messages = await get_django_json('/onboarding_keyboards/31:32/')
     calendar_keyboard = [
         [
             InlineKeyboardButton(
@@ -340,7 +339,7 @@ async def calendar_keyboard_markup():
 
 # 16. Клавиатура "Ок, спасибо"
 async def thanks_markup():
-    messages = await get_django_json(f'{api_root}onboarding_keyboards/33/')
+    messages = await get_django_json('/onboarding_keyboards/33/')
     thanks_keyboard = [
         [
             InlineKeyboardButton(

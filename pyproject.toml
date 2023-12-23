@@ -30,7 +30,7 @@ license = "MIT"
 [tool.poetry.dependencies]
 python = "^3.11"
 poetry = "1.6.1"
-python-telegram-bot = "^20.3"
+python-telegram-bot = {extras = ["webhooks"], version = "^20.7"}
 pydantic = "2.3.0"
 requests = "2.26.0"
 pydantic-settings = "2.0.3"

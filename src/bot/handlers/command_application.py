@@ -10,7 +10,6 @@ from telegram.ext import (
 )
 
 from bot.constants.state import GET_USER_QUESTION
-from bot.core.settings import api_root
 from bot.keyboards.keyboards import main_menu_markup
 from bot.utils.admin_api import get_django_json
 from bot.utils.schemas import QuestionModel
@@ -21,7 +20,7 @@ async def help_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> int:
     '''Команда запроса помощи.'''
-    messages = await get_django_json(f'{api_root}text/18')
+    messages = await get_django_json('/text/18')
     await update.message.reply_text(
         messages.get('user_question_initial_text', '')
     )
@@ -58,13 +57,13 @@ async def get_user_question_callback(
         error_message = error_message.replace('Value error,', '')
         await update.message.reply_text(error_message.strip())
         return GET_USER_QUESTION
-    messages = await get_django_json(f'{api_root}text/14:17')
+    messages = await get_django_json('/text/14:17')
     subject = messages.get('user_question_email_subject', '')
     body_text = (
-        f"{messages.get('user_question_tg_nick_prefix', '')} "
-        f"{user_id}\n\n"
-        f"{messages.get('user_question_question_prefix', '')} "
-        f"{user_question}\n"
+        f'{messages.get("user_question_tg_nick_prefix", "")} '
+        f'{user_id}\n\n'
+        f'{messages.get("user_question_question_prefix", "")} '
+        f'{user_question}\n'
     )
     send_email(subject, body_text)
     await update.message.reply_text(
@@ -77,7 +76,7 @@ async def menu_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Команда перехода в главное меню.'''
-    messages = messages = await get_django_json(f'{api_root}text/10/')
+    messages = messages = await get_django_json('/text/10/')
     message_data = messages.get('BACK_TO_MENU', '')
     await update.message.reply_text(
         message_data, reply_markup=await main_menu_markup()
@@ -92,7 +91,7 @@ async def stop_callback(
     Функция заканчивающая работу бота.
     После её работы, бот будет принимать только команду /start.
     '''
-    messages = messages = await get_django_json(f'{api_root}text/1/')
+    messages = messages = await get_django_json('/text/1/')
     message_data = messages.get('STOP_MESSAGE', '')
     await update.message.reply_text(
         message_data, reply_markup=ReplyKeyboardRemove()

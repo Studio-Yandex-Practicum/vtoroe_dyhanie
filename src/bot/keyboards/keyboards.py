@@ -4,13 +4,12 @@ from telegram import (
     ReplyKeyboardMarkup,
 )
 
-from bot.core.settings import api_root
 from bot.utils.admin_api import get_django_json
 
 
 # Основное меню
 async def main_menu_markup():
-    messages = await get_django_json(f'{api_root}keyboards/1:9/')
+    messages = await get_django_json('/keyboards/1:9/')
     messages = [text for text in messages.values()]
     about_fund_markup = ReplyKeyboardMarkup(
         [messages[x : x + 2] for x in range(0, len(messages), 2)],  # noqa
@@ -21,7 +20,7 @@ async def main_menu_markup():
 
 
 async def faq_menu_markup():
-    messages = await get_django_json(f'{api_root}keyboards/10:18/')
+    messages = await get_django_json('/keyboards/10:18/')
     messages = [text for text in messages.values()]
     faq_menu_keyboard = ReplyKeyboardMarkup(
         [messages[x : x + 2] for x in range(0, len(messages), 2)],  # noqa
@@ -32,7 +31,7 @@ async def faq_menu_markup():
 
 
 async def main_button_markup():
-    messages = await get_django_json(f'{api_root}keyboards/19/')
+    messages = await get_django_json('/keyboards/19/')
     main_button_keyboard = [
         [
             InlineKeyboardButton(

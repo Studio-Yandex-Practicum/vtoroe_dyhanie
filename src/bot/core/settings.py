@@ -35,7 +35,7 @@ class Settings(BaseSettings):
 
 settings = Settings()
 
-api_root = f'http://{settings.admin_api_host}:{settings.admin_api_port}/'
+api_root = f'http://{settings.admin_api_host}:{settings.admin_api_port}'
 
 database_url = (
     f'postgresql+asyncpg://{settings.postgres_user}:'
