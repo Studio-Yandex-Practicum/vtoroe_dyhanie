@@ -99,6 +99,6 @@ jobs:
             cd infra/
             docker-compose rm -fsv
             docker rmi $(docker images -aq)
-            docker-compose up -d
+            docker-compose up --build
             docker-compose exec vtordish alembic upgrade head
             docker-compose exec vtordish python3 -m src.contacts_upload
