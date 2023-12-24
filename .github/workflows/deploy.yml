@@ -1,9 +1,9 @@
-name: Vtoroe_dyhanie_develop
+name: Vtoroe_dyhanie_deploy
 
-# Workflow будет срабатывать на команду push в ветку develop
+# Workflow будет срабатывать на команду push в ветку master
 on:
   push:
-    branches: [ develop ]
+    branches:  [ master ]
 
 # После срабатывания "on" выполнятся следующие действия:
 jobs:
@@ -45,11 +45,11 @@ jobs:
     - name: Copy archive on server
       uses: appleboy/scp-action@master
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USER }}
-        key: ${{ secrets.SSH_KEY }}
+        host: ${{ secrets.HOST_DEPLOY }}
+        username: ${{ secrets.USER_DEPLOY }}
+        key: ${{ secrets.SSH_KEY_DEPLOY }}
         source: "deploy.tar"
-        target: "/home/${{ secrets.USER }}/"
+        target: "/home/${{ secrets.USER_DEPLOY }}/"
 
   # Распаковываем архив и через docker-compose собираем
   # и запускаем контейнер с ботом
@@ -59,14 +59,14 @@ jobs:
     needs: copy_project_on_server
     # На Этапе разработки стоит условие, что push должен осуществляться в ветку develop
     # После тестирования необходимо поменять на master
-    if: github.ref_name == 'develop'
+    if: github.ref_name == 'master'
     steps:
       - name: Run bot in docker
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USER }}
-          key: ${{ secrets.SSH_KEY }}
+          host: ${{ secrets.HOST_DEPLOY }}
+          username: ${{ secrets.USER_DEPLOY }}
+          key: ${{ secrets.SSH_KEY_DEPLOY }}
           # Заходим в домашнюю директорию. В ней находится архив.
           # Распакуем архив. После распаковки удалим его.
           # Заходим в директорию с проектом.
@@ -80,22 +80,22 @@ jobs:
           # Запускаем docker-compose в фоновом режиме.
           # Запускаем миграции и заполняем БД.
           script: |
-            cd /home/${{ secrets.USER }}/
+            cd /home/${{ secrets.USER_DEPLOY }}/
             tar -xvf deploy.tar
             rm deploy.tar
             cd build/
             rm -f .env
-            echo TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }} >> .env
-            echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
-            echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
-            echo DB_HOST=${{ secrets.DB_HOST }} >> .env
-            echo DB_PORT=${{ secrets.DB_PORT }} >> .env
-            echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> .env
-            echo SMTP_SERVER=${{ secrets.SMTP_SERVER }} >> .env
-            echo SENDER_EMAIL=${{ secrets.SENDER_EMAIL }} >> .env
-            echo RECEIVER_EMAIL=${{ secrets.RECEIVER_EMAIL }} >> .env
-            echo PASSWORD_EMAIL=${{ secrets.PASSWORD_EMAIL }} >> .env
-            echo PORT=${{ secrets.PORT }} >> .env
+            echo TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN_DEPLOY }} >> .env
+            echo POSTGRES_USER=${{ secrets.POSTGRES_USER_DEPLOY }} >> .env
+            echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD_DEPLOY }} >> .env
+            echo DB_HOST=${{ secrets.DB_HOST_DEPLOY }} >> .env
+            echo DB_PORT=${{ secrets.DB_PORT_DEPLOY }} >> .env
+            echo DATABASE_URL=${{ secrets.DATABASE_URL_DEPLOY }} >> .env
+            echo SMTP_SERVER=${{ secrets.SMTP_SERVER_DEPLOY }} >> .env
+            echo SENDER_EMAIL=${{ secrets.SENDER_EMAIL_DEPLOY }} >> .env
+            echo RECEIVER_EMAIL=${{ secrets.RECEIVER_EMAIL_DEPLOY }} >> .env
+            echo PASSWORD_EMAIL=${{ secrets.PASSWORD_EMAIL_DEPLOY }} >> .env
+            echo PORT=${{ secrets.PORT_DEPLOY }} >> .env
             cd infra/
             docker-compose rm -fsv
             docker rmi $(docker images -aq)
