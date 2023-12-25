@@ -15,7 +15,7 @@ async def contact_list_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> int:
     '''Обрабатывает кнопку "Список контактов" из главного меню.'''
-    message_data = await get_django_json('/contact_list_text/1:2/')
+    message_data = await get_django_json('contact_list_text/1:2/')
     await update.message.reply_text(
         message_data.get("MENU_CONTACT_LIST_INPUT_FIO", ""),
         reply_markup={'remove_keyboard': True},
@@ -38,7 +38,7 @@ async def find_contact_callback(
     user_text = update.message.text
     answer = await find_contacts(user_text)
     await update.message.reply_text(text=answer)
-    message_data = await get_django_json('/contact_list_text/6/')
+    message_data = await get_django_json('contact_list_text/6/')
     await update.message.reply_text(
         text=message_data.get('SEARCH_AGAIN_OR_EXIT', ''),
         reply_markup=await contact_list_exit_markup(),
@@ -52,7 +52,7 @@ async def main_menu_pressed_callback(
 ):
     '''Обрабатывает нажатие кнопки выхода после очередного поиска.'''
     await update.callback_query.message.delete()
-    message_data = await get_django_json('/text/10/')
+    message_data = await get_django_json('text/10/')
     await update.callback_query.message.reply_text(
         text=message_data.get('BACK_TO_MENU', ''),
         reply_markup=await main_menu_markup(),

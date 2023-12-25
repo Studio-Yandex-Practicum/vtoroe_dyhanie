@@ -21,7 +21,6 @@ async def get_async_session():
     if async_session and not async_session.closed:
         return async_session
     return aiohttp.ClientSession(
-        base_url=api_root,
         connector=aiohttp.TCPConnector(
             keepalive_timeout=24 * 3600),
     )
@@ -37,7 +36,7 @@ async def get_django_json(url):
     try:
         global async_session
         async_session = await get_async_session()
-        async with async_session.get(url) as response:
+        async with async_session.get(f'{api_root}/{url}') as response:
             return await response.json()
     except Exception:
         return error_during_api_access(url)
@@ -48,7 +47,7 @@ def get_django_json_sync(url):
         global sync_session
         sync_session = get_sync_session()
         with sync_session.get(f'{api_root}/{url}') as response:
-            t2 = time()
+            print(f'{api_root}/{url}')
             return response.json()
     except Exception:
         return error_during_api_access(url)

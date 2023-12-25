@@ -46,7 +46,7 @@ async def mentor_callback(
     '''Обработка кнопки Наставник/Бадди.'''
     query = update.callback_query
     await query.answer()
-    message_data = await get_django_json('/onboarding_text/8/')
+    message_data = await get_django_json('onboarding_text/8/')
     await query.message.edit_text(
         message_data.get('MENTOR', ''),
         reply_markup=await mentor_markup(),
@@ -57,7 +57,7 @@ async def mentor_tasks_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Задачи Наставника/Бадди.'''
-    message_data = await get_django_json('/onboarding_text/9/')
+    message_data = await get_django_json('onboarding_text/9/')
     await update.callback_query.message.reply_text(
         message_data.get('MENTOR_TASKS', ''),
         parse_mode=ParseMode.MARKDOWN,
@@ -69,7 +69,7 @@ async def beginner_start_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Новичок.'''
-    message_data = await get_django_json('/onboarding_text/10:11/')
+    message_data = await get_django_json('onboarding_text/10:11/')
     await update.callback_query.message.reply_text(
         message_data.get('BEGINNER_START_MESSAGE_ONE', '')
     )
@@ -102,7 +102,7 @@ async def beginner_employment_date_callback(
     '''
     employment_date = update.message.text
     if not check_date_format(employment_date):
-        message_data = await get_django_json('/onboarding_text/29/')
+        message_data = await get_django_json('onboarding_text/29/')
         await update.message.reply_text(
             text=message_data.get('WRONG_DATE_FORMAT', '')
         )
@@ -122,7 +122,7 @@ async def beginner_employment_date_callback(
     if employment_date:
         bot = context.bot
         message_data = await get_django_json(
-            '/onboarding_text/30:33/'
+            'onboarding_text/30:33/'
         )
         asyncio.create_task(
             send_delayed_message(
@@ -153,7 +153,7 @@ async def beginner_employment_date_callback(
             )
         )
 
-    message_data = await get_django_json('/onboarding_text/12:13/')
+    message_data = await get_django_json('onboarding_text/12:13/')
     await update.message.reply_text(
         message_data.get('BEGINNER_EMPLOYMENT_MESSAGE_ONE', '')
     )
@@ -187,7 +187,7 @@ async def feedback_callback(
     user_fullname = update.callback_query.from_user.full_name
     username = update.callback_query.from_user.username
     button_pressed = update.callback_query.data
-    message_data = await get_django_json('/onboarding_text/34:42/')
+    message_data = await get_django_json('onboarding_text/34:42/')
     send_email(
         (
             f"{message_data.get('BEGINNER_FEEDBACK_SUBJECT_USER', '')} "
@@ -213,7 +213,7 @@ async def calendar_callback(
     user_fullname = update.callback_query.from_user.full_name
     username = update.callback_query.from_user.username
     button_pressed = update.callback_query.data
-    message_data = await get_django_json('/onboarding_text/35:45/')
+    message_data = await get_django_json('onboarding_text/35:45/')
     send_email(
         (
             f"{message_data.get('CALENDAR_SUBJECT_USER', '')} "
@@ -243,8 +243,8 @@ async def beginner_first_day_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Первый день.'''
-    message_data = await get_django_json('/onboarding_text/15:17/')
-    message_link = await get_django_json('/onboarding_text/6/')
+    message_data = await get_django_json('onboarding_text/15:17/')
+    message_link = await get_django_json('onboarding_text/6/')
     link = message_link.get('PROBATION_PLAN_LINK', '')
     message_one = message_data.get('BEGINNER_FIRST_DAY_MESSAGE_ONE', '')
     message_two = message_data.get(
@@ -268,8 +268,8 @@ async def beginner_adaptation_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Этапы адаптации.'''
-    message_data = await get_django_json('/onboarding_text/18:21/')
-    message_link = await get_django_json('/onboarding_text/5/')
+    message_data = await get_django_json('onboarding_text/18:21/')
+    message_link = await get_django_json('onboarding_text/5/')
     link = message_link.get('TASK_PLAN_LINK', '')
     await update.callback_query.message.reply_text(
         message_data.get('BEGINNER_STAGES_ADAPTATION_MESSAGE_ONE', '').format(
@@ -295,8 +295,8 @@ async def beginner_work_plan_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки План работы на испытательный срок.'''
-    message_data = await get_django_json('/onboarding_text/22/')
-    message_link = await get_django_json('/onboarding_text/4/')
+    message_data = await get_django_json('onboarding_text/22/')
+    message_link = await get_django_json('onboarding_text/4/')
     link = message_link.get('WORK_PLAN_LINK', '')
     await update.callback_query.message.reply_text(
         message_data.get('BEGINNER_WORK_PLAN_MESSAGE_ONE', '').format(
@@ -312,8 +312,8 @@ async def beginner_checklist_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Чек-лист нового сотрудника.'''
-    message_data = await get_django_json('/onboarding_text/23/')
-    link_data = await get_django_json('/onboarding_text/3/')
+    message_data = await get_django_json('onboarding_text/23/')
+    link_data = await get_django_json('onboarding_text/3/')
     link = link_data.get('CHECK_LIST_LINK', '')
     message = message_data.get('BEGINNER_CHECK_LIST_MESSAGE_ONE', '').format(
         CHECK_LIST_LINK=link
@@ -342,7 +342,7 @@ async def director_callback(
     '''Обработка кнопки Руководитель.'''
     query = update.callback_query
     await query.answer()
-    message_data = await get_django_json('/onboarding_text/24/')
+    message_data = await get_django_json('onboarding_text/24/')
     await query.message.edit_text(
         message_data.get('DIRECTOR_msg_1', ''),
         parse_mode='HTML',
@@ -355,7 +355,7 @@ async def tasks_director_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Задачи Руководителя.'''
-    message_data = await get_django_json('/onboarding_text/25/')
+    message_data = await get_django_json('onboarding_text/25/')
     text = message_data.get('DIRECTOR_TASKS', '')
     await update.callback_query.message.reply_text(
         text,
@@ -368,8 +368,8 @@ async def director_question_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Что за встречи?'''
-    message_data = await get_django_json('/onboarding_text/27/')
-    message_data_link = await get_django_json('/onboarding_text/2/')
+    message_data = await get_django_json('onboarding_text/27/')
+    message_data_link = await get_django_json('onboarding_text/2/')
     link = message_data_link.get('START_MEETING_LINK', '')
     message = message_data.get('MEETINGS_MESSAGE_FOR_DIRECTOR', '').format(
         START_MEETING_LINK=link
@@ -385,7 +385,7 @@ async def director_confirmation_callback(
         update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Супер, давай.'''
-    message_data = await get_django_json('/onboarding_text/26/')
+    message_data = await get_django_json('onboarding_text/26/')
     await update.callback_query.message.reply_text(
         message_data.get('DATA_MESSAGE_FOR_NEW_WORKER', '')
     )
@@ -417,7 +417,7 @@ async def director_employment_date_callback(
         )
         await update.message.reply_text(user_friendly_error_message)
         return None
-    message_data = await get_django_json('/onboarding_text/37:39/')
+    message_data = await get_django_json('onboarding_text/37:39/')
     if employment_date:
         bot = context.bot
         asyncio.create_task(
@@ -445,7 +445,7 @@ async def director_employment_date_callback(
                 message_data.get('DIRECTOR_AFTER_85_DAY_MESSAGE', ''),
             )
         )
-        message_data = await get_django_json('/onboarding_text/28/')
+        message_data = await get_django_json('onboarding_text/28/')
         await update.message.reply_text(
             message_data.get('REMINDER_MESSAGE_FOR_MEETINGS_msg_1', ''),
             parse_mode=ParseMode.MARKDOWN,
