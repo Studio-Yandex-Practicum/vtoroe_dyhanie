@@ -47,7 +47,6 @@ def get_django_json_sync(url):
         global sync_session
         sync_session = get_sync_session()
         with sync_session.get(f'{api_root}/{url}') as response:
-            print(f'{api_root}/{url}')
             return response.json()
     except Exception:
         return error_during_api_access(url)

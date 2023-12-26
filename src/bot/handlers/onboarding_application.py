@@ -14,8 +14,7 @@ from telegram.ext import (
     filters,
 )
 
-from ..utils.send_email import check_date_format, send_email
-from bot.constants import onboarding_text
+from bot.utils.send_email import check_date_format, send_email
 from bot.constants.query_patterns import INFO_PREFIX
 
 from bot.constants.state import (
@@ -44,7 +43,6 @@ from bot.keyboards.onboarding_keyboards import (
 from bot.utils.admin_api import get_django_json
 from bot.utils.generic import check_date_format
 from bot.utils.schemas import DateModel
-from bot.utils.send_email import send_email
 
 
 async def mentor_callback(
@@ -233,9 +231,9 @@ async def beginner_great_callback(
 ) -> None:
     message_data = await get_django_json('onboarding_text/12:13/')
     send_email('Feedback', 'Все отлично!')
+    message_data = await get_django_json('onboarding_text/34/')
     await update.callback_query.message.reply_text(
-        # TODO достать текст из БД
-        onboarding_text.BEGINNER_DEFERRED_MESSAGES_VARIANTS,
+        message_data.get('BEGINNER_AFTER_85_DAY_MESSAGE', ''),
         parse_mode=ParseMode.MARKDOWN_V2,
         reply_markup=calendar_keyboard_markup,
     )
@@ -246,9 +244,9 @@ async def beginner_so_so_callback(
     context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
     send_email('Feedback', '50/50')
+    message_data = await get_django_json('onboarding_text/34/')
     await update.callback_query.message.reply_text(
-        # TODO достать текст из БД
-        onboarding_text.BEGINNER_DEFERRED_MESSAGES_VARIANTS,
+        message_data.get('BEGINNER_AFTER_85_DAY_MESSAGE', ''),
         parse_mode=ParseMode.MARKDOWN_V2,
         reply_markup=calendar_keyboard_markup,
     )
@@ -259,9 +257,9 @@ async def beginner_help_callback(
     context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
     send_email('Feedback', 'Не все гладко, help')
+    message_data = await get_django_json('onboarding_text/34/')
     await update.callback_query.message.reply_text(
-        # TODO достать текст из БД
-        onboarding_text.BEGINNER_DEFERRED_MESSAGES_VARIANTS,
+        message_data.get('BEGINNER_AFTER_85_DAY_MESSAGE', ''),
         parse_mode=ParseMode.MARKDOWN_V2,
         reply_markup=calendar_keyboard_markup,
     )

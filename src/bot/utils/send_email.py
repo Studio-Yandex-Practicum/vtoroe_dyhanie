@@ -1,5 +1,6 @@
 import smtplib
 import ssl
+from datetime import datetime
 
 from ..core.settings import settings
 
@@ -22,7 +23,7 @@ def send_email(subject, body_text):
     )
 
     with smtplib.SMTP_SSL(
-        settings.smtp_server, settings.smtp_port, context=context
+        settings.smtp_server, settings.port, context=context
     ) as server:
         server.login(settings.sender_email, settings.password_email)
         server.sendmail(
@@ -32,5 +33,10 @@ def send_email(subject, body_text):
         )
 
 
-# def send_email(subject, body_text):
-#     print(f'Заглушка посылки письма {subject=} {body_text=}')
+def check_date_format(date_string):
+    try:
+        # Проверка корректности введенной даты
+        datetime.strptime(date_string, '%d-%m-%Y')
+        return True
+    except ValueError:
+        return False
