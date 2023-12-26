@@ -17,7 +17,7 @@ from telegram.ext import (
 from ..utils.send_email import check_date_format, send_email
 from bot.constants import onboarding_text
 from bot.constants.query_patterns import INFO_PREFIX
-from bot.constants.schemas import DateModel
+
 from bot.constants.state import (
     BEGINNER_ONBOARDING,
     BEGINNER_ONBOARDING_25_DAYS,
@@ -231,6 +231,7 @@ async def beginner_great_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
+    message_data = await get_django_json('onboarding_text/12:13/')
     send_email('Feedback', 'Все отлично!')
     await update.callback_query.message.reply_text(
         # TODO достать текст из БД
