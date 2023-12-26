@@ -14,8 +14,15 @@ from telegram.ext import (
     filters,
 )
 
+from ..utils.send_email import check_date_format, send_email
+from bot.constants import onboarding_text
 from bot.constants.query_patterns import INFO_PREFIX
-from bot.constants.state import BEGINNER_ONBOARDING
+from bot.constants.schemas import DateModel
+from bot.constants.state import (
+    BEGINNER_ONBOARDING,
+    BEGINNER_ONBOARDING_25_DAYS,
+    BEGINNER_ONBOARDING_40_DAYS,
+)
 from bot.handlers.command_application import stop_callback
 from bot.keyboards.onboarding_keyboards import (
     adaptation_markup,
@@ -41,7 +48,7 @@ from bot.utils.send_email import send_email
 
 
 async def mentor_callback(
-        update: Update, context: ContextTypes.DEFAULT_TYPE
+    update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Наставник/Бадди.'''
     query = update.callback_query
@@ -54,7 +61,7 @@ async def mentor_callback(
 
 
 async def mentor_tasks_callback(
-        update: Update, context: ContextTypes.DEFAULT_TYPE
+    update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Задачи Наставника/Бадди.'''
     message_data = await get_django_json('onboarding_text/9/')
@@ -92,6 +99,52 @@ async def send_delayed_message(bot, delay, chat_id, text, reply_markup=None):
     )
 
 
+async def send_beginner_feedback(update, bot):
+    '''
+    Отправка фидбэка новичка на корпоративную почту
+    '''
+    user_id = update.message.chat_id
+    username = update.effective_user.username
+    feedback = update.message.text
+    text = (
+        f'Никнейм пользователя в Telegram: {username}\n'
+        f'Предложения:\n{feedback}'
+    )
+    subject = 'Фидбэк новичка'
+    send_email(subject, text)
+    await bot.send_message(
+        user_id,
+        (
+            'Благодарим за обратную связь!\n'
+            'Ваше предложение будет рассмотрено в ближайшее время'
+        ),
+    )
+
+
+async def beginner_employment_feedback_after_25_days(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+) -> int:
+    '''
+    Обработчик фидбэка по прошествию 25 дней
+    '''
+    bot = context.bot
+    await send_beginner_feedback(update, bot)
+    return BEGINNER_ONBOARDING_40_DAYS
+
+
+async def beginner_employment_feedback_after_40_days(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+) -> int:
+    '''
+    Обработчик фидбэка по прошествию 40 дней
+    '''
+    bot = context.bot
+    await send_beginner_feedback(update, bot)
+    return ConversationHandler.END
+
+
 async def beginner_employment_date_callback(
         update: Update,
         context: ContextTypes.DEFAULT_TYPE,
@@ -101,6 +154,8 @@ async def beginner_employment_date_callback(
     и отправка отложенных сообщений.
     '''
     employment_date = update.message.text
+    current_date = datetime.now()
+
     if not check_date_format(employment_date):
         message_data = await get_django_json('onboarding_text/29/')
         await update.message.reply_text(
@@ -109,7 +164,7 @@ async def beginner_employment_date_callback(
         return None
 
     try:
-        employment_date = datetime.strptime(employment_date, '%d.%m.%Y')
+        employment_date = datetime.strptime(employment_date, '%d-%m-%Y')
         DateModel(employment_date=employment_date)
     except ValidationError as e:
         error_message = e.errors()[0]['msg']
@@ -119,39 +174,46 @@ async def beginner_employment_date_callback(
         await update.message.reply_text(user_friendly_error_message)
         return None
 
+    # Расчет количества дней после трудоустройства
+    delta_days = (current_date - employment_date).days
+
     if employment_date:
+        # Отправку отложенных сообщений и проверку
         bot = context.bot
         message_data = await get_django_json(
             'onboarding_text/30:33/'
         )
-        asyncio.create_task(
-            send_delayed_message(
-                bot,
-                25 * 86400,
-                update.message.chat_id,
-                text=message_data.get('BEGINNER_AFTER_25_DAY_MESSAGE', ''),
-                reply_markup=await feedback_keyboard_markup(),
-            )
-        )
-        asyncio.create_task(
-            send_delayed_message(
-                bot,
-                40 * 86400,
-                update.message.chat_id,
-                text=message_data.get('BEGINNER_AFTER_40_DAY_MESSAGE', ''),
-            )
-        )
         link = message_data.get('ONBOARDING_LINK_FORM', '')
-        asyncio.create_task(
-            send_delayed_message(
-                bot,
-                85 * 86400,
-                update.message.chat_id,
-                text=message_data.get(
-                    'BEGINNER_AFTER_85_DAY_MESSAGE', ''
-                ).format(ONBOARDING_LINK_FORM=link),
+        if delta_days <= 25:
+            asyncio.create_task(
+                send_delayed_message(
+                    bot,
+                    (25 - delta_days) * 86400,
+                    update.message.chat_id,
+                    text=message_data.get('BEGINNER_AFTER_25_DAY_MESSAGE', ''),
+                    reply_markup=feedback_keyboard_markup,
+                )
             )
-        )
+        elif 40 >= delta_days > 25:
+            asyncio.create_task(
+                send_delayed_message(
+                    bot,
+                    (40 - delta_days) * 86400,
+                    update.message.chat_id,
+                    text=message_data.get('BEGINNER_AFTER_40_DAY_MESSAGE', ''),
+                )
+            )
+        elif 85 >= delta_days > 40:
+            asyncio.create_task(
+                send_delayed_message(
+                    bot,
+                    (85 - delta_days) * 86400,
+                    update.message.chat_id,
+                    text=message_data.get(
+                        'BEGINNER_AFTER_85_DAY_MESSAGE', ''
+                    ).format(ONBOARDING_LINK_FORM=link),
+                )
+            )
 
     message_data = await get_django_json('onboarding_text/12:13/')
     await update.message.reply_text(
@@ -162,7 +224,46 @@ async def beginner_employment_date_callback(
         parse_mode=ParseMode.MARKDOWN,
         reply_markup=await beginner_employment_markup(),
     )
-    return ConversationHandler.END
+    return BEGINNER_ONBOARDING_25_DAYS
+
+
+async def beginner_great_callback(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+) -> None:
+    send_email('Feedback', 'Все отлично!')
+    await update.callback_query.message.reply_text(
+        # TODO достать текст из БД
+        onboarding_text.BEGINNER_DEFERRED_MESSAGES_VARIANTS,
+        parse_mode=ParseMode.MARKDOWN_V2,
+        reply_markup=calendar_keyboard_markup,
+    )
+
+
+async def beginner_so_so_callback(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+) -> None:
+    send_email('Feedback', '50/50')
+    await update.callback_query.message.reply_text(
+        # TODO достать текст из БД
+        onboarding_text.BEGINNER_DEFERRED_MESSAGES_VARIANTS,
+        parse_mode=ParseMode.MARKDOWN_V2,
+        reply_markup=calendar_keyboard_markup,
+    )
+
+
+async def beginner_help_callback(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+) -> None:
+    send_email('Feedback', 'Не все гладко, help')
+    await update.callback_query.message.reply_text(
+        # TODO достать текст из БД
+        onboarding_text.BEGINNER_DEFERRED_MESSAGES_VARIANTS,
+        parse_mode=ParseMode.MARKDOWN_V2,
+        reply_markup=calendar_keyboard_markup,
+    )
 
 
 beginner_callback = ConversationHandler(
@@ -175,13 +276,23 @@ beginner_callback = ConversationHandler(
         BEGINNER_ONBOARDING: [
             MessageHandler(filters.TEXT, beginner_employment_date_callback),
         ],
+        BEGINNER_ONBOARDING_25_DAYS: [
+            MessageHandler(
+                filters.TEXT, beginner_employment_feedback_after_25_days
+            ),
+        ],
+        BEGINNER_ONBOARDING_40_DAYS: [
+            MessageHandler(
+                filters.TEXT, beginner_employment_feedback_after_40_days
+            ),
+        ],
     },
     fallbacks=[CommandHandler('stop', stop_callback)],
 )
 
 
 async def feedback_callback(
-        update: Update, context: ContextTypes.DEFAULT_TYPE
+    update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопок обратной связи.'''
     user_fullname = update.callback_query.from_user.full_name
@@ -207,7 +318,7 @@ async def feedback_callback(
 
 
 async def calendar_callback(
-        update: Update, context: ContextTypes.DEFAULT_TYPE
+    update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопок calendar_keyboard_markup.'''
     user_fullname = update.callback_query.from_user.full_name
@@ -240,7 +351,7 @@ async def calendar_callback(
 
 
 async def beginner_first_day_callback(
-        update: Update, context: ContextTypes.DEFAULT_TYPE
+    update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Первый день.'''
     message_data = await get_django_json('onboarding_text/15:17/')
@@ -265,7 +376,7 @@ async def beginner_first_day_callback(
 
 
 async def beginner_adaptation_callback(
-        update: Update, context: ContextTypes.DEFAULT_TYPE
+    update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Этапы адаптации.'''
     message_data = await get_django_json('onboarding_text/18:21/')
@@ -292,7 +403,7 @@ async def beginner_adaptation_callback(
 
 
 async def beginner_work_plan_callback(
-        update: Update, context: ContextTypes.DEFAULT_TYPE
+    update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки План работы на испытательный срок.'''
     message_data = await get_django_json('onboarding_text/22/')
@@ -309,7 +420,7 @@ async def beginner_work_plan_callback(
 
 
 async def beginner_checklist_callback(
-        update: Update, context: ContextTypes.DEFAULT_TYPE
+    update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Чек-лист нового сотрудника.'''
     message_data = await get_django_json('onboarding_text/23/')
@@ -337,7 +448,7 @@ async def beginner_back_callback(
 
 
 async def director_callback(
-        update: Update, context: ContextTypes.DEFAULT_TYPE
+    update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Руководитель.'''
     query = update.callback_query
@@ -352,7 +463,7 @@ async def director_callback(
 
 
 async def tasks_director_callback(
-        update: Update, context: ContextTypes.DEFAULT_TYPE
+    update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Задачи Руководителя.'''
     message_data = await get_django_json('onboarding_text/25/')
@@ -392,15 +503,32 @@ async def director_confirmation_callback(
     return BEGINNER_ONBOARDING
 
 
+async def calendar_yes_callback(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+) -> None:
+    send_email('Calendar button pressed', 'Да все в календаре')
+    await calendar_callback(update, context)
+
+
+async def calendar_no_callback(
+    update: Update, context: ContextTypes.DEFAULT_TYPE
+) -> None:
+    send_email('Calendar button pressed', 'Еще не успел')
+    await calendar_callback(update, context)
+
+
 async def director_employment_date_callback(
-        update: Update,
-        context: ContextTypes.DEFAULT_TYPE,
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
 ) -> int:
     '''
     Функция для получения даты трудоустройства новичка
     и отправки отложенных сообщений
     '''
     employment_date = update.message.text
+    current_date = datetime.now()
+
     if not check_date_format(employment_date):
         await update.message.reply_text(
             'Некорректная дата. Пожалуйста, введите дату в формате ДД.ММ.ГГГГ.'
@@ -408,7 +536,7 @@ async def director_employment_date_callback(
         return None
 
     try:
-        employment_date = datetime.strptime(employment_date, '%d.%m.%Y')
+        employment_date = datetime.strptime(employment_date, '%d-%m-%Y')
         DateModel(employment_date=employment_date)
     except ValidationError as e:
         error_message = e.errors()[0]['msg']
@@ -418,33 +546,40 @@ async def director_employment_date_callback(
         await update.message.reply_text(user_friendly_error_message)
         return None
     message_data = await get_django_json('onboarding_text/37:39/')
+
+    # Расчет количества дней после трудоустройства
+    delta_days = (current_date - employment_date).days
+
     if employment_date:
         bot = context.bot
-        asyncio.create_task(
-            send_delayed_message(
-                bot,
-                25 * 86400,
-                update.message.chat_id,
-                message_data.get('DIRECTOR_AFTER_25_DAY_MESSAGE', ''),
-                reply_markup=calendar_keyboard_markup,
+        if delta_days <= 25:
+            asyncio.create_task(
+                send_delayed_message(
+                    bot,
+                    (25 - delta_days) * 86400,
+                    update.message.chat_id,
+                    message_data.get('DIRECTOR_AFTER_25_DAY_MESSAGE', ''),
+                    reply_markup=calendar_keyboard_markup,
+                )
             )
-        )
-        asyncio.create_task(
-            send_delayed_message(
-                bot,
-                40 * 86400,
-                update.message.chat_id,
-                message_data.get('DIRECTOR_AFTER_40_DAY_MESSAGE', ''),
+        elif 40 >= delta_days > 25:
+            asyncio.create_task(
+                send_delayed_message(
+                    bot,
+                    (40 - delta_days) * 86400,
+                    update.message.chat_id,
+                    message_data.get('DIRECTOR_AFTER_40_DAY_MESSAGE', ''),
+                )
             )
-        )
-        asyncio.create_task(
-            send_delayed_message(
-                bot,
-                85 * 86400,
-                update.message.chat_id,
-                message_data.get('DIRECTOR_AFTER_85_DAY_MESSAGE', ''),
+        elif 85 >= delta_days > 40:
+            asyncio.create_task(
+                send_delayed_message(
+                    bot,
+                    (85 - delta_days) * 86400,
+                    update.message.chat_id,
+                    message_data.get('DIRECTOR_AFTER_85_DAY_MESSAGE', ''),
+                )
             )
-        )
         message_data = await get_django_json('onboarding_text/28/')
         await update.message.reply_text(
             message_data.get('REMINDER_MESSAGE_FOR_MEETINGS_msg_1', ''),
@@ -475,19 +610,19 @@ def register_handlers(app: Application) -> None:
     app.add_handler(director_beginner_callback)
 
     app.add_handler(
-        CallbackQueryHandler(feedback_callback, pattern='feedback_great')
+        CallbackQueryHandler(beginner_great_callback, pattern='feedback_great')
     )
     app.add_handler(
-        CallbackQueryHandler(feedback_callback, pattern='feedback_so_so')
+        CallbackQueryHandler(beginner_so_so_callback, pattern='feedback_so_so')
     )
     app.add_handler(
-        CallbackQueryHandler(feedback_callback, pattern='feedback_help')
+        CallbackQueryHandler(beginner_help_callback, pattern='feedback_help')
     )
     app.add_handler(
-        CallbackQueryHandler(calendar_callback, pattern='calendar_yes')
+        CallbackQueryHandler(calendar_yes_callback, pattern='calendar_yes')
     )
     app.add_handler(
-        CallbackQueryHandler(calendar_callback, pattern='calendar_no')
+        CallbackQueryHandler(calendar_no_callback, pattern='calendar_no')
     )
 
     registrator = {
@@ -501,6 +636,8 @@ def register_handlers(app: Application) -> None:
         f'{INFO_PREFIX}mentor_or_buddy': mentor_callback,
         f'{INFO_PREFIX}menor_tasks': mentor_tasks_callback,
         'beginner_back': beginner_back_callback,
+        'feedback': feedback_callback,
+        'calendar': calendar_callback,
     }
     for pattern, handler in registrator.items():
         app.add_handler(CallbackQueryHandler(handler, pattern=pattern))

@@ -9,7 +9,9 @@ from telegram.ext import (
     filters,
 )
 
+from bot.constants.schemas import QuestionModel
 from bot.constants.state import GET_USER_QUESTION
+from bot.constants.text import BACK_TO_MENU, STOP_MESSAGE
 from bot.keyboards.keyboards import main_menu_markup
 from bot.utils.admin_api import get_django_json
 from bot.utils.schemas import QuestionModel
@@ -20,10 +22,7 @@ async def help_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> int:
     '''Команда запроса помощи.'''
-    messages = await get_django_json('text/18')
-    await update.message.reply_text(
-        messages.get('user_question_initial_text', '')
-    )
+    await update.message.reply_text('Введите ваш вопрос:')
     return GET_USER_QUESTION
 
 
@@ -46,7 +45,7 @@ async def get_user_question_callback(
     '''Функция обрабатывает сообщение с вопросом от пользователя.'''
     user_id = update.effective_user.username
     user_question = update.message.text
-    if update.message.text.startswith(''):
+    if update.message.text.startswith('/'):
         command = update.message.text[1:]
         await process_commands(update, context, command)
         return ConversationHandler.END
@@ -57,17 +56,11 @@ async def get_user_question_callback(
         error_message = error_message.replace('Value error,', '')
         await update.message.reply_text(error_message.strip())
         return GET_USER_QUESTION
-    messages = await get_django_json('text/14:17')
-    subject = messages.get('user_question_email_subject', '')
-    body_text = (
-        f'{messages.get("user_question_tg_nick_prefix", "")} '
-        f'{user_id}\n\n'
-        f'{messages.get("user_question_question_prefix", "")} '
-        f'{user_question}\n'
-    )
+    subject = 'Обращение в поддержку телеграм бота'
+    body_text = f'Никнейм в телеграм: {user_id}\nВопрос: {user_question}'
     send_email(subject, body_text)
     await update.message.reply_text(
-        messages.get('user_question_final_text', '')
+        'Ваш вопрос отправлен. Мы свяжемся с вами в ближайшее время.'
     )
     return ConversationHandler.END
 
@@ -76,10 +69,8 @@ async def menu_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Команда перехода в главное меню.'''
-    messages = messages = await get_django_json('text/10/')
-    message_data = messages.get('BACK_TO_MENU', '')
     await update.message.reply_text(
-        message_data, reply_markup=await main_menu_markup()
+        BACK_TO_MENU, reply_markup=main_menu_markup
     )
 
 
@@ -91,10 +82,8 @@ async def stop_callback(
     Функция заканчивающая работу бота.
     После её работы, бот будет принимать только команду /start.
     '''
-    messages = messages = await get_django_json('text/1/')
-    message_data = messages.get('STOP_MESSAGE', '')
     await update.message.reply_text(
-        message_data, reply_markup=ReplyKeyboardRemove()
+        STOP_MESSAGE, reply_markup=ReplyKeyboardRemove()
     )
     return ConversationHandler.END
 
