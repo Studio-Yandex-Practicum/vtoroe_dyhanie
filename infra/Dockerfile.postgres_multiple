@@ -1,0 +1,4 @@
+FROM postgres:16.1-alpine
+
+WORKDIR /docker-entrypoint-initdb.d
+COPY ./infra/create-multiple-postgresql-databases.sh ./

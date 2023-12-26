@@ -1,0 +1,8 @@
+FROM python:3.11-slim
+
+WORKDIR /tg_bot_second_wind
+COPY ./infra/requirements_tg_bot_second_wind.txt ./requirements.txt
+RUN pip3 install -r ./requirements.txt --no-cache-dir
+COPY ./ ./
+
+CMD ["python3", "src/application.py"]

@@ -2,8 +2,8 @@ import asyncio
 
 from sqlalchemy import select
 
-from .bot.core.db import AsyncSessionLocal
-from .bot.models import (
+from bot.core.db import AsyncSessionLocal
+from bot.models import (
     Contact,
     ContactKeyword,
     Department,
@@ -12,7 +12,7 @@ from .bot.models import (
     Keyword,
     Position,
 )
-from .bot.utils.keyword_search import prepare_words
+from bot.utils.keyword_search import prepare_words
 
 
 CONTACTS_RAW = [

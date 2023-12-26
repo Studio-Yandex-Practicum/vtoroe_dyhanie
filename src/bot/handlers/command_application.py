@@ -11,8 +11,9 @@ from telegram.ext import (
 
 from bot.constants.schemas import QuestionModel
 from bot.constants.state import GET_USER_QUESTION
-from bot.constants.text import BACK_TO_MENU, STOP_MESSAGE
 from bot.keyboards.keyboards import main_menu_markup
+from bot.utils.admin_api import get_django_json
+from bot.utils.schemas import QuestionModel
 from bot.utils.send_email import send_email
 
 
@@ -67,8 +68,10 @@ async def menu_callback(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Команда перехода в главное меню.'''
+    messages = await get_django_json('text/10/')
+    message_data = messages.get('BACK_TO_MENU', '')
     await update.message.reply_text(
-        BACK_TO_MENU, reply_markup=main_menu_markup
+        message_data, reply_markup=await main_menu_markup()
     )
 
 
@@ -80,8 +83,10 @@ async def stop_callback(
     Функция заканчивающая работу бота.
     После её работы, бот будет принимать только команду /start.
     '''
+    messages = await get_django_json('text/1/')
+    message_data = messages.get('STOP_MESSAGE', '')
     await update.message.reply_text(
-        STOP_MESSAGE, reply_markup=ReplyKeyboardRemove()
+        message_data, reply_markup=ReplyKeyboardRemove()
     )
     return ConversationHandler.END
 

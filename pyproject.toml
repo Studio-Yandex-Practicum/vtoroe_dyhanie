@@ -30,7 +30,7 @@ license = "MIT"
 [tool.poetry.dependencies]
 python = "^3.11"
 poetry = "1.6.1"
-python-telegram-bot = "^20.3"
+python-telegram-bot = {extras = ["webhooks"], version = "^20.7"}
 pydantic = "2.3.0"
 requests = "2.26.0"
 pydantic-settings = "2.0.3"
@@ -41,7 +41,11 @@ asyncpg = "^0.28.0"
 autopep8 = "2.0.4"
 flake8-isort = ["6.1.0"]
 mypy = "^1.6.1"
+django = "4.2.7"
+django-jazzmin = "2.6.0"
+aiohttp = "3.8.6"
 sqlalchemy-utils = "^0.41.1"
+psycopg2-binary = "^2.9.9"
 
 [tool.poetry.extras]
 flake8 = ["3.9.2"]
