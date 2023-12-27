@@ -99,5 +99,5 @@ jobs:
             docker-compose rm -fsv
             docker rmi $(docker images -aq)
             docker-compose up -d --build
-            docker-compose exec vtordish alembic upgrade head
-            docker-compose exec vtordish python3 -m src.contacts_upload
+          # docker-compose exec vtordish alembic upgrade head
+          # docker-compose exec vtordish python3 -m src.contacts_upload
