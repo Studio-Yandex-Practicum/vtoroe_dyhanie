@@ -77,7 +77,7 @@ async def beginner_markup():
         [
             InlineKeyboardButton(
                 messages.get('beginner_keyboard_back_to_main_menu', ''),
-                callback_data='back_to_main_menu',
+                callback_data='return_after_start_callback',
             )
         ],
     ]
@@ -291,7 +291,7 @@ async def director_confirm_markup():
 # 14. Клавиатура с вариантами ответов
 # после сообщения BEGINNER_AFTER_25_DAY_MESSAGE
 async def feedback_keyboard_markup():
-    messages = await get_django_json('onboarding_keyboards/28:30/')
+    messages = await get_django_json('onboarding_keyboards/28:31/')
     feedback_keyboard = [
         [
             InlineKeyboardButton(
@@ -311,15 +311,38 @@ async def feedback_keyboard_markup():
                 callback_data='feedback_help',
             )
         ],
+        [
+            InlineKeyboardButton(
+                messages.get('expanded_feedback_keyboard', ''),
+                callback_data='expanded_feedback',
+            )
+        ],
     ]
     return InlineKeyboardMarkup(feedback_keyboard)
 
 
-# 15. Клавиатура с вариантами ответов после сообщений
+# 15. Клавиатура возврата на случай, если пользователь передумал оставлять
+# развёрнутый отзыв
+
+
+async def return_keyboard_markup():
+    messages = await get_django_json('onboarding_keyboards/32/')
+    keyboard = [
+        [
+            InlineKeyboardButton(
+                messages.get('return_to_feedback_menu_keyboard', ''),
+                callback_data='return_to_feedback_menu',
+            )
+        ]
+    ]
+    return InlineKeyboardMarkup(keyboard)
+
+
+# 16. Клавиатура с вариантами ответов после сообщений
 # - BEGINNER_DEFERRED_MESSAGES_VARIANTS
 # - DIRECTOR_AFTER_25_DAY_MESSAGE
 async def calendar_keyboard_markup():
-    messages = await get_django_json('onboarding_keyboards/31:32/')
+    messages = await get_django_json('onboarding_keyboards/33:34/')
     calendar_keyboard = [
         [
             InlineKeyboardButton(
@@ -337,9 +360,9 @@ async def calendar_keyboard_markup():
     return InlineKeyboardMarkup(calendar_keyboard)
 
 
-# 16. Клавиатура "Ок, спасибо"
+# 17. Клавиатура "Ок, спасибо"
 async def thanks_markup():
-    messages = await get_django_json('onboarding_keyboards/33/')
+    messages = await get_django_json('onboarding_keyboards/35/')
     thanks_keyboard = [
         [
             InlineKeyboardButton(

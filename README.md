@@ -115,7 +115,7 @@ python manage.py migrate
 Загрузите контент в базу данных приложения:
 
 ```
-manage.py loaddata initial_data.json
+python manage.py loaddata initial_data.json
 ```
 
 Запустите приложение:
@@ -220,5 +220,5 @@ docker-compose exec tg_bot_second_wind python3 src/contacts_upload.py
 - [Александр Новожилов](https://github.com/AleksNovo)
 - [Олег Исаев](https://github.com/oisaev)
 - [Дмитрий Белолипецкий](https://github.com/EvolDem)
-
+- [Станислав Сагалов](https://github.com/S-Sagalov)
 </details>
