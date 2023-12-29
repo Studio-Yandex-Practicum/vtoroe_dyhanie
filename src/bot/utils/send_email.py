@@ -1,6 +1,6 @@
 import smtplib
 import ssl
-from datetime import datetime
+
 
 from ..core.settings import settings
 
@@ -32,11 +32,3 @@ def send_email(subject, body_text):
             message.encode('UTF-8'),
         )
 
-
-def check_date_format(date_string):
-    try:
-        # Проверка корректности введенной даты
-        datetime.strptime(date_string, '%d-%m-%Y')
-        return True
-    except ValueError:
-        return False

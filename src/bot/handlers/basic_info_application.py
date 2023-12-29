@@ -14,7 +14,7 @@ from bot.keyboards.basic_info_keyboards import (
     social_networks_markup,
 )
 from bot.utils.admin_api import get_django_json
-
+from bot.handlers.contact_list_application import contact_list_inline_callback
 
 async def organization_structure_callback(
     update: Update,
@@ -113,11 +113,7 @@ async def contact_list_callback(
     context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
     '''Обработка кнопки Список контактов.'''
-    query = update.callback_query
-    await query.answer()
-    await query.message.edit_text(
-        'Информация о контактах.', reply_markup=await our_team_markup()
-    )
+    return await contact_list_inline_callback(update, context)
 
 
 async def org_departments_callback(

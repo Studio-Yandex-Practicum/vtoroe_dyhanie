@@ -14,7 +14,7 @@ from telegram.ext import (
     filters,
 )
 
-from bot.utils.send_email import check_date_format, send_email
+from bot.utils.send_email import send_email
 from bot.constants.query_patterns import INFO_PREFIX
 
 from bot.constants.state import (
@@ -46,7 +46,7 @@ from bot.utils.schemas import DateModel
 
 
 async def mentor_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Наставник/Бадди.'''
     query = update.callback_query
@@ -59,7 +59,7 @@ async def mentor_callback(
 
 
 async def mentor_tasks_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Задачи Наставника/Бадди.'''
     message_data = await get_django_json('onboarding_text/9/')
@@ -88,6 +88,8 @@ async def beginner_start_callback(
 
 async def send_delayed_message(bot, delay, chat_id, text, reply_markup=None):
     await asyncio.sleep(delay)
+    if reply_markup:
+        reply_markup = reply_markup()
     await bot.send_message(
         chat_id,
         text,
@@ -120,8 +122,8 @@ async def send_beginner_feedback(update, bot):
 
 
 async def beginner_employment_feedback_after_25_days(
-    update: Update,
-    context: ContextTypes.DEFAULT_TYPE,
+        update: Update,
+        context: ContextTypes.DEFAULT_TYPE,
 ) -> int:
     '''
     Обработчик фидбэка по прошествию 25 дней
@@ -132,8 +134,8 @@ async def beginner_employment_feedback_after_25_days(
 
 
 async def beginner_employment_feedback_after_40_days(
-    update: Update,
-    context: ContextTypes.DEFAULT_TYPE,
+        update: Update,
+        context: ContextTypes.DEFAULT_TYPE,
 ) -> int:
     '''
     Обработчик фидбэка по прошествию 40 дней
@@ -162,7 +164,7 @@ async def beginner_employment_date_callback(
         return None
 
     try:
-        employment_date = datetime.strptime(employment_date, '%d-%m-%Y')
+        employment_date = datetime.strptime(employment_date, '%d.%m.%Y')
         DateModel(employment_date=employment_date)
     except ValidationError as e:
         error_message = e.errors()[0]['msg']
@@ -226,10 +228,9 @@ async def beginner_employment_date_callback(
 
 
 async def beginner_great_callback(
-    update: Update,
-    context: ContextTypes.DEFAULT_TYPE,
+        update: Update,
+        context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
-    message_data = await get_django_json('onboarding_text/12:13/')
     send_email('Feedback', 'Все отлично!')
     message_data = await get_django_json('onboarding_text/34/')
     await update.callback_query.message.reply_text(
@@ -240,8 +241,8 @@ async def beginner_great_callback(
 
 
 async def beginner_so_so_callback(
-    update: Update,
-    context: ContextTypes.DEFAULT_TYPE,
+        update: Update,
+        context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
     send_email('Feedback', '50/50')
     message_data = await get_django_json('onboarding_text/34/')
@@ -253,8 +254,8 @@ async def beginner_so_so_callback(
 
 
 async def beginner_help_callback(
-    update: Update,
-    context: ContextTypes.DEFAULT_TYPE,
+        update: Update,
+        context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
     send_email('Feedback', 'Не все гладко, help')
     message_data = await get_django_json('onboarding_text/34/')
@@ -291,7 +292,7 @@ beginner_callback = ConversationHandler(
 
 
 async def feedback_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопок обратной связи.'''
     user_fullname = update.callback_query.from_user.full_name
@@ -317,7 +318,7 @@ async def feedback_callback(
 
 
 async def calendar_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопок calendar_keyboard_markup.'''
     user_fullname = update.callback_query.from_user.full_name
@@ -350,7 +351,7 @@ async def calendar_callback(
 
 
 async def beginner_first_day_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Первый день.'''
     message_data = await get_django_json('onboarding_text/15:17/')
@@ -375,7 +376,7 @@ async def beginner_first_day_callback(
 
 
 async def beginner_adaptation_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Этапы адаптации.'''
     message_data = await get_django_json('onboarding_text/18:21/')
@@ -402,7 +403,7 @@ async def beginner_adaptation_callback(
 
 
 async def beginner_work_plan_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки План работы на испытательный срок.'''
     message_data = await get_django_json('onboarding_text/22/')
@@ -419,7 +420,7 @@ async def beginner_work_plan_callback(
 
 
 async def beginner_checklist_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Чек-лист нового сотрудника.'''
     message_data = await get_django_json('onboarding_text/23/')
@@ -447,7 +448,7 @@ async def beginner_back_callback(
 
 
 async def director_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Руководитель.'''
     query = update.callback_query
@@ -462,7 +463,7 @@ async def director_callback(
 
 
 async def tasks_director_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка кнопки Задачи Руководителя.'''
     message_data = await get_django_json('onboarding_text/25/')
@@ -503,23 +504,23 @@ async def director_confirmation_callback(
 
 
 async def calendar_yes_callback(
-    update: Update,
-    context: ContextTypes.DEFAULT_TYPE,
+        update: Update,
+        context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
     send_email('Calendar button pressed', 'Да все в календаре')
     await calendar_callback(update, context)
 
 
 async def calendar_no_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     send_email('Calendar button pressed', 'Еще не успел')
     await calendar_callback(update, context)
 
 
 async def director_employment_date_callback(
-    update: Update,
-    context: ContextTypes.DEFAULT_TYPE,
+        update: Update,
+        context: ContextTypes.DEFAULT_TYPE,
 ) -> int:
     '''
     Функция для получения даты трудоустройства новичка
@@ -535,7 +536,7 @@ async def director_employment_date_callback(
         return None
 
     try:
-        employment_date = datetime.strptime(employment_date, '%d-%m-%Y')
+        employment_date = datetime.strptime(employment_date, '%d.%m.%Y')
         DateModel(employment_date=employment_date)
     except ValidationError as e:
         error_message = e.errors()[0]['msg']

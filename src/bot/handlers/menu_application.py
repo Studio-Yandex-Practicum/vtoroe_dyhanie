@@ -5,19 +5,13 @@ from telegram.constants import ParseMode
 from telegram.ext import (
     Application,
     CallbackQueryHandler,
-    CommandHandler,
     ContextTypes,
-    ConversationHandler,
     MessageHandler,
     filters,
 )
 
-from bot.constants.state import FIND_CONTACT, FIND_CONTACT_AGAIN
-from bot.handlers.command_application import stop_callback
 from bot.handlers.contact_list_application import (
-    contact_list_callback,
-    find_contact_callback,
-    main_menu_pressed_callback,
+     contact_list_conv_handler,
 )
 from bot.keyboards.about_fund_keyboards import about_fund_section
 from bot.keyboards.basic_info_keyboards import basic_information_markup
@@ -33,7 +27,7 @@ from bot.utils.send_message import send_message
 
 
 async def reg_forms_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обрабатывает кнопку 'Регламенты и формы' из главного меню.'''
     message_data = await get_django_json('reg_forms_text/16/')
@@ -49,7 +43,7 @@ async def reg_forms_callback(
 
 
 async def about_fund_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обрабатывает кнопку 'О Фонде' из главного меню.'''
     messages = await get_django_json('about_fund_text/1:3/')
@@ -61,7 +55,7 @@ async def about_fund_callback(
 
 
 async def feedback_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обрабатывает кнопку 'Обратная связь' из главного меню.'''
     message_data = await get_django_json('text/9:13/')
@@ -78,7 +72,7 @@ async def feedback_callback(
 
 
 async def basic_information_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обрабатывает кнопку 'Основная информация' из главного меню.'''
     message_data = await get_django_json('basic_info_text/1/')
@@ -89,7 +83,7 @@ async def basic_information_callback(
 
 
 async def faq_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обрабатывает кнопку 'FAQ' из главного меню.'''
     message_data = await get_django_json('faq_text/4/')
@@ -100,7 +94,7 @@ async def faq_callback(
 
 
 async def knowledge_base_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обрабатывает кнопку 'База знаний' из главного меню.'''
     message_data = await get_django_json('text/6:12/')
@@ -116,7 +110,7 @@ async def knowledge_base_callback(
 
 
 async def query_back_to_main_menu_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработка inline кнопки возврата в главное меню из всех подразделов.'''
     query = update.callback_query
@@ -129,7 +123,7 @@ async def query_back_to_main_menu_callback(
 
 
 async def back_to_main_menu_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Возвращает в главное меню.'''
     message_data = await get_django_json('text/10/')
@@ -140,7 +134,7 @@ async def back_to_main_menu_callback(
 
 
 async def rules_information_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обрабатывает кнопку 'Общие правила' из главного меню.'''
     message_data = await get_django_json('rules_text/1/')
@@ -151,7 +145,7 @@ async def rules_information_callback(
 
 
 async def onboarding_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обрабатывает кнопку 'Онбординг' из главного меню.'''
     # Получение текста из эндпоинта
@@ -177,29 +171,9 @@ def register_handlers(app: Application) -> None:
         )
     )
     key_data = get_django_json_sync('keyboards/1:9/')
-    app.add_handler(
-        ConversationHandler(
-            entry_points=[
-                MessageHandler(
-                    filters.Text(key_data.get('main_menu_keyboard_5', '')),
-                    contact_list_callback,
-                )
-            ],
-            states={
-                FIND_CONTACT: [
-                    MessageHandler(filters.TEXT, find_contact_callback),
-                ],
-                FIND_CONTACT_AGAIN: [
-                    CallbackQueryHandler(
-                        main_menu_pressed_callback,
-                        pattern='exit_from_contact_search',
-                    ),
-                    MessageHandler(filters.TEXT, find_contact_callback),
-                ],
-            },
-            fallbacks=[CommandHandler('stop', stop_callback)],
-        )
-    )
+    menu_button = key_data.get('main_menu_keyboard_5', '')
+    contact_list_conv_handler.entry_points[0].filters.strings = menu_button
+    app.add_handler(contact_list_conv_handler)
     registrator = {
         key_data.get('main_menu_keyboard_1_1', ''): about_fund_callback,
         key_data.get('main_menu_keyboard_1_2', ''): onboarding_callback,

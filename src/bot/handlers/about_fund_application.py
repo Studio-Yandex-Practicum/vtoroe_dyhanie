@@ -31,6 +31,7 @@ from telegram.ext import (
 )
 
 from bot.constants.query_patterns import ABOUT_PREFIX
+from bot.handlers.menu_application import back_to_main_menu_callback
 from bot.keyboards.about_fund_keyboards import (
     about_fund_section,
     annual_reports_markup,
@@ -43,8 +44,13 @@ from bot.utils.admin_api import get_django_json, get_django_json_sync
 from bot.utils.send_message import send_message
 
 
+async def navigation_menu_back_to_main_menu(
+        update: Update, context: ContextTypes.DEFAULT_TYPE):
+    return await back_to_main_menu_callback(update, context)
+
+
 async def handle_back_to_menu(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработчик нажатия кнопки "В меню раздела".'''
     query = update.callback_query
@@ -58,11 +64,11 @@ async def handle_back_to_menu(
 
 
 async def about_fund_menu_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработчик кнопок основного меню блока "О Фонде".'''
     message_data = await get_django_json(
-        'about_fund_keyboards/3:7/'
+        'about_fund_keyboards/2:7/'
     )
     menu_item = update.message.text
     key_message_data = next(
@@ -74,7 +80,7 @@ async def about_fund_menu_callback(
 
 
 async def about_fund_inline_btns_handler(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработчик inline кнопок всех меню блока "О Фонде".'''
     query = update.callback_query
@@ -97,7 +103,7 @@ async def send_about_fund_message(message: Message) -> None:
 
 
 async def about_fund_mission(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработчик кнопки "Миссия и основная цель".'''
     await send_about_fund_message(update.message)
@@ -127,7 +133,7 @@ async def send_things_path_message(message: Message) -> None:
 
 
 async def things_path(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработчик кнопки "Путь вещей".'''
     await send_things_path_message(update.message)
@@ -151,8 +157,8 @@ async def send_processes_anatomy_message(message: Message) -> None:
     при нажатии кнопки "Анатомия процессов".
     '''
     message_data = await get_django_json('about_fund_text/15:22/')
-    processes_anatomy_text = message_data.get("PROCESS_ANATOMY", "")
-    processes_anatomy_link = message_data.get("PROCESSES_LINK", "")
+    processes_anatomy_text = message_data.get('PROCESS_ANATOMY', '')
+    processes_anatomy_link = message_data.get('PROCESSES_LINK', '')
     processes_anatomy_text = processes_anatomy_text.format(
         PROCESSES_LINK=processes_anatomy_link
     )
@@ -165,7 +171,7 @@ async def send_processes_anatomy_message(message: Message) -> None:
 
 
 async def processes_anatomy(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработчик кнопки "Анатомия процессов".'''
     await send_processes_anatomy_message(update.message)
@@ -197,7 +203,7 @@ async def send_fund_projects_message(message: Message) -> None:
 
 
 async def fund_projects(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработчик кнопки "Проекты Фонда".'''
     await send_fund_projects_message(update.message)
@@ -217,8 +223,8 @@ async def send_annual_reports_message(message: Message) -> None:
     при нажатии кнопки "Годовые отчеты".
     '''
     message_data = await get_django_json('about_fund_text/20:21/')
-    annual_reports_text = message_data.get("ANNUAL_REPORTS", "")
-    annual_reports_link = message_data.get("ANNUAL_REPORTS_LINK", "")
+    annual_reports_text = message_data.get('ANNUAL_REPORTS', '')
+    annual_reports_link = message_data.get('ANNUAL_REPORTS_LINK', '')
     annual_reports_text = annual_reports_text.format(
         ANNUAL_REPORTS_LINK=annual_reports_link
     )
@@ -232,7 +238,7 @@ async def send_annual_reports_message(message: Message) -> None:
 
 
 async def annual_reports(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработчик кнопки "Годовые отчеты".'''
     await send_annual_reports_message(update.message)
