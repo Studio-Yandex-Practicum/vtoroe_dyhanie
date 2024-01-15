@@ -95,7 +95,9 @@ jobs:
             echo SENDER_EMAIL=${{ secrets.SENDER_EMAIL_DEPLOY }} >> .env
             echo RECEIVER_EMAIL=${{ secrets.RECEIVER_EMAIL_DEPLOY }} >> .env
             echo PASSWORD_EMAIL=${{ secrets.PASSWORD_EMAIL_DEPLOY }} >> .env
-            echo PORT=${{ secrets.PORT_DEPLOY }} >> .env
+            echo SMTP_PORT=${{ secrets.PORT }} >> .env
+            echo DB_NAME_BOT='bot' >> .env
+            echo DB_NAME_DJANGO='admin_django' >> .env
             cd infra/
             docker-compose rm -fsv
             docker rmi $(docker images -aq)
