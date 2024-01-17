@@ -1,6 +1,6 @@
 import smtplib
 import ssl
-from datetime import datetime
+
 
 from ..core.settings import settings
 
@@ -23,7 +23,7 @@ def send_email(subject, body_text):
     )
 
     with smtplib.SMTP_SSL(
-        settings.smtp_server, settings.port, context=context
+        settings.smtp_server, settings.smtp_port, context=context
     ) as server:
         server.login(settings.sender_email, settings.password_email)
         server.sendmail(
@@ -32,22 +32,3 @@ def send_email(subject, body_text):
             message.encode('UTF-8'),
         )
 
-
-def check_date_format(date_string):
-    try:
-        # Проверка корректности введенной даты
-        datetime.strptime(date_string, '%d-%m-%Y')
-        return True
-    except ValueError:
-        return False
-
-
-# Тестовые данные
-# subject = 'Тестирование'
-# body_text = '''Ненужная одежда — огромный ресурс и катализатор изменений. Она
-# важна для того, чтобы бездомный не замёрз на улице, а девушка из нуждающейся
-# семьи пошла на свой первый в жизни выпускной бал красивой. Одежда не только
-# помогает людям, но и создает рабочие места и даже может вернуться в нашу
-# жизнь в качестве набивки для дивана. '''
-
-# send_email(subject, body_text)

@@ -18,6 +18,8 @@
 "Да, было бы здорово посмотреть!" и др.
 '''
 
+import sys
+
 from telegram import CallbackQuery, Message, Update
 from telegram.constants import ParseMode
 from telegram.ext import (
@@ -28,49 +30,57 @@ from telegram.ext import (
     filters,
 )
 
-from bot.constants.about_fund_text import (
-    ANNUAL_REPORTS,
-    FUND_MISSION,
-    FUND_PROJECTS,
-    PROCESS_ANATOMY,
-    THINGS_PATH,
-)
 from bot.constants.query_patterns import ABOUT_PREFIX
-from bot.constants.text import BACK_TO_MENU
+from bot.handlers.menu_application import back_to_main_menu_callback
 from bot.keyboards.about_fund_keyboards import (
-    about_fund_markup,
     about_fund_section,
     annual_reports_markup,
-    fund_mission_markup,
+    func_navigation_menu,
     fund_projects_markup,
     processes_anatomy_markup,
     things_path_markup,
 )
+from bot.utils.admin_api import get_django_json, get_django_json_sync
 from bot.utils.send_message import send_message
 
 
+async def navigation_menu_back_to_main_menu(
+        update: Update, context: ContextTypes.DEFAULT_TYPE):
+    return await back_to_main_menu_callback(update, context)
+
+
 async def handle_back_to_menu(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработчик нажатия кнопки "В меню раздела".'''
     query = update.callback_query
     await query.answer()
     await query.message.edit_text('Возвращаемся в меню раздела «О фонде»...')
+    message_data = await get_django_json('text/10/')
+    back_to_menu_text = message_data.get("BACK_TO_MENU", "")
     await query.message.reply_text(
-        BACK_TO_MENU, reply_markup=about_fund_markup
+        back_to_menu_text, reply_markup=await about_fund_section()
     )
 
 
 async def about_fund_menu_callback(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработчик кнопок основного меню блока "О Фонде".'''
+    message_data = await get_django_json(
+        'about_fund_keyboards/2:7/'
+    )
     menu_item = update.message.text
-    await about_menu_handlers.get(menu_item)(update, context)
+    key_message_data = next(
+        (key for key, value in message_data.items() if value == menu_item),
+        None,
+    )
+    function_to_call = getattr(sys.modules[__name__], key_message_data, None)
+    await function_to_call(update, context)
 
 
 async def about_fund_inline_btns_handler(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработчик inline кнопок всех меню блока "О Фонде".'''
     query = update.callback_query
@@ -84,15 +94,16 @@ async def send_about_fund_message(message: Message) -> None:
     '''Отправляет сообщение и раскладку клавиатуры
     при нажатии кнопки "Миссия и основная цель".
     '''
+    message_data = await get_django_json('about_fund_text/4:9/')
     await send_message(
         message=message,
-        message_text_value=FUND_MISSION,
-        reply_markup=fund_mission_markup,
+        message_text_value=message_data,
+        reply_markup=await func_navigation_menu(),
     )
 
 
 async def about_fund_mission(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработчик кнопки "Миссия и основная цель".'''
     await send_about_fund_message(update.message)
@@ -109,21 +120,20 @@ async def handle_mission_more_info(query: CallbackQuery) -> None:
 
 
 # Блок "Путь вещей"
-
-
 async def send_things_path_message(message: Message) -> None:
     '''Отправляет сообщение и раскладку клавиатуры
     при нажатии кнопки "Путь вещей".
     '''
+    message_data = await get_django_json('about_fund_text/10:14/')
     await send_message(
         message=message,
-        message_text_value=THINGS_PATH,
-        reply_markup=things_path_markup,
+        message_text_value=message_data,
+        reply_markup=await things_path_markup(),
     )
 
 
 async def things_path(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработчик кнопки "Путь вещей".'''
     await send_things_path_message(update.message)
@@ -146,16 +156,22 @@ async def send_processes_anatomy_message(message: Message) -> None:
     '''Отправляет сообщение и раскладку клавиатуры
     при нажатии кнопки "Анатомия процессов".
     '''
+    message_data = await get_django_json('about_fund_text/15:22/')
+    processes_anatomy_text = message_data.get('PROCESS_ANATOMY', '')
+    processes_anatomy_link = message_data.get('PROCESSES_LINK', '')
+    processes_anatomy_text = processes_anatomy_text.format(
+        PROCESSES_LINK=processes_anatomy_link
+    )
     await message.reply_text(
-        PROCESS_ANATOMY,
-        parse_mode=ParseMode.MARKDOWN_V2,
+        processes_anatomy_text,
+        parse_mode=ParseMode.MARKDOWN,
         disable_web_page_preview=True,
-        reply_markup=processes_anatomy_markup,
+        reply_markup=await processes_anatomy_markup(),
     )
 
 
 async def processes_anatomy(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработчик кнопки "Анатомия процессов".'''
     await send_processes_anatomy_message(update.message)
@@ -178,15 +194,16 @@ async def send_fund_projects_message(message: Message) -> None:
     '''Отправляет сообщение и раскладку клавиатуры
     при нажатии кнопки "Проекты Фонда".
     '''
+    message_data = await get_django_json('about_fund_text/16:19/')
     await send_message(
         message=message,
-        message_text_value=FUND_PROJECTS,
-        reply_markup=fund_projects_markup,
+        message_text_value=message_data,
+        reply_markup=await fund_projects_markup(),
     )
 
 
 async def fund_projects(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработчик кнопки "Проекты Фонда".'''
     await send_fund_projects_message(update.message)
@@ -196,28 +213,32 @@ async def handle_projects_more_info(query: CallbackQuery) -> None:
     '''Обработчик кнопки "Почитаю с удовольствием!"
     ветки "Проекты Фонда".
     '''
-    # Спрятать inline-клавиатуру после нажатия кнопки
-    # await query.edit_message_reply_markup()
     await query.answer()
     await send_annual_reports_message(query.message)
 
 
 # Блок "Годовые отчеты"
-
-
 async def send_annual_reports_message(message: Message) -> None:
     '''Отправляет сообщение и раскладку клавиатуры
     при нажатии кнопки "Годовые отчеты".
     '''
-    await message.reply_markdown_v2(
-        ANNUAL_REPORTS,
+    message_data = await get_django_json('about_fund_text/20:21/')
+    annual_reports_text = message_data.get('ANNUAL_REPORTS', '')
+    annual_reports_link = message_data.get('ANNUAL_REPORTS_LINK', '')
+    annual_reports_text = annual_reports_text.format(
+        ANNUAL_REPORTS_LINK=annual_reports_link
+    )
+
+    await message.reply_text(
+        text=annual_reports_text,
+        parse_mode=ParseMode.MARKDOWN,
         disable_web_page_preview=True,
-        reply_markup=annual_reports_markup,
+        reply_markup=await annual_reports_markup(),
     )
 
 
 async def annual_reports(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+        update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     '''Обработчик кнопки "Годовые отчеты".'''
     await send_annual_reports_message(update.message)
@@ -229,16 +250,11 @@ about_inline_handlers = {
     f'{ABOUT_PREFIX}more_info_processes': handle_process_anatomy_more_info,
     f'{ABOUT_PREFIX}more_info_projects': handle_projects_more_info,
 }
-about_menu_handlers = {
-    'Миссия и основная цель': about_fund_mission,
-    'Путь вещей': things_path,
-    'Анатомия процессов': processes_anatomy,
-    'Проекты Фонда': fund_projects,
-    'Годовые отчеты': annual_reports,
-}
 
 
 def register_handlers(app: Application) -> None:
+    messages = get_django_json_sync('about_fund_keyboards/3:8/')
+    about_fund_text = [text for key, text in messages.items()]
     app.add_handler(
         CallbackQueryHandler(
             about_fund_inline_btns_handler,
@@ -251,7 +267,5 @@ def register_handlers(app: Application) -> None:
         )
     )
     app.add_handler(
-        MessageHandler(
-            filters.Text(about_fund_section), about_fund_menu_callback
-        )
+        MessageHandler(filters.Text(about_fund_text), about_fund_menu_callback)
     )

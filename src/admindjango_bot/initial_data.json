@@ -1,0 +1,2873 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$gy272bfKr0oCA7W9GyUD3f$PHPw0UV5hy625pxUjAJuTRV9B3iFIEue66960XR87pY=",
+    "last_login": "2023-11-13T14:46:32.324Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@mail.ru",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2023-11-04T17:01:42.947Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "admin_bot.aboutfundkeyboard",
+  "pk": 1,
+  "fields": {
+    "constant_description": "Общая часть для разных меню из блока О Фонде - две кнопки: Назад в меню блока и Назад в главное меню ",
+    "constant_text": "В меню раздела",
+    "constant_name": "navigation_menu_back_to_menu"
+  }
+},
+{
+  "model": "admin_bot.aboutfundkeyboard",
+  "pk": 2,
+  "fields": {
+    "constant_description": "Общая часть для разных меню из блока О Фонде - две кнопки: Назад в меню блока и Назад в главное меню ",
+    "constant_text": "В главное меню",
+    "constant_name": "navigation_menu_back_to_main_menu"
+  }
+},
+{
+  "model": "admin_bot.aboutfundkeyboard",
+  "pk": 3,
+  "fields": {
+    "constant_description": "Основная часть из блока О Фонде",
+    "constant_text": "Миссия и основная цель",
+    "constant_name": "about_fund_mission"
+  }
+},
+{
+  "model": "admin_bot.aboutfundkeyboard",
+  "pk": 4,
+  "fields": {
+    "constant_description": "Основная часть из блока О Фонде",
+    "constant_text": "Путь вещей",
+    "constant_name": "things_path"
+  }
+},
+{
+  "model": "admin_bot.aboutfundkeyboard",
+  "pk": 5,
+  "fields": {
+    "constant_description": "Основная часть из блока О Фонде",
+    "constant_text": "Анатомия процессов",
+    "constant_name": "processes_anatomy"
+  }
+},
+{
+  "model": "admin_bot.aboutfundkeyboard",
+  "pk": 6,
+  "fields": {
+    "constant_description": "Основная часть из блока О Фонде",
+    "constant_text": "Проекты Фонда",
+    "constant_name": "fund_projects"
+  }
+},
+{
+  "model": "admin_bot.aboutfundkeyboard",
+  "pk": 7,
+  "fields": {
+    "constant_description": "Основная часть из блока О Фонде",
+    "constant_text": "Годовые отчеты",
+    "constant_name": "annual_reports"
+  }
+},
+{
+  "model": "admin_bot.aboutfundkeyboard",
+  "pk": 8,
+  "fields": {
+    "constant_description": "Основная часть из блока О Фонде",
+    "constant_text": "В главное меню",
+    "constant_name": "about_fund_section_6"
+  }
+},
+{
+  "model": "admin_bot.aboutfundkeyboard",
+  "pk": 9,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Конечно! Расскажи подробнее!",
+    "constant_name": "fund_mission_menu"
+  }
+},
+{
+  "model": "admin_bot.aboutfundkeyboard",
+  "pk": 10,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Да, было бы здорово посмотреть!",
+    "constant_name": "things_path_menu"
+  }
+},
+{
+  "model": "admin_bot.aboutfundkeyboard",
+  "pk": 11,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Конечно! Какие?",
+    "constant_name": "processes_anatomy_menu"
+  }
+},
+{
+  "model": "admin_bot.aboutfundkeyboard",
+  "pk": 12,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Почитаю с удовольствием!",
+    "constant_name": "fund_projects_menu"
+  }
+},
+{
+  "model": "admin_bot.aboutfundkeyboard",
+  "pk": 13,
+  "fields": {
+    "constant_description": "Общая часть для разных меню из блока О Фонде - две кнопки: Назад в меню блока и Назад в главное меню ",
+    "constant_text": "Обязательно прочту!",
+    "constant_name": "annual_reports_menu"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 1,
+  "fields": {
+    "constant_description": "Клавиатура для подраздела \"основная информация\"",
+    "constant_text": "Организационная структура",
+    "constant_name": "basic_information_keyboard_organization_structure"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 2,
+  "fields": {
+    "constant_description": "Клавиатура для подраздела \"основная информация\"",
+    "constant_text": "Наша команда",
+    "constant_name": "basic_information_keyboard_our_team"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 3,
+  "fields": {
+    "constant_description": "Клавиатура для подраздела \"основная информация\"",
+    "constant_text": "Соцсети Фонда",
+    "constant_name": "basic_information_keyboard_social_networks"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 4,
+  "fields": {
+    "constant_description": "Клавиатура для подраздела \"основная информация\"",
+    "constant_text": "Вернуться в главное меню",
+    "constant_name": "basic_information_keyboard_back_to_main_menu"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 5,
+  "fields": {
+    "constant_description": "Клавиатура для \"Организационная структура\"",
+    "constant_text": "Совет Фонда",
+    "constant_name": "org_structure_keyboard_council"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 6,
+  "fields": {
+    "constant_description": "Клавиатура для \"Организационная структура\"",
+    "constant_text": "Попечительский совет",
+    "constant_name": "org_structure_keyboard_guardian_council"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 7,
+  "fields": {
+    "constant_description": "Клавиатура для \"Организационная структура\"",
+    "constant_text": "Отделы Фонда",
+    "constant_name": "org_structure_keyboard_about_departments"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 8,
+  "fields": {
+    "constant_description": "Клавиатура для \"Организационная структура\"",
+    "constant_text": "Назад",
+    "constant_name": "org_structure_keyboard_basic_information_back"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 9,
+  "fields": {
+    "constant_description": "Клавиатура для \"Организационная структура\"",
+    "constant_text": "В главное меню",
+    "constant_name": "org_structure_keyboard_back_to_main_menu"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 10,
+  "fields": {
+    "constant_description": "Клавиатура для \"Наша команда\"",
+    "constant_text": "Список контактов",
+    "constant_name": "our_team_keyboard_contact_list"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 11,
+  "fields": {
+    "constant_description": "Клавиатура для \"Наша команда\"",
+    "constant_text": "Отделы Фонда",
+    "constant_name": "our_team_keyboard_org_departmentss"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 12,
+  "fields": {
+    "constant_description": "Клавиатура для \"Наша команда\"",
+    "constant_text": "Назад",
+    "constant_name": "our_team_keyboard_basic_information_back"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 13,
+  "fields": {
+    "constant_description": "Клавиатура для \"Наша команда\"",
+    "constant_text": "В главное меню",
+    "constant_name": "our_team_keyboard_back_to_main_menu"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 14,
+  "fields": {
+    "constant_description": "Клавиатура для \"Наша команда\"",
+    "constant_text": "Спасибо, изучу!",
+    "constant_name": "social_networks_keyboard_basic_information_back"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 15,
+  "fields": {
+    "constant_description": "Клавиатура для \"Наша команда\"",
+    "constant_text": "В главное меню",
+    "constant_name": "social_networks_keyboard_back_to_main_menu"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 16,
+  "fields": {
+    "constant_description": "Клавиатура для \"Совет Фонда\"",
+    "constant_text": "За что отвечает Совет Фонда?",
+    "constant_name": "council_keyboard_council_question_01"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 17,
+  "fields": {
+    "constant_description": "Клавиатура для \"Совет Фонда\"",
+    "constant_text": "Что делает Совет Фонда?",
+    "constant_name": "council_keyboard_council_question_02"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 18,
+  "fields": {
+    "constant_description": "Клавиатура для \"Совет Фонда\"",
+    "constant_text": "Как связаны Директор и Совет Фонда?",
+    "constant_name": "council_keyboard_council_question_03"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 19,
+  "fields": {
+    "constant_description": "Клавиатура для \"Совет Фонда\"",
+    "constant_text": "В чем различие между директором Фонда и Председателем Совета? Кто \"главнее\"?",
+    "constant_name": "council_keyboard_council_question_04"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 20,
+  "fields": {
+    "constant_description": "Клавиатура для \"Совет Фонда\"",
+    "constant_text": "Как формировался Совет фонда?",
+    "constant_name": "council_keyboard_council_question_05"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 21,
+  "fields": {
+    "constant_description": "Клавиатура для \"Совет Фонда\"",
+    "constant_text": "Чем занимается Попечительский Совет Фонда?",
+    "constant_name": "council_keyboard_council_question_06"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 22,
+  "fields": {
+    "constant_description": "Клавиатура для \"Совет Фонда\" и \"Отделы Фонда\"",
+    "constant_text": "Назад",
+    "constant_name": "council_keyboard_organization_structure"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 23,
+  "fields": {
+    "constant_description": "Клавиатура для \"Совет Фонда\" и \"Отделы Фонда\"",
+    "constant_text": "В главное меню",
+    "constant_name": "council_keyboard_back_to_main_menu"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 24,
+  "fields": {
+    "constant_description": "Клавиатура для \"Отделы Фонда\"",
+    "constant_text": "Отдел благотворительных программ",
+    "constant_name": "departments_keyboard_base_department_01"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 25,
+  "fields": {
+    "constant_description": "Клавиатура для \"Отделы Фонда\"",
+    "constant_text": "Отдел информационных программ",
+    "constant_name": "departments_keyboard_base_department_02"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 26,
+  "fields": {
+    "constant_description": "Клавиатура для \"Отделы Фонда\"",
+    "constant_text": "Центр сортировки г. Москва",
+    "constant_name": "departments_keyboard_base_department_03"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 27,
+  "fields": {
+    "constant_description": "Клавиатура для \"Отделы Фонда\"",
+    "constant_text": "Центр сортировки и переработки г. Кострома",
+    "constant_name": "departments_keyboard_base_department_04"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 28,
+  "fields": {
+    "constant_description": "Клавиатура для \"Отделы Фонда\"",
+    "constant_text": "Центр гуманитарной помощи г. Кострома",
+    "constant_name": "departments_keyboard_base_department_05"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 29,
+  "fields": {
+    "constant_description": "Клавиатура для \"Отделы Фонда\"",
+    "constant_text": "Отдел по работе с партнёрами",
+    "constant_name": "departments_keyboard_base_department_06"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 30,
+  "fields": {
+    "constant_description": "Клавиатура для \"Отделы Фонда\"",
+    "constant_text": "Отдел коммуникаций",
+    "constant_name": "departments_keyboard_base_department_07"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 31,
+  "fields": {
+    "constant_description": "Клавиатура для \"Отделы Фонда\"",
+    "constant_text": "Финансово-административный отдел/Административный отдел",
+    "constant_name": "departments_keyboard_base_department_08"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 32,
+  "fields": {
+    "constant_description": "Клавиатура для \"Отделы Фонда\"",
+    "constant_text": "Мастерская г. Москва",
+    "constant_name": "departments_keyboard_base_department_09"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 33,
+  "fields": {
+    "constant_description": "Клавиатура для \"Отделы Фонда\"",
+    "constant_text": "Отдел управления персоналом",
+    "constant_name": "departments_keyboard_base_department_10"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 34,
+  "fields": {
+    "constant_description": "Клавиатура для \"Отделы Фонда\"",
+    "constant_text": "Назад",
+    "constant_name": "departments_keyboard_our_team"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 35,
+  "fields": {
+    "constant_description": "Клавиатура для \"Отделы Фонда\"",
+    "constant_text": "В главное меню",
+    "constant_name": "departments_keyboard_back_to_main_menu"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 36,
+  "fields": {
+    "constant_description": "Клавиатура для возвратов из раздела о департаментах",
+    "constant_text": "Понятно, спасибо!",
+    "constant_name": "departments_final_keyboard_back_to_main_menu"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 37,
+  "fields": {
+    "constant_description": "Клавиатура для возвратов из раздела о департаментах",
+    "constant_text": "Назад",
+    "constant_name": "departments_final_keyboard_about_departments"
+  }
+},
+{
+  "model": "admin_bot.basicinfokeyboard",
+  "pk": 38,
+  "fields": {
+    "constant_description": "Клавиатура для 'guardian_council'",
+    "constant_text": "Понятно, спасибо!",
+    "constant_name": "guardian_council_keyboard"
+  }
+},
+{
+  "model": "admin_bot.keyboard",
+  "pk": 1,
+  "fields": {
+    "constant_description": "Основное меню",
+    "constant_text": "О Фонде",
+    "constant_name": "main_menu_keyboard_1_1"
+  }
+},
+{
+  "model": "admin_bot.keyboard",
+  "pk": 2,
+  "fields": {
+    "constant_description": "Основное меню",
+    "constant_text": "Онбординг",
+    "constant_name": "main_menu_keyboard_1_2"
+  }
+},
+{
+  "model": "admin_bot.keyboard",
+  "pk": 3,
+  "fields": {
+    "constant_description": "Основное меню",
+    "constant_text": "Основная информация",
+    "constant_name": "main_menu_keyboard_2_1"
+  }
+},
+{
+  "model": "admin_bot.keyboard",
+  "pk": 4,
+  "fields": {
+    "constant_description": "Основное меню",
+    "constant_text": "Общие правила",
+    "constant_name": "main_menu_keyboard_2_2"
+  }
+},
+{
+  "model": "admin_bot.keyboard",
+  "pk": 5,
+  "fields": {
+    "constant_description": "Основное меню",
+    "constant_text": "База знаний",
+    "constant_name": "main_menu_keyboard_3_1"
+  }
+},
+{
+  "model": "admin_bot.keyboard",
+  "pk": 6,
+  "fields": {
+    "constant_description": "Основное меню",
+    "constant_text": "Обратная связь",
+    "constant_name": "main_menu_keyboard_3_2"
+  }
+},
+{
+  "model": "admin_bot.keyboard",
+  "pk": 7,
+  "fields": {
+    "constant_description": "Основное меню",
+    "constant_text": "Регламенты и формы",
+    "constant_name": "main_menu_keyboard_4_1"
+  }
+},
+{
+  "model": "admin_bot.keyboard",
+  "pk": 8,
+  "fields": {
+    "constant_description": "Основное меню",
+    "constant_text": "FAQ",
+    "constant_name": "main_menu_keyboard_4_2"
+  }
+},
+{
+  "model": "admin_bot.keyboard",
+  "pk": 9,
+  "fields": {
+    "constant_description": "Основное меню",
+    "constant_text": "Список контактов",
+    "constant_name": "main_menu_keyboard_5"
+  }
+},
+{
+  "model": "admin_bot.keyboard",
+  "pk": 10,
+  "fields": {
+    "constant_description": "FAQ Меню",
+    "constant_text": "Организационные вопросы",
+    "constant_name": "faq_menu_keyboard_1_1"
+  }
+},
+{
+  "model": "admin_bot.keyboard",
+  "pk": 11,
+  "fields": {
+    "constant_description": "FAQ Меню",
+    "constant_text": "Волонтёрство",
+    "constant_name": "faq_menu_keyboard_1_2"
+  }
+},
+{
+  "model": "admin_bot.keyboard",
+  "pk": 12,
+  "fields": {
+    "constant_description": "FAQ Меню",
+    "constant_text": "Обучение",
+    "constant_name": "faq_menu_keyboard_2_1"
+  }
+},
+{
+  "model": "admin_bot.keyboard",
+  "pk": 13,
+  "fields": {
+    "constant_description": "FAQ Меню",
+    "constant_text": "Отпуск",
+    "constant_name": "faq_menu_keyboard_2_2"
+  }
+},
+{
+  "model": "admin_bot.keyboard",
+  "pk": 14,
+  "fields": {
+    "constant_description": "FAQ Меню",
+    "constant_text": "Рабочий процесс",
+    "constant_name": "faq_menu_keyboard_3_1"
+  }
+},
+{
+  "model": "admin_bot.keyboard",
+  "pk": 15,
+  "fields": {
+    "constant_description": "FAQ Меню",
+    "constant_text": "Административные вопросы",
+    "constant_name": "faq_menu_keyboard_3_2"
+  }
+},
+{
+  "model": "admin_bot.keyboard",
+  "pk": 16,
+  "fields": {
+    "constant_description": "FAQ Меню",
+    "constant_text": "Оформление документов",
+    "constant_name": "faq_menu_keyboard_4_1"
+  }
+},
+{
+  "model": "admin_bot.keyboard",
+  "pk": 17,
+  "fields": {
+    "constant_description": "FAQ Меню",
+    "constant_text": "Командировки",
+    "constant_name": "faq_menu_keyboard_4_2"
+  }
+},
+{
+  "model": "admin_bot.keyboard",
+  "pk": 18,
+  "fields": {
+    "constant_description": "FAQ Меню",
+    "constant_text": "В главное меню",
+    "constant_name": "faq_menu_keyboard_5"
+  }
+},
+{
+  "model": "admin_bot.keyboard",
+  "pk": 19,
+  "fields": {
+    "constant_description": "Вовзрат назад",
+    "constant_text": "Назад",
+    "constant_name": "BACK_BUTTON"
+  }
+},
+{
+  "model": "admin_bot.keyboard",
+  "pk": 20,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Миссия и основная цель",
+    "constant_name": "about_fund_mission"
+  }
+},
+{
+  "model": "admin_bot.keyboard",
+  "pk": 21,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Путь вещей",
+    "constant_name": "things_path"
+  }
+},
+{
+  "model": "admin_bot.keyboard",
+  "pk": 22,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Анатомия процессов",
+    "constant_name": "processes_anatomy"
+  }
+},
+{
+  "model": "admin_bot.keyboard",
+  "pk": 23,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Проекты Фонда",
+    "constant_name": "fund_projects"
+  }
+},
+{
+  "model": "admin_bot.keyboard",
+  "pk": 24,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Годовые отчеты",
+    "constant_name": "annual_reports"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 1,
+  "fields": {
+    "constant_description": "Клавиатура для подраздела \"Онбординг\"",
+    "constant_text": "Новичок",
+    "constant_name": "onboarding_keyboard_beginner"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 2,
+  "fields": {
+    "constant_description": "Клавиатура для подраздела \"Онбординг\"",
+    "constant_text": "Руководитель",
+    "constant_name": "onboarding_keyboard_director"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 3,
+  "fields": {
+    "constant_description": "Клавиатура для подраздела \"Онбординг\"",
+    "constant_text": "Наставник/Бадди",
+    "constant_name": "onboarding_keyboard_mentor_or_buddy"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 4,
+  "fields": {
+    "constant_description": "Клавиатура для подраздела \"Онбординг\"",
+    "constant_text": "Назад в меню",
+    "constant_name": "onboarding_keyboard_back_to_main_menu"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 5,
+  "fields": {
+    "constant_description": "Клавиатура для \"Наставник/Бадди\"",
+    "constant_text": "Задачи Наставника/Бадди",
+    "constant_name": "mentor_keyboard_menor_tasks"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 6,
+  "fields": {
+    "constant_description": "Клавиатура для \"Наставник/Бадди\"",
+    "constant_text": "Ой, мне не сюда",
+    "constant_name": "mentor_keyboard_back_to_main_menu"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 7,
+  "fields": {
+    "constant_description": "Клавиатура для \"Задачи Наставника/Бадди\"",
+    "constant_text": "Понятно, спасибо!",
+    "constant_name": "mentor_tasks_keyboard_back_to_main_menu"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 8,
+  "fields": {
+    "constant_description": "Клавиатура для 'Новичка'",
+    "constant_text": "Ой, мне не сюда",
+    "constant_name": "beginner_keyboard_back_to_main_menu"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 9,
+  "fields": {
+    "constant_description": "Клавиатура после турдоустройства 'Новичка'",
+    "constant_text": "Первый день",
+    "constant_name": "beginner_employment_keyboard_first_day"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 10,
+  "fields": {
+    "constant_description": "Клавиатура после турдоустройства 'Новичка'",
+    "constant_text": "Этапы адаптации",
+    "constant_name": "beginner_employment_keyboard_adaptation"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 11,
+  "fields": {
+    "constant_description": "Клавиатура после турдоустройства 'Новичка'",
+    "constant_text": "План работы на испытательный срок",
+    "constant_name": "beginner_employment_keyboard_work_plan"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 12,
+  "fields": {
+    "constant_description": "Клавиатура после турдоустройства 'Новичка'",
+    "constant_text": "Чек-лист нового сотрудника",
+    "constant_name": "beginner_employment_keyboard_checklist"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 13,
+  "fields": {
+    "constant_description": "Клавиатура для выхода",
+    "constant_text": "Назад",
+    "constant_name": "navigation_menu_beginner_back"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 14,
+  "fields": {
+    "constant_description": "Клавиатура для выхода",
+    "constant_text": "В главное меню",
+    "constant_name": "navigation_menu_back_to_main_menu"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 15,
+  "fields": {
+    "constant_description": "Клавиатура для выхода из раздела 'Первый день'",
+    "constant_text": "Да, нужен чек-лист, спасибо!",
+    "constant_name": "first_day_keyboard_checklist"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 16,
+  "fields": {
+    "constant_description": "Клавиатура для выхода из раздела 'Этапы адаптации'",
+    "constant_text": "Да, давай!",
+    "constant_name": "adaptation_keyboard_work_plan"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 17,
+  "fields": {
+    "constant_description": "Клавиатура для выхода из раздела 'План работы на испытательный срок'",
+    "constant_text": "Все ясно, спасибо",
+    "constant_name": "work_plan_keyboard_back_to_main_menu"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 18,
+  "fields": {
+    "constant_description": "Клавиатура для выхода из раздела 'План работы на испытательный срок'",
+    "constant_text": "Назад",
+    "constant_name": "work_plan_keyboard_beginner_back"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 19,
+  "fields": {
+    "constant_description": "Клавиатура для выхода из раздела 'Чек лист нового сотрудника'",
+    "constant_text": "То, что нужно! Спасибо!",
+    "constant_name": "checklist_keyboard_back_to_main_menu"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 20,
+  "fields": {
+    "constant_description": "Клавиатура для выхода из раздела 'Чек лист нового сотрудника'",
+    "constant_text": "Назад",
+    "constant_name": "checklist_keyboard_beginner_back"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 21,
+  "fields": {
+    "constant_description": "Клавиатура для 'Руководитель'",
+    "constant_text": "Супер, давай!",
+    "constant_name": "director_keyboard_director_confirmation"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 22,
+  "fields": {
+    "constant_description": "Клавиатура для 'Руководитель'",
+    "constant_text": "Что за встречи?",
+    "constant_name": "director_keyboard_director_question"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 23,
+  "fields": {
+    "constant_description": "Клавиатура для 'Руководитель'",
+    "constant_text": "Задачи руководителя",
+    "constant_name": "director_keyboard_director_tasks"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 24,
+  "fields": {
+    "constant_description": "Клавиатура для 'Руководитель'",
+    "constant_text": "Ой, мне не сюда",
+    "constant_name": "director_keyboard_back_to_main_menu"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 25,
+  "fields": {
+    "constant_description": "Клавиатура для 'Задачи Руководителя'",
+    "constant_text": "Ок, спасибо!",
+    "constant_name": "director_tasks_keyboard_back_to_main_menu"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 26,
+  "fields": {
+    "constant_description": "Клавиатура для возврата из раздела 'Что за встречи'",
+    "constant_text": "Ясно, спасибо!",
+    "constant_name": "director_question_keyboard_back_to_main_menu"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 27,
+  "fields": {
+    "constant_description": "Клавиатура для возврата из раздела 'Супер, давай'",
+    "constant_text": "Назад",
+    "constant_name": "director_confirm_keyboard_back_to_main_menu"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 28,
+  "fields": {
+    "constant_description": "Клавиатура новичка после прихода письма",
+    "constant_text": "Все отлично!",
+    "constant_name": "feedback_keyboard_great"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 29,
+  "fields": {
+    "constant_description": "Клавиатура новичка после прихода письма",
+    "constant_text": "50/50",
+    "constant_name": "feedback_keyboard_so_so"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 30,
+  "fields": {
+    "constant_description": "Клавиатура новичка после прихода письма",
+    "constant_text": "Не все гладко, help",
+    "constant_name": "feedback_keyboard_help"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 31,
+  "fields": {
+  "constant_description": "Клавиатура новичка после прихода письма",
+  "constant_text": "Оставить развёрнутый отзыв",
+  "constant_name": "expanded_feedback_keyboard"
+}
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 32,
+  "fields": {
+  "constant_description": "Клавиатура возврата к выбору отзыва",
+  "constant_text": "Вернуться в предыдущее меню",
+  "constant_name": "return_to_feedback_menu_keyboard"
+}
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 33,
+  "fields": {
+    "constant_description": "Клавиатура ответов на вопрос, назначена ли встреча",
+    "constant_text": "Да все в календаре",
+    "constant_name": "calendar_keyboard_yes"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 34,
+  "fields": {
+    "constant_description": "Клавиатура ответов на вопрос, назначена ли встреча",
+    "constant_text": "Еще не успел",
+    "constant_name": "calendar_keyboard_no"
+  }
+},
+{
+  "model": "admin_bot.onboardingkeyboard",
+  "pk": 35,
+  "fields": {
+    "constant_description": "Переход в главное меню по окончании ветки отложенного сообщения",
+    "constant_text": "Ясно, спасибо!",
+    "constant_name": "thanks_keyboard_back_to_main_menu"
+  }
+},
+{
+  "model": "admin_bot.ruleskeyboard",
+  "pk": 1,
+  "fields": {
+    "constant_description": "Клавиатура для подраздела \"Общие правила\"",
+    "constant_text": "Коммуникация",
+    "constant_name": "rules_keyboard_communication"
+  }
+},
+{
+  "model": "admin_bot.ruleskeyboard",
+  "pk": 2,
+  "fields": {
+    "constant_description": "Клавиатура для подраздела \"Общие правила\"",
+    "constant_text": "Мастерская",
+    "constant_name": "rules_keyboard_workshop"
+  }
+},
+{
+  "model": "admin_bot.ruleskeyboard",
+  "pk": 3,
+  "fields": {
+    "constant_description": "Клавиатура для подраздела \"Общие правила\"",
+    "constant_text": "Кухня",
+    "constant_name": "rules_keyboard_kitchen"
+  }
+},
+{
+  "model": "admin_bot.ruleskeyboard",
+  "pk": 4,
+  "fields": {
+    "constant_description": "Клавиатура для подраздела \"Общие правила\"",
+    "constant_text": "Раздельный сбор",
+    "constant_name": "rules_keyboard_separate_collection"
+  }
+},
+{
+  "model": "admin_bot.ruleskeyboard",
+  "pk": 5,
+  "fields": {
+    "constant_description": "Клавиатура для подраздела \"Общие правила\"",
+    "constant_text": "Регулярные встречи",
+    "constant_name": "rules_keyboard_regular_meetings"
+  }
+},
+{
+  "model": "admin_bot.ruleskeyboard",
+  "pk": 6,
+  "fields": {
+    "constant_description": "Клавиатура для 'Коммуникация'",
+    "constant_text": "Внутренняя коммуникация",
+    "constant_name": "communication_keyboard_in_communication"
+  }
+},
+{
+  "model": "admin_bot.ruleskeyboard",
+  "pk": 7,
+  "fields": {
+    "constant_description": "Клавиатура для 'Коммуникация'",
+    "constant_text": "Внешняя коммуникация",
+    "constant_name": "communication_keyboard_out_communication"
+  }
+},
+{
+  "model": "admin_bot.ruleskeyboard",
+  "pk": 8,
+  "fields": {
+    "constant_description": "Клавиатура для 'Коммуникация'",
+    "constant_text": "Назад",
+    "constant_name": "communication_keyboard_rules_back"
+  }
+},
+{
+  "model": "admin_bot.ruleskeyboard",
+  "pk": 9,
+  "fields": {
+    "constant_description": "Клавиатура для 'Коммуникация'",
+    "constant_text": "В главное меню",
+    "constant_name": "communication_keyboard_back_to_main_menu"
+  }
+},
+{
+  "model": "admin_bot.ruleskeyboard",
+  "pk": 10,
+  "fields": {
+    "constant_description": "Клавиатура для 'Мастерская'",
+    "constant_text": "Назад",
+    "constant_name": "workshop_keyboard_rules_back"
+  }
+},
+{
+  "model": "admin_bot.ruleskeyboard",
+  "pk": 11,
+  "fields": {
+    "constant_description": "Клавиатура для 'Мастерская'",
+    "constant_text": "В главное меню",
+    "constant_name": "workshop_keyboard_back_to_main_menu"
+  }
+},
+{
+  "model": "admin_bot.ruleskeyboard",
+  "pk": 12,
+  "fields": {
+    "constant_description": "Клавиатура для 'Кухня'",
+    "constant_text": "Назад",
+    "constant_name": "kitchen_keyboard_rules_back"
+  }
+},
+{
+  "model": "admin_bot.ruleskeyboard",
+  "pk": 13,
+  "fields": {
+    "constant_description": "Клавиатура для 'Кухня'",
+    "constant_text": "В главное меню",
+    "constant_name": "kitchen_keyboard_back_to_main_menu"
+  }
+},
+{
+  "model": "admin_bot.ruleskeyboard",
+  "pk": 14,
+  "fields": {
+    "constant_description": "Клавиатура для 'Раздельный сбор'",
+    "constant_text": "Назад",
+    "constant_name": "separate_collection_keyboard_rules_back"
+  }
+},
+{
+  "model": "admin_bot.ruleskeyboard",
+  "pk": 15,
+  "fields": {
+    "constant_description": "Клавиатура для 'Раздельный сбор'",
+    "constant_text": "В главное меню",
+    "constant_name": "separate_collection_keyboard_back_to_main_menu"
+  }
+},
+{
+  "model": "admin_bot.ruleskeyboard",
+  "pk": 16,
+  "fields": {
+    "constant_description": "Клавиатура для 'Регулярные встречи'",
+    "constant_text": "Назад",
+    "constant_name": "regular_meetings_keyboard_rules_back"
+  }
+},
+{
+  "model": "admin_bot.ruleskeyboard",
+  "pk": 17,
+  "fields": {
+    "constant_description": "Клавиатура для 'Регулярные встречи'",
+    "constant_text": "В главное меню",
+    "constant_name": "regular_meetings_keyboard_back_to_main_menu"
+  }
+},
+{
+  "model": "admin_bot.ruleskeyboard",
+  "pk": 18,
+  "fields": {
+    "constant_description": "Клавиатура для возврата из раздела о внутренней коммуникации",
+    "constant_text": "Все понятно!",
+    "constant_name": "in_communication_keyboard_back_to_main_menu"
+  }
+},
+{
+  "model": "admin_bot.ruleskeyboard",
+  "pk": 19,
+  "fields": {
+    "constant_description": "Клавиатура для возврата из раздела о внутренней коммуникации",
+    "constant_text": "Назад",
+    "constant_name": "in_communication_keyboard_rules_back"
+  }
+},
+{
+  "model": "admin_bot.ruleskeyboard",
+  "pk": 20,
+  "fields": {
+    "constant_description": "Клавиатура для возврата из раздела о внешней коммуникации",
+    "constant_text": "Назад",
+    "constant_name": "out_communication_keyboard_rules_back"
+  }
+},
+{
+  "model": "admin_bot.ruleskeyboard",
+  "pk": 21,
+  "fields": {
+    "constant_description": "Клавиатура для возврата из раздела о внешней коммуникации",
+    "constant_text": "В главное меню",
+    "constant_name": "out_communication_keyboard_back_to_main_menu"
+  }
+},
+{
+  "model": "admin_bot.ruleskeyboard",
+  "pk": 22,
+  "fields": {
+    "constant_description": "Клавиатура для возврата из раздела о внешней коммуникации",
+    "constant_text": "Перейти на сайт в раздел коммуникация",
+    "constant_name": "out_communication_keyboard_url"
+  }
+},
+{
+  "model": "admin_bot.aboutfundtext",
+  "pk": 1,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Для начала немного 👀",
+    "constant_name": "ABOUT_FUND_HISTORY_msg_1"
+  }
+},
+{
+  "model": "admin_bot.aboutfundtext",
+  "pk": 2,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Весной 2013 года во дворе собора St. Andrews прошла благотворительная распродажа в поддержку Центра равных  возможностей «Вверх». Несколько девушек собрали свою  одежду и продали её, а вырученные средства направили в «Вверх».  С этой акции началась наша история – спустя год её инициатор  Дарья Алексеева открыла постоянно работающий  магазин Charity Shop, а еще спустя год в ноябре 2015 года был зарегистрирован фонд ВТОРОЕ ДЫХАНИЕ.",
+    "constant_name": "ABOUT_FUND_HISTORY_msg_2"
+  }
+},
+{
+  "model": "admin_bot.aboutfundtext",
+  "pk": 3,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Сегодня фонд ВТОРОЕ ДЫХАНИЕ – это крупнейшая некоммерческая организация в России,занимающаяся сбором, сортировкой, перераспределением и переработкой одежды на любой стадии ее жизни.",
+    "constant_name": "ABOUT_FUND_HISTORY_msg_3"
+  }
+},
+{
+  "model": "admin_bot.aboutfundtext",
+  "pk": 4,
+  "fields": {
+    "constant_description": "Миссия и основная цель",
+    "constant_text": "Здорово, что тебе интересно! Начну рассказ с важных цифр.",
+    "constant_name": "FUND_MISSION_msg_1"
+  }
+},
+{
+  "model": "admin_bot.aboutfundtext",
+  "pk": 5,
+  "fields": {
+    "constant_description": "Миссия и основная цель",
+    "constant_text": "Ежегодно в России выбрасывают от 60 до 70 миллионов тонн твердых бытовых отходов. Одежда и текстильные отходы составляют от 3 до 7% на мусорных полигонах – то есть по меньшей мере 2 миллиона тонн одежды ежегодно оказывается на свалках. Одежда разлагается до 200 лет, и в процессе выделяет метан, загрязняет почву и грунтовые воды и увеличивает объем мусорных полигонов. 😔",
+    "constant_name": "FUND_MISSION_msg_2"
+  }
+},
+{
+  "model": "admin_bot.aboutfundtext",
+  "pk": 6,
+  "fields": {
+    "constant_description": "Миссия и основная цель",
+    "constant_text": "Фонд ВТОРОЕ ДЫХАНИЕ старается предотвратить попадание одежды на полигоны и создаёт инфраструктуру приема ненужных вещей, которые  при грамотном и эффективном использовании могут стать ценным ресурсом для решения социальных и экологических проблем.",
+    "constant_name": "FUND_MISSION_msg_3"
+  }
+},
+{
+  "model": "admin_bot.aboutfundtext",
+  "pk": 7,
+  "fields": {
+    "constant_description": "Миссия и основная цель",
+    "constant_text": "Мы стремимся к развитию системы повторного использования и переработки текстиля с 1%(столько собиралось в стране в 2022 году от общей массы выброшенного) до 50%.",
+    "constant_name": "FUND_MISSION_msg_4"
+  }
+},
+{
+  "model": "admin_bot.aboutfundtext",
+  "pk": 8,
+  "fields": {
+    "constant_description": "Миссия и основная цель",
+    "constant_text": "Наша миссия – ОСОЗНАННОЕ ПОТРЕБЛЕНИЕ КАК ОБРАЗ ЖИЗНИ.",
+    "constant_name": "FUND_MISSION_msg_5"
+  }
+},
+{
+  "model": "admin_bot.aboutfundtext",
+  "pk": 9,
+  "fields": {
+    "constant_description": "Миссия и основная цель",
+    "constant_text": "*Хочешь узнать, куда направляются вещи, которые сдают в Фонд?*",
+    "constant_name": "FUND_MISSION_msg_6"
+  }
+},
+{
+  "model": "admin_bot.aboutfundtext",
+  "pk": 10,
+  "fields": {
+    "constant_description": "Путь вещей",
+    "constant_text": "Мы дарим старым вещам новую жизнь несколькими способами👇",
+    "constant_name": "THINGS_PATH_msg_1"
+  }
+},
+{
+  "model": "admin_bot.aboutfundtext",
+  "pk": 11,
+  "fields": {
+    "constant_description": "Путь вещей",
+    "constant_text": "Вещи, собранные Фондом и пригодные к повторному использованию, передаются на благотворительность – нуждающимся семьям и людям, попавшим в сложную жизненную ситуацию. Мы оказываем благотворительную помощь в сотрудничестве с организациями, которые работают с людьми, нуждающимися в поддержке, а также фондами по защите животных и социальным учреждениями.",
+    "constant_name": "THINGS_PATH_msg_2"
+  }
+},
+{
+  "model": "admin_bot.aboutfundtext",
+  "pk": 12,
+  "fields": {
+    "constant_description": "Путь вещей",
+    "constant_text": "Часть вещей продается в магазинах ВТОРОЕ ДЫХАНИЕ (Charity Shop)  в Москве, Ярославле, Костроме, Ростове Великом. Магазины нужны  для обеспечения собственных нужд фонда, выплаты заработной платы сотрудникам и аренды помещений.",
+    "constant_name": "THINGS_PATH_msg_3"
+  }
+},
+{
+  "model": "admin_bot.aboutfundtext",
+  "pk": 13,
+  "fields": {
+    "constant_description": "Путь вещей",
+    "constant_text": "Одежда, непригодная для дальнейшей носки, отправляется на переработку.",
+    "constant_name": "THINGS_PATH_msg_4"
+  }
+},
+{
+  "model": "admin_bot.aboutfundtext",
+  "pk": 14,
+  "fields": {
+    "constant_description": "Путь вещей",
+    "constant_text": "*Показать, как выглядит анатомия процессов в Фонде, чтобы было нагляднее?*",
+    "constant_name": "THINGS_PATH_msg_5"
+  }
+},
+{
+  "model": "admin_bot.aboutfundtext",
+  "pk": 15,
+  "fields": {
+    "constant_description": "Анатомия процессов",
+    "constant_text": "Иногда лучше 1 раз увидеть, чем 100 раз услышать, да?😄 \r\n\r\nПосмотри, [как устроен процесс работы с одеждой]({PROCESSES_LINK}) в Фонде\r\n\r\n*Рассказать какие еще проекты реализует наш Фонд?*",
+    "constant_name": "PROCESS_ANATOMY"
+  }
+},
+{
+  "model": "admin_bot.aboutfundtext",
+  "pk": 16,
+  "fields": {
+    "constant_description": "Проекты Фонда",
+    "constant_text": "Наш Фонд работает по принципу стартапа: мы тестируем гипотезы и принимаем те, которые сработали, а от тех, которые не дали нужный результат, отказываемся. Сейчас у Фонда есть несколько действующих проектов, рассказываю! 🤩",
+    "constant_name": "FUND_PROJECTS_msg_1"
+  }
+},
+{
+  "model": "admin_bot.aboutfundtext",
+  "pk": 17,
+  "fields": {
+    "constant_description": "Проекты Фонда",
+    "constant_text": "В Фонде реализуется программа поддержки социальных предпринимателей, которая включает в себя обучающие мероприятия, консультации, обмен опытом и нетворкинг для социальных предпринимателей и НКО в регионах, которые работают в сфере сбора и перераспределения текстиля.",
+    "constant_name": "FUND_PROJECTS_msg_2"
+  }
+},
+{
+  "model": "admin_bot.aboutfundtext",
+  "pk": 18,
+  "fields": {
+    "constant_description": "Проекты Фонда",
+    "constant_text": "В 2021 году фонд ВТОРОЕ ДЫХАНИЕ открыл новое направление своей работы — общественную мастерскую в Москве. Это место, где любой желающий может починить сломавшиеся или устаревшие вещи, попробовать себя в дизайне и творчестве и узнать больше об осознанном потреблении.",
+    "constant_name": "FUND_PROJECTS_msg_3"
+  }
+},
+{
+  "model": "admin_bot.aboutfundtext",
+  "pk": 19,
+  "fields": {
+    "constant_description": "Проекты Фонда",
+    "constant_text": "В 2020 году Фонд запустил исследовательский проект по переработке синтетической ткани в агломерат (сырьё, похожее на пластиковые гранулы, из которых можно произвести новые материалы, например ручки или пластиковые вешалки). Производство осуществляется через ООО «РЕКЛО» — дочку Фонда, которая развивает этот проект. \r\n\r\n*О реализации этих проектов и не только, мы рассказываем в годовых отчетах Фонда. Прислать тебе ссылку?*",
+    "constant_name": "FUND_PROJECTS_msg_4"
+  }
+},
+{
+  "model": "admin_bot.aboutfundtext",
+  "pk": 20,
+  "fields": {
+    "constant_description": "Годовые отчеты",
+    "constant_text": "Почитай наши [годовые отчеты]({ANNUAL_REPORTS_LINK}).\r\nМы ими очень гордимся!",
+    "constant_name": "ANNUAL_REPORTS"
+  }
+},
+{
+  "model": "admin_bot.aboutfundtext",
+  "pk": 21,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://vtoroe.ru/fond/documents/",
+    "constant_name": "ANNUAL_REPORTS_LINK"
+  }
+},
+{
+  "model": "admin_bot.aboutfundtext",
+  "pk": 22,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://drive.google.com/file/d/11Oh9YIbvPuy4aZNNTRAzI0Oy0kJ7U0iG/view?usp=sharing",
+    "constant_name": "PROCESSES_LINK"
+  }
+},
+{
+  "model": "admin_bot.basicinfotext",
+  "pk": 1,
+  "fields": {
+    "constant_description": "Основная информация",
+    "constant_text": "В этом разделе мы собрали основную информацию о нашем Фонде. \r\nВыбирай нужный раздел, я расскажу про всё подробнее.",
+    "constant_name": "BASIC_INFORMATION_MENU"
+  }
+},
+{
+  "model": "admin_bot.basicinfotext",
+  "pk": 2,
+  "fields": {
+    "constant_description": "Социальные сети",
+    "constant_text": "Новости Фонда\r\nСайт Фонда vtoroe.ru\r\nСайт магазинов shop.vtoroe.ru\r\nTelegram Фонда https://t.me/vtd_fond\r\nTelegram мастерской Фонда https://t.me/vtoroemoscow\r\nВконтакте Фонда https://vk.com/vtd.fond",
+    "constant_name": "FUND_NEWS"
+  }
+},
+{
+  "model": "admin_bot.basicinfotext",
+  "pk": 3,
+  "fields": {
+    "constant_description": "Наша команда",
+    "constant_text": "У нас большая, дружная и сильная команда!\r\nИмена всех сотрудников с фотографиями можно найти <a href=\"{our_team_message_link}\">на нашем сайте</a>. Мы добавляем новых коллег на сайт после прохождения испытательного срока.\r\n\r\nТакже ты можешь посмотреть контакты всех сотрудников в разделе \"Список контактов\" или почитать об отделах Фонда в разделе \"Отделы Фонда\".",
+    "constant_name": "OUR_TEAM_MESSAGE"
+  }
+},
+{
+  "model": "admin_bot.basicinfotext",
+  "pk": 4,
+  "fields": {
+    "constant_description": "Организационная структура",
+    "constant_text": "Как и в любой организации, в Фонде существует  <a href=\"{org_structure_link}\"> организационная структура</a>.  Она состоит из Совета, Попечительского совета,  директора, отделов и обособленных подразделений. Головной офис Фонда, мастерская, центр сортировки находятся в Москве, центр сортировки переработки, и центр гуманитарной выдачи – в г. Кострома. Еще у Фонда есть склад в Ярославле.\r\n\r\nЕсли хочешь, я могу подробнее рассказать тебе о работе отделов или Совета.",
+    "constant_name": "ORGANIZATION_MESSAGE"
+  }
+},
+{
+  "model": "admin_bot.basicinfotext",
+  "pk": 5,
+  "fields": {
+    "constant_description": "Совет фонда",
+    "constant_text": "Это высший орган управления Фондом, возглавляемый Председателем Совета.",
+    "constant_name": "COUNCIL_INTRODUCTION_MESSAGE"
+  }
+},
+{
+  "model": "admin_bot.basicinfotext",
+  "pk": 6,
+  "fields": {
+    "constant_description": "За что отвечает совет фонда?",
+    "constant_text": "Совет решает следующие задачи (наиболее важное):\r\n- изменение и утверждение Устава Фонда;\r\n- избрание директора и досрочное прекращение его обязанностей;\r\n- избрание Попечительского совета Фонда;\r\n- определение приоритетных направлений деятельности Фонда;\r\n- утверждение благотворительных программ;\r\n- принятие решения о создании новых организаций (Фондом);\r\n\r\nБолее подробно прочитать о функциях Совета можно в <a href=\"{message_link}\">Уставе Фонда.</a>",
+    "constant_name": "info_council_question_01"
+  }
+},
+{
+  "model": "admin_bot.basicinfotext",
+  "pk": 7,
+  "fields": {
+    "constant_description": "Совет Фонда",
+    "constant_text": "Совет Фонда определяет, куда двигается организация и использует свои ресурсы и связи для её развития. В хорошем смысле члены Совета - это \"внешние раздражители\". Их функция - приносить новые идеи, задавать неудобные вопросы, давать открытый свежий взгляд на перспективы и смотреть критически на процессы и не \"закапываться\" в рутине.",
+    "constant_name": "info_council_question_02"
+  }
+},
+{
+  "model": "admin_bot.basicinfotext",
+  "pk": 8,
+  "fields": {
+    "constant_description": "Совет Фонда",
+    "constant_text": "Директор Фонда - это единоличный исполнительный орган Фонда. Он избирается Советом сроком на 5 лет и переизбирается  неограниченное количество раз. Директор обеспечивает  решения Совета, готовит предложения по благотворительным  программам Фонда, решает вопросы финансовой и хозяйственной  деятельности организации. Директор Фонда \"принимает управление\"  и руководит организацией, исходя из стратегии и видения, утверждённых Советом. Более подробно см. в Уставе.",
+    "constant_name": "info_council_question_03"
+  }
+},
+{
+  "model": "admin_bot.basicinfotext",
+  "pk": 9,
+  "fields": {
+    "constant_description": "Совет Фонда",
+    "constant_text": "Директор Фонда - это человек, который отвечает за все процессы и за то, чтобы была реализована стратегия. Председатель Совета не работает в Фонде, не получает в нём зарплату и не вовлечён в ежедневные дела организации. Поэтому он не отвечает за процессы и реализацию стратегии, но он следит за выполнением KPI в рамках утверждённой стратегии, может выполнять антикризисную функцию (если что-то пошло не так). К началу 2022 года во \"Втором дыхании\" эти две функции не разделены, что приводит к конфликту интересов и мешает развитию.",
+    "constant_name": "info_council_question_04"
+  }
+},
+{
+  "model": "admin_bot.basicinfotext",
+  "pk": 10,
+  "fields": {
+    "constant_description": "Совет Фонда",
+    "constant_text": "В Совет ВТОРОГО ДЫХАНИЯ вошли люди, которые поддерживали нас с самого начала работы организации. На начало 2022 года в Совет Фонда входят Дарья Алексеева, Анастасия Гулявина, Вероника Жукова и Александр Фролов. В 2022 году запланирована ротация, которая подразумевает, что часть людей выйдет из Совета, а также в него добавятся новые члены. Это связано с тем, что за семь лет организация много раз меняла свою стратегию, появлялись новые проекты и направления деятельности и для успешного функционирования нам нужны новые члены Совета с другими знаниями и компетенциями. Председателем Совета останется текущий директор Фонда Дарья Алексеева.",
+    "constant_name": "info_council_question_05"
+  }
+},
+{
+  "model": "admin_bot.basicinfotext",
+  "pk": 11,
+  "fields": {
+    "constant_description": "Совет Фонда",
+    "constant_text": "Попечительский Совет (Попсовет) не вовлекается в стратегирование, но помогает своими ресурсами в продвижении Фонда своим именем. Это не обязательно \"звёзды эстрады\":  это лидеры мнений и эксперты в своей области, чья репутация и связи помогают в развитии организации.",
+    "constant_name": "info_council_question_06"
+  }
+},
+{
+  "model": "admin_bot.basicinfotext",
+  "pk": 12,
+  "fields": {
+    "constant_description": "Попечительский совет",
+    "constant_text": "Попечительский Совет (Попсовет) не вовлекается в стратегирование, но помогает своими ресурсами в продвижении Фонда своим именем. Это не обязательно \"звёзды эстрады\": это лидеры мнений и эксперты в своей области, чья репутация и связи помогают в развитии организации.",
+    "constant_name": "GARDIAN_COUNCIL_INTRODUCTION_MESSAGE"
+  }
+},
+{
+  "model": "admin_bot.basicinfotext",
+  "pk": 13,
+  "fields": {
+    "constant_description": "Отделы Фонда",
+    "constant_text": "Об отделах Фонда.",
+    "constant_name": "DEPARTMENTS"
+  }
+},
+{
+  "model": "admin_bot.basicinfotext",
+  "pk": 14,
+  "fields": {
+    "constant_description": "Отделы Фонда",
+    "constant_text": "Реализация мероприятий Фонда социальной направленности, коммуникация с партнёрскими благотворительными организациями.",
+    "constant_name": "info_department_01"
+  }
+},
+{
+  "model": "admin_bot.basicinfotext",
+  "pk": 15,
+  "fields": {
+    "constant_description": "Отделы Фонда",
+    "constant_text": "Информационные продукты Фонда, волонтёрство, эколекции, профессиональная программа передачи опыта.",
+    "constant_name": "info_department_02"
+  }
+},
+{
+  "model": "admin_bot.basicinfotext",
+  "pk": 16,
+  "fields": {
+    "constant_description": "Отделы Фонда",
+    "constant_text": "Склад Фонда в г. Москва. Сбор, хранение и сортировка одежды по категориям.",
+    "constant_name": "info_department_03"
+  }
+},
+{
+  "model": "admin_bot.basicinfotext",
+  "pk": 17,
+  "fields": {
+    "constant_description": "Отделы Фонда",
+    "constant_text": "Склад Фонда в г. Кострома. Хранение, сортировка одежды и переработка.",
+    "constant_name": "info_department_04"
+  }
+},
+{
+  "model": "admin_bot.basicinfotext",
+  "pk": 18,
+  "fields": {
+    "constant_description": "Отделы Фонда",
+    "constant_text": "Оказание адресной вещевой помощи нуждающимся категориям граждан. Центр гуманитарной выдачи в Костроме работает по принципу бесплатного магазина.",
+    "constant_name": "info_department_05"
+  }
+},
+{
+  "model": "admin_bot.basicinfotext",
+  "pk": 19,
+  "fields": {
+    "constant_description": "Отделы Фонда",
+    "constant_text": "Расширение сети сбора одежды, установление внешних контактов, сбор информации и выстраивание отношений с партнёрами Фонда, установка контейнеров для сбора одежды.",
+    "constant_name": "info_department_06"
+  }
+},
+{
+  "model": "admin_bot.basicinfotext",
+  "pk": 20,
+  "fields": {
+    "constant_description": "Отделы Фонда",
+    "constant_text": "Формирование и поддержка общей информационной стратегии Фонда, создание привлекательного имиджа и устойчивой позитивной репутации, регулирование уровня информированности о деятельности Фонда.",
+    "constant_name": "info_department_07"
+  }
+},
+{
+  "model": "admin_bot.basicinfotext",
+  "pk": 21,
+  "fields": {
+    "constant_description": "Отделы Фонда",
+    "constant_text": "Организация и управление финансовой деятельностью Фонда, юридическое сопровождение деятельности Фонда, организация и управление административно-хозяйственной деятельностью Фонда.",
+    "constant_name": "info_department_08"
+  }
+},
+{
+  "model": "admin_bot.basicinfotext",
+  "pk": 22,
+  "fields": {
+    "constant_description": "Отделы Фонда",
+    "constant_text": "Организация и проведение мероприятий и мастер-классов, бесплатный швейный коворкинг.",
+    "constant_name": "info_department_09"
+  }
+},
+{
+  "model": "admin_bot.basicinfotext",
+  "pk": 23,
+  "fields": {
+    "constant_description": "Отделы Фонда",
+    "constant_text": "Поиск, адаптация, обучение и развитие сотрудников, кадровое делопроизводство, забота о сотрудниках.",
+    "constant_name": "info_department_10"
+  }
+},
+{
+  "model": "admin_bot.basicinfotext",
+  "pk": 24,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://vtoroe.ru/fond/people/",
+    "constant_name": "OUR_TEAM_MESSAGE_LINK"
+  }
+},
+{
+  "model": "admin_bot.basicinfotext",
+  "pk": 25,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://docs.google.com/spreadsheets/d/1Wr8z0c1QtYvEl1nNX7oOt3LiaQ4ASNBhF2xxDDkpQs8/edit?usp=sharing",
+    "constant_name": "ORGANIZATION_MESSAGE_LINK"
+  }
+},
+{
+  "model": "admin_bot.basicinfotext",
+  "pk": 26,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://drive.google.com/file/d/1f8RUkEOUkyfq4D6UMcPlhOraxl1Bll9z/view?pli=1",
+    "constant_name": "COUNCIL_ANSWER_01_LINK"
+  }
+},
+{
+  "model": "admin_bot.button",
+  "pk": 1,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "О Фонде",
+    "constant_name": "MENU_ABOUT_FOND"
+  }
+},
+{
+  "model": "admin_bot.button",
+  "pk": 2,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Онбординг",
+    "constant_name": "MENU_ONBOARDING"
+  }
+},
+{
+  "model": "admin_bot.button",
+  "pk": 3,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Основная информация",
+    "constant_name": "MENU_BASIC_INFO"
+  }
+},
+{
+  "model": "admin_bot.button",
+  "pk": 4,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Общие правила",
+    "constant_name": "MENU_GENERAL_RULES"
+  }
+},
+{
+  "model": "admin_bot.button",
+  "pk": 5,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "База знаний",
+    "constant_name": "MENU_KNOWLEDGE_BASE"
+  }
+},
+{
+  "model": "admin_bot.button",
+  "pk": 6,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Обратная связь",
+    "constant_name": "MENU_FEEDBACK"
+  }
+},
+{
+  "model": "admin_bot.button",
+  "pk": 7,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Регламенты и формы",
+    "constant_name": "MENU_REGLAMENTS_AND_FORMS"
+  }
+},
+{
+  "model": "admin_bot.button",
+  "pk": 8,
+  "fields": {
+    "constant_description": "1",
+    "constant_text": "FAQ 1",
+    "constant_name": "MENU_FAQ"
+  }
+},
+{
+  "model": "admin_bot.button",
+  "pk": 9,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Список контактов",
+    "constant_name": "MENU_CONTACT_LIST"
+  }
+},
+{
+  "model": "admin_bot.button",
+  "pk": 10,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Назад",
+    "constant_name": "BACK_BUTTON"
+  }
+},
+{
+  "model": "admin_bot.button",
+  "pk": 11,
+  "fields": {
+    "constant_description": "1",
+    "constant_text": "В главное меню",
+    "constant_name": "BACK_TO_MAIN_MENU"
+  }
+},
+{
+  "model": "admin_bot.contactlisttext",
+  "pk": 1,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Введи имя или должность нужного коллеги, и я пришлю тебе его контакты.",
+    "constant_name": "MENU_CONTACT_LIST_INPUT_FIO"
+  }
+},
+{
+  "model": "admin_bot.contactlisttext",
+  "pk": 2,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Если хочешь скачать справочник с контактами коллег, нажми на ссылку ниже.",
+    "constant_name": "MENU_CONTACT_LIST_LOAD_CONTACT_LIST"
+  }
+},
+{
+  "model": "admin_bot.contactlisttext",
+  "pk": 3,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "По твоему запросу контакты коллег не найдены",
+    "constant_name": "NO_CONTACTS_FOUND"
+  }
+},
+{
+  "model": "admin_bot.contactlisttext",
+  "pk": 4,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "По твоему запросу найдены коллеги:",
+    "constant_name": "CONTACTS_FOUND"
+  }
+},
+{
+  "model": "admin_bot.contactlisttext",
+  "pk": 5,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "и некоторые другие - постарайся использовать более точные запросы.",
+    "constant_name": "MORE_THAN_MAX_CONTACTS_FOUND"
+  }
+},
+{
+  "model": "admin_bot.contactlisttext",
+  "pk": 6,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Можешь ввести поисковый запрос еще раз или нажать кнопку ниже для возврата в главное меню.",
+    "constant_name": "SEARCH_AGAIN_OR_EXIT"
+  }
+},
+{
+  "model": "admin_bot.faqtext",
+  "pk": 1,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://drive.google.com/file/d/1IQV1K7LHDy8fjI_GNlY28HEZY2ze4z9L/view?usp=drive_link",
+    "constant_name": "STORAGE_LINK"
+  }
+},
+{
+  "model": "admin_bot.faqtext",
+  "pk": 2,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://docs.google.com/document/d/1GBHyfDv1uhmajD4ABqV2TfNcU2J9nc-ItaYB6XDY6zc/edit?usp=sharing",
+    "constant_name": "STUDIES_LINK"
+  }
+},
+{
+  "model": "admin_bot.faqtext",
+  "pk": 3,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://docs.google.com/document/d/1v8ydGJP9Hg6AY00JqkUVhxbSEif5z_o5pD4J8iJhTY8/edit?usp=sharing",
+    "constant_name": "VOLUNTARISM_LINK"
+  }
+},
+{
+  "model": "admin_bot.faqtext",
+  "pk": 4,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Выбери интересующий тебя вопрос",
+    "constant_name": "FAQ_MESSAGE"
+  }
+},
+{
+  "model": "admin_bot.faqtext",
+  "pk": 5,
+  "fields": {
+    "constant_description": "Организационные вопросы",
+    "constant_text": "*У кого я могу узнать график работы?*\r\n\r\nГрафик работы сообщается тебе в оффере. Для большинства офисных работников\r\nв трудовом договоре прописан график - 5/2 с возможностью работы из дома\r\n1 день в неделю. По согласованию с руководителем количество дней на удаленке\r\nможет быть увеличено.\r\n\r\nВ Фонде нет фиксированных часов работы, но мы стараемся быть на связи\r\nс 10 до 19. Мастерская Фонда работает с 12 до 21: Центр сортировки в Москве\r\nс 9 до 17, Центр сортировки и переработки в Костроме с 08:30 до 17:30.\r\n\r\n*Как и когда выдают зарплату?*\r\nЗарплата начисляется на вашу личную банковскую карту 2 раза в месяц:\r\n20-го числа аванс, 5-го — остальная часть зарплаты.\r\n\r\n*Что делать, если заболел(а)?*\r\nСперва предупреди своего руководителя (чем раньше, тем лучше).\r\nЕсли есть необходимость уйти на больничный, то нужно вызвать или посетить\r\nврача. После выздоровления, отправь электронный больничный лист в бухгалтерию.\r\nЕсли ты заболел(а) во время отпуска, то можно либо продлить свой отдых на\r\nсоответствующее количество дней, либо перенести неиспользованную часть\r\nотпуска на другое время. О болезни и своем решении продлить или перенести\r\nотпуск сообщи непосредственному руководителю.\r\n\r\n*Есть ли в Фонде ДМС?*\r\nДа, добровольное медицинское страхование предоставляется всем\r\nсотрудникам, для которых Фонд является основным местом работы.\r\nДМС подключается после года работы в Фонде и включает в себя стационарную\r\nпомощь и помощь на дому (в зависимости от программы). Уведомление о\r\nготовности ДМС отправляется автоматически на рабочую почту с указанием\r\nпрограммы и списка доступных клиник.",
+    "constant_name": "faq_menu_keyboard_1_1"
+  }
+},
+{
+  "model": "admin_bot.faqtext",
+  "pk": 6,
+  "fields": {
+    "constant_description": "Волонтёрство",
+    "constant_text": "Все о волонтёрстве в Фонде читай \r\n\r\n[в FAQ по волонтерству]({VOLUNTARISM_LINK})",
+    "constant_name": "faq_menu_keyboard_1_2"
+  }
+},
+{
+  "model": "admin_bot.faqtext",
+  "pk": 7,
+  "fields": {
+    "constant_description": "Обучение",
+    "constant_text": "Все об обучении и развитии сотрудников читай \r\n\r\n[в гайде по обучению]({STUDIES_LINK})",
+    "constant_name": "faq_menu_keyboard_2_1"
+  }
+},
+{
+  "model": "admin_bot.faqtext",
+  "pk": 8,
+  "fields": {
+    "constant_description": "Отпуск",
+    "constant_text": "Ежегодный оплачиваемый отпуск предоставляется сотруднику по истечении\r\n6 месяцев непрерывной работы и составляет 28 календарных дней.\r\n\r\nДаты отпуска согласовываются с непосредственным руководителем на год\r\nи фиксируются в графике отпусков. Дату отпуска можно перенести,\r\nесли у тебя изменились обстоятельства, в таком случае,\r\nтакже подходишь к руководителю.\r\nСогласованные даты или изменения обязательно передаем HR.\r\nЗа неделю до отпуска необходимо написать заявление, чтобы отпускные\r\nпришли вовремя (приходят они за 3 дня до даты отпуска).",
+    "constant_name": "faq_menu_keyboard_2_2"
+  }
+},
+{
+  "model": "admin_bot.faqtext",
+  "pk": 9,
+  "fields": {
+    "constant_description": "Рабочий процесс",
+    "constant_text": "*Какой у Фонда юридический адрес и почтовый адрес?*\r\nЮридический адрес: 129085, Москва г, ул. Годовикова, д. 6,\r\nкв. этаж 1 помещение IIА, VII, комнаты 1-7, 7 А, 8, 9/1-6, 6А, 7\r\n\r\n*Как найти склад Фонда?*\r\n[Вот подробная схема.]({STORAGE_LINK})\r\n\r\n*Есть ли дресс-код в Фонде?*\r\nМы уважаем твою индивидуальность и право на свободу самовыражения,\r\nпоэтому дресс-кода у нас нет.\r\n\r\n*Как организовать отправку и доставку корреспонденции в регион?*\r\nПроцесс обмена документами с регионами обычно осуществляется либо по почте,\r\nлибо через московский центр сортировки. Передай документы нашему\r\nадминистратору офиса с четкими инструкциями,\r\nи документы попадут в нужное место.",
+    "constant_name": "faq_menu_keyboard_3_1"
+  }
+},
+{
+  "model": "admin_bot.faqtext",
+  "pk": 10,
+  "fields": {
+    "constant_description": "Административные вопросы",
+    "constant_text": "*Как заказать канцелярские товары?*\r\nОбратись в административный отдел Фонда.\r\n\r\n*Что делать в случае неисправности оргтехники?*\r\nОргтехникой тоже заведует административный отдел.\r\n\r\n*Надо ли приносить с собой свою посуду, если я обедаю на общей кухне?*\r\nНа кухне есть необходимая посуда, но для своего комфорта можешь взять свою.\r\nЕсли ты большой любитель чая и кофе, личная кружка будет не лишней😜",
+    "constant_name": "faq_menu_keyboard_3_2"
+  }
+},
+{
+  "model": "admin_bot.faqtext",
+  "pk": 11,
+  "fields": {
+    "constant_description": "Оформление документов",
+    "constant_text": "*У кого можно заказать справку 2-НДФЛ?*\r\nОформлением подобных справок занимается бухгалтерия. Справки с места\r\nработы или заверенную копию трудовой книжки можно получить у бухгалтера\r\nпо заработной плате и кадрам.\r\n\r\n\r\n*Как и где получить шаблоны необходимых документов?*\r\nПроверь раздел \"Регламенты и документы\", если там нет нужного тебе\r\nрегламента, обратись с вопросом к HR.",
+    "constant_name": "faq_menu_keyboard_4_1"
+  }
+},
+{
+  "model": "admin_bot.faqtext",
+  "pk": 12,
+  "fields": {
+    "constant_description": "Административные вопросы",
+    "constant_text": "*Как забронировать гостиницу и трансфер для командировки?*\r\nСотрудники, которые едут в командировку, могут бронировать перелёт или\r\nпереезд и проживание через административный отдел или самостоятельно с\r\nпоследующей компенсацией.\r\nПеред командировкой этот момент лучше уточнить у руководителя\r\nадминистративного отдела.\r\n\r\n*Сколько мне положено командировочных на поездку?*\r\nЗа каждый день командировки тебе выдается 700 рублей суточных.\r\nЧтобы они были начислены вовремя, необходимо оформлять командировку\r\nхотя бы за 3 дня до поездки.",
+    "constant_name": "faq_menu_keyboard_4_2"
+  }
+},
+{
+  "model": "admin_bot.faqtext",
+  "pk": 13,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "'Организационные вопросы': ORG_QSTS_MESSAGE,\r\n'Волонтёрство': VOLUNTARISM_MESSAGE,\r\n'Обучение': STUDIES_MESSAGE,\r\n'Отпуск': VACATION_MESSAGE,\r\n'Рабочий процесс': WORK_PROC_MESSAGE,\r\n'Административные вопросы': ADMIN_QSTS_MESSAGE,\r\n'Оформление документов': DOCFLOW_MESSAGE,\r\n'Командировки': BUSINESS_TRIP_MESSAGE,",
+    "constant_name": "FAQ_MESSAGES"
+  }
+},
+{
+  "model": "admin_bot.faqtext",
+  "pk": 14,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "ORG_QSTS_MESSAGE",
+    "constant_name": "Организационные вопросы"
+  }
+},
+{
+  "model": "admin_bot.faqtext",
+  "pk": 15,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "VOLUNTARISM_MESSAGE",
+    "constant_name": "Волонтёрство"
+  }
+},
+{
+  "model": "admin_bot.faqtext",
+  "pk": 16,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "STUDIES_MESSAGE",
+    "constant_name": "Обучение"
+  }
+},
+{
+  "model": "admin_bot.faqtext",
+  "pk": 17,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "VACATION_MESSAGE",
+    "constant_name": "Отпуск"
+  }
+},
+{
+  "model": "admin_bot.faqtext",
+  "pk": 18,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "WORK_PROC_MESSAGE",
+    "constant_name": "Рабочий процесс"
+  }
+},
+{
+  "model": "admin_bot.faqtext",
+  "pk": 19,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "ADMIN_QSTS_MESSAGE",
+    "constant_name": "Административные вопросы"
+  }
+},
+{
+  "model": "admin_bot.faqtext",
+  "pk": 20,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "DOCFLOW_MESSAGE",
+    "constant_name": "Оформление документов"
+  }
+},
+{
+  "model": "admin_bot.faqtext",
+  "pk": 21,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "BUSINESS_TRIP_MESSAGE",
+    "constant_name": "Командировки"
+  }
+},
+{
+  "model": "admin_bot.links",
+  "pk": 1,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://docs.google.com/document/d/13_9qPPKA9w4LKFL1FNL5rbP0joNXxJkRs5wOa1fjsYY/edit?usp=sharing",
+    "constant_name": "URL_KNOWLEDGE_BASE"
+  }
+},
+{
+  "model": "admin_bot.links",
+  "pk": 2,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://forms.gle/jmjtFJEh68HqMxe57",
+    "constant_name": "FEEDBACK_LINK"
+  }
+},
+{
+  "model": "admin_bot.links",
+  "pk": 3,
+  "fields": {
+    "constant_description": "Ссылка на скачивание справочника с контактами коллег",
+    "constant_text": "https://docs.google.com/spreadsheets/d/1m_y8rtod0VEGBAmhmqxK3ax-ulOUfeJNlvMApluhBFM/edit",
+    "constant_name": "CONTACT_LIST_LINK"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 1,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://drive.google.com/file/d/16x6GGaydUd3LGs23Fkqes-7SJGMqCFjy/view?usp=sharing",
+    "constant_name": "ONBOARDING_LINK"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 2,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://docs.google.com/spreadsheets/d/17HJ_jf9ypoXZiG4g3qSLRcaj5y5pZx0XwZ7k0W3HZus/edit?usp=sharing",
+    "constant_name": "START_MEETING_LINK"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 3,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://docs.google.com/spreadsheets/d/1TpQ52IdyUG4Hv11viT5kLbznkIC61uhQDNbLax2P3Xk/edit?usp=sharing",
+    "constant_name": "CHECK_LIST_LINK"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 4,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://docs.google.com/spreadsheets/d/17HJ_jf9ypoXZiG4g3qSLRcaj5y5pZx0XwZ7k0W3HZus/edit?usp=sharing",
+    "constant_name": "WORK_PLAN_LINK"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 5,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://docs.google.com/spreadsheets/d/17HJ_jf9ypoXZiG4g3qSLRcaj5y5pZx0XwZ7k0W3HZus/edit?usp=sharing",
+    "constant_name": "TASK_PLAN_LINK"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 6,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://docs.google.com/spreadsheets/d/17HJ_jf9ypoXZiG4g3qSLRcaj5y5pZx0XwZ7k0W3HZus/edit?usp=sharing",
+    "constant_name": "PROBATION_PLAN_LINK"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 7,
+  "fields": {
+    "constant_description": "Онбординг",
+    "constant_text": "Мы хотим, чтобы знакомство с Фондом прошло для тебя максимально комфотно, поэтому в Фонде действует [система адаптации новых сотрудников]({ONBOARDING_LINK}).\r\nОна заключается в том, что у каждого новичка есть свой наставник. Наставник - это сотрудник из твоего подразделения, который передает свои знания и опыт, а также помогает освоиться в Фонде и поддерживает. Иногда в роли наставника может выступать сам руководитель. В таком случае освоиться на месте и не запутаться в организационных вопросах поможет buddy -коллега, с которым можно выпить кофе и получить дружескую поддержку.\r\n\r\n*Какая у тебя роль в онбординге?*",
+    "constant_name": "ONBOARDING_MENU"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 8,
+  "fields": {
+    "constant_description": "Наставник/Бадди",
+    "constant_text": "Как здорово, что ты согласился быть наставником/бадди для новичка!🤗\r\nДавай расскажу, что надо делать в этой роли?",
+    "constant_name": "MENTOR"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 9,
+  "fields": {
+    "constant_description": "Задачи Наставника/Бадди",
+    "constant_text": "*Задачи наставника по отношению к новым сотрудникам:*\r\n\r\n1. Рассказ о функциях подразделения и знакомство новичка с коллективом\r\n(с кем человеку придется общаться, к кому обращаться за помощью в тех\r\nили иных случаях).\r\n\r\n2. Разъяснение норм внутренних коммуникаций, принятых правил делового \r\nэтикета.\r\n\r\n3. Знакомство с содержанием функциональных обязанностей, подготовленных\r\nруководителем.\r\n\r\n4. Обучение работе в корпоративной CRM/базах данных/гугл диске.\r\n\r\n5. Предоставление обратной связи, которая является инструментом \r\nразвития новичка.\r\n\r\n6. Эмоциональная поддержка новичка во время всего периода \r\nадаптации - неформальные беседы/встречи/совместный обед \r\n(роль Бадди). Иногда эту роль выполняет отдельный сотрудник, \r\nкоторый может быть никак не связан рабочими задачами с новичком.",
+    "constant_name": "MENTOR_TASKS"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 10,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Здорово, что ты с нами команде! Поздравляем! \r\r\nЗначит, мы мыслим в одном направлении и вместе будем \r\r\nделать этот мир лучше!💖",
+    "constant_name": "BEGINNER_START_MESSAGE_ONE"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 11,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "*Напиши, пожалуйста, дату твоего первого рабочего дня*",
+    "constant_name": "BEGINNER_START_MESSAGE_TWO"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 12,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Супер! Надеюсь, первые три месяца в фонде будут для тебя вдохновляющими \r\r\nи продуктивными! Я буду периодически узнавать у тебя, как ты себя \r\r\nчувствуешь на новом месте. Ну что, поехали дальше?",
+    "constant_name": "BEGINNER_EMPLOYMENT_MESSAGE_ONE"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 13,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "*Выбери из меню, о чем ты хочешь узнать подробнее*",
+    "constant_name": "BEGINNER_EMPLOYMENT_MESSAGE_TWO"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 15,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Ура! Первый день в Фонде! Скорее всего он будет очень насыщенным и \r\r\nинтересным. Чтобы не потеряться в обилии информации, обычно мы \r\r\nвысылаем welcome-письмо нашим новым коллегам с примерным планом на \r\r\nпервый день.",
+    "constant_name": "BEGINNER_FIRST_DAY_MESSAGE_ONE"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 16,
+  "fields": {
+    "constant_description": "Первый день - второе сообщение",
+    "constant_text": "Обычно он выглядит так:\r\n\r\n*- Встреча с HR-менеджером.* На этой встрече мы расскажем, как у \r\nнас происходит онбординг, какая корпоративаная культура, средства \r\nкоммуникации и прочее.\r\n\r\n*- Оформление на работу.* В бухгалтерии подготовят все необходимые \r\nдокументы, которые надо будет подписать через систему кадрового \r\nэлектронного документооборота.\r\n\r\n*- Встречи с твоим непосредстенным руководителем и наставником*, на \r\nкоторой вы вместе заполните \r\n[план на испытательный срок]({PROBATION_PLAN_LINK}) и поговорите \r\nоб основных задачах.",
+    "constant_name": "BEGINNER_FIRST_DAY_MESSAGE_TWO"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 17,
+  "fields": {
+    "constant_description": "Первый день - третье сообщение",
+    "constant_text": "*Твои основные задачи на первый день описаны в чек-листе \r\nновичка. Прислать ссылку?*",
+    "constant_name": "BEGINNER_FIRST_DAY_MESSAGE_THREE"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 18,
+  "fields": {
+    "constant_description": "Адаптация - первое сообщение",
+    "constant_text": "Система онбординга в Фонде подразумевает серию встреч между новичком \r\nи руководителем/наставником.\r\n\r\n*Стартовая встреча* происходит обычно в первый рабочий день. На \r\nней вы вместе с руководителем/наставником можете обсудить цели \r\nиспытательного срока, удобное время для встреч, а также занести их в \r\ngoogle-календарь, чтобы не забыть. Обычно в первый день также \r\nобсуждается твой \r\n[план-задач на испытательный срок]({TASK_PLAN_LINK}).\r\n\r\n*Вторая встреча* проводится по итогам первого месяца в Фонде. На \r\nней вместе с руководителем обсуждаются первые результаты работы. \r\nБудет здорово также услышать от тебя предложения, что и как можно \r\nсделать лучше.\r\n\r\n*Третья встреча* - экватор испытательного срока. На ней важно\r\nактуализировать задачи в плане работы, обменяться обратной связью, \r\nвыявить трудности, обсудить промежуточные результаты и дальнейшее \r\nобучение.\r\n\r\n*Завершающая встреча* проводится за неделю до окончания \r\nиспытательного срока вместе с руководителем, и на ней подводятся \r\nитоги адаптации.",
+    "constant_name": "BEGINNER_STAGES_ADAPTATION_MESSAGE_ONE"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 19,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Если ты в Москве, то помимо встреч, тебя ждет также экскурсия по \r\r\nнашему центру сортировки, а также ознаокмительная поездка в Кострому \r\r\nк нашим коллегам в центр сртировки и переаботки и центр выдачи \r\r\nгуманитарной помощи.",
+    "constant_name": "BEGINNER_STAGES_ADAPTATION_MESSAGE_TWO"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 20,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "На протяжении всего периода адаптации не бойся задавать вопросы, быть\r\r\nинициативным и предлогать идеи/улучшения. МЫ любим открытость и \r\r\nэнтузиазм, поэтому твои вопросы для нас - показатель твоей \r\r\nзаинтересованности.",
+    "constant_name": "BEGINNER_STAGES_ADAPTATION_MESSAGE_THREE"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 21,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "*Показать, как выглядит форма плана работы на испытательный срок?*",
+    "constant_name": "BEGINNER_STAGES_ADAPTATION_MESSAGE_FOUR"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 22,
+  "fields": {
+    "constant_description": "Рабочий план",
+    "constant_text": "[План работы на испытательный срок]({WORK_PLAN_LINK}) - это\r\nперечень задач со сроком их исполнения, которые нужно выполнить в \r\nтечение испытательного срока (3 месяца). Это очень удобный \r\nинструмент, который помогает не отходить от заданного курса работы и \r\nбудет служить тебе ориентиром в первые месяцы.",
+    "constant_name": "BEGINNER_WORK_PLAN_MESSAGE_ONE"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 23,
+  "fields": {
+    "constant_description": "Первый день - перове сообщение",
+    "constant_text": "Лови [чек-лист нового сотрудника]({CHECK_LIST_LINK}). В нем\r\nпроверочный список базовых задач на период адаптации, чтобы ничего \r\nне забыть :)",
+    "constant_name": "BEGINNER_CHECK_LIST_MESSAGE_ONE"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 24,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Если в твоей команде новый сотрудник, я могу присылать тебе \r\r\nнапоминания о необходимости назначить встречу с новичком.",
+    "constant_name": "DIRECTOR_msg_1"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 25,
+  "fields": {
+    "constant_description": "Задачи руководителя",
+    "constant_text": "*Задачи руководителя при онбординге:*\r\n\r\n1. Определение должностных обязанностей. Актуализация обязанностей в \r\nдолжностной инструкции при необходимости.\r\n\r\n2. Постановка целей и задач на период испытательного срока, определение\r\nсодержания работы на это время - новый сотрудник должен четко \r\nпонимать, по каким критериям его будут оценивать после того, как \r\nиспытательный срок окончиться.\r\n\r\n3. Рассказ новичку о принципах коммуникации, его зоне ответственности и\r\nправилах взаимодействия с руководителем и отделом.\r\n\r\n4. Ознакомление нового сотрудника с содержанием плана на испытательный \r\nсрок и разъяснение назначения запланированных мероприятий, установка \r\nсроков исполнения задач.\r\n\r\n5. Определение наставника из числа специалистов отдела.\r\n\r\n6. Отслеживание промежуточных результатов. Важно избегать ситуации, \r\nкогда сотрудника оставляют без конроля на весь испытательный срок, в \r\nконце которого фактические результаты его деятельности расходятся с \r\nзапланированными. Хотя бы раз в месяц необходимо беседовать с новым \r\nработником о том, каких успехов он достиг и с какими сложностями \r\nсталкивается.\r\n\r\n7. Оценка выполненных заданий, проведение оценочных мероприятий для \r\nпроверки приобретенных знаний в случае обучения сотрудника во время \r\nадаптационного периода.\r\n\r\n8. Принятие решения отностительно работы нового сотрудника в Фонде.",
+    "constant_name": "DIRECTOR_TASKS"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 26,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Напиши пожалуйста, дату приема нового сотрудника",
+    "constant_name": "DATA_MESSAGE_FOR_NEW_WORKER"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 27,
+  "fields": {
+    "constant_description": "Сообщение о встречах для директора",
+    "constant_text": "Система онбординга в Фонде подразумевает серию встреч между новичком и \r\nруководителем/наставником.\r\n\r\n*Стартовая встреча* происходит обычно в первый рабочий день. На ней \r\nвы вместе с новичком можете обсудить цели испытательного срока, удобное \r\nвремя для встреч, а также занести их в google-календарь, чтобы не \r\nзабыть. Обычно в первый день также обсуждается \r\n[план задач на испытательный срок]({START_MEETING_LINK}).\r\n*Вторая встреча* проводится по итогам первого месяца в Фонде. На ней\r\nвместе с новичком обсуждаются первые результаты работы. Важно\r\nпохвалить сотрудника за положительные результаты работы, предложить, \r\nчто и как можно сделать лучше.\r\n\r\n*Третья встреча* - экватор испытального срока. На ней важно \r\nактуализировать задачи в плане работы, обменяться обратной связью, \r\nвыявить трудности, обсудить промежуточные результаты и дальнейшее \r\nобучение Необходимо в этот момент дать обратную связь по итогам работы\r\nсотрудника.\r\n\r\nВ случае неудовлетворительного результата работы - либо указать на \r\nнедостатки в работе, выявить трудности и помочь их преодолеть, либо \r\nпринять решение о прекращении сотрудничества. Новому сотруднику должны \r\nбыть понятны ошибки и способы их исправи",
+    "constant_name": "MEETINGS_MESSAGE_FOR_DIRECTOR"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 28,
+  "fields": {
+    "constant_description": "Напоминание",
+    "constant_text": "Готово! Обязательно напомню тебе о нужных встречах",
+    "constant_name": "REMINDER_MESSAGE_FOR_MEETINGS_msg_1"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 29,
+  "fields": {
+    "constant_description": "Проверка корректности ввода даты трудоустройства",
+    "constant_text": "Некорректная дата. Пожалуйста, введи дату в формате ДД.ММ.ГГГГ",
+    "constant_name": "WRONG_DATE_FORMAT"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 30,
+  "fields": {
+    "constant_description": "Сообщение через 25 дней от введенной даты для новичка",
+    "constant_text": "Привет! Скоро будет месяц, как ты с нами!😊 Расскажи, какие у тебя впечатления от работы?\r\nТвой отзыв очень ценен для нас, ведь так мы сможем сделать онбординг еще лучше:)",
+    "constant_name": "BEGINNER_AFTER_25_DAY_MESSAGE"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 31,
+  "fields": {
+    "constant_description": "Сообщение через 40 дней от введенной даты для новичка",
+    "constant_text": "Привет! Как летит время! Ты уже почти два месяца в команде! Как проходит адаптация?\r\nТвой отзыв очень ценен для нас, ведь так мы сможем сделать онбординг еще лучше:)",
+    "constant_name": "BEGINNER_AFTER_40_DAY_MESSAGE"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 32,
+  "fields": {
+    "constant_description": "Сообщение через 85 дней от введенной даты для новичка",
+    "constant_text": "Привет! До окончания адаптации осталось совсем чуть-чуть😊 Как твои дела?\r\nТвой отзыв очень ценен для нас, ведь так мы сможем сделать онбординг еще лучше:) Мы будем благодарны если ты найдешь время заполнить [анкету по итогам адаптации]({ONBOARDING_LINK_FORM})",
+    "constant_name": "BEGINNER_AFTER_85_DAY_MESSAGE"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 33,
+  "fields": {
+    "constant_description": "Ссылка на анкету по итогам адаптации",
+    "constant_text": "https://docs.google.com/forms/d/e/1FAIpQLScg142_kukGejpLHsMIWiVPVqSbCQNP2i_HzAbW6jvlsZEG2A/formrestricted",
+    "constant_name": "ONBOARDING_LINK_FORM"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 34,
+  "fields": {
+    "constant_description": "Сообщение после фидбэка новичка",
+    "constant_text": "Записал! Спасибо за ответ! У тебя уже назначена встреча по итогам первого месяца с руководителем?",
+    "constant_name": "BEGINNER_DEFERRED_MESSAGES_VARIANTS"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 35,
+  "fields": {
+    "constant_description": "Сообщение при ответе вопрос о назначенной встрече",
+    "constant_text": "Отлично! Скоро пришлю тебе напоминание о следующей встрече! Хорошего дня!",
+    "constant_name": "CALENDAR_DEFERRED_MESSAGES_VARIANTS_YES"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 36,
+  "fields": {
+    "constant_description": "Сообщение при ответе вопрос о назначенной встрече",
+    "constant_text": "Не забудь поставить встречу в календарь, чтобы свериться с планом и обменяться обратной связью с коллегой.",
+    "constant_name": "CALENDAR_DEFERRED_MESSAGES_VARIANTS_NO"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 37,
+  "fields": {
+    "constant_description": "Сообщение через 25 дней от введенной даты для руководителя",
+    "constant_text": "Привет! Сегодня почти месяц, как в твоем отделе новый сотрудник. Вы уже назначили встречу по итогам первого месяца?",
+    "constant_name": "DIRECTOR_AFTER_25_DAY_MESSAGE"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 38,
+  "fields": {
+    "constant_description": "Сообщение через 40 дней от введенной даты для руководителя",
+    "constant_text": "Привет! Уже почти два месяца, как в твоем отделе новый сотрудник. Вы уже назначили встречу по итогам 2-х месяцев?",
+    "constant_name": "DIRECTOR_AFTER_40_DAY_MESSAGE"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 39,
+  "fields": {
+    "constant_description": "Сообщение через 85 дней от введенной даты для руководителя",
+    "constant_text": "Привет! Уже почти три месяца, как в твоем отделе новый сотрудник. Вы уже назначили встречу по итогам 3-х месяцев?",
+    "constant_name": "DIRECTOR_AFTER_85_DAY_MESSAGE"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 40,
+  "fields": {
+    "constant_description": "Отправка e-mail с фидбэком новичка",
+    "constant_text": "Пользователь",
+    "constant_name": "BEGINNER_FEEDBACK_SUBJECT_USER"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 41,
+  "fields": {
+    "constant_description": "Отправка e-mail с фидбэком новичка",
+    "constant_text": "оставил обратную связь",
+    "constant_name": "BEGINNER_FEEDBACK_SUBJECT_ENDING"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 42,
+  "fields": {
+    "constant_description": "Отправка e-mail с фидбэком новичка",
+    "constant_text": "Была нажата кнопка",
+    "constant_name": "BEGINNER_FEEDBACK_BODY_START"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 43,
+  "fields": {
+    "constant_description": "Отправка e-mail по вопросу назначенной встречи",
+    "constant_text": "Пользователь",
+    "constant_name": "CALENDAR_SUBJECT_USER"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 44,
+  "fields": {
+    "constant_description": "Отправка e-mail по вопросу назначенной встречи",
+    "constant_text": "ответил про встречу",
+    "constant_name": "CALENDAR_SUBJECT_ENDING"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 45,
+  "fields": {
+    "constant_description": "Отправка e-mail по вопросу назначенной встречи",
+    "constant_text": "Была нажата кнопка",
+    "constant_name": "CALENDAR_BODY_START"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 46,
+  "fields": {
+    "constant_description": "Предложение новичку написать развёрнутый отзыв",
+    "constant_text": "Смело пиши свои предложения или пожелания в строке ввода \uD83D\uDE09",
+    "constant_name": "BEGINNER_PROPOSAL_FEEDBACK"
+  }
+},
+{
+  "model": "admin_bot.onboardingtext",
+  "pk": 47,
+  "fields": {
+    "constant_description": "Повторное предложение отправить отзыв",
+    "constant_text": "Пожалуйста, оставь свой отзыв о системе адаптации",
+    "constant_name": "BEGINNER_PROPOSAL_FEEDBACK_AGAIN"
+  }
+},
+{
+  "model": "admin_bot.regformstext",
+  "pk": 1,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://docs.google.com/document/d/1d0FXxWzFSTcNEy9hvRku-VvMd_3yRTzFHgFPvCcU9-U/edit",
+    "constant_name": "CNTRCT_LINK"
+  }
+},
+{
+  "model": "admin_bot.regformstext",
+  "pk": 2,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://docs.google.com/document/d/16VAPahttps:/docs.google.com/document/'d/16VAPaJGFiXnDdfSEljCmxDCKSKH2iZBVUx2Wg_Bdz7o/edit?usp=sharing",
+    "constant_name": "BILLS_LINK"
+  }
+},
+{
+  "model": "admin_bot.regformstext",
+  "pk": 3,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://docs.google.com/document/d/1PsLmtt44ZXiTJeBJEqgK-_j174HohSu6XpO5Diziats/edit?usp=sharing",
+    "constant_name": "ACC_PERSONS_LINK"
+  }
+},
+{
+  "model": "admin_bot.regformstext",
+  "pk": 4,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://docs.google.com/document/d/12kzxJvoSon_tvdxqdP14qhUFYX6UnO2x/edit?usp=sharing&ouid=101141304038805869189&rtpof=true&sd=true",
+    "constant_name": "REG_VACATION_LINK"
+  }
+},
+{
+  "model": "admin_bot.regformstext",
+  "pk": 5,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://drive.google.com/drive/folders/1XT2XHu29a9ZaTdhd6K9rfgwqTn1UqeNs?usp=sharing",
+    "constant_name": "TEMP_VACATION_LINK"
+  }
+},
+{
+  "model": "admin_bot.regformstext",
+  "pk": 6,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://docs.google.com/document/d/1jN80LdqesChmaVzsHCbnERHA60O5O1cK/edit?usp=sharing&ouid=101141304038805869189&rtpof=true&sd=true",
+    "constant_name": "REG_BUSINESS_TRIP_LINK"
+  }
+},
+{
+  "model": "admin_bot.regformstext",
+  "pk": 7,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://drive.google.com/drive/folders/1zK0BCi8dSBxYwuuAprfmePTlTbhxNH22?usp=sharing",
+    "constant_name": "TEMP_BUSINESS_TRIP_LINK"
+  }
+},
+{
+  "model": "admin_bot.regformstext",
+  "pk": 8,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://docs.google.com/document/d/10qrj5MKW_3y1Izg141EAGHpNJMIW5NyC/edit?usp=sharing&ouid=101141304038805869189&rtpof=true&sd=true",
+    "constant_name": "REG_OFFER_LINK"
+  }
+},
+{
+  "model": "admin_bot.regformstext",
+  "pk": 9,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://drive.google.com/drive/folders/17S4HZd5Ez2QoR2YuWA6649_GpiRv3Q62?usp=sharing",
+    "constant_name": "TEMP_OFFER_LINK"
+  }
+},
+{
+  "model": "admin_bot.regformstext",
+  "pk": 10,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://docs.google.com/document/d/1f8ebUki4gYHtlhRsDN_1C0sSisIi9HQV/edit?usp=sharing&ouid=101141304038805869189&rtpof=true&sd=true",
+    "constant_name": "REG_OTHR_OFFER_LINK"
+  }
+},
+{
+  "model": "admin_bot.regformstext",
+  "pk": 11,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://drive.google.com/drive/folders/1NnY-8OGgDi41SVhpX_ocvYTQxNboY-mK?usp=sharing",
+    "constant_name": "TEMP_OTHR_OFFER_LINK"
+  }
+},
+{
+  "model": "admin_bot.regformstext",
+  "pk": 12,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://docs.google.com/document/d/1vMLG13Qs30zZ-VUTtrQ_QUegoHVL0BER/edit?usp=sharing&ouid=101141304038805869189&rtpof=true&sd=true",
+    "constant_name": "REG_FIRING_LINK"
+  }
+},
+{
+  "model": "admin_bot.regformstext",
+  "pk": 13,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://drive.google.com/drive/folders/1JPk8bOSyYQ_jeLCAdHLmPQb_ICUeOoUo?usp=sharing",
+    "constant_name": "TEMP_FIRING_LINK"
+  }
+},
+{
+  "model": "admin_bot.regformstext",
+  "pk": 14,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://docs.google.com/document/d/1qqFVBrboklfkvUuaWXx3szbexdksBHnqnqFckyB8NtQ/edit?usp=sharing",
+    "constant_name": "REG_WEEKEND_LINK"
+  }
+},
+{
+  "model": "admin_bot.regformstext",
+  "pk": 15,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://docs.google.com/document/d/1f8ebUki4gYHtlhRsDN_1C0sSisIi9HQV/edit?usp=sharing&ouid=101141304038805869189&rtpof=true&sd=true",
+    "constant_name": "REG_SALARY_LINK"
+  }
+},
+{
+  "model": "admin_bot.regformstext",
+  "pk": 16,
+  "fields": {
+    "constant_description": "Регламенты и формы",
+    "constant_text": "Здесь собраны основные регламенты оформления договоров и документов, \r\nа также шаблоны кадровых заявлений.\r\n\r\n* Финансы *\r\n1. [Регламент подготовки, согласования и подписания договоров]({})\r\n2. [Регламент согласования счетов]({})\r\n3. [Положение по подотчетным лицам]({})\r\n\r\n* HR *\r\n1. [Регламент по отпускам]({})\r\n2. [Шаблоны заявлений по отпускам]({})\r\n3. [Регламент по командировкам]({})\r\n4. [Шаблоны заявлений по командировкам]({})\r\n5. [Регламент по приему на работу]({})\r\n6. [Шаблоны заявлений по приему на работу]({})\r\n7. [Регламент по переводу на другую работу]({})\r\n8. [Шаблоны заявлений по переводу на другую должность]({})\r\n9. [Регламент по увольнению]({})\r\n10. [Шаблоны заявлений по увольнению]({})\r\n11. [Регламент оформления работы в выходной]({})\r\n12. [Регламент по изменению оклада/должности]({})",
+    "constant_name": "REG_FORM_MESSAGE"
+  }
+},
+{
+  "model": "admin_bot.rulestext",
+  "pk": 1,
+  "fields": {
+    "constant_description": "Общие правила",
+    "constant_text": "В этом разделе собраны основные правила и договоренности \r\nвнутри нашей команды.\r\n\r\nВыбирай нужный раздел, я все расскажу про все подробнее!",
+    "constant_name": "RULES_INFORMATION_MENU"
+  }
+},
+{
+  "model": "admin_bot.rulestext",
+  "pk": 2,
+  "fields": {
+    "constant_description": "Коммуникация",
+    "constant_text": "Здесь я могу рассказать тебе основные\r\nправила внутренней и внешней коммуникации.",
+    "constant_name": "COMMUNICATION_msg_1"
+  }
+},
+{
+  "model": "admin_bot.rulestext",
+  "pk": 3,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "*С чего начнем?*",
+    "constant_name": "COMMUNICATION_msg_2"
+  }
+},
+{
+  "model": "admin_bot.rulestext",
+  "pk": 4,
+  "fields": {
+    "constant_description": "Мастерская - первое сообщение",
+    "constant_text": "Мастерская Фонда ВТОРОЕ ДЫХАНИЕ находится по адресу: ул. Годовикова, 6. Чтобы в неё попасть, нужен ключ, так что если ты собираешься приехать в мастерскую пораньше, лучше не забыть предварительно спросить коллег, открыт ли офис. А если ключ у тебя уже есть, то не забудь при входе снять помещение с сигнализации. Иначе к нам приедет охрана и будет задавать вопросы. Как снять офис с сигнализации, тебе расскажет администратор.",
+    "constant_name": "WORKSHOP_msg_1"
+  }
+},
+{
+  "model": "admin_bot.rulestext",
+  "pk": 5,
+  "fields": {
+    "constant_description": "Мастерская - второе сообщение",
+    "constant_text": "В мастерской проходят различные мероприятия и мастер-классы, повсюду царит атмосфера креатива и творчества, поэтому очень важно не трогать рабочий инвентарь, чтобы ничего не потерялось.",
+    "constant_name": "WORKSHOP_msg_2"
+  }
+},
+{
+  "model": "admin_bot.rulestext",
+  "pk": 6,
+  "fields": {
+    "constant_description": "Мастерская - третье сообщение",
+    "constant_text": "Важно помнить, что мастерская - это открытое пространство, и мы просим не обсуждать рабочие вопросы в присутствии посторонних людей, не оставлять в общественных зонах юридически важную информацию.",
+    "constant_name": "WORKSHOP_msg_3"
+  }
+},
+{
+  "model": "admin_bot.rulestext",
+  "pk": 7,
+  "fields": {
+    "constant_description": "Мастерская - четвёртое сообщение",
+    "constant_text": "В мастерскую можно приводить собаку, если вы можете следить за ней в течение дня. Если у вас аллергия, об этом важно сказать руководителю, чтобы другие люди с собаками учитывали это, если планируют приехать.🐶❤️",
+    "constant_name": "WORKSHOP_msg_4"
+  }
+},
+{
+  "model": "admin_bot.rulestext",
+  "pk": 8,
+  "fields": {
+    "constant_description": "Мастерская - пятое сообщение",
+    "constant_text": "Если вы уходите из мастерской последним, не забудьте выключить свет, закрыть и занавесить все окна и поставить мастерскую на сигнализацию.",
+    "constant_name": "WORKSHOP_msg_5"
+  }
+},
+{
+  "model": "admin_bot.rulestext",
+  "pk": 9,
+  "fields": {
+    "constant_description": "Кухня",
+    "constant_text": "Наш офис оборудован обеденной зоной. Мы просим тебя обедать в специально отведённых для этого местах, не оставлять на рабочем столе кружки или посуду, а также убирать за собой и своевременно мыть посуду. Не допускай хранения просроченных продуктов в общем \r\nхолодильнике. Если вдруг ты забыл обед, и переживаешь, что он испортится, то напиши в чат, и его спасут коллеги.🦸‍♂️🦸‍♀️",
+    "constant_name": "KITCHEN"
+  }
+},
+{
+  "model": "admin_bot.rulestext",
+  "pk": 10,
+  "fields": {
+    "constant_description": "Раздельный сбор",
+    "constant_text": "Мы сортируем мусор, чтобы отправить его на дальнейшую переработку. Поэтому использованную пластиковую посуду нужно вымыть, просушить и положить в соответствующий контейнер (каждый контейнер имеет маркировку).♻️",
+    "constant_name": "SEPARATE_COLLECTION"
+  }
+},
+{
+  "model": "admin_bot.rulestext",
+  "pk": 11,
+  "fields": {
+    "constant_description": "Регулярные встречи",
+    "constant_text": "В Фонде есть традиция: в последнюю пятницу \r\nмесяца мы устраиваем совместную встречу всей \r\nкоманды в google meet. На этих встречах мы \r\nделимся новостями, успехами и неуспехами \r\nв работе и благодарим коллег за помощь. Ссылка \r\nна встречи автоматически появляется у вас в календаре.\r\n\r\nПравила созвона простые:\r\n✅Включаем камеры\r\n\r\n✅Стараемся не быть многозадачными и \r\nизбегаем анонсов (говорим только об итогах)\r\n\r\n✅Реакции и смайлики приветствуются)\r\nСоблюдаем тайминг -выступления не дольше 5 минут\r\n\r\n✅Соблюдаем структуру:\r\n- Представление (имя, должность, город)\r\n- Рассказ \"как прошел месяц\": 3 значимых и успешных кейса и 1 провал (по желанию)\r\n- Благодарность конкретным коллегам",
+    "constant_name": "REGULAR_MEETINGS"
+  }
+},
+{
+  "model": "admin_bot.rulestext",
+  "pk": 12,
+  "fields": {
+    "constant_description": "Внутренняя коммуникация",
+    "constant_text": "*Вот основные принципы внутренней коммуникации в Фонде:*\r\nМы:\r\n_Обращаемся друг к другу на \"ты\"_\r\n_Правильно пишем темы писем в Gmail_\r\n_По возможности не используем аудиосообщения_\r\n_Обходим острые темы в корпоративных чатах_\r\n_Пишем отложенные сообщения после 19:00_\r\n_Не пишем коллегам по работе в их отпуск_\r\n_Не злоупотребляем гибким графиком работы_\r\n_Отвечаем на вопросы коллег прямо и понятно_\r\n_По личным вопросам пишем в личные сообщения, а не в общий чат_\r\n_Не частим в корпоративных чатах с мемами_",
+    "constant_name": "IN_COMMUNICATION"
+  }
+},
+{
+  "model": "admin_bot.rulestext",
+  "pk": 13,
+  "fields": {
+    "constant_description": "Внешняя коммуникация?",
+    "constant_text": "Мы подготовили шпаргалку по пиару и коммуникациям в Фонде. \r\nЗдесь ты найдешь ссылку на брендбук, презентации Фонда, фотографии, \r\nлоготипы, правила оформления текста и ссылки на сервисы по проверке правописания, \r\nа также описание ролей сотрудников в пиар-отделе.\r\n \r\nСохраняй себе и пользуйся!",
+    "constant_name": "OUT_COMMUNICATION_msg_1"
+  }
+},
+{
+  "model": "admin_bot.rulestext",
+  "pk": 14,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "https://www.notion.so/kozlovskikh/14953c96349b4c96a77c53a76637635c",
+    "constant_name": "RULES_LINK"
+  }
+},
+{
+  "model": "admin_bot.text",
+  "pk": 1,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Работа приложения остановлена.",
+    "constant_name": "STOP_MESSAGE"
+  }
+},
+{
+  "model": "admin_bot.text",
+  "pk": 2,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Если у тебя есть вопрос, присылай его на почту hr@vtoroe.ru",
+    "constant_name": "HELP_MESSAGE"
+  }
+},
+{
+  "model": "admin_bot.text",
+  "pk": 3,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Привет! Меня зовут Втордыш, \r\r\nи я помощник сотрудников Фонда ВТОРОЕ ДЫХАНИЕ. \r\r\nЯ создан для того, чтобы помочь новеньким адаптироваться, \r\r\nно также буду полезен и опытным сотрудникам.",
+    "constant_name": "START_MESSAGE_PART_ONE"
+  }
+},
+{
+  "model": "admin_bot.text",
+  "pk": 4,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Чтобы продолжить, введи секретное слово.",
+    "constant_name": "START_MESSAGE_PART_TWO"
+  }
+},
+{
+  "model": "admin_bot.text",
+  "pk": 5,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "У нас другое секретное слово. \r\r\nПопробуй ввести его еще раз \r\r\nили обратись в HR-отдел Фонда или на почту hr@vtoroe.ru.",
+    "constant_name": "FAILED_THE_TEST"
+  }
+},
+{
+  "model": "admin_bot.text",
+  "pk": 6,
+  "fields": {
+    "constant_description": "База знаний",
+    "constant_text": "Чтобы вся важная и нужная в работе информация была в одном месте, мы\r\nсоздали [Базу знаний]({URL_KNOWLEDGE_BASE}) для сотрудников.\r\nВ ней собраны регламенты и бизнес-процессы, по которым мы работаем.",
+    "constant_name": "KNOWLEDGE_BASE_MESSAGE"
+  }
+},
+{
+  "model": "admin_bot.text",
+  "pk": 7,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Верно! Выбери интересующую тебя тему из списка \r\r\nв меню, и я помогу тебе найти нужную информацию.",
+    "constant_name": "PASSED_THE_TEST"
+  }
+},
+{
+  "model": "admin_bot.text",
+  "pk": 8,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "CAACAgIAAxkBAAIDwGUEItYpuU5DXDRigDA1M9SL-AdcAALTJAACHRAwSj-yFNWnj6hDMAQ",
+    "constant_name": "STICKER_ID"
+  }
+},
+{
+  "model": "admin_bot.text",
+  "pk": 9,
+  "fields": {
+    "constant_description": "Обратная связь",
+    "constant_text": "Мы сделали анонимную форму обратной связи для сотрудников Фонда — для тех, кто работает в бэк-офисе, на складах в Москве и Костроме, в мастерской и в Центре гуманитарной выдачи.\r\n\r\nСообщить о проблеме, поделиться информацией или оставить иную обратную связь, если ты не хочешь сообщать ее лично, можно по [ссылке]({FEEDBACK_LINK}).",
+    "constant_name": "FEEDBACK_MESSAGE"
+  }
+},
+{
+  "model": "admin_bot.text",
+  "pk": 10,
+  "fields": {
+    "constant_description": null,
+    "constant_text": "Выбери интересующую тебя тему из списка:",
+    "constant_name": "BACK_TO_MENU"
+  }
+},
+{
+  "model": "admin_bot.text",
+  "pk": 11,
+  "fields": {
+    "constant_description": "Ошибка доступа",
+    "constant_text": "У вас нет доступа к этому боту.\r\n\r\nНачните с команды /start.",
+    "constant_name": "PERMISSION_ERROR_MESSAGE"
+  }
+},
+{
+  "model": "admin_bot.text",
+  "pk": 12,
+  "fields": {
+    "constant_description": "Ссылка текста \"База знаний\"",
+    "constant_text": "https://docs.google.com/document/d/13_9qPPKA9w4LKFL1FNL5rbP0joNXxJkRs5wOa1fjsYY/edit?usp=sharing",
+    "constant_name": "URL_KNOWLEDGE_BASE"
+  }
+},
+{
+  "model": "admin_bot.text",
+  "pk": 13,
+  "fields": {
+    "constant_description": "Ссылка внутри текста после кнопки \"Обратная связь\"",
+    "constant_text": "https://forms.gle/jmjtFJEh68HqMxe57",
+    "constant_name": "FEEDBACK_LINK"
+  }
+},
+{
+  "model": "admin_bot.text",
+  "pk": 14,
+  "fields": {
+    "constant_description": "Вопрос пользователя по e-mail",
+    "constant_text": "Обращение в поддержку телеграм бота",
+    "constant_name": "user_question_email_subject"
+  }
+},
+{
+  "model": "admin_bot.text",
+  "pk": 15,
+  "fields": {
+    "constant_description": "Вопрос пользователя по e-mail",
+    "constant_text": "Никнейм в телеграм:",
+    "constant_name": "user_question_tg_nick_prefix"
+  }
+},
+{
+  "model": "admin_bot.text",
+  "pk": 16,
+  "fields": {
+    "constant_description": "Вопрос пользователя по e-mail",
+    "constant_text": "Вопрос:",
+    "constant_name": "user_question_question_prefix"
+  }
+},
+{
+  "model": "admin_bot.text",
+  "pk": 17,
+  "fields": {
+    "constant_description": "Вопрос пользователя по e-mail",
+    "constant_text": "Ваш вопрос отправлен. Мы свяжемся с вами в ближайшее время.",
+    "constant_name": "user_question_final_text"
+  }
+},
+{
+  "model": "admin_bot.text",
+  "pk": 18,
+  "fields": {
+    "constant_description": "Вопрос пользователя по e-mail",
+    "constant_text": "Введите ваш вопрос:",
+    "constant_name": "user_question_initial_text"
+  }
+},
+{
+  "model": "admin_bot.contactlistkeyboard",
+  "pk": 1,
+  "fields": {
+    "constant_description": "Клавиатура для скачивания справочника контактов",
+    "constant_text": "Скачать справочник",
+    "constant_name": "contact_list_download_keyboard"
+  }
+},
+{
+  "model": "admin_bot.contactlistkeyboard",
+  "pk": 2,
+  "fields": {
+    "constant_description": "Клавиатура для выхода в главное меню после поиска контактов",
+    "constant_text": "В главное меню",
+    "constant_name": "contact_list_exit_keyboard"
+  }
+}
+]

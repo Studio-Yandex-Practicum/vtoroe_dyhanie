@@ -1,6 +1,5 @@
 '''Модуль с реализацией клавиатур для блока "О Фонде".
 '''
-
 from telegram import (
     InlineKeyboardButton,
     InlineKeyboardMarkup,
@@ -8,6 +7,7 @@ from telegram import (
 )
 
 from bot.constants.query_patterns import ABOUT_PREFIX
+from bot.utils.admin_api import get_django_json
 
 
 ABOUT_FUND_CALLBACKS = {
@@ -19,93 +19,129 @@ ABOUT_FUND_CALLBACKS = {
     'more_info_projects': f'{ABOUT_PREFIX}more_info_projects',
     'more_info_reports': f'{ABOUT_PREFIX}more_info_reports',
 }
-
-
 # Общая часть для разных меню из блока О Фонде -
 # две кнопки: Назад в меню блока и Назад в главное меню
-navigation_menu = [
-    (
-        InlineKeyboardButton(
-            'В меню раздела',
-            callback_data=ABOUT_FUND_CALLBACKS.get('back_to_menu'),
+
+
+async def func_navigation_menu():
+    messages = await get_django_json('about_fund_keyboards/')
+    result = [
+        (
+            InlineKeyboardButton(
+                messages.get('navigation_menu_back_to_menu', ''),
+                callback_data=ABOUT_FUND_CALLBACKS.get('back_to_menu'),
+            ),
         ),
-    ),
-    (
-        InlineKeyboardButton(
-            'В главное меню',
-            callback_data=ABOUT_FUND_CALLBACKS.get('back_to_main_menu'),
+        (
+            InlineKeyboardButton(
+                messages.get('navigation_menu_back_to_main_menu', ''),
+                callback_data=ABOUT_FUND_CALLBACKS.get('back_to_main_menu'),
+            ),
         ),
-    ),
-]
-
-about_fund_section = [
-    'Миссия и основная цель',
-    'Путь вещей',
-    'Анатомия процессов',
-    'Проекты Фонда',
-    'Годовые отчеты',
-    'В главное меню',
-]
-about_fund_markup = ReplyKeyboardMarkup(
-    [[button] for button in about_fund_section],
-    resize_keyboard=True,
-    one_time_keyboard=True,
-)
-
-
-fund_mission_menu = [
-    (
-        InlineKeyboardButton(
-            'Конечно! Расскажи подробнее!',
-            callback_data=ABOUT_FUND_CALLBACKS.get('more_info_mission'),
+        (
+            InlineKeyboardButton(
+                messages.get('fund_mission_menu', ''),
+                callback_data=ABOUT_FUND_CALLBACKS.get('more_info_mission'),
+            ),
         ),
-    ),
-]
-fund_mission_menu.extend(navigation_menu)
-fund_mission_markup = InlineKeyboardMarkup(fund_mission_menu)
+    ]
+    return InlineKeyboardMarkup(result)
 
 
-things_path_menu = [
-    (
-        InlineKeyboardButton(
-            'Да, было бы здорово посмотреть!',
-            callback_data=ABOUT_FUND_CALLBACKS.get('more_info_path'),
+async def about_fund_section():
+    messages = await get_django_json('about_fund_keyboards/3:8/')
+    about_fund_section_text = [text for text in messages.values()]
+    about_fund_markup = ReplyKeyboardMarkup(
+        [[button] for button in about_fund_section_text],
+        resize_keyboard=True,
+        one_time_keyboard=True,
+    )
+    return about_fund_markup  # noqa
+
+
+async def things_path_markup():
+    messages = await get_django_json('about_fund_keyboards/')
+    result = [
+        (
+            InlineKeyboardButton(
+                messages.get('navigation_menu_back_to_menu', ''),
+                callback_data=ABOUT_FUND_CALLBACKS.get('back_to_menu'),
+            ),
         ),
-    ),
-]
-things_path_menu.extend(navigation_menu)
-things_path_markup = InlineKeyboardMarkup(things_path_menu)
-
-
-processes_anatomy_menu = [
-    (
-        InlineKeyboardButton(
-            'Конечно! Какие?',
-            callback_data=ABOUT_FUND_CALLBACKS.get('more_info_processes'),
+        (
+            InlineKeyboardButton(
+                messages.get('navigation_menu_back_to_main_menu', ''),
+                callback_data=ABOUT_FUND_CALLBACKS.get('back_to_main_menu'),
+            ),
         ),
-    ),
-]
-processes_anatomy_menu.extend(navigation_menu)
-processes_anatomy_markup = InlineKeyboardMarkup(processes_anatomy_menu)
-
-
-fund_projects_menu = [
-    (
-        InlineKeyboardButton(
-            'Почитаю с удовольствием!',
-            callback_data=ABOUT_FUND_CALLBACKS.get('more_info_projects'),
+        (
+            InlineKeyboardButton(
+                messages.get('things_path_menu', ''),
+                callback_data=ABOUT_FUND_CALLBACKS.get('more_info_path'),
+            ),
         ),
-    ),
-]
-fund_projects_menu.extend(navigation_menu)
-fund_projects_markup = InlineKeyboardMarkup(fund_projects_menu)
+    ]
+    return InlineKeyboardMarkup(result)
 
 
-annual_reports_menu = [
-    (
-        InlineKeyboardButton(
-            'Обязательно прочту!', callback_data='back_to_main_menu'
+async def processes_anatomy_markup():
+    messages = await get_django_json('about_fund_keyboards/')
+    result = [
+        (
+            InlineKeyboardButton(
+                messages.get('navigation_menu_back_to_menu', ''),
+                callback_data=ABOUT_FUND_CALLBACKS.get('back_to_menu'),
+            ),
         ),
-    ),
-]
-annual_reports_markup = InlineKeyboardMarkup(annual_reports_menu)
+        (
+            InlineKeyboardButton(
+                messages.get('navigation_menu_back_to_main_menu', ''),
+                callback_data=ABOUT_FUND_CALLBACKS.get('back_to_main_menu'),
+            ),
+        ),
+        (
+            InlineKeyboardButton(
+                messages.get('processes_anatomy_menu', ''),
+                callback_data=ABOUT_FUND_CALLBACKS.get('more_info_processes'),
+            ),
+        ),
+    ]
+    return InlineKeyboardMarkup(result)
+
+
+async def fund_projects_markup():
+    messages = await get_django_json('about_fund_keyboards/')
+    result = [
+        (
+            InlineKeyboardButton(
+                messages.get('navigation_menu_back_to_menu', ''),
+                callback_data=ABOUT_FUND_CALLBACKS.get('back_to_menu'),
+            ),
+        ),
+        (
+            InlineKeyboardButton(
+                messages.get('navigation_menu_back_to_main_menu', ''),
+                callback_data=ABOUT_FUND_CALLBACKS.get('back_to_main_menu'),
+            ),
+        ),
+        (
+            InlineKeyboardButton(
+                messages.get('fund_projects_menu', ''),
+                callback_data=ABOUT_FUND_CALLBACKS.get('more_info_projects'),
+            ),
+        ),
+    ]
+    return InlineKeyboardMarkup(result)
+
+
+async def annual_reports_markup():
+    messages = await get_django_json('about_fund_keyboards/13/')
+    result = [
+        (
+            InlineKeyboardButton(
+                messages.get('annual_reports_menu', ''),
+                callback_data='back_to_main_menu',
+            ),
+        ),
+    ]
+    return InlineKeyboardMarkup(result)

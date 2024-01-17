@@ -85,16 +85,28 @@ jobs:
             cd build/
             rm -f .env
             echo TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }} >> .env
-            echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
-            echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
-            echo DB_HOST=${{ secrets.DB_HOST }} >> .env
-            echo DB_PORT=${{ secrets.DB_PORT }} >> .env
-            echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> .env
             echo SMTP_SERVER=${{ secrets.SMTP_SERVER }} >> .env
+            echo SMTP_PORT=${{ secrets.SMTP_PORT }} >> .env
             echo SENDER_EMAIL=${{ secrets.SENDER_EMAIL }} >> .env
             echo RECEIVER_EMAIL=${{ secrets.RECEIVER_EMAIL }} >> .env
             echo PASSWORD_EMAIL=${{ secrets.PASSWORD_EMAIL }} >> .env
-            echo PORT=${{ secrets.PORT }} >> .env
+            echo ADMIN_API_HOST='nginx' >> .env
+            echo ADMIN_API_PORT='80' >> .env
+            echo DJANGO_SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }} >> .env
+            echo DJANGO_DEBUG=False >> .env
+            echo POSTGRES_HOST=${{ secrets.POSTGRES_HOST }} >> .env
+            echo POSTGRES_PORT=${{ secrets.POSTGRES_PORT }} >> .env
+            echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
+            echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
+            echo POSTGRES_MULTIPLE_DATABASES='bot,admin_django' >> .env
+            echo DB_NAME_BOT='bot' >> .env
+            echo DB_NAME_DJANGO='admin_django' >> .env
+            echo DB_HOST=${{ secrets.DB_HOST }} >> .env
+            echo DB_PORT=${{ secrets.DB_PORT }} >> .env
+            echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> .env
+            echo SMTP_PORT=${{ secrets.PORT }} >> .env
+            echo DB_NAME_BOT='bot' >> .env
+            echo DB_NAME_DJANGO='admin_django' >> .env
             cd infra/
             docker-compose rm -fsv
             docker rmi $(docker images -aq)

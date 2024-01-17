@@ -3,14 +3,10 @@ import re
 
 from sqlalchemy import select
 
-from ..constants.keyword_serch import (
-    CONTACTS_FOUND,
-    MAX_CONTACTS,
-    MORE_THAN_MAX_CONTACTS_FOUND,
-    NO_CONTACTS_FOUND,
-)
-from ..core.db import AsyncSessionLocal
-from ..models import (
+from .admin_api import get_django_json
+from bot.core.db import AsyncSessionLocal
+from bot.core.settings import api_root, settings
+from bot.models import (
     Contact,
     ContactKeyword,
     Department,
@@ -101,15 +97,16 @@ async def find_contacts_in_db(words: set) -> list:
     return contacts  # noqa
 
 
-def generate_answer(contacts):
+async def generate_answer(contacts):
     '''
     Поиск по ключевым словам.
     Генерация текста ответа.
     '''
+    constants = await get_django_json(f'/contact_list_text/3:5/')
     if not contacts:
-        return NO_CONTACTS_FOUND
-    contacts_to_print = contacts[:MAX_CONTACTS]
-    result = CONTACTS_FOUND + '\n'
+        return constants.get('NO_CONTACTS_FOUND', '')
+    contacts_to_print = contacts[: settings.max_contacts_to_show_in_sesarch]
+    result = constants.get('CONTACTS_FOUND', '') + '\n'
     for contact in contacts_to_print:
         result += f'\n{contact[0]}\n{contact[1]}\n{contact[2]}\n'
         if contact[3]:
@@ -118,7 +115,7 @@ def generate_answer(contacts):
             result += f'{contact[4]}\n'
         result += f'{contact[5]}\n'
     if len(contacts) != len(contacts_to_print):
-        result += '\n' + MORE_THAN_MAX_CONTACTS_FOUND
+        result += '\n' + constants.get('MORE_THAN_MAX_CONTACTS_FOUND', '')
     return result.strip()
 
 
@@ -130,4 +127,4 @@ async def find_contacts(user_text: str) -> str:
     words = prepare_words(user_text)
     contacts = await find_contacts_in_db(words)
     contacts_full_info = await get_contacts_full_info(contacts)
-    return generate_answer(contacts_full_info)
+    return await generate_answer(contacts_full_info)
