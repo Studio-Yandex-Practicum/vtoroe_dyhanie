@@ -46,6 +46,7 @@ async def check_the_secret_word_callback(
         scope=BotCommandScopeChat(update.effective_chat.id),
     )
     await update.message.reply_sticker(text.STICKER_ID)
+    await update.message.reply_text(text.PASSED_THE_TEST_SECOND)
     await update.message.reply_text(
         text.PASSED_THE_TEST, reply_markup=main_menu_markup
     )

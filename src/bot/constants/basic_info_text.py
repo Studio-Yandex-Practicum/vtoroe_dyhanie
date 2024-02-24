@@ -6,12 +6,28 @@ BASIC_INFORMATION_MENU = (
     'Выбирай нужный раздел, я расскажу про всё подробнее.'
 )
 FUND_NEWS = (
-    'Новости Фонда\n'
-    'Сайт Фонда vtoroe.ru\n'
-    'Сайт магазинов shop.vtoroe.ru\n'
-    'Telegram Фонда https://t.me/vtd_fond\n'
-    'Telegram мастерской Фонда https://t.me/vtoroemoscow\n'
-    'Вконтакте Фонда https://vk.com/vtd.fond\n'
+    '''
+    *Новости фонда*
+    Сайт фонда: vtoroe.ru
+    Сайт магазинов: shop.vtoroe.ru
+    Telegram фонда: https://t.me/vtd_fond
+    Telegram мастерской фонда:https://t.me/vtoroemoscow
+    Вконтакте фонда: https://vk.com/vtd.fond
+
+    *Секонд-хенд «Второе дыхание» на Достоевской*
+    Tg https://t.me/vtd_second
+    инст https://www.instagram.com/vtd.second
+    VK https://vk.com/vtd.second
+    2Гис https://go.2gis.com/s1ov0
+    Яндекс карты https://yandex.ru/maps/-/CDqvbA-c
+
+    *Секонд-хенд «Второе дыхание» в Красноармейске*
+    Tg https://t.me/vtd_second_kras
+    инст https://www.instagram.com/vtd.second.kras
+    VK https://vk.com/vtd.second.kras
+    2Гис https://go.2gis.com/i88im
+    Яндекс карты Яндекс Карты https://yandex.ru/maps/-/CDujf4PU
+    '''
 )
 OUR_TEAM_MESSAGE = (
     'У нас большая, дружная и сильная команда!\n'
