@@ -63,11 +63,6 @@ our_team_keyboard = [
     # Пока ещё не реализовано и на схеме нет:
     [
         InlineKeyboardButton(
-            'Список контактов', callback_data=f'{INFO_PREFIX}contact_list'
-        )
-    ],
-    [
-        InlineKeyboardButton(
             'Отделы Фонда', callback_data=f'{INFO_PREFIX}org_departmentss'
         )
     ],
@@ -121,12 +116,6 @@ council_keyboard = [
             'В чем различие между директором Фонда и Председателем Совета?'
             'Кто "главнее"?',
             callback_data=f'{INFO_PREFIX}council_question_04',
-        )
-    ],
-    [
-        InlineKeyboardButton(
-            'Как формировался Совет фонда?',
-            callback_data=f'{INFO_PREFIX}council_question_05',
         )
     ],
     [
