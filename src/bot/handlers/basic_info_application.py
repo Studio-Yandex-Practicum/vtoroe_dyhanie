@@ -120,7 +120,8 @@ async def social_networks_callback(
     await query.answer()
     await query.message.edit_text(
         basic_info_text.FUND_NEWS,
-        disable_web_page_preview=True,
+        disable_web_page_preview=False,
+        parse_mode='MarkdownV2',
         reply_markup=social_networks_markup,
     )
 

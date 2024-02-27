@@ -42,6 +42,7 @@ autopep8 = "2.0.4"
 flake8-isort = ["6.1.0"]
 mypy = "^1.6.1"
 sqlalchemy-utils = "^0.41.1"
+rapidfuzz= "^3.5.1"
 
 [tool.poetry.extras]
 flake8 = ["3.9.2"]
